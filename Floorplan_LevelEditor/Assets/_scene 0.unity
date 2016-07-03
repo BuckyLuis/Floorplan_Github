@@ -199,7 +199,7 @@ MonoBehaviour:
   scrollSpeed: 25
   minZoom: -8
   maxZoom: 80
-  cameraLock: 0
+  cameraLock: 1
 --- !u!4 &107915239
 Transform:
   m_ObjectHideFlags: 0
@@ -1202,6 +1202,18 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11440908, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11449446, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430522, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 22424202, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1312,7 +1324,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22421288, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.8180764
+      value: 0.8180768
       objectReference: {fileID: 0}
     - target: {fileID: 22421288, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
       propertyPath: m_AnchorMax.x
@@ -1320,7 +1332,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22421288, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0.9999996
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22466648, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
       propertyPath: m_AnchorMin.y
@@ -1365,6 +1377,122 @@ Prefab:
     - target: {fileID: 11495676, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440908, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440908, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440908, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1411720704}
+    - target: {fileID: 11440908, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CancelNewRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440908, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 11449446, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11449446, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11449446, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1411720704}
+    - target: {fileID: 11449446, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ConfirmNewRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 11449446, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430522, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430522, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430522, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1411720704}
+    - target: {fileID: 11430522, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NewRoomUIEnable
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430522, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 22474588, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -1227.1138
+      objectReference: {fileID: 0}
+    - target: {fileID: 22495612, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -5976.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440908, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.8455882
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440908, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.18652679
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440908, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.18652679
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440908, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440908, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440908, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11449446, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.13678631
+      objectReference: {fileID: 0}
+    - target: {fileID: 11449446, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.8088235
+      objectReference: {fileID: 0}
+    - target: {fileID: 11449446, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.22484629
+      objectReference: {fileID: 0}
+    - target: {fileID: 11449446, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.07586217
+      objectReference: {fileID: 0}
+    - target: {fileID: 11449446, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11449446, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6941dff0e970aa044bb87cd2718bbbf8, type: 2}

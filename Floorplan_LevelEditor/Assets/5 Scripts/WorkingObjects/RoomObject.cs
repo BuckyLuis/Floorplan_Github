@@ -51,7 +51,7 @@ public class RoomObject : MonoBehaviour {
     public void AlterRoomOrigin(Vector3 originPos) {
         ThisRoomOriginPos = originPos;
 
-        uiRmPosTxt.text = string.Format("( {0}x, {1}y, {2}z )", ThisRoomOriginPos.x, ThisRoomOriginPos.y, ThisRoomOriginPos.z);
+      //  uiRmPosTxt.text = string.Format("( {0}x, {1}y, {2}z )", ThisRoomOriginPos.x, ThisRoomOriginPos.y, ThisRoomOriginPos.z);
     }
 
     public void AddTileToRoom() {

@@ -6,6 +6,7 @@ public class CreateNewRoom : MonoBehaviour {
 
     AreaObject ourAreaObject;
 
+    GameObject ui_newRoomPanel;
     GameObject ui_roomIDField;
     GameObject ui_roomNameField;
     GameObject ui_roomColor;
@@ -15,6 +16,7 @@ public class CreateNewRoom : MonoBehaviour {
     InputField uiTxt_roomNameField;
     Color uiCol_roomColor;
     Text uiTxt_roomOriginText;
+    Button uiBtn_newRoomConfirmButton;
 
 
 //------------ Config These! -----------
@@ -29,6 +31,8 @@ public class CreateNewRoom : MonoBehaviour {
     public GameObject placer_NewROrigin;
     PlaceNewRoomOrigin newOriginPlacerScript;
 
+    bool ableToConfirm = false;
+    bool dialogIsActive = false;
 
 
     void Start() {
@@ -36,6 +40,8 @@ public class CreateNewRoom : MonoBehaviour {
         newOriginPlacerScript = placer_NewROrigin.GetComponent<PlaceNewRoomOrigin>();
 
         //---init Find UI fields---
+        ui_newRoomPanel = GameObject.Find("Panel_NewRoom");
+
         ui_roomIDField = GameObject.Find("InputField_NewRmID");
         ui_roomNameField = GameObject.Find("InputField_NewRmName");
         ui_roomColor = GameObject.Find("Button_NewRmColor");
@@ -46,6 +52,7 @@ public class CreateNewRoom : MonoBehaviour {
         uiTxt_roomNameField = ui_roomNameField.GetComponent<InputField>();
         uiCol_roomColor = ui_roomColor.GetComponent<Image>().color;
         uiTxt_roomOriginText = ui_roomOriginButton.GetComponentInChildren<Text>();
+        uiBtn_newRoomConfirmButton = ui_newRoomConfirmButton.GetComponent<Button>();
 
 
 //----- figure default values -----
@@ -63,6 +70,19 @@ public class CreateNewRoom : MonoBehaviour {
     //    NewRoomOriginPos = new Vector3 (ourAreaObject.ThisAreasRooms.Count, 0, -ourAreaObject.ThisAreasRooms.Count);
     }
 
+
+    public void NewRoomUIEnable() {
+        if(dialogIsActive == false) {
+            ui_newRoomPanel.SetActive(true);
+            ableToConfirm = false;
+            dialogIsActive = true;
+        }
+    }
+
+
+    void PassDefaultValues() {
+        
+    }
 
     public void ChangeRoomID() {
         NewRoomID = int.Parse(uiTxt_roomIDField.text);
@@ -86,6 +106,18 @@ public class CreateNewRoom : MonoBehaviour {
     public void OriginPosDecided(Vector3 theOriginPos) {
         NewRoomOriginPos = theOriginPos;
         uiTxt_roomOriginText.text = string.Format("( {0}x, {1}y, {2}z )", theOriginPos.x, theOriginPos.y, theOriginPos.z);
+        ableToConfirm = true;
+        uiBtn_newRoomConfirmButton.interactable = true;
+    }
+
+    public void ConfirmNewRoom() {
+        dialogIsActive = false;
+        ui_newRoomPanel.SetActive(false);     
+    }
+
+    public void CancelNewRoom() {
+        dialogIsActive = false;
+        ui_newRoomPanel.SetActive(false);
     }
 }
    

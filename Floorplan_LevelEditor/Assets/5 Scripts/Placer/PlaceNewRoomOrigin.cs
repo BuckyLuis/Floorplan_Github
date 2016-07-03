@@ -46,12 +46,13 @@ public class PlaceNewRoomOrigin : MonoBehaviour {
 
     void NewRoomOrigin() {
         roomOriginPos = new Vector3 (Click_origPos.x, Click_origPos.y, Click_origPos.z);
+
         roomOriginCell = (Transform) Instantiate(roomOriginPrefab, roomOriginPos, Quaternion.identity);
         roomOriginCell.name = string.Format("Rm: '{0}' / #{1} ({2}, {3}, {4})", roomName, roomID, roomOriginPos.x, roomOriginPos.y, roomOriginPos.z);
-        Transform marker = roomOriginCell.GetChild(0); 
-        marker.GetComponent<Renderer>().material.color = roomColor;
+      //  Transform marker = roomOriginCell.GetChild(0); 
+      //  marker.GetComponent<Renderer>().material.color = roomColor;
         roomObjectScript = roomOriginCell.GetComponent<RoomObject>();
-        roomObjectScript.AlterRoomOrigin(new Vector3(roomOriginPos.x, roomOriginPos.y, roomOriginPos.z));
+        roomObjectScript.AlterRoomOrigin(roomOriginPos);
         hasFiredOnce = true;
         InformNewRoomUI();
     }
