@@ -36,15 +36,15 @@ public class PlaceNewRoomOrigin : MonoBehaviour {
     }
 
 
-    void Clicked() {   //called by ClickDetectMessageSender.cs
+/*    void Clicked() {   //called by ClickDetectMessageSender.cs
         Click_origPos = transform.position;
         if(hasFiredOnce == false)
             NewRoomOrigin();
         gameObject.SetActive(false);
     }
+*/
 
-
-    void NewRoomOrigin() {
+ /*   void NewRoomOrigin() {
         roomOriginPos = new Vector3 (Click_origPos.x, Click_origPos.y, Click_origPos.z);
 
         roomOriginCell = (Transform) Instantiate(roomOriginPrefab, roomOriginPos, Quaternion.identity);
@@ -55,10 +55,10 @@ public class PlaceNewRoomOrigin : MonoBehaviour {
         roomObjectScript.AlterRoomOrigin(roomOriginPos);
         hasFiredOnce = true;
         InformNewRoomUI();
-    }
+    }*/
 
 
     void InformNewRoomUI() {
-        createNewRoomScript.OriginPosDecided(roomOriginPos);
+//        createNewRoomScript.OriginPosDecided(roomOriginPos);
     }
 }

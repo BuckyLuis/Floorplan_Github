@@ -4,21 +4,16 @@ using UnityEngine.UI;
 
 public class ColorPicker : MonoBehaviour 
 {
-    public GameObject databaseController;
-    CurrentSettings currSettingsScript;
-    CreateNewRoom newRoomScript;
+    [SerializeField] GameObject databaseController;
+    RoomViewerMenu theRoomViewerMenu;
+    RoomViewerEntry roomViewerEntryScriptTemp;
 
-    bool fromNewRoom = false;
-    public GameObject newRoomColorButton;
-    bool fromRoomViewer = false;
-    public GameObject viewerRoomColorButton;
+    public Button viewerRoomColorButton;
 
     public GameObject parentPanel;
-
 	//-------------- color pick -------------------------------------------------
 	public Texture2D colorPicker;  
-	/*  
-            /!\ Don't forget to make the texture readable
+	/*      /!\ Don't forget to make the texture readable
             (Select your texture : in Inspector
             [Texture Import Setting] > Texture Type > Advanced > Read/Write enabled > True  then Apply)     */
 	public Color theCol;  
@@ -30,10 +25,10 @@ public class ColorPicker : MonoBehaviour
 	
 	//-----------------------------------------------------------------
     void Start() {
-        currSettingsScript = databaseController.GetComponent<CurrentSettings>();
-        newRoomScript = databaseController.GetComponent<CreateNewRoom>();
+        //databaseController = GameObject.Find("- == Database Controller == -");
+        theRoomViewerMenu = databaseController.GetComponent<RoomViewerMenu>();
 
-        uiRectTransform = gameObject.GetComponent<RectTransform>();
+        uiRectTransform = gameObject.GetComponent<RectTransform>();                           //align old GUI object to 4.6 UI object
         colorPanelRect = RectTransformToScreenSpace(uiRectTransform);
         Debug.Log(colorPanelRect);
     }
@@ -41,8 +36,8 @@ public class ColorPicker : MonoBehaviour
     public static Rect RectTransformToScreenSpace( RectTransform transform ) {
         Vector2 size = Vector2.Scale( transform.rect.size, transform.lossyScale );
         return new Rect( transform.position.x, Screen.height - transform.position.y, size.x, size.y );
-    }
-
+    }                                                                                        //align old GUI object to 4.6 UI object
+                        
 
 	void OnGUI() {
 		GUI.DrawTexture(colorPanelRect, colorPicker);
@@ -58,21 +53,13 @@ public class ColorPicker : MonoBehaviour
 			outputCol = col;
 
 
-            if(fromNewRoom) {
-                newRoomColorButton.GetComponent<Button>().image.color = outputCol;
-                newRoomScript.ChangeRoomColor(outputCol);
+            if(viewerRoomColorButton != null) {
+                viewerRoomColorButton.image.color = outputCol;
+                roomViewerEntryScriptTemp.ChangeRoomColor(outputCol);
             }
-            if(fromRoomViewer) {
-                if(viewerRoomColorButton != null) {
-                    viewerRoomColorButton.GetComponent<Button>().image.color = outputCol;
-                    currSettingsScript.SetRoomColor(outputCol);
-                }
-                else {
-                    Debug.LogError("ColorPicker -- RoomViewer Entry not found!!");
-                }
+            else {
+                Debug.LogError("ColorPicker -- RoomViewer Entry not found!!");
             }
-            fromNewRoom = false;
-            fromRoomViewer = false;
 			enabled = false;
             parentPanel.SetActive(false);
 			
@@ -85,22 +72,19 @@ public class ColorPicker : MonoBehaviour
 	
 	
 //--------- functions for GUI to process --------------
-	public void OutputTheColor () 
-	{
-		outputCol = theCol;
-	}
-	
-	public void ActivateColPicker_NewRoom()
-	{
-		enabled = true;
-        fromNewRoom = true;
-	}
-
-    public void ActivateColPicker_RoomsViewer(GameObject viewerRoomColorBtn)
+    public void ActivateColPicker(Button theButton)
     {
+        roomViewerEntryScriptTemp = theRoomViewerMenu.roomEntries[theRoomViewerMenu.activeRoomIndex].GetComponent<RoomViewerEntry>();
+        //roomViewerEntryScriptTemp.userIsEditingEntry = true;
+        theRoomViewerMenu.DeactivateToggles();
         enabled = true;
-        fromRoomViewer = true;
-        viewerRoomColorButton = viewerRoomColorBtn; // GameObject.Find("RoomViewerEntry_" + currSettingsScript.currRoomID);
+        viewerRoomColorButton = theButton; // theRoomViewerMenu.roomEntries[theRoomViewerMenu.activeRoomIndex].transform.Find("Button_RVEColor").gameObject.GetComponent<Button>();
     }
+
+    /*  public void OutputTheColor () 
+    {
+        outputCol = theCol;
+    }
+    */
 	
 }

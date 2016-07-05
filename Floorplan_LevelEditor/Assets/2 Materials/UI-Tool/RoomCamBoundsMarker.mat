@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: RoomOriginMarker
+  m_Name: RoomCamBoundsMarker
   m_Shader: {fileID: 4800000, guid: 5d0fd018be1c8f14fb981e73af1a4cc1, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5

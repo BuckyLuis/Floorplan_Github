@@ -13,25 +13,16 @@ public class AreaObject : MonoBehaviour {
 
 //--------------------------------------------------------------------
 
-    public int newRoomOriginX , newRoomOriginZ;
-    public GameObject roomObjectPrefab;
-
-
-
     void Start() {
         
     }
-
-
 
     void LoadArea() {
        
     }
 
     public void AddRoomToArea() {
-        Instantiate(roomObjectPrefab, new Vector3(newRoomOriginX, 0, newRoomOriginZ) , Quaternion.identity);
-
-
+        
     }
 
     public void RemoveRoomFromArea() {
