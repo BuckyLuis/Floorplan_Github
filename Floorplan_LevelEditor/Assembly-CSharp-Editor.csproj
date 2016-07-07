@@ -53,11 +53,13 @@
      <Compile Include="Assets\8 Extensions\InputManager\Source\Editor\InputManagerEditor.cs" />
      <Compile Include="Assets\8 Extensions\InputManager\Source\Editor\_Support\EditorToolbox.cs" />
      <Compile Include="Assets\8 Extensions\InputManager\Source\Editor\_Support\MenuCommands.cs" />
+     <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\Editor\ReporterEditor.cs" />
      <None Include="Assets\8 Extensions\InputManager\Addons\JoystickMapping\Resources\joystick_mappings\xbox_360_linux.xml" />
      <None Include="Assets\8 Extensions\InputManager\Examples\01 - Controls Menu\Data\default_input.xml" />
      <None Include="Assets\8 Extensions\InputManager\Addons\InputAdapter\Resources\input_adapter_default_config.xml" />
      <None Include="Assets\8 Extensions\InputManager\Addons\UIInputModules\Resources\ui_input_modules\unity_5_3.txt" />
      <None Include="Assets\8 Extensions\InputManager\Source\Resources\input_manager_project_settings.txt" />
+     <None Include="Assets\StreamingAssets\build_info.txt" />
      <None Include="Assets\8 Extensions\InputManager\Examples\Common\Packages\KennyFonts\license.txt" />
      <None Include="Assets\8 Extensions\InputManager\Addons\UIInputModules\Resources\ui_input_module_index.xml" />
      <None Include="Assets\2a Shaders\SolidColorWithZTest.shader" />
@@ -106,6 +108,8 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{5E1405C7-8D40-6AB4-28E6-E05551DFEAB7}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{3C9A62EE-C631-9B9B-5C9B-017752E7F343}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>

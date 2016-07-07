@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{5B05C019-52EB-4EE6-6A64-76FD02934AA0}") = "Floorplan_LevelEditor", "Assembly-CSharp-firstpass.csproj", "{5E1405C7-8D40-6AB4-28E6-E05551DFEAB7}"
+EndProject
 Project("{5B05C019-52EB-4EE6-6A64-76FD02934AA0}") = "Floorplan_LevelEditor", "Assembly-CSharp.csproj", "{3C9A62EE-C631-9B9B-5C9B-017752E7F343}"
 EndProject
 Project("{5B05C019-52EB-4EE6-6A64-76FD02934AA0}") = "Floorplan_LevelEditor", "Assembly-CSharp-Editor.csproj", "{89587697-3848-A5A9-5168-9C64C20D73F1}"
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E1405C7-8D40-6AB4-28E6-E05551DFEAB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E1405C7-8D40-6AB4-28E6-E05551DFEAB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E1405C7-8D40-6AB4-28E6-E05551DFEAB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E1405C7-8D40-6AB4-28E6-E05551DFEAB7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3C9A62EE-C631-9B9B-5C9B-017752E7F343}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3C9A62EE-C631-9B9B-5C9B-017752E7F343}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C9A62EE-C631-9B9B-5C9B-017752E7F343}.Release|Any CPU.ActiveCfg = Release|Any CPU

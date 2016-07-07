@@ -13,14 +13,18 @@ public class Room_Base
     [XmlElement("RoomColor")]       public Color RoomColor { get; set; }
 
 
-    [XmlIgnore] public Vector3 OriginPos;
-    [XmlAttribute("OriginPos")]     public string OriginPos_Surrogate{ get { return "";}
-                                                                       set { OriginPos = new Vector3().FromString(value); }}
+    [XmlIgnore] public Vector3 CamBoundsTLPos;
+    [XmlAttribute("CamBoundsTLPos")]     public string CamBoundsTL_Surrogate{ get { return "";}
+                                                                           set { CamBoundsTLPos = new Vector3().FromString(value); }}
+    [XmlIgnore] public Vector3 CamBoundsBRPos;
+    [XmlAttribute("CamBoundsBRPos")]     public string CamBoundsBR_Surrogate{ get { return "";}
+                                                                           set { CamBoundsBRPos = new Vector3().FromString(value); }}
    
+/*
     [XmlArray("Tiles")]
     [XmlArrayItem("Tile")]
     public List<Tile_Base> tilesOfRoom = new List<Tile_Base>();
-
+*/
 
 
    

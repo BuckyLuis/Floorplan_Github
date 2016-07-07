@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TeamUtility.IO;
 
 public class moveCamera : MonoBehaviour 
 {
@@ -26,11 +27,11 @@ public class moveCamera : MonoBehaviour
 	}
 	void Update ()
 	{	
-		if(Input.GetButtonDown("CameraCenter"))
+		if(InputManager.GetButtonDown("CameraCenter"))
 		{
 			CenterCamera();
 		}
-		if(Input.GetButtonDown("CameraLock"))
+        if(InputManager.GetButtonDown("CameraLock"))
 		{
 			LockCamera();
 		}
@@ -63,7 +64,7 @@ public class moveCamera : MonoBehaviour
 				transform.Translate (Vector3.forward * scrollSpeed * Time.deltaTime);   
 			}
 			
-			if (Input.GetAxis("Mouse ScrollWheel") < 0 && scrollAmount < maxZoom)
+            if (InputManager.GetAxis("Mouse ScrollWheel") < 0 && scrollAmount < maxZoom)
 			{
 				transform.Translate (Vector3.up * 50 * Time.deltaTime); 
 				scrollAmount++;
@@ -72,7 +73,7 @@ public class moveCamera : MonoBehaviour
 				//	Camera.main.fieldOfView +=2;
 				//}
 			}
-			if (Input.GetAxis("Mouse ScrollWheel") > 0 && scrollAmount > minZoom)
+            if (InputManager.GetAxis("Mouse ScrollWheel") > 0 && scrollAmount > minZoom)
 			{
 				transform.Translate (Vector3.up *- 50 * Time.deltaTime);
 				scrollAmount--;

@@ -156,9 +156,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomEntries: []
   activeRoomIndex: 0
-  roomEntryPrefab: {fileID: 186200, guid: dbd00bbba10932f44a238a0884de49d7, type: 2}
+  roomEntryPrefab: {fileID: 123938, guid: dbd00bbba10932f44a238a0884de49d7, type: 2}
   roomViewerArea: {fileID: 0}
   colorPickerRef: {fileID: 0}
+  userIsEditingAnEntry: 0
+  ui_btnAddRoom: {fileID: 0}
+  ui_btnRemoveRoom: {fileID: 0}
   placerWidget_CamBounds: {fileID: 0}
   placeCamBoundsScript: {fileID: 0}
 --- !u!1001 &100100000

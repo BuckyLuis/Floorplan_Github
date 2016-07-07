@@ -47,7 +47,9 @@
   <ItemGroup>
      <Compile Include="Assets\5 Scripts\Camera\ClickDetectMessageSender.cs" />
      <Compile Include="Assets\5 Scripts\Camera\moveCamera.cs" />
-     <Compile Include="Assets\5 Scripts\ColorPicker.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\ColorPicker.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs" />
      <Compile Include="Assets\5 Scripts\Placer\PlaceCamBoundsMarker.cs" />
      <Compile Include="Assets\5 Scripts\Placer\PlaceNewRoomOrigin.cs" />
      <Compile Include="Assets\5 Scripts\Placer\PlaceTile.cs" />
@@ -59,8 +61,6 @@
      <Compile Include="Assets\5 Scripts\WorkingObjects\CreateNewRoom_OLD.cs" />
      <Compile Include="Assets\5 Scripts\WorkingObjects\CurrentSettings.cs" />
      <Compile Include="Assets\5 Scripts\WorkingObjects\RoomObject.cs" />
-     <Compile Include="Assets\5 Scripts\WorkingObjects\RoomViewerEntry.cs" />
-     <Compile Include="Assets\5 Scripts\WorkingObjects\RoomViewerMenu.cs" />
      <Compile Include="Assets\5 Scripts\WorkingObjects\TileObject.cs" />
      <Compile Include="Assets\5 Scripts\old\BlueprintSys\DeActiveOnRClick.cs" />
      <Compile Include="Assets\5 Scripts\old\BlueprintSys\EraserScript.cs" />
@@ -127,12 +127,20 @@
      <Compile Include="Assets\8 Extensions\InputManager\Source\Runtime\_Support\ScanFlags.cs" />
      <Compile Include="Assets\8 Extensions\InputManager\Source\Runtime\_Support\ScanResult.cs" />
      <Compile Include="Assets\8 Extensions\InputManager\Source\Runtime\_Support\ScanSettings.cs" />
+     <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\MultiKeyDictionary.cs" />
+     <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\Reporter.cs" />
+     <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\ReporterGUI.cs" />
+     <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
+     <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\Test\Rotate.cs" />
+     <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
+     <Compile Include="Assets\AssetsViewerMenu.cs" />
      <Compile Include="Assets\TilePreviewer.cs" />
      <None Include="Assets\8 Extensions\InputManager\Addons\JoystickMapping\Resources\joystick_mappings\xbox_360_linux.xml" />
      <None Include="Assets\8 Extensions\InputManager\Examples\01 - Controls Menu\Data\default_input.xml" />
      <None Include="Assets\8 Extensions\InputManager\Addons\InputAdapter\Resources\input_adapter_default_config.xml" />
      <None Include="Assets\8 Extensions\InputManager\Addons\UIInputModules\Resources\ui_input_modules\unity_5_3.txt" />
      <None Include="Assets\8 Extensions\InputManager\Source\Resources\input_manager_project_settings.txt" />
+     <None Include="Assets\StreamingAssets\build_info.txt" />
      <None Include="Assets\8 Extensions\InputManager\Examples\Common\Packages\KennyFonts\license.txt" />
      <None Include="Assets\8 Extensions\InputManager\Addons\UIInputModules\Resources\ui_input_module_index.xml" />
      <None Include="Assets\2a Shaders\SolidColorWithZTest.shader" />
@@ -155,6 +163,10 @@
  <Reference Include="UnityEngine.Networking">
  <HintPath>I:/Program Files/Unity5.35_64/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{5E1405C7-8D40-6AB4-28E6-E05551DFEAB7}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
