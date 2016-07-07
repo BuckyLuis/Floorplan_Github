@@ -18,6 +18,7 @@ GameObject:
   - 114: {fileID: 11422564}
   - 114: {fileID: 11499570}
   - 114: {fileID: 11492700}
+  - 114: {fileID: 11482808}
   m_Layer: 0
   m_Name: '- == Database Controller == -'
   m_TagString: Untagged
@@ -120,6 +121,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966248d2d0412f748b3d674a74828b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11482808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 564ae524c28616040aeff3fe0789875e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sv_Floors: {fileID: 0}
+  sv_Walls: {fileID: 0}
+  sv_Doodads: {fileID: 0}
+  sv_Props: {fileID: 0}
+  sv_Actors: {fileID: 0}
+  sv_Triggers: {fileID: 0}
+  header_Floors: {fileID: 0}
+  header_Walls: {fileID: 0}
+  header_Doodads: {fileID: 0}
+  header_Props: {fileID: 0}
+  header_Actors: {fileID: 0}
+  header_Triggers: {fileID: 0}
+  view_Floors: {fileID: 0}
+  view_Walls: {fileID: 0}
+  view_Doodads: {fileID: 0}
+  view_Props: {fileID: 0}
+  view_Actors: {fileID: 0}
+  view_Triggers: {fileID: 0}
 --- !u!114 &11492102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomEntries: []
   activeRoomIndex: 0
-  roomEntryPrefab: {fileID: 123938, guid: dbd00bbba10932f44a238a0884de49d7, type: 2}
+  roomEntryPrefab: {fileID: 0}
   roomViewerArea: {fileID: 0}
   colorPickerRef: {fileID: 0}
   userIsEditingAnEntry: 0

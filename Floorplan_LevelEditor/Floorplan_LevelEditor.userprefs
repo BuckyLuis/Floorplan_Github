@@ -2,10 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs">
     <Files>
-      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" Line="198" Column="227" />
-      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\5 Scripts\Placer\PlaceCamBoundsMarker.cs" Line="11" Column="5" />
-      <File FileName="Assets\5 Scripts\Camera\moveCamera.cs" Line="22" Column="3" />
+      <File FileName="Assets\5 Scripts\Placer\PlaceCamBoundsMarker.cs" Line="48" Column="41" />
+      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" Line="100" Column="39" />
+      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs" Line="12" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

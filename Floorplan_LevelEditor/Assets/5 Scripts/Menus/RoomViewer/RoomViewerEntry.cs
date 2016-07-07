@@ -96,6 +96,10 @@ public class RoomViewerEntry : MonoBehaviour {
         thisRoomIndex = theRoomViewerMenu.roomEntries.Count;
     }
 
+    void SetRoomDefaultValues() {
+        //RoomID:  devkey 1 digit + areaID 3 digits + roomIndex 2 digits  + (for modders 3 digits)
+    }
+
     void AssignButtonListeners() {
         uiIF_roomID.onEndEdit.AddListener(delegate { ChangeRoomID(); });
         uiIF_roomName.onEndEdit.AddListener(delegate { ChangeRoomName(); });
@@ -108,6 +112,16 @@ public class RoomViewerEntry : MonoBehaviour {
 
     public void ChangeRoomID() {
         thisRoomID = int.Parse(uiIF_roomID.text);
+
+        if(markerCamBoundsTL != null) {
+            markerCamBoundsTL.GetComponent<CamBoundsMarker>().roomID = thisRoomID;
+            markerCamBoundsTL.name = string.Format("CamBoundsTL: rm{0} ({1}, {2}, {3})", thisRoomID, markerCamBoundsTL.transform.position.x, markerCamBoundsTL.transform.position.y, markerCamBoundsTL.transform.position.z);
+        }
+        if(markerCamBoundsBR != null) {
+            markerCamBoundsBR.GetComponent<CamBoundsMarker>().roomID = thisRoomID;
+            markerCamBoundsBR.name = string.Format("CamBoundsTL: rm{0} ({1}, {2}, {3})", thisRoomID, markerCamBoundsBR.transform.position.x, markerCamBoundsBR.transform.position.y, markerCamBoundsBR.transform.position.z);
+
+        }
     }
 	
     public void ChangeRoomName() {
@@ -117,6 +131,21 @@ public class RoomViewerEntry : MonoBehaviour {
     public void ChangeRoomColor(Color theColor) {       //set from ColorPicker.cs
         thisRoomColor = theColor;
         theRoomViewerMenu.ActivateToggles();
+
+        if(markerCamBoundsTL != null) {
+            markerCamBoundsTL.GetComponent<Renderer>().material.SetColor("_Color1", thisRoomColor);
+            markerCamBoundsTL.GetComponent<Renderer>().material.SetColor("_Color2", thisRoomColor);
+            Transform child = markerCamBoundsTL.transform.GetChild(0); 
+            child.GetComponent<Renderer>().material.SetColor("_Color1", thisRoomColor);
+            child.GetComponent<Renderer>().material.SetColor("_Color2", thisRoomColor);
+        }
+        if(markerCamBoundsBR != null) {
+            markerCamBoundsBR.GetComponent<Renderer>().material.SetColor("_Color1", thisRoomColor);
+            markerCamBoundsBR.GetComponent<Renderer>().material.SetColor("_Color2", thisRoomColor);
+            Transform child = markerCamBoundsBR.transform.GetChild(0); 
+            child.GetComponent<Renderer>().material.SetColor("_Color1", thisRoomColor);
+            child.GetComponent<Renderer>().material.SetColor("_Color2", thisRoomColor);
+        }
     }
 
     public void ToggleActiveRoom(bool toggleStatus) {

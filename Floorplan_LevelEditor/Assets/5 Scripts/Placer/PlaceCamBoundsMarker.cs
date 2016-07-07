@@ -56,11 +56,13 @@ public class PlaceCamBoundsMarker : MonoBehaviour {
         
     void PlaceMarkerTL() {
         markerTemp = (GameObject) Instantiate(camBoundTLMarkerPrefab, camBoundsTLpos, Quaternion.identity);
-        markerTemp.name = string.Format("CamBoundsTL: {0} ({1}, {2}, {3})", roomID, camBoundsTLpos.x, camBoundsTLpos.y, camBoundsTLpos.z);
-        markerTemp.GetComponent<Renderer>().material.color = roomColor;
+        markerTemp.name = string.Format("CamBoundsTL: rm{0} ({1}, {2}, {3})", roomID, camBoundsTLpos.x, camBoundsTLpos.y, camBoundsTLpos.z);
+        markerTemp.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
+        markerTemp.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
         markerTemp.GetComponent<CamBoundsMarker>().roomID = roomID;
         Transform child = markerTemp.transform.GetChild(0); 
-        child.GetComponent<Renderer>().material.color = roomColor;
+        child.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
+        child.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
 
         activeRoomEntryScript.markerCamBoundsTL = markerTemp;
         InformRoomViewerEntry();
@@ -68,11 +70,14 @@ public class PlaceCamBoundsMarker : MonoBehaviour {
         
     void PlaceMarkerBR() {
         markerTemp = (GameObject) Instantiate(camBoundBRMarkerPrefab, camBoundsBRpos, Quaternion.identity);
-        markerTemp.name = string.Format("CamBoundsBR: {0} ({1}, {2}, {3})", roomID, camBoundsBRpos.x, camBoundsBRpos.y, camBoundsBRpos.z);
-        markerTemp.GetComponent<Renderer>().material.color = roomColor;
+        markerTemp.name = string.Format("CamBoundsBR: rm{0} ({1}, {2}, {3})", roomID, camBoundsBRpos.x, camBoundsBRpos.y, camBoundsBRpos.z);
+        markerTemp.GetComponent<Renderer>().material.SetColor("_Color1", roomColor); 
+        markerTemp.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
         markerTemp.GetComponent<CamBoundsMarker>().roomID = roomID;
         Transform child = markerTemp.transform.GetChild(0); 
-        child.GetComponent<Renderer>().material.color = roomColor;
+        child.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
+        child.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
+
 
         activeRoomEntryScript.markerCamBoundsBR = markerTemp;
         InformRoomViewerEntry();
