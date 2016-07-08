@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &192832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 475634}
+  - 114: {fileID: 11432874}
+  - 114: {fileID: 11439132}
+  m_Layer: 0
+  m_Name: '- == AssetsDB Controller == -'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &475634
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11432874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 564ae524c28616040aeff3fe0789875e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hkStageDuration: 2
+  allowHkAutoFullReset: 1
+  hkAutoFullResetDuration: 7
+  tgl_Floors: {fileID: 0}
+  tgl_Walls: {fileID: 0}
+  tgl_Doodads: {fileID: 0}
+  tgl_Props: {fileID: 0}
+  tgl_Actors: {fileID: 0}
+  tgl_Triggers: {fileID: 0}
+  sv_Floors: {fileID: 0}
+  sv_Walls: {fileID: 0}
+  sv_Doodads: {fileID: 0}
+  sv_Props: {fileID: 0}
+  sv_Actors: {fileID: 0}
+  sv_Triggers: {fileID: 0}
+  header_Floors: {fileID: 0}
+  header_Walls: {fileID: 0}
+  header_Doodads: {fileID: 0}
+  header_Props: {fileID: 0}
+  header_Actors: {fileID: 0}
+  header_Triggers: {fileID: 0}
+  view_Floors: {fileID: 0}
+  view_Walls: {fileID: 0}
+  view_Doodads: {fileID: 0}
+  view_Props: {fileID: 0}
+  view_Actors: {fileID: 0}
+  view_Triggers: {fileID: 0}
+  ui_txtLastHotkeyEntered: {fileID: 0}
+  ui_imgHotkeyStage: {fileID: 0}
+--- !u!114 &11439132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928a78d88af8dd248ac23389e224785d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  databaseController: {fileID: 0}
+  ui_ImgFloorStyle: {fileID: 0}
+  ui_ImgWallsStyle: {fileID: 0}
+  ui_TglNoWall: {fileID: 0}
+  ui_TxtRoomID: {fileID: 0}
+  ui_RoomColor: {fileID: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 192832}
+  m_IsPrefabParent: 1

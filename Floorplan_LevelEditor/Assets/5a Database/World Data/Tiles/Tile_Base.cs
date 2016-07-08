@@ -10,29 +10,13 @@ public class Tile_Base
     [XmlElement("RoomID")]          public int RoomID {get; set;}
 
     [XmlIgnore] public Vector3 Position;
-    [XmlAttribute("Position")]      public string OriginPos_Surrogate{ get { return "";}
+    [XmlAttribute("Position")]      public string Pos_Surrogate{ get { return "";}
                                                                       set { Position = new Vector3().FromString(value); }}
 
-    [XmlElement("FloorName")]		public string FloorName {get; set;}
-    [XmlElement("WallsName")]	    public string WallsName {get; set;}
+    [XmlElement("FloorIndex")]		public int FloorIndex {get; set;}
+    [XmlElement("WallsIndex")]	    public int WallsIndex {get; set;}
     [XmlElement("WOrientFlag")]     public int WOrientFlag {get; set;}
-
-
-    //private Elements eElements;           //how to make enum work with XML 
 }
-
-//  public string Category {get {return eCategories.ToString();}  set {eCategories = (Categories)Enum.Parse(typeof(Categories),value);} }
-
-/*public enum Elements
-{
-	Z,		//zero, none
-	F,		//fire
-	A,		//air
-	W,		//water
-	E,		//earth
-	S,		//spirit
-	N		//neutral
-}*/
 
 
 

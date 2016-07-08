@@ -12,10 +12,9 @@ public class Area_Base
 
     [XmlArray("RoomsInArea")]
     [XmlArrayItem("Room")]
-    public List<Room_Base> RoomsInArea = new List<Room_Base>();
+    public List<Room_Base> roomsInArea = new List<Room_Base>();
 
-
-    /*[XmlIgnore] public Vector3 OriginPos;
-    [XmlAttribute("OriginPos")]     public string OriginPos_Surrogate{ get { return "";}
-                                                                       set { OriginPos = new Vector3().FromString(value); }}*/
+    [XmlArray("TilesInArea")]
+    [XmlArrayItem("Tile")]
+    public List<Tile_Base> tilesInArea = new List<Tile_Base>();
 }

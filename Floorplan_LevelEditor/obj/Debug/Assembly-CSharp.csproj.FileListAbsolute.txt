@@ -40,3 +40,4 @@ I:\_Git\Repo_FloorPlan\Floorplan_LevelEditor\Temp\bin\Debug\UnityEngine.Networki
 I:\_Git\Repo_FloorPlan\Floorplan_LevelEditor\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 I:\_Git\Repo_FloorPlan\Floorplan_LevelEditor\obj\Debug\Assembly-CSharp.dll
 I:\_Git\Repo_FloorPlan\Floorplan_LevelEditor\obj\Debug\Assembly-CSharp.pdb
+I:\_Git\Repo_FloorPlan\Floorplan_LevelEditor\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb

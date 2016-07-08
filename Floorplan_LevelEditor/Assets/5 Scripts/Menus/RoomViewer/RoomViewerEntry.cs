@@ -40,7 +40,7 @@ public class RoomViewerEntry : MonoBehaviour {
     Text uiTx_RoomIndex;
     InputField uiIF_roomID;
     InputField uiIF_roomName;
-    Color uiC_roomColor;
+    Color uiCol_roomColor;
     Button uiBtn_roomColor;
     public Toggle uiTgl_activeRoom;
     Button uiBtn_camTL;
@@ -70,7 +70,7 @@ public class RoomViewerEntry : MonoBehaviour {
         uiTx_RoomIndex = ui_txtRmIndex.GetComponent<Text>();
         uiIF_roomID = ui_fieldRoomID.GetComponent<InputField>();
         uiIF_roomName = ui_fieldRoomName.GetComponent<InputField>();
-        uiC_roomColor = ui_btnRoomColor.GetComponent<Image>().color;
+        uiCol_roomColor = ui_btnRoomColor.GetComponent<Image>().color;
         uiBtn_roomColor = ui_btnRoomColor.GetComponent<Button>();
         uiTgl_activeRoom = ui_tglActiveRoom.GetComponent<Toggle>();
         uiBtn_camTL = ui_btnCamTL.GetComponent<Button>();

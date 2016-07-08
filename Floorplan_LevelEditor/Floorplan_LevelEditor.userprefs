@@ -1,10 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerMenu.cs">
     <Files>
-      <File FileName="Assets\5 Scripts\Placer\PlaceCamBoundsMarker.cs" Line="48" Column="41" />
-      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" Line="100" Column="39" />
-      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs" Line="12" Column="30" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerMenu.cs" Line="22" Column="47" />
+      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" Line="1" Column="1" />
+      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\5a Database\World Data\Areas\Area_Base.cs" Line="1" Column="1" />
+      <File FileName="Assets\5a Database\World Data\Rooms\Room_Base.cs" Line="1" Column="1" />
+      <File FileName="Assets\5a Database\World Data\Tiles\Tile_Base.cs" Line="1" Column="1" />
+      <File FileName="Assets\5 Scripts\Menus\ObjectToPaint\TileToPaintMenu.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

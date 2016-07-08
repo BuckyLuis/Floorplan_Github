@@ -8,8 +8,8 @@ public class TileData : MonoBehaviour
 	[HideInInspector] public int IndexID;
     [HideInInspector] public int RoomIndex;
     [HideInInspector] public Vector3 Position;
-	[HideInInspector] public string FloorName = null;
-    [HideInInspector] public string WallsName = null;   
+    [HideInInspector] public int FloorIndex;
+    [HideInInspector] public int WallsIndex;   
     [HideInInspector] public int WOrientFlag;
 
 
@@ -18,8 +18,8 @@ public class TileData : MonoBehaviour
 		IndexID = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].IndexID;
         RoomIndex = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].RoomID;
         Position = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].Position;
-		FloorName = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].FloorName;
-        WallsName = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].WallsName;
+        FloorIndex = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].FloorIndex;
+        WallsIndex = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].WallsIndex;
         WOrientFlag = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].WOrientFlag;
     }       
 
