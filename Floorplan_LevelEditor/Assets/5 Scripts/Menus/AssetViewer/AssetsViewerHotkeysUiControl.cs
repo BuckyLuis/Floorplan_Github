@@ -3,8 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 using TeamUtility.IO;
 
-public class AssetsViewerMenu : MonoBehaviour {
+public class AssetsViewerHotkeysUiControl : MonoBehaviour {
 
+    public static bool anInputFieldIsInFocus = false; 
 
     int keyPressed;
     int hotkeyStage = 0;
@@ -198,147 +199,149 @@ public class AssetsViewerMenu : MonoBehaviour {
                 isAutoResetTimerOn = false;
             }
         }
-  
+            
 //--------------------  Manual Set hkStage --------------
-        if(InputManager.GetButtonDown("F1")) {
-            isHkStageTimerOn = false;
-            isAutoResetTimerOn = false;
+        if(anInputFieldIsInFocus == false) {
+            if(InputManager.GetButtonDown("F1")) {
+                isHkStageTimerOn = false;
+                isAutoResetTimerOn = false;
 
-            hotkeyStage = 0;
-            uiTxt_lastHotkeyEntered.text = "|<";
-            HotkeyStageColor();
-        }
-        if(InputManager.GetButtonDown("F2")) {
-            if(hotkeyStage > 0) {
-                hotkeyStage--;
-                uiTxt_lastHotkeyEntered.text = "<";
+                hotkeyStage = 0;
+                uiTxt_lastHotkeyEntered.text = "|<";
                 HotkeyStageColor();
             }
-        }
-        if(InputManager.GetButtonDown("F3")) {
-            if(hotkeyStage < 2) {
-                hotkeyStage++;
-                uiTxt_lastHotkeyEntered.text = ">";
+            if(InputManager.GetButtonDown("F2")) {
+                if(hotkeyStage > 0) {
+                    hotkeyStage--;
+                    uiTxt_lastHotkeyEntered.text = "<";
+                    HotkeyStageColor();
+                }
+            }
+            if(InputManager.GetButtonDown("F3")) {
+                if(hotkeyStage < 2) {
+                    hotkeyStage++;
+                    uiTxt_lastHotkeyEntered.text = ">";
+                    HotkeyStageColor();
+                }
+            }
+            if(InputManager.GetButtonDown("F4")) {
+                hotkeyStage = 2;
+                uiTxt_lastHotkeyEntered.text = ">|";
                 HotkeyStageColor();
             }
-        }
-        if(InputManager.GetButtonDown("F4")) {
-            hotkeyStage = 2;
-            uiTxt_lastHotkeyEntered.text = ">|";
-            HotkeyStageColor();
-        }
 
-//-----------------  Hotkey Inputs -----------------
-        if(InputManager.GetButtonDown("1")) {
-            if(hotkeyStage == 3) {
-                uiTxt_lastHotkeyEntered.text = string.Format("{0}1",keyPressed);
+    //-----------------  Hotkey Inputs -----------------
+            if(InputManager.GetButtonDown("1")) {
+                if(hotkeyStage == 3) {
+                    uiTxt_lastHotkeyEntered.text = string.Format("{0}1",keyPressed);
+                }
+                else {
+                    uiTxt_lastHotkeyEntered.text = "1";
+                }
+                keyPressed = 1;
+                HotkeyAutoReset();
+                HotkeyWasPressed();
             }
-            else {
-                uiTxt_lastHotkeyEntered.text = "1";
+            if(InputManager.GetButtonDown("2")) {
+                if(hotkeyStage == 3) {
+                    uiTxt_lastHotkeyEntered.text = string.Format("{0}2",keyPressed);
+                }
+                else {
+                    uiTxt_lastHotkeyEntered.text = "2";
+                }
+                keyPressed = 2;
+                HotkeyAutoReset();
+                HotkeyWasPressed();
             }
-            keyPressed = 1;
-            HotkeyAutoReset();
-            HotkeyWasPressed();
-        }
-        if(InputManager.GetButtonDown("2")) {
-            if(hotkeyStage == 3) {
-                uiTxt_lastHotkeyEntered.text = string.Format("{0}2",keyPressed);
+            if(InputManager.GetButtonDown("3")) {
+                if(hotkeyStage == 3) {
+                    uiTxt_lastHotkeyEntered.text = string.Format("{0}3",keyPressed);
+                }
+                else {
+                    uiTxt_lastHotkeyEntered.text = "3";
+                }
+                keyPressed = 3;
+                HotkeyAutoReset();
+                HotkeyWasPressed();
             }
-            else {
-                uiTxt_lastHotkeyEntered.text = "2";
+            if(InputManager.GetButtonDown("4")) {
+                if(hotkeyStage == 3) {
+                    uiTxt_lastHotkeyEntered.text = string.Format("{0}4",keyPressed);
+                }
+                else {
+                    uiTxt_lastHotkeyEntered.text = "4";
+                }
+                keyPressed = 4;
+                HotkeyAutoReset();
+                HotkeyWasPressed();
             }
-            keyPressed = 2;
-            HotkeyAutoReset();
-            HotkeyWasPressed();
-        }
-        if(InputManager.GetButtonDown("3")) {
-            if(hotkeyStage == 3) {
-                uiTxt_lastHotkeyEntered.text = string.Format("{0}3",keyPressed);
+            if(InputManager.GetButtonDown("5")) {
+                if(hotkeyStage == 3) {
+                    uiTxt_lastHotkeyEntered.text = string.Format("{0}5",keyPressed);
+                }
+                else {
+                    uiTxt_lastHotkeyEntered.text = "5";
+                }
+                keyPressed = 5;
+                HotkeyAutoReset();
+                HotkeyWasPressed();
             }
-            else {
-                uiTxt_lastHotkeyEntered.text = "3";
+            if(InputManager.GetButtonDown("6")) {
+                if(hotkeyStage == 3) {
+                    uiTxt_lastHotkeyEntered.text = string.Format("{0}6",keyPressed);
+                }
+                else {
+                    uiTxt_lastHotkeyEntered.text = "6";
+                }
+                keyPressed = 6;   
+                HotkeyAutoReset();
+                HotkeyWasPressed();
             }
-            keyPressed = 3;
-            HotkeyAutoReset();
-            HotkeyWasPressed();
-        }
-        if(InputManager.GetButtonDown("4")) {
-            if(hotkeyStage == 3) {
-                uiTxt_lastHotkeyEntered.text = string.Format("{0}4",keyPressed);
+            if(InputManager.GetButtonDown("7")) {
+                if(hotkeyStage == 3) {
+                    uiTxt_lastHotkeyEntered.text = string.Format("{0}7",keyPressed);
+                }
+                else {
+                    uiTxt_lastHotkeyEntered.text = "7";
+                }
+                keyPressed = 7;
+                HotkeyAutoReset();
+                HotkeyWasPressed();
             }
-            else {
-                uiTxt_lastHotkeyEntered.text = "4";
+            if(InputManager.GetButtonDown("8")) {
+                if(hotkeyStage == 3) {
+                    uiTxt_lastHotkeyEntered.text = string.Format("{0}8",keyPressed);
+                }
+                else {
+                    uiTxt_lastHotkeyEntered.text = "8";
+                }
+                keyPressed = 8;
+                HotkeyAutoReset();
+                HotkeyWasPressed();
             }
-            keyPressed = 4;
-            HotkeyAutoReset();
-            HotkeyWasPressed();
-        }
-        if(InputManager.GetButtonDown("5")) {
-            if(hotkeyStage == 3) {
-                uiTxt_lastHotkeyEntered.text = string.Format("{0}5",keyPressed);
+            if(InputManager.GetButtonDown("9")) {
+                if(hotkeyStage == 3) {
+                    uiTxt_lastHotkeyEntered.text = string.Format("{0}9",keyPressed);
+                }
+                else {
+                    uiTxt_lastHotkeyEntered.text = "9";
+                }
+                keyPressed = 9;
+                HotkeyAutoReset();
+                HotkeyWasPressed();
             }
-            else {
-                uiTxt_lastHotkeyEntered.text = "5";
+            if(InputManager.GetButtonDown("0")) {
+                if(hotkeyStage == 3) {
+                    uiTxt_lastHotkeyEntered.text = string.Format("{0}0",keyPressed);
+                }
+                else {
+                    uiTxt_lastHotkeyEntered.text = "0";
+                }
+                keyPressed = 0;
+                HotkeyAutoReset();
+                HotkeyWasPressed();
             }
-            keyPressed = 5;
-            HotkeyAutoReset();
-            HotkeyWasPressed();
-        }
-        if(InputManager.GetButtonDown("6")) {
-            if(hotkeyStage == 3) {
-                uiTxt_lastHotkeyEntered.text = string.Format("{0}6",keyPressed);
-            }
-            else {
-                uiTxt_lastHotkeyEntered.text = "6";
-            }
-            keyPressed = 6;   
-            HotkeyAutoReset();
-            HotkeyWasPressed();
-        }
-        if(InputManager.GetButtonDown("7")) {
-            if(hotkeyStage == 3) {
-                uiTxt_lastHotkeyEntered.text = string.Format("{0}7",keyPressed);
-            }
-            else {
-                uiTxt_lastHotkeyEntered.text = "7";
-            }
-            keyPressed = 7;
-            HotkeyAutoReset();
-            HotkeyWasPressed();
-        }
-        if(InputManager.GetButtonDown("8")) {
-            if(hotkeyStage == 3) {
-                uiTxt_lastHotkeyEntered.text = string.Format("{0}8",keyPressed);
-            }
-            else {
-                uiTxt_lastHotkeyEntered.text = "8";
-            }
-            keyPressed = 8;
-            HotkeyAutoReset();
-            HotkeyWasPressed();
-        }
-        if(InputManager.GetButtonDown("9")) {
-            if(hotkeyStage == 3) {
-                uiTxt_lastHotkeyEntered.text = string.Format("{0}9",keyPressed);
-            }
-            else {
-                uiTxt_lastHotkeyEntered.text = "9";
-            }
-            keyPressed = 9;
-            HotkeyAutoReset();
-            HotkeyWasPressed();
-        }
-        if(InputManager.GetButtonDown("0")) {
-            if(hotkeyStage == 3) {
-                uiTxt_lastHotkeyEntered.text = string.Format("{0}0",keyPressed);
-            }
-            else {
-                uiTxt_lastHotkeyEntered.text = "0";
-            }
-            keyPressed = 0;
-            HotkeyAutoReset();
-            HotkeyWasPressed();
-        }
+        } //end of InputFieldInFocus test
 	}
 
  #region -- == HotkeyWasPressed == --

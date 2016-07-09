@@ -8,8 +8,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 475634}
-  - 114: {fileID: 11432874}
   - 114: {fileID: 11439132}
+  - 114: {fileID: 11419270}
+  - 114: {fileID: 11461310}
   m_Layer: 0
   m_Name: '- == AssetsDB Controller == -'
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11432874
+--- !u!114 &11419270
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -38,18 +39,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 192832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 564ae524c28616040aeff3fe0789875e, type: 3}
+  m_Script: {fileID: 11500000, guid: 68f9cac82a0cc49439ab60e848de3f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hkStageDuration: 2
-  allowHkAutoFullReset: 1
-  hkAutoFullResetDuration: 7
-  tgl_Floors: {fileID: 0}
-  tgl_Walls: {fileID: 0}
-  tgl_Doodads: {fileID: 0}
-  tgl_Props: {fileID: 0}
-  tgl_Actors: {fileID: 0}
-  tgl_Triggers: {fileID: 0}
+  hkStageDuration: 1.2
+  allowHkAutoReset: 0
+  hkAutoResetDuration: 2
+  btn_Floors: {fileID: 0}
+  btn_Walls: {fileID: 0}
+  btn_Doodads: {fileID: 0}
+  btn_Props: {fileID: 0}
+  btn_Actors: {fileID: 0}
+  btn_Triggers: {fileID: 0}
   sv_Floors: {fileID: 0}
   sv_Walls: {fileID: 0}
   sv_Doodads: {fileID: 0}
@@ -62,12 +63,7 @@ MonoBehaviour:
   header_Props: {fileID: 0}
   header_Actors: {fileID: 0}
   header_Triggers: {fileID: 0}
-  view_Floors: {fileID: 0}
-  view_Walls: {fileID: 0}
-  view_Doodads: {fileID: 0}
-  view_Props: {fileID: 0}
-  view_Actors: {fileID: 0}
-  view_Triggers: {fileID: 0}
+  tgl_allowAutoReset: {fileID: 0}
   ui_txtLastHotkeyEntered: {fileID: 0}
   ui_imgHotkeyStage: {fileID: 0}
 --- !u!114 &11439132
@@ -87,6 +83,17 @@ MonoBehaviour:
   ui_TglNoWall: {fileID: 0}
   ui_TxtRoomID: {fileID: 0}
   ui_RoomColor: {fileID: 0}
+--- !u!114 &11461310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff6ac9163bb5f8438342d96095a470a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

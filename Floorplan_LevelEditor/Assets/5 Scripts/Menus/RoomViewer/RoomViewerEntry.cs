@@ -51,7 +51,7 @@ public class RoomViewerEntry : MonoBehaviour {
     Text uiTx_camBR;
     ToggleGroup uiTG_activeRoomTGroup;
 
-
+   
 
 
 	void Start () {
@@ -91,6 +91,12 @@ public class RoomViewerEntry : MonoBehaviour {
             uiTgl_activeRoom.interactable = false;
 	}
 
+    void Update() {
+        if( uiIF_roomID.isFocused || uiIF_roomName.isFocused ) {
+            AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = true;
+        }
+    }
+
     public void SetRoomIndex() {
         uiTx_RoomIndex.text = theRoomViewerMenu.roomEntries.Count.ToString();
         thisRoomIndex = theRoomViewerMenu.roomEntries.Count;
@@ -111,6 +117,8 @@ public class RoomViewerEntry : MonoBehaviour {
     }
 
     public void ChangeRoomID() {
+        AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = false;
+
         thisRoomID = int.Parse(uiIF_roomID.text);
 
         if(markerCamBoundsTL != null) {
@@ -125,6 +133,8 @@ public class RoomViewerEntry : MonoBehaviour {
     }
 	
     public void ChangeRoomName() {
+        AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = false;
+
         thisRoomName = uiIF_roomName.text;
     }
 
