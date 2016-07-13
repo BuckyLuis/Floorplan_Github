@@ -8,9 +8,9 @@ public class TileData : MonoBehaviour
 	[HideInInspector] public int IndexID;
     [HideInInspector] public int RoomIndex;
     [HideInInspector] public Vector3 Position;
-    [HideInInspector] public int FloorIndex;
-    [HideInInspector] public int WallsIndex;   
-    [HideInInspector] public int WOrientFlag;
+    [HideInInspector] public int CategoryIndex;
+    [HideInInspector] public int TileIndex;   
+    [HideInInspector] public int TileFacingFlag;
 
 
 	void Start()
@@ -18,9 +18,9 @@ public class TileData : MonoBehaviour
 		IndexID = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].IndexID;
         RoomIndex = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].RoomID;
         Position = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].Position;
-        FloorIndex = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].FloorIndex;
-        WallsIndex = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].WallsIndex;
-        WOrientFlag = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].WOrientFlag;
+        CategoryIndex = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].CategoryIndex;
+        TileIndex = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].TileIndex;
+        TileFacingFlag = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].TileFacingFlag;
     }       
 
 }

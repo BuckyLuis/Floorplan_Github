@@ -13,9 +13,9 @@ public class Tile_Base
     [XmlAttribute("Position")]      public string Pos_Surrogate{ get { return "";}
                                                                       set { Position = new Vector3().FromString(value); }}
 
-    [XmlElement("FloorIndex")]		public int FloorIndex {get; set;}
-    [XmlElement("WallsIndex")]	    public int WallsIndex {get; set;}
-    [XmlElement("WOrientFlag")]     public int WOrientFlag {get; set;}
+    [XmlElement("CategoryIndex")]   public int CategoryIndex {get; set;}
+    [XmlElement("TileIndex")]	    public int TileIndex {get; set;}
+    [XmlElement("TileFacingFlag")]  public int TileFacingFlag {get; set;}   //0-N, 1-E, 2-S, 3-W
 }
 
 
