@@ -40,6 +40,8 @@ public class ElevationMenu : MonoBehaviour {
 	public void FloorUp () {
         theGridsObject.transform.position = new Vector3 (20f, theGridsObject.transform.position.y + floorYSize, 20f);
         theMainCamera.transform.position = new Vector3 (0, theMainCamera.transform.position.y + floorYSize, 0);
+        PlacerMovement.tilePlacerYpos = PlacerMovement.tilePlacerYpos + floorYSize;
+
         currentFloor++;
         currentYpos += floorYSize;
         if(currentFloor > -1) 
@@ -51,6 +53,8 @@ public class ElevationMenu : MonoBehaviour {
     public void FloorDown () {
         theGridsObject.transform.position = new Vector3 (20f, theGridsObject.transform.position.y - floorYSize, 20f);
         theMainCamera.transform.position = new Vector3 (0,  theMainCamera.transform.position.y - floorYSize, 0);
+        PlacerMovement.tilePlacerYpos = PlacerMovement.tilePlacerYpos - floorYSize;
+
         currentFloor--;
         currentYpos -= floorYSize;
         if(currentFloor < 0) 
@@ -63,6 +67,8 @@ public class ElevationMenu : MonoBehaviour {
     public void FloorCenter () {
         theGridsObject.transform.position = new Vector3 (20f, -0.1f, 20f);
         theMainCamera.transform.position = new Vector3 (0, 0, 0);
+        PlacerMovement.tilePlacerYpos = 0;
+
         currentFloor = 0;
         currentYpos = 0;
         posF0_negB1 = false;

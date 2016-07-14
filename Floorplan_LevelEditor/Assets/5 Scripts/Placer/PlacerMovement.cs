@@ -6,9 +6,13 @@ public class PlacerMovement: MonoBehaviour
 	public static Vector3 destinationPos;
 	public int size = 1;
 
+    public static int tilePlacerYpos;
 
-	void Update()
-	{	
+    void Start() {
+        tilePlacerYpos = 0;
+    }
+
+    void Update() {	
 		RaycastHit hit;
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		if (Physics.Raycast(ray, out hit))
@@ -16,7 +20,7 @@ public class PlacerMovement: MonoBehaviour
 			Vector3 wantedPos = hit.point;
 			float xPos = Mathf.Round(wantedPos.x / size);                                                           //snap to grid
 			float zPos = Mathf.Round(wantedPos.z / size);
-			destinationPos = new Vector3(xPos * size, transform.position.y, zPos * size);
+            destinationPos = new Vector3(xPos * size, tilePlacerYpos, zPos * size);
 			transform.position = destinationPos;
 		}
 	}

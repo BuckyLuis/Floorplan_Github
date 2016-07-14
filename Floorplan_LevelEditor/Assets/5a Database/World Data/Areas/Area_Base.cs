@@ -6,9 +6,9 @@ using System.Xml.Serialization;
 
 public class Area_Base 
 {
-    [XmlElement("IndexID")]         public int IndexID {get; set;}    //simply for display, otherwise youd have to count! (itd royally suck)
+    [XmlElement("IndexID")]     public int IndexID {get; set;}    //simply for display, otherwise youd have to count! (itd royally suck)
 
-    [XmlElement("AreaID")]         public int AreaID {get; set;} 
+    [XmlElement("AreaID")]      public int AreaID {get; set;} 
 
     [XmlArray("RoomsInArea")]
     [XmlArrayItem("Room")]

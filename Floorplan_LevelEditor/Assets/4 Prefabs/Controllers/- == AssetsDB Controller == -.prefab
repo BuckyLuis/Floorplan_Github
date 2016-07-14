@@ -11,10 +11,11 @@ GameObject:
   - 114: {fileID: 11439132}
   - 114: {fileID: 11419270}
   - 114: {fileID: 11461310}
+  - 114: {fileID: 11430856}
   m_Layer: 0
   m_Name: '- == AssetsDB Controller == -'
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -66,6 +67,17 @@ MonoBehaviour:
   tgl_allowAutoReset: {fileID: 0}
   ui_txtLastHotkeyEntered: {fileID: 0}
   ui_imgHotkeyStage: {fileID: 0}
+--- !u!114 &11430856
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a24322d7fb19c4db047787ef4dc95e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11439132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,11 +90,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   databaseController: {fileID: 0}
-  ui_ImgFloorStyle: {fileID: 0}
-  ui_ImgWallsStyle: {fileID: 0}
-  ui_TglNoWall: {fileID: 0}
+  categoryIndex: 0
+  tileIndex: 0
+  tileFacingFlag: 0
+  ui_BtnTile: {fileID: 0}
   ui_TxtRoomID: {fileID: 0}
   ui_RoomColor: {fileID: 0}
+  ui_TileFacingSel_N: {fileID: 0}
+  ui_TileFacingSel_E: {fileID: 0}
+  ui_TileFacingSel_S: {fileID: 0}
+  ui_TileFacingSel_W: {fileID: 0}
 --- !u!114 &11461310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,6 +111,114 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff6ac9163bb5f8438342d96095a470a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assetsDict_Floors:
+    _Buckets: ffffffff00000000ffffffff
+    _HashCodes: 76bd00000000000000000000
+    _Next: ffffffff0000000000000000
+    _Count: 1
+    _Version: 23
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 1,1
+    - 
+    - 
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  assetsDict_Walls:
+    _Buckets: 00000000ffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: ffffffff0000000000000000
+    _Count: 1
+    _Version: 1
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  assetsDict_Doodads:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  assetsDict_Props:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  assetsDict_Actors:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  assetsDict_Triggers:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  viewAreaFloors: {fileID: 0}
+  viewAreaWalls: {fileID: 0}
+  viewAreaDoodads: {fileID: 0}
+  viewAreaProps: {fileID: 0}
+  viewAreaActors: {fileID: 0}
+  viewAreaTriggers: {fileID: 0}
+  floorEntryPrefab: {fileID: 0}
+  wallEntryPrefab: {fileID: 0}
+  doodadEntryPrefab: {fileID: 0}
+  propEntryPrefab: {fileID: 0}
+  actorEntryPrefab: {fileID: 0}
+  triggerEntryPrefab: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

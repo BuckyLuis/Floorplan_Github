@@ -130,7 +130,6 @@ public class RoomViewerEntry : MonoBehaviour {
         if(markerCamBoundsBR != null) {
             markerCamBoundsBR.GetComponent<CamBoundsMarker>().roomID = thisRoomID;
             markerCamBoundsBR.name = string.Format("CamBoundsTL: rm{0} ({1}, {2}, {3})", thisRoomID, markerCamBoundsBR.transform.position.x, markerCamBoundsBR.transform.position.y, markerCamBoundsBR.transform.position.z);
-
         }
     }
 	

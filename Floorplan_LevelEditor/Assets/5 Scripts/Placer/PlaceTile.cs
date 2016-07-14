@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public class PlaceTile : MonoBehaviour {
 
     //-------------- Public vars - defined In-Editor -----------------------------------
-    public Transform TileBlueprint;
+    public Transform tileToBePlaced;
    // public Transform TileParent;
 
     public GameObject placeholder;
@@ -18,6 +18,8 @@ public class PlaceTile : MonoBehaviour {
 
     public int roomNum  {get; protected set;}
     public Color roomCol {get; protected set;}
+
+
 
 
     //--------------- Temp vars ----------------------------
@@ -106,7 +108,7 @@ public class PlaceTile : MonoBehaviour {
 
         for(int xL = 0; xL < TileGridSizeX; xL++) {                 //xL , zL are local (relative to parentCell) coords!
             for(int zL = 0; zL < TileGridSizeZ; zL++) {
-                kidCell = (Transform) Instantiate(TileBlueprint, new Vector3((xL * gridSize)+ Click_origPos.x, 0, (zL * gridSize)+ Click_origPos.z), TileBlueprint.transform.rotation);  
+                kidCell = (Transform) Instantiate(tileToBePlaced, new Vector3((xL * gridSize)+ Click_origPos.x, 0, (zL * gridSize)+ Click_origPos.z), tileToBePlaced.transform.rotation);  
                 kidCell.name = string.Format ("R: ({0},0,{1}) / G: ({2},{3},{4})", xL, zL, kidCell.transform.position.x, kidCell.transform.position.y, kidCell.transform.position.z);
                 kidCell.GetChild(0).GetComponent<Renderer>().material.color = roomCol;
                 kidCell.parent = parentCell;
@@ -117,23 +119,6 @@ public class PlaceTile : MonoBehaviour {
 
 
     //--------- Methods for GUI to process --------------
-    public void IncrementRoomNum() {
-        roomNum++;
-    }
-
-
-    public void SetRoomBelonging() {
-        
-    }
-
-    public void SetFloorStyle() {
-        
-    }
-
-    public void SetWallsStyle() {
-        
-    }
-
 
 
 

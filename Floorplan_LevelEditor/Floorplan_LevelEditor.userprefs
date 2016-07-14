@@ -1,15 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\ObjectToPaint\TileToPaintMenu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Floors.cs">
     <Files>
-      <File FileName="Assets\5 Scripts\Menus\ObjectToPaint\TileToPaintMenu.cs" Line="112" Column="47" />
-      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" Line="1" Column="1" />
-      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\5a Database\World Data\Areas\Area_Base.cs" Line="1" Column="1" />
-      <File FileName="Assets\5a Database\World Data\Rooms\Room_Base.cs" Line="1" Column="1" />
-      <File FileName="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerHotkeysUiControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\5a Database\World Data\Tiles\Tile_Base.cs" Line="4" Column="32" />
-      <File FileName="Assets\5a Database\_DataIntegration\TileData.cs" Line="1" Column="1" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerAssetManagement.cs" Line="34" Column="48" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Floors.cs" Line="10" Column="27" />
+      <File FileName="Assets\5a Database\Assets Data\Asset_Floor_Base.cs" Line="4" Column="22" />
+      <File FileName="Assets\5a Database\Assets Data\Asset_Prop_Base.cs" Line="9" Column="43" />
+      <File FileName="Assets\5a Database\Assets Data\Asset_Trigger_Base.cs" Line="10" Column="34" />
+      <File FileName="Assets\5a Database\Assets Data\Asset_Wall_Base.cs" Line="13" Column="36" />
+      <File FileName="Assets\5a Database\Assets Data\Asset_Doodad_Base.cs" Line="11" Column="5" />
+      <File FileName="Assets\5a Database\Assets Data\Asset_Actor_Base.cs" Line="11" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

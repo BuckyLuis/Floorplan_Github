@@ -54,6 +54,7 @@
      <Compile Include="Assets\8 Extensions\InputManager\Source\Editor\_Support\EditorToolbox.cs" />
      <Compile Include="Assets\8 Extensions\InputManager\Source\Editor\_Support\MenuCommands.cs" />
      <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\Editor\ReporterEditor.cs" />
+     <Compile Include="Assets\Editor\DictionaryDrawer.cs" />
      <Compile Include="Assets\Editor\FullscreenPlayMode.cs" />
      <None Include="Assets\8 Extensions\InputManager\Addons\JoystickMapping\Resources\joystick_mappings\xbox_360_linux.xml" />
      <None Include="Assets\8 Extensions\InputManager\Examples\01 - Controls Menu\Data\default_input.xml" />
