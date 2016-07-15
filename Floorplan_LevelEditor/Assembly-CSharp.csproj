@@ -50,7 +50,12 @@
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerAssetManagement.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerHotkeysUiControl.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerMenu.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Actors.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Doodads.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Floors.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Props.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Triggers.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Walls.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ColorPicker.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ElevationMenu.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectToPaint\TileToPaintMenu.cs" />

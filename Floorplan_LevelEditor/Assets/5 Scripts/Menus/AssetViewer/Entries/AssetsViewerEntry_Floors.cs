@@ -8,7 +8,7 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
 //------------- Asset Datas ------------------
     public string assetFloorsName;
     public int assetIndex;
-    public Categories_Floors categoryFloor;
+    public Categories_Floors categoryFloors;
     public Sprite assetEntryIcon;
 
     public string assetFloorsDesc;

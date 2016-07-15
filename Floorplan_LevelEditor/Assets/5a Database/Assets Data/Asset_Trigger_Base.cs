@@ -9,7 +9,7 @@ public class Asset_Trigger_Base {
     public Categories_Floors categoryTriggers;
     public Sprite assetEntryIcon;
 
-    public string assetFloorsDesc;
+    public string assetTriggersDesc;
     public Color assetTilesetColor;
     public GameObject assetWorldObject;
 

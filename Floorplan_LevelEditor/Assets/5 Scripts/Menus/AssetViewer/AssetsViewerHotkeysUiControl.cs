@@ -7,6 +7,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
 
     public static bool anInputFieldIsInFocus = false; 
 
+    AssetsViewerAssetManagement assetManagerScript;
+
     int keyPressed;
     int hotkeyStage = 0;
     Color hotkeyStageColor;
@@ -103,6 +105,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
 
 
 	void Start () {
+        assetManagerScript = GetComponent<AssetsViewerAssetManagement>();
+
         uiImg_hotkeyStage = ui_imgHotkeyStage.GetComponent<Image>();
         uiTxt_lastHotkeyEntered = ui_txtLastHotkeyEntered.GetComponent<Text>();
         HotkeyStageColor();
@@ -571,6 +575,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlFloorCat3.enabled = false;
         uiImg_HlFloorCat4.enabled = false;
 
+        assetManagerScript.ShowCategory_Floors(0);
+
         currentCategory = 11;
         hotkeyStage = 2;
         HotkeyStageColor();
@@ -581,6 +587,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlFloorCat2.enabled = true;
         uiImg_HlFloorCat3.enabled = false;
         uiImg_HlFloorCat4.enabled = false;
+
+        assetManagerScript.ShowCategory_Floors(1);
 
         currentCategory = 12;
         hotkeyStage = 2;
@@ -593,6 +601,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlFloorCat3.enabled = true;
         uiImg_HlFloorCat4.enabled = false;
 
+        assetManagerScript.ShowCategory_Floors(2);
+
         currentCategory = 13;
         hotkeyStage = 2;
         HotkeyStageColor();
@@ -603,6 +613,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlFloorCat2.enabled = false;
         uiImg_HlFloorCat3.enabled = false;
         uiImg_HlFloorCat4.enabled = true;
+
+        assetManagerScript.ShowCategory_Floors(3);
 
         currentCategory = 14;
         hotkeyStage = 2;
@@ -643,6 +655,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlWallsCat3.enabled = false;
         uiImg_HlWallsCat4.enabled = false;
 
+        assetManagerScript.ShowCategory_Walls(0);
+
         currentCategory = 21;
         hotkeyStage = 2;
         HotkeyStageColor();
@@ -653,6 +667,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlWallsCat2.enabled = true;
         uiImg_HlWallsCat3.enabled = false;
         uiImg_HlWallsCat4.enabled = false;
+
+        assetManagerScript.ShowCategory_Walls(1);
 
         currentCategory = 22;
         hotkeyStage = 2;
@@ -665,6 +681,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlWallsCat3.enabled = true;
         uiImg_HlWallsCat4.enabled = false;
 
+        assetManagerScript.ShowCategory_Walls(2);
+
         currentCategory = 23;
         hotkeyStage = 2;
         HotkeyStageColor();
@@ -675,6 +693,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlWallsCat2.enabled = false;
         uiImg_HlWallsCat3.enabled = false;
         uiImg_HlWallsCat4.enabled = true;
+
+        assetManagerScript.ShowCategory_Walls(3);
 
         currentCategory = 24;
         hotkeyStage = 2;
@@ -714,6 +734,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlDoodadsCat3.enabled = false;
         uiImg_HlDoodadsCat4.enabled = false;
 
+        assetManagerScript.ShowCategory_Doodads(0);
+
         currentCategory = 31;
         hotkeyStage = 2;
         HotkeyStageColor();
@@ -724,6 +746,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlDoodadsCat2.enabled = true;
         uiImg_HlDoodadsCat3.enabled = false;
         uiImg_HlDoodadsCat4.enabled = false;
+
+        assetManagerScript.ShowCategory_Doodads(1);
 
         currentCategory = 32;
         hotkeyStage = 2;
@@ -736,6 +760,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlDoodadsCat3.enabled = true;
         uiImg_HlDoodadsCat4.enabled = false;
 
+        assetManagerScript.ShowCategory_Doodads(2);
+
         currentCategory = 33;
         hotkeyStage = 2;
         HotkeyStageColor();
@@ -746,6 +772,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlDoodadsCat2.enabled = false;
         uiImg_HlDoodadsCat3.enabled = false;
         uiImg_HlDoodadsCat4.enabled = true;
+
+        assetManagerScript.ShowCategory_Doodads(3);
 
         currentCategory = 34;
         hotkeyStage = 2;
@@ -785,6 +813,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlPropsCat3.enabled = false;
         uiImg_HlPropsCat4.enabled = false;
 
+        assetManagerScript.ShowCategory_Props(0);
+
         currentCategory = 31;
         hotkeyStage = 2;
         HotkeyStageColor();
@@ -795,6 +825,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlPropsCat2.enabled = true;
         uiImg_HlPropsCat3.enabled = false;
         uiImg_HlPropsCat4.enabled = false;
+
+        assetManagerScript.ShowCategory_Props(1);
 
         currentCategory = 32;
         hotkeyStage = 2;
@@ -807,6 +839,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlPropsCat3.enabled = true;
         uiImg_HlPropsCat4.enabled = false;
 
+        assetManagerScript.ShowCategory_Props(2);
+
         currentCategory = 33;
         hotkeyStage = 2;
         HotkeyStageColor();
@@ -817,6 +851,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlPropsCat2.enabled = false;
         uiImg_HlPropsCat3.enabled = false;
         uiImg_HlPropsCat4.enabled = true;
+
+        assetManagerScript.ShowCategory_Props(3);
 
         currentCategory = 34;
         hotkeyStage = 2;
@@ -856,6 +892,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlActorsCat3.enabled = false;
         uiImg_HlActorsCat4.enabled = false;
 
+        assetManagerScript.ShowCategory_Actors(0);
+
         currentCategory = 31;
         hotkeyStage = 2;
         HotkeyStageColor();
@@ -866,6 +904,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlActorsCat2.enabled = true;
         uiImg_HlActorsCat3.enabled = false;
         uiImg_HlActorsCat4.enabled = false;
+
+        assetManagerScript.ShowCategory_Actors(1);
 
         currentCategory = 32;
         hotkeyStage = 2;
@@ -878,6 +918,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlActorsCat3.enabled = true;
         uiImg_HlActorsCat4.enabled = false;
 
+        assetManagerScript.ShowCategory_Actors(2);
+
         currentCategory = 33;
         hotkeyStage = 2;
         HotkeyStageColor();
@@ -888,6 +930,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlActorsCat2.enabled = false;
         uiImg_HlActorsCat3.enabled = false;
         uiImg_HlActorsCat4.enabled = true;
+
+        assetManagerScript.ShowCategory_Actors(3);
 
         currentCategory = 34;
         hotkeyStage = 2;
@@ -927,6 +971,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlTriggersCat3.enabled = false;
         uiImg_HlTriggersCat4.enabled = false;
 
+        assetManagerScript.ShowCategory_Triggers(0);
+
         currentCategory = 31;
         hotkeyStage = 2;
         HotkeyStageColor();
@@ -937,6 +983,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlTriggersCat2.enabled = true;
         uiImg_HlTriggersCat3.enabled = false;
         uiImg_HlTriggersCat4.enabled = false;
+
+        assetManagerScript.ShowCategory_Triggers(1);
 
         currentCategory = 32;
         hotkeyStage = 2;
@@ -949,6 +997,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlTriggersCat3.enabled = true;
         uiImg_HlTriggersCat4.enabled = false;
 
+        assetManagerScript.ShowCategory_Triggers(2);
+
         currentCategory = 33;
         hotkeyStage = 2;
         HotkeyStageColor();
@@ -959,6 +1009,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlTriggersCat2.enabled = false;
         uiImg_HlTriggersCat3.enabled = false;
         uiImg_HlTriggersCat4.enabled = true;
+
+        assetManagerScript.ShowCategory_Triggers(3);
 
         currentCategory = 34;
         hotkeyStage = 2;

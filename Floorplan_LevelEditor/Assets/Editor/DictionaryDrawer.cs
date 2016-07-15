@@ -172,12 +172,11 @@ public abstract class DictionaryDrawer<TK, TV> : PropertyDrawer
     }
 }
 
-/*
+
 
 [CustomPropertyDrawer(typeof(Dictionary_sGo))]
 public class MyDictionaryDrawer1 : DictionaryDrawer<string, GameObject> { }
 
 
 //and put this atop a class
-[Serializable] public class Dictionary_sGo : SerializableDictionary<string, GameObject> { }
-*/
+//[Serializable] public class Dictionary_sGo : SerializableDictionary<string, GameObject> { }

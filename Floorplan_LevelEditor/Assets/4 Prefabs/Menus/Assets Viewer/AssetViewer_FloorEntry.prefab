@@ -358,7 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assetFloorsName: 
   assetIndex: 0
-  categoryFloor: 0
+  categoryFloors: 0
   assetEntryIcon: {fileID: 0}
   assetFloorsDesc: 
   assetTilesetColor: {r: 0, g: 0, b: 0, a: 0}
