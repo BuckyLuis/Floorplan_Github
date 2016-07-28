@@ -118,7 +118,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HighlightActors = btn_Actors.transform.GetChild(2).GetComponent<Image>();
         uiImg_HighlightTriggers = btn_Triggers.transform.GetChild(2).GetComponent<Image>();
 
-        uiImg_HighlightFloors.enabled = true;
+        uiImg_HighlightFloors.enabled = false;
         uiImg_HighlightWalls.enabled = false;
         uiImg_HighlightDoodads.enabled = false;
         uiImg_HighlightProps.enabled = false; 
@@ -129,7 +129,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlFloorCat2 = header_Floors.transform.GetChild(2).transform.GetChild(2).GetComponent<Image>();
         uiImg_HlFloorCat3 = header_Floors.transform.GetChild(3).transform.GetChild(2).GetComponent<Image>();
         uiImg_HlFloorCat4 = header_Floors.transform.GetChild(4).transform.GetChild(2).GetComponent<Image>();
-        uiImg_HlFloorCat1.enabled = true;
+        uiImg_HlFloorCat1.enabled = false;
         uiImg_HlFloorCat2.enabled = false;
         uiImg_HlFloorCat3.enabled = false;
         uiImg_HlFloorCat4.enabled = false;
@@ -180,6 +180,20 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlTriggersCat4.enabled = false;
 
         uiTgl_allowAutoReset = tgl_allowAutoReset.GetComponent<Toggle>();
+
+        sv_Floors.SetActive(false);
+        header_Floors.SetActive(false);
+        sv_Walls.SetActive(false);
+        header_Walls.SetActive(false);
+        sv_Doodads.SetActive(false);
+        header_Doodads.SetActive(false);
+        sv_Props.SetActive(false);
+        header_Props.SetActive(false);
+        sv_Actors.SetActive(false);
+        header_Actors.SetActive(false);
+        sv_Triggers.SetActive(false);
+        header_Triggers.SetActive(false);
+
 	}
 	
     void Update () {
@@ -500,6 +514,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
  #endregion
 
 
+ #region HotkeyMethods
     void HotkeyStageColor() {
         switch (hotkeyStage) {
             case 0: 
@@ -538,9 +553,10 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
             allowHkAutoReset = true;
             HotkeyAutoReset();
         }
-    }   
+    }  
+ #endregion
 
-
+ #region Pages and Categories
     public void SetFloorsPage() {
             uiImg_HighlightFloors.enabled = true;
         uiImg_HighlightWalls.enabled = false;
@@ -561,7 +577,6 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         sv_Triggers.SetActive(false);
         header_Triggers.SetActive(false);
 
-        sv_Floors.SetActive(true);
         header_Floors.SetActive(true);
 
         currentPage = 1;
@@ -570,6 +585,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void FloorCategory1() {
+        sv_Floors.SetActive(true);
+
         uiImg_HlFloorCat1.enabled = true;
         uiImg_HlFloorCat2.enabled = false;
         uiImg_HlFloorCat3.enabled = false;
@@ -583,6 +600,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void FloorCategory2() {
+        sv_Floors.SetActive(true);
+
         uiImg_HlFloorCat1.enabled = false;
         uiImg_HlFloorCat2.enabled = true;
         uiImg_HlFloorCat3.enabled = false;
@@ -596,6 +615,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void FloorCategory3() {
+        sv_Floors.SetActive(true);
+
         uiImg_HlFloorCat1.enabled = false;
         uiImg_HlFloorCat2.enabled = false;
         uiImg_HlFloorCat3.enabled = true;
@@ -609,6 +630,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void FloorCategory4() {
+        sv_Floors.SetActive(true);
+
         uiImg_HlFloorCat1.enabled = false;
         uiImg_HlFloorCat2.enabled = false;
         uiImg_HlFloorCat3.enabled = false;
@@ -641,7 +664,6 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         sv_Triggers.SetActive(false);
         header_Triggers.SetActive(false);
 
-        sv_Walls.SetActive(true);
         header_Walls.SetActive(true);
 
         currentPage = 2;
@@ -650,6 +672,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void WallsCategory1() {
+        sv_Walls.SetActive(true);
         uiImg_HlWallsCat1.enabled = true;
         uiImg_HlWallsCat2.enabled = false;
         uiImg_HlWallsCat3.enabled = false;
@@ -663,6 +686,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void WallsCategory2() {
+        sv_Walls.SetActive(true);
         uiImg_HlWallsCat1.enabled = false;
         uiImg_HlWallsCat2.enabled = true;
         uiImg_HlWallsCat3.enabled = false;
@@ -676,6 +700,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void WallsCategory3() {
+        sv_Walls.SetActive(true);
         uiImg_HlWallsCat1.enabled = false;
         uiImg_HlWallsCat2.enabled = false;
         uiImg_HlWallsCat3.enabled = true;
@@ -689,6 +714,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void WallsCategory4() {
+        sv_Walls.SetActive(true);
         uiImg_HlWallsCat1.enabled = false;
         uiImg_HlWallsCat2.enabled = false;
         uiImg_HlWallsCat3.enabled = false;
@@ -720,7 +746,6 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         sv_Triggers.SetActive(false);
         header_Triggers.SetActive(false);
 
-        sv_Doodads.SetActive(true);
         header_Doodads.SetActive(true);
 
         currentPage = 3;
@@ -729,6 +754,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void DoodadsCategory1() {
+        sv_Doodads.SetActive(true);
+
         uiImg_HlDoodadsCat1.enabled = true;
         uiImg_HlDoodadsCat2.enabled = false;
         uiImg_HlDoodadsCat3.enabled = false;
@@ -742,6 +769,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void DoodadsCategory2() {
+        sv_Doodads.SetActive(true);
+
         uiImg_HlDoodadsCat1.enabled = false;
         uiImg_HlDoodadsCat2.enabled = true;
         uiImg_HlDoodadsCat3.enabled = false;
@@ -755,6 +784,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void DoodadsCategory3() {
+        sv_Doodads.SetActive(true);
+
         uiImg_HlDoodadsCat1.enabled = false;
         uiImg_HlDoodadsCat2.enabled = false;
         uiImg_HlDoodadsCat3.enabled = true;
@@ -768,6 +799,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void DoodadsCategory4() {
+        sv_Doodads.SetActive(true);
+
         uiImg_HlDoodadsCat1.enabled = false;
         uiImg_HlDoodadsCat2.enabled = false;
         uiImg_HlDoodadsCat3.enabled = false;
@@ -799,7 +832,6 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         sv_Triggers.SetActive(false);
         header_Triggers.SetActive(false);
 
-        sv_Props.SetActive(true);
         header_Props.SetActive(true);
 
         currentPage = 4;
@@ -808,6 +840,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void PropsCategory1() {
+        sv_Props.SetActive(true);
+
         uiImg_HlPropsCat1.enabled = true;
         uiImg_HlPropsCat2.enabled = false;
         uiImg_HlPropsCat3.enabled = false;
@@ -821,6 +855,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void PropsCategory2() {
+        sv_Props.SetActive(true);
+
         uiImg_HlPropsCat1.enabled = false;
         uiImg_HlPropsCat2.enabled = true;
         uiImg_HlPropsCat3.enabled = false;
@@ -834,6 +870,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void PropsCategory3() {
+        sv_Props.SetActive(true);
+
         uiImg_HlPropsCat1.enabled = false;
         uiImg_HlPropsCat2.enabled = false;
         uiImg_HlPropsCat3.enabled = true;
@@ -847,6 +885,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void PropsCategory4() {
+        sv_Props.SetActive(true);
+
         uiImg_HlPropsCat1.enabled = false;
         uiImg_HlPropsCat2.enabled = false;
         uiImg_HlPropsCat3.enabled = false;
@@ -878,7 +918,6 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         sv_Triggers.SetActive(false);
         header_Triggers.SetActive(false);
 
-        sv_Actors.SetActive(true);
         header_Actors.SetActive(true);
 
         currentPage = 5;
@@ -887,6 +926,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void ActorsCategory1() {
+        sv_Actors.SetActive(true);
+
         uiImg_HlActorsCat1.enabled = true;
         uiImg_HlActorsCat2.enabled = false;
         uiImg_HlActorsCat3.enabled = false;
@@ -900,6 +941,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void ActorsCategory2() {
+        sv_Actors.SetActive(true);
+
         uiImg_HlActorsCat1.enabled = false;
         uiImg_HlActorsCat2.enabled = true;
         uiImg_HlActorsCat3.enabled = false;
@@ -913,6 +956,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void ActorsCategory3() {
+        sv_Actors.SetActive(true);
+
         uiImg_HlActorsCat1.enabled = false;
         uiImg_HlActorsCat2.enabled = false;
         uiImg_HlActorsCat3.enabled = true;
@@ -926,6 +971,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void ActorsCategory4() {
+        sv_Actors.SetActive(true);
+
         uiImg_HlActorsCat1.enabled = false;
         uiImg_HlActorsCat2.enabled = false;
         uiImg_HlActorsCat3.enabled = false;
@@ -957,7 +1004,6 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         sv_Actors.SetActive(false);
         header_Actors.SetActive(false);
 
-        sv_Triggers.SetActive(true);
         header_Triggers.SetActive(true);
 
         currentPage = 6; 
@@ -966,6 +1012,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void TriggersCategory1() {
+        sv_Triggers.SetActive(true);
+
         uiImg_HlTriggersCat1.enabled = true;
         uiImg_HlTriggersCat2.enabled = false;
         uiImg_HlTriggersCat3.enabled = false;
@@ -979,6 +1027,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void TriggersCategory2() {
+        sv_Triggers.SetActive(true);
+
         uiImg_HlTriggersCat1.enabled = false;
         uiImg_HlTriggersCat2.enabled = true;
         uiImg_HlTriggersCat3.enabled = false;
@@ -992,6 +1042,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void TriggersCategory3() {
+        sv_Triggers.SetActive(true);
+
         uiImg_HlTriggersCat1.enabled = false;
         uiImg_HlTriggersCat2.enabled = false;
         uiImg_HlTriggersCat3.enabled = true;
@@ -1005,6 +1057,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     }
 
     public void TriggersCategory4() {
+        sv_Triggers.SetActive(true);
+
         uiImg_HlTriggersCat1.enabled = false;
         uiImg_HlTriggersCat2.enabled = false;
         uiImg_HlTriggersCat3.enabled = false;
@@ -1016,5 +1070,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         hotkeyStage = 2;
         HotkeyStageColor();
     }
-        
+ #endregion      
+
+
+
 }

@@ -4,14 +4,18 @@ using System.Collections;
 [System.Serializable]
 public class Asset_Wall_Base {
 
-    public string assetWallsName;
-    public int assetIndex;
-    public Categories_Floors categoryWalls;
-    public Sprite assetEntryIcon;
+    public string assetName;
 
-    public string assetWallsDesc;
+    public Categories_Walls categoryWalls;
+   
+    public string assetUsageSet;
+    public string assetDesc;
+
+    public int assetIndex;
+
+    public Sprite assetEntryIcon;
     public Color assetTilesetColor;
-    public GameObject assetWorldObject;
+    public GameObject worldObjectPrefab;
 
 
 }

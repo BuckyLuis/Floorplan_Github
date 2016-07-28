@@ -4,14 +4,18 @@ using System.Collections;
 [System.Serializable]
 public class Asset_Trigger_Base {
     
-    public string assetTriggersName;
-    public int assetIndex;
-    public Categories_Floors categoryTriggers;
-    public Sprite assetEntryIcon;
+    public string assetName;
+    
+    public Categories_Triggers categoryTriggers;
+ 
+    public string assetUsageSet;
+    public string assetDesc;
 
-    public string assetTriggersDesc;
+    public int assetIndex;
+
+    public Sprite assetEntryIcon;
     public Color assetTilesetColor;
-    public GameObject assetWorldObject;
+    public GameObject worldObjectPrefab;
 
 
 }

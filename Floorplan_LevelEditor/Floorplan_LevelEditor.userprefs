@@ -1,11 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerAssetManagement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs">
     <Files>
-      <File FileName="Assets\5a Database\Assets Data\Asset_Trigger_Base.cs" Line="11" Column="5" />
-      <File FileName="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerHotkeysUiControl.cs" Line="916" Column="44" />
-      <File FileName="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerAssetManagement.cs" Line="57" Column="5" />
-      <File FileName="Assets\Editor\DictionaryDrawer.cs" Line="141" Column="25" />
+      <File FileName="Assets\5 Scripts\Menus\ObjectToPaint\TileToPaintMenu.cs" Line="8" Column="22" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerHotkeysUiControl.cs" Line="28" Column="5" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerAssetManagement.cs" Line="7" Column="90" />
+      <File FileName="Assets\5 Scripts\Placer\PlaceTile.cs" Line="17" Column="5" />
+      <File FileName="Assets\5a Database\World Data\Areas\Area_Base.cs" Line="7" Column="24" />
+      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" Line="11" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

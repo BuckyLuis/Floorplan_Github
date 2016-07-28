@@ -49,7 +49,7 @@ public class RoomViewerEntry : MonoBehaviour {
     Image uiImg_camBRSet;
     Text uiTx_camTL;
     Text uiTx_camBR;
-    ToggleGroup uiTG_activeRoomTGroup;
+    //ToggleGroup uiTG_activeRoomTGroup;
 
    
 
@@ -81,7 +81,7 @@ public class RoomViewerEntry : MonoBehaviour {
         uiTx_camBR = ui_btnCamBR.transform.GetChild(1).GetComponent<Text>();
      
 
-        uiTgl_activeRoom.group = databaseController.GetComponent<ToggleGroup>();
+        uiTgl_activeRoom.group = databaseController.GetComponent<ToggleGroup>();  //assign ToggleGroup
 
         SetRoomIndex();
         theRoomViewerMenu.roomEntries.Add(gameObject);
@@ -164,6 +164,7 @@ public class RoomViewerEntry : MonoBehaviour {
         if(toggleStatus == true) {
             theRoomViewerMenu.activeRoomIndex = thisRoomIndex;
             ActivateRoomEntry();
+            theRoomViewerMenu.RoomInfoToObjectPaintMenu(thisRoomColor);
         }
         else {
             DeactivateRoomEntry();

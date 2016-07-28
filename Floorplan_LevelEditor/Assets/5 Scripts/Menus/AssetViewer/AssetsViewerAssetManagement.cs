@@ -15,9 +15,12 @@ public enum Categories_Triggers { STANDARD, SPAWNER, HAZARD, SPECIAL }
 public class AssetsViewerAssetManagement : MonoBehaviour {
 
 
-    int assetIndexCounter;
+    int assetIndexCounterCat0;
+    int assetIndexCounterCat1;
+    int assetIndexCounterCat2;
+    int assetIndexCounterCat3;
 //------------- Assets Lists --------------------
-    [Header ("--- Asset Lists ---")]
+    [Header ("--- Asset Lists ---")]            //in the editor you setup references to all of the asset's assets 
     public List<Asset_Floor_Base> assetsList_Floors = new List<Asset_Floor_Base>();
     public List<Asset_Wall_Base> assetsList_Walls = new List<Asset_Wall_Base>();
     public List<Asset_Doodad_Base> assetsList_Doodads = new List<Asset_Doodad_Base>();
@@ -25,10 +28,15 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
     public List<Asset_Actor_Base> assetsList_Actors = new List<Asset_Actor_Base>();
     public List<Asset_Trigger_Base> assetsList_Triggers = new List<Asset_Trigger_Base>();
 
+    [Header ("--- --- --- --- --- ---")]    
+
 
 //----------- Assets Dicts ----------------------
-    [Header (" --- Assets Dicts - DO NOT EDIT! --- ")]
-    [Space(50)]
+
+    [Header (" --- Assets Dicts - DO NOT EDIT! --- ")]  // these Dictionaries hold references to the constructed AssetViewerEntry objects
+    [Space(200)]
+
+
     public Dictionary_sGo assetsDict_Floors;
     public Dictionary_sGo assetsDict_Walls;
     public Dictionary_sGo assetsDict_Doodads;
@@ -37,8 +45,10 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
     public Dictionary_sGo assetsDict_Triggers;
    
 //---------------- UI refs ----------------------
-    [Header (" --- UI references - DO NOT EDIT! --- ")]
-    [Space(50)]
+    [Space(30)]
+    [Header (" --- UI references - DO NOT EDIT! --- ")] 
+
+ 
     [SerializeField] GameObject viewAreaFloors;
     [SerializeField] GameObject viewAreaWalls;
     [SerializeField] GameObject viewAreaDoodads;
@@ -62,116 +72,242 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
 	}
 
     void PopulateAssetViews() {
-        assetIndexCounter = 1;
+        
+        assetIndexCounterCat0 = 1;
+        assetIndexCounterCat1 = 1;
+        assetIndexCounterCat2 = 1;
+        assetIndexCounterCat3 = 1;
         foreach (var floorEntry in assetsList_Floors) {
-            floorEntry.assetIndex = assetIndexCounter;      //auto assign assetIndex
-            assetIndexCounter++;
+            switch ((int)floorEntry.categoryFloors)
+            {
+                case 0:
+                    floorEntry.assetIndex = assetIndexCounterCat0;  
+                    assetIndexCounterCat0++;
+                    break;
+                case 1:
+                    floorEntry.assetIndex = assetIndexCounterCat1;  
+                    assetIndexCounterCat1++;
+                    break;
+                case 2:
+                    floorEntry.assetIndex = assetIndexCounterCat2;  
+                    assetIndexCounterCat2++;
+                    break;
+                case 3:
+                    floorEntry.assetIndex = assetIndexCounterCat3;  
+                    assetIndexCounterCat3++;
+                    break;
+            }
 
             tempEntry = Instantiate(floorEntryPrefab);
             tempEntry.transform.SetParent(viewAreaFloors.transform, false);
             AssetsViewerEntry_Floors tempScript = tempEntry.GetComponent<AssetsViewerEntry_Floors>();
-            tempScript.assetFloorsName = floorEntry.assetFloorsName;
-            tempScript.assetIndex = floorEntry.assetIndex;
             tempScript.categoryFloors = floorEntry.categoryFloors;
+            tempScript.assetName = floorEntry.assetName;
+            tempScript.assetUsageSet = floorEntry.assetUsageSet;
+            tempScript.assetDesc = floorEntry.assetDesc;
+            tempScript.assetIndex = floorEntry.assetIndex;
             tempScript.assetEntryIcon = floorEntry.assetEntryIcon;
-            tempScript.assetFloorsDesc = floorEntry.assetFloorsDesc;
             tempScript.assetTilesetColor = floorEntry.assetTilesetColor;
-            tempScript.assetWorldObject = floorEntry.assetWorldObject;
+            tempScript.assetWorldObject = floorEntry.worldObjectPrefab;
 
             assetsDict_Floors.Add(string.Format("{0},{1}", (int)floorEntry.categoryFloors, floorEntry.assetIndex), tempEntry);
         }
 
-        assetIndexCounter = 1;
+        assetIndexCounterCat0 = 1;
+        assetIndexCounterCat1 = 1;
+        assetIndexCounterCat2 = 1;
+        assetIndexCounterCat3 = 1;
         foreach (var wallEntry in assetsList_Walls) {
-            wallEntry.assetIndex = assetIndexCounter;      //auto assign assetIndex
-            assetIndexCounter++;
+            switch ((int)wallEntry.categoryWalls)
+            {
+                case 0:
+                    wallEntry.assetIndex = assetIndexCounterCat0;  
+                    assetIndexCounterCat0++;
+                    break;
+                case 1:
+                    wallEntry.assetIndex = assetIndexCounterCat1;  
+                    assetIndexCounterCat1++;
+                    break;
+                case 2:
+                    wallEntry.assetIndex = assetIndexCounterCat2;  
+                    assetIndexCounterCat2++;
+                    break;
+                case 3:
+                    wallEntry.assetIndex = assetIndexCounterCat3;  
+                    assetIndexCounterCat3++;
+                    break;
+            }
 
             tempEntry = Instantiate(wallEntryPrefab);
-            tempEntry.transform.SetParent(viewAreaFloors.transform, false);
+            tempEntry.transform.SetParent(viewAreaWalls.transform, false);
             AssetsViewerEntry_Walls tempScript = tempEntry.GetComponent<AssetsViewerEntry_Walls>();
-            tempScript.assetWallsName = wallEntry.assetWallsName;
-            tempScript.assetIndex = wallEntry.assetIndex;
             tempScript.categoryWalls = wallEntry.categoryWalls;
+            tempScript.assetName = wallEntry.assetName;
+            tempScript.assetUsageSet = wallEntry.assetUsageSet;
+            tempScript.assetDesc = wallEntry.assetDesc;
+            tempScript.assetIndex = wallEntry.assetIndex;
             tempScript.assetEntryIcon = wallEntry.assetEntryIcon;
-            tempScript.assetWallsDesc = wallEntry.assetWallsDesc;
             tempScript.assetTilesetColor = wallEntry.assetTilesetColor;
-            tempScript.assetWorldObject = wallEntry.assetWorldObject;
+            tempScript.assetWorldObject = wallEntry.worldObjectPrefab;
 
             assetsDict_Walls.Add(string.Format("{0},{1}", (int)wallEntry.categoryWalls, wallEntry.assetIndex), tempEntry);
         }
 
-        assetIndexCounter = 1;
+        assetIndexCounterCat0 = 1;
+        assetIndexCounterCat1 = 1;
+        assetIndexCounterCat2 = 1;
+        assetIndexCounterCat3 = 1;
         foreach (var doodadEntry in assetsList_Doodads) {
-            doodadEntry.assetIndex = assetIndexCounter;      //auto assign assetIndex
-            assetIndexCounter++;
-
+            switch ((int)doodadEntry.categoryDoodads)
+            {
+                case 0:
+                    doodadEntry.assetIndex = assetIndexCounterCat0;  
+                    assetIndexCounterCat0++;
+                    break;
+                case 1:
+                    doodadEntry.assetIndex = assetIndexCounterCat1;  
+                    assetIndexCounterCat1++;
+                    break;
+                case 2:
+                    doodadEntry.assetIndex = assetIndexCounterCat2;  
+                    assetIndexCounterCat2++;
+                    break;
+                case 3:
+                    doodadEntry.assetIndex = assetIndexCounterCat3;  
+                    assetIndexCounterCat3++;
+                    break;
+            }
             tempEntry = Instantiate(doodadEntryPrefab);
-            tempEntry.transform.SetParent(viewAreaFloors.transform, false);
+            tempEntry.transform.SetParent(viewAreaDoodads.transform, false);
             AssetsViewerEntry_Doodads tempScript = tempEntry.GetComponent<AssetsViewerEntry_Doodads>();
-            tempScript.assetDoodadsName = doodadEntry.assetDoodadsName;
-            tempScript.assetIndex = doodadEntry.assetIndex;
             tempScript.categoryDoodads = doodadEntry.categoryDoodads;
+            tempScript.assetName = doodadEntry.assetName;
+            tempScript.assetUsageSet = doodadEntry.assetUsageSet;
+            tempScript.assetDesc = doodadEntry.assetDesc;
+            tempScript.assetIndex = doodadEntry.assetIndex;
             tempScript.assetEntryIcon = doodadEntry.assetEntryIcon;
-            tempScript.assetDoodadsDesc = doodadEntry.assetDoodadsDesc;
             tempScript.assetTilesetColor = doodadEntry.assetTilesetColor;
-            tempScript.assetWorldObject = doodadEntry.assetWorldObject;
+            tempScript.assetWorldObject = doodadEntry.worldObjectPrefab;
 
             assetsDict_Doodads.Add(string.Format("{0},{1}", (int)doodadEntry.categoryDoodads, doodadEntry.assetIndex), tempEntry);
         }
 
-        assetIndexCounter = 1;
+        assetIndexCounterCat0 = 1;
+        assetIndexCounterCat1 = 1;
+        assetIndexCounterCat2 = 1;
+        assetIndexCounterCat3 = 1;
         foreach (var propEntry in assetsList_Props) {
-            propEntry.assetIndex = assetIndexCounter;      //auto assign assetIndex
-            assetIndexCounter++;
+            switch ((int)propEntry.categoryProps)
+            {
+                case 0:
+                    propEntry.assetIndex = assetIndexCounterCat0;  
+                    assetIndexCounterCat0++;
+                    break;
+                case 1:
+                    propEntry.assetIndex = assetIndexCounterCat1;  
+                    assetIndexCounterCat1++;
+                    break;
+                case 2:
+                    propEntry.assetIndex = assetIndexCounterCat2;  
+                    assetIndexCounterCat2++;
+                    break;
+                case 3:
+                    propEntry.assetIndex = assetIndexCounterCat3;  
+                    assetIndexCounterCat3++;
+                    break;
+            }
 
             tempEntry = Instantiate(propEntryPrefab);
-            tempEntry.transform.SetParent(viewAreaFloors.transform, false);
+            tempEntry.transform.SetParent(viewAreaProps.transform, false);
             AssetsViewerEntry_Props tempScript = tempEntry.GetComponent<AssetsViewerEntry_Props>();
-            tempScript.assetPropsName = propEntry.assetPropsName;
-            tempScript.assetIndex = propEntry.assetIndex;
             tempScript.categoryProps = propEntry.categoryProps;
+            tempScript.assetName = propEntry.assetName;
+            tempScript.assetUsageSet = propEntry.assetUsageSet;
+            tempScript.assetDesc = propEntry.assetDesc;
+            tempScript.assetIndex = propEntry.assetIndex;
             tempScript.assetEntryIcon = propEntry.assetEntryIcon;
-            tempScript.assetPropsDesc = propEntry.assetPropsDesc;
             tempScript.assetTilesetColor = propEntry.assetTilesetColor;
-            tempScript.assetWorldObject = propEntry.assetWorldObject;
+            tempScript.assetWorldObject = propEntry.worldObjectPrefab;
 
             assetsDict_Props.Add(string.Format("{0},{1}", (int)propEntry.categoryProps, propEntry.assetIndex), tempEntry);
         }
 
-        assetIndexCounter = 1;
+        assetIndexCounterCat0 = 1;
+        assetIndexCounterCat1 = 1;
+        assetIndexCounterCat2 = 1;
+        assetIndexCounterCat3 = 1;
         foreach (var actorEntry in assetsList_Actors) {
-            actorEntry.assetIndex = assetIndexCounter;      //auto assign assetIndex
-            assetIndexCounter++;
+            switch ((int)actorEntry.categoryActors)
+            {
+                case 0:
+                    actorEntry.assetIndex = assetIndexCounterCat0;  
+                    assetIndexCounterCat0++;
+                    break;
+                case 1:
+                    actorEntry.assetIndex = assetIndexCounterCat1;  
+                    assetIndexCounterCat1++;
+                    break;
+                case 2:
+                    actorEntry.assetIndex = assetIndexCounterCat2;  
+                    assetIndexCounterCat2++;
+                    break;
+                case 3:
+                    actorEntry.assetIndex = assetIndexCounterCat3;  
+                    assetIndexCounterCat3++;
+                    break;
+            }
 
             tempEntry = Instantiate(actorEntryPrefab);
-            tempEntry.transform.SetParent(viewAreaFloors.transform, false);
+            tempEntry.transform.SetParent(viewAreaActors.transform, false);
             AssetsViewerEntry_Actors tempScript = tempEntry.GetComponent<AssetsViewerEntry_Actors>();
-            tempScript.assetActorsName = actorEntry.assetActorsName;
-            tempScript.assetIndex = actorEntry.assetIndex;
             tempScript.categoryActors = actorEntry.categoryActors;
+            tempScript.assetName = actorEntry.assetName;
+            tempScript.assetUsageSet = actorEntry.assetUsageSet;
+            tempScript.assetDesc = actorEntry.assetDesc;
+            tempScript.assetIndex = actorEntry.assetIndex;
             tempScript.assetEntryIcon = actorEntry.assetEntryIcon;
-            tempScript.assetActorsDesc = actorEntry.assetActorsDesc;
             tempScript.assetTilesetColor = actorEntry.assetTilesetColor;
-            tempScript.assetWorldObject = actorEntry.assetWorldObject;
+            tempScript.assetWorldObject = actorEntry.worldObjectPrefab;
 
             assetsDict_Actors.Add(string.Format("{0},{1}", (int)actorEntry.categoryActors, actorEntry.assetIndex), tempEntry);
         }
 
-        assetIndexCounter = 1;
+        assetIndexCounterCat0 = 1;
+        assetIndexCounterCat1 = 1;
+        assetIndexCounterCat2 = 1;
+        assetIndexCounterCat3 = 1;
         foreach (var triggerEntry in assetsList_Triggers) {
-            triggerEntry.assetIndex = assetIndexCounter;      //auto assign assetIndex
-            assetIndexCounter++;
+            switch ((int)triggerEntry.categoryTriggers)
+            {
+                case 0:
+                    triggerEntry.assetIndex = assetIndexCounterCat0;  
+                    assetIndexCounterCat0++;
+                    break;
+                case 1:
+                    triggerEntry.assetIndex = assetIndexCounterCat1;  
+                    assetIndexCounterCat1++;
+                    break;
+                case 2:
+                    triggerEntry.assetIndex = assetIndexCounterCat2;  
+                    assetIndexCounterCat2++;
+                    break;
+                case 3:
+                    triggerEntry.assetIndex = assetIndexCounterCat3;  
+                    assetIndexCounterCat3++;
+                    break;
+            }
 
             tempEntry = Instantiate(triggerEntryPrefab);
-            tempEntry.transform.SetParent(viewAreaFloors.transform, false);
+            tempEntry.transform.SetParent(viewAreaTriggers.transform, false);
             AssetsViewerEntry_Triggers tempScript = tempEntry.GetComponent<AssetsViewerEntry_Triggers>();
-            tempScript.assetTriggersName = triggerEntry.assetTriggersName;
-            tempScript.assetIndex = triggerEntry.assetIndex;
             tempScript.categoryTriggers = triggerEntry.categoryTriggers;
+            tempScript.assetName = triggerEntry.assetName;
+            tempScript.assetUsageSet = triggerEntry.assetUsageSet;
+            tempScript.assetDesc = triggerEntry.assetDesc;
+            tempScript.assetIndex = triggerEntry.assetIndex;
             tempScript.assetEntryIcon = triggerEntry.assetEntryIcon;
-            tempScript.assetTriggersDesc = triggerEntry.assetTriggersDesc;
             tempScript.assetTilesetColor = triggerEntry.assetTilesetColor;
-            tempScript.assetWorldObject = triggerEntry.assetWorldObject;
+            tempScript.assetWorldObject = triggerEntry.worldObjectPrefab;
 
             assetsDict_Triggers.Add(string.Format("{0},{1}", (int)triggerEntry.categoryTriggers, triggerEntry.assetIndex), tempEntry);
         }

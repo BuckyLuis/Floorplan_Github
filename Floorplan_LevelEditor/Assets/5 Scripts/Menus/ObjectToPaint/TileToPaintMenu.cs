@@ -5,48 +5,57 @@ using TeamUtility.IO;
 
 public class TileToPaintMenu : MonoBehaviour {
 
+    [SerializeField] GameObject tilePlacerObject;
+    PlaceTile tilePlacerScript;
+
     public static bool anInputFieldIsInFocus = false; 
 
     [SerializeField] GameObject databaseController;
 
 
-
-    Color currentRoomColor;
-
 //--------- Tile Data ---------------
-    int currentRoomID;
- 
-    public int categoryIndex;
-    public int tileIndex;
+    public int tileFacingFlag  {get; protected set;}
 
-    public int tileFacingFlag;
+    public int currentRoomID  {get; protected set;}
+    public Color currentRoomColor {get; protected set;}
+ 
+    public Sprite tileIconSprite  {get; protected set;}
+    public GameObject tileGameObject {get; protected set;}
+
+ 
+
+    public int selectedTileIndex;
 
 //------- UI Element Refs ----------------
-    [SerializeField] GameObject ui_BtnTile;
-
-    [SerializeField] GameObject ui_TxtRoomID;
-    [SerializeField] GameObject ui_RoomColor;
-
+   
     [SerializeField] GameObject ui_TileFacingSel_N;
     [SerializeField] GameObject ui_TileFacingSel_E;
     [SerializeField] GameObject ui_TileFacingSel_S;
     [SerializeField] GameObject ui_TileFacingSel_W;
 
-    Image uiImg_currTile;
+    [SerializeField] GameObject ui_TxtRoomID;
+    [SerializeField] GameObject ui_RoomColor;
 
-    Text uiTxt_currRoomID;
-    Color uiCol_currRoomColor;
+    [SerializeField] GameObject ui_ImgTileIcon;
 
     Image uiImg_tileFacingSel_N;
     Image uiImg_tileFacingSel_E;
     Image uiImg_tileFacingSel_S;
     Image uiImg_tileFacingSel_W;
 
+    Text uiTxt_currRoomID;
+    Color uiCol_currRoomColor;
+
+    Image uiImg_currTileIcon;
+
 
 
 
 	void Start () {
-        uiImg_currTile = ui_BtnTile.GetComponent<Image>();
+        tilePlacerObject = GameObject.FindWithTag("TilePlacer");
+        tilePlacerScript = tilePlacerObject.GetComponent<PlaceTile>();
+
+        uiImg_currTileIcon = ui_ImgTileIcon.GetComponent<Image>();
         uiTxt_currRoomID = ui_TxtRoomID.GetComponent<Text>();
         uiCol_currRoomColor = ui_RoomColor.GetComponent<Image>().color;
 
@@ -66,18 +75,22 @@ public class TileToPaintMenu : MonoBehaviour {
         if(anInputFieldIsInFocus == false) {
             if(InputManager.GetAxis("Vertical") > 0) {      // W - N
                 TileFacing_N();
+                tilePlacerScript.AssignFacingYrot(tileFacingFlag);
             }
 
             if(InputManager.GetAxis("Horizontal") > 0) {    // D - E
                 TileFacing_E();
+                tilePlacerScript.AssignFacingYrot(tileFacingFlag);
             }
 
             if(InputManager.GetAxis("Vertical") < 0) {      // S - S
                 TileFacing_S();
+                tilePlacerScript.AssignFacingYrot(tileFacingFlag);
             }
 
             if(InputManager.GetAxis("Horizontal") < 0) {    // A - W
                 TileFacing_W();
+                tilePlacerScript.AssignFacingYrot(tileFacingFlag);
             }
         }
 
@@ -115,5 +128,31 @@ public class TileToPaintMenu : MonoBehaviour {
         uiImg_tileFacingSel_W.enabled = true; 
     }
 
+
+    public void SetCurrentRoomID(int theRoomID) {                           //from RoomViewerMenu.cs   via   RoomViewerEntry.cs Instances
+        currentRoomID = theRoomID;
+        uiTxt_currRoomID.text = theRoomID.ToString();
+
+        tilePlacerScript.AssignRoomID(theRoomID);
+    }
+
+    public void SetCurrentRoomColor(Color theColor) {
+        currentRoomColor = theColor;
+        uiCol_currRoomColor = theColor;
+
+        tilePlacerScript.AssignRoomColor(theColor);
+    }
+
+
+    public void SetCurrentTileSprite(Sprite theSprite) {                    //from AssetViewerEntry_XXX.cs Instances
+        tileIconSprite = theSprite;
+        uiImg_currTileIcon.sprite = theSprite;
+    }
+
+    public void SetCurrentTileGO(GameObject theGameObject) {
+        tileGameObject = theGameObject;
+
+        tilePlacerScript.AssignTileToBePlaced(theGameObject);
+    }
 
 }

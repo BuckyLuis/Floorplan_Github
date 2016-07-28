@@ -3,15 +3,19 @@ using System.Collections;
 
 [System.Serializable]
 public class Asset_Actor_Base {
+    
+    public string assetName;
 
-    public string assetActorsName;
+    public Categories_Actors categoryActors;
+  
+    public string assetUsageSet;
+    public string assetDesc;
+
     public int assetIndex;
-    public Categories_Floors categoryActors;
-    public Sprite assetEntryIcon;
 
-    public string assetActorsDesc;
+    public Sprite assetEntryIcon;
     public Color assetTilesetColor;
-    public GameObject assetWorldObject;
+    public GameObject worldObjectPrefab;
 
 
 }

@@ -49,7 +49,6 @@
      <Compile Include="Assets\5 Scripts\Camera\moveCamera.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerAssetManagement.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerHotkeysUiControl.cs" />
-     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerMenu.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Actors.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Doodads.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Floors.cs" />
@@ -58,6 +57,7 @@
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Walls.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ColorPicker.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ElevationMenu.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\ObjectToPaint\EntityToPaintMenu.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectToPaint\TileToPaintMenu.cs" />
      <Compile Include="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" />
      <Compile Include="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs" />
@@ -65,6 +65,7 @@
      <Compile Include="Assets\5 Scripts\Placer\PlaceNewRoomOrigin.cs" />
      <Compile Include="Assets\5 Scripts\Placer\PlaceTile.cs" />
      <Compile Include="Assets\5 Scripts\Placer\PlacerMovement.cs" />
+     <Compile Include="Assets\5 Scripts\Placer\TilePreviewer.cs" />
      <Compile Include="Assets\5 Scripts\WorkingObjects\AreaObject.cs" />
      <Compile Include="Assets\5 Scripts\WorkingObjects\AreaSaveLoad.cs" />
      <Compile Include="Assets\5 Scripts\WorkingObjects\CamBoundsMarker.cs" />
@@ -154,7 +155,6 @@
      <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
      <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\Test\Rotate.cs" />
      <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
-     <Compile Include="Assets\TilePreviewer.cs" />
      <None Include="Assets\8 Extensions\InputManager\Addons\JoystickMapping\Resources\joystick_mappings\xbox_360_linux.xml" />
      <None Include="Assets\8 Extensions\InputManager\Examples\01 - Controls Menu\Data\default_input.xml" />
      <None Include="Assets\8 Extensions\InputManager\Addons\InputAdapter\Resources\input_adapter_default_config.xml" />

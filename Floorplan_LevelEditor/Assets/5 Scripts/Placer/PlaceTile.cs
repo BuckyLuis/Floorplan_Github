@@ -4,27 +4,41 @@ using UnityEngine.EventSystems;
 
 public class PlaceTile : MonoBehaviour {
 
-    //-------------- Public vars - defined In-Editor -----------------------------------
-    public Transform tileToBePlaced;
-   // public Transform TileParent;
+    //-------------- Public vars - defined In-Editor ----------------------------------
+    [SerializeField] TileToPaintMenu tileToPaintMenu;
+    [SerializeField] EntityToPaintMenu entityToPaintMenu;
+    public bool tile0_entity1;
+
 
     public GameObject placeholder;
     private GameObject instPlaceholder;
 
-    public int gridSize = 1;
+    [SerializeField] GameObject roomBelongingMarker;
+
+
+    int tileGridSize = 2;
+    int entityGridSize = 1;
+
+    public int gridSize = 2;
 
     //-------------- Public vars - defined via Runtime GUI --------------------------------
 
+    public float objectFacingYrot {get; protected set;}
 
-    public int roomNum  {get; protected set;}
-    public Color roomCol {get; protected set;}
+    public int roomID  {get; protected set;}
+    public Color roomColor {get; protected set;}
+
+    public GameObject objToPlace_Prefab {get; protected set;}
+   
 
 
+
+  
 
 
     //--------------- Temp vars ----------------------------
-    Transform parentCell;
-    Transform kidCell;
+    GameObject tempTileObject;
+    GameObject tempBelongMarker;
 
     //-------------- Placer Workings -------------------------------------------------
     Vector3 Click_origPos;
@@ -103,15 +117,16 @@ public class PlaceTile : MonoBehaviour {
         
 
     void CreateTiles() {
-      //  parentCell = (Transform)Instantiate(TileParent, Click_origPos, transform.rotation);
-      //  parentCell.name = "Room: " + roomNum.ToString();
-
         for(int xL = 0; xL < TileGridSizeX; xL++) {                 //xL , zL are local (relative to parentCell) coords!
             for(int zL = 0; zL < TileGridSizeZ; zL++) {
-                kidCell = (Transform) Instantiate(tileToBePlaced, new Vector3((xL * gridSize)+ Click_origPos.x, 0, (zL * gridSize)+ Click_origPos.z), tileToBePlaced.transform.rotation);  
-                kidCell.name = string.Format ("R: ({0},0,{1}) / G: ({2},{3},{4})", xL, zL, kidCell.transform.position.x, kidCell.transform.position.y, kidCell.transform.position.z);
-                kidCell.GetChild(0).GetComponent<Renderer>().material.color = roomCol;
-                kidCell.parent = parentCell;
+                tempTileObject = (GameObject)Instantiate(objToPlace_Prefab, new Vector3((xL * gridSize)+ Click_origPos.x, 0, (zL * gridSize)+ Click_origPos.z), 
+                                                                    Quaternion.Euler(objToPlace_Prefab.transform.rotation.x, objectFacingYrot, objToPlace_Prefab.transform.rotation.z));
+                
+                tempTileObject.name = string.Format ("Rm: {0} / G: ({1},{2},{3}) {4}°", roomID, tempTileObject.transform.position.x, tempTileObject.transform.position.y, tempTileObject.transform.position.z, objectFacingYrot);
+
+                tempBelongMarker.transform.parent = tempTileObject.transform;
+                tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, Vector3.zero, Quaternion.identity);
+                tempBelongMarker.GetComponent<Renderer>().material.color = roomColor;
             }
         }
 
@@ -120,6 +135,50 @@ public class PlaceTile : MonoBehaviour {
 
     //--------- Methods for GUI to process --------------
 
+    public void AssignFacingYrot(int tileFacingFlag) {
+        switch (tileFacingFlag)
+        {
+            case 0:
+                objectFacingYrot = 0;
+                break;
+            case 1:
+                objectFacingYrot = 90;
+                break;
+            case 2:
+                objectFacingYrot = 180;
+                break;
+            case 3:
+                objectFacingYrot = 270;
+                break;
+        }
+    }
+
+
+    public void AssignRoomID(int theRoomID) {
+        roomID = theRoomID;
+    }
+
+    public void AssignRoomColor(Color theRoomColor) {
+        roomColor = theRoomColor;
+    }
+
+
+
+    public void AssignTileToBePlaced(GameObject theTileToPlace) {
+        tile0_entity1 = false;
+        gridSize = tileGridSize;
+        objToPlace_Prefab = theTileToPlace;
+    }
+
+    public void AssignEntityToBePlaced(GameObject theEntityToPlace) {
+        tile0_entity1 = true;
+        gridSize = entityGridSize;
+        objToPlace_Prefab = theEntityToPlace;
+    }
+
+
+
+  
 
 
 }

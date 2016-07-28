@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class RoomViewerMenu : MonoBehaviour {
 
+    GameObject assetsDbController;
+    TileToPaintMenu tileToPaintScript;
+
     public List<GameObject> roomEntries = new List<GameObject>();
     public int activeRoomIndex;
 
@@ -27,6 +30,9 @@ public class RoomViewerMenu : MonoBehaviour {
 
 
     void Start() {
+        assetsDbController = GameObject.FindWithTag("AssetsDBController");
+        tileToPaintScript = assetsDbController.GetComponent<TileToPaintMenu>();
+
         placeCamBoundsScript = placerWidget_CamBounds.GetComponent<PlaceCamBoundsMarker>();
         colorPickerRef.SetActive(false);
 
@@ -67,6 +73,12 @@ public class RoomViewerMenu : MonoBehaviour {
         }
         uiBtn_AddRoom.interactable = false;
         uiBtn_RemoveRoom.interactable = false;
+    }
+
+
+    public void RoomInfoToObjectPaintMenu(Color roomColor) {
+        tileToPaintScript.SetCurrentRoomID(activeRoomIndex);
+        tileToPaintScript.SetCurrentRoomColor(roomColor);
     }
 
 
