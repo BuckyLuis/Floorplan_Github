@@ -4,6 +4,10 @@ using UnityEngine.EventSystems;
 
 public class PlaceTile : MonoBehaviour {
 
+
+    [SerializeField] GameObject AreaTileParent;
+    [SerializeField] GameObject AreaEntityParent;
+
     //-------------- Public vars - defined In-Editor ----------------------------------
     [SerializeField] TileToPaintMenu tileToPaintMenu;
     [SerializeField] EntityToPaintMenu entityToPaintMenu;
@@ -14,6 +18,7 @@ public class PlaceTile : MonoBehaviour {
     private GameObject instPlaceholder;
 
     [SerializeField] GameObject roomBelongingMarker;
+    [SerializeField] GameObject worldObjectInfo;
 
 
     int tileGridSize = 2;
@@ -30,15 +35,13 @@ public class PlaceTile : MonoBehaviour {
 
     public GameObject objToPlace_Prefab {get; protected set;}
    
-
-
-
   
 
 
     //--------------- Temp vars ----------------------------
     GameObject tempTileObject;
     GameObject tempBelongMarker;
+    GameObject tempWorldObjectInfo;
 
     //-------------- Placer Workings -------------------------------------------------
     Vector3 Click_origPos;
@@ -123,10 +126,18 @@ public class PlaceTile : MonoBehaviour {
                                                                     Quaternion.Euler(objToPlace_Prefab.transform.rotation.x, objectFacingYrot, objToPlace_Prefab.transform.rotation.z));
                 
                 tempTileObject.name = string.Format ("Rm: {0} / G: ({1},{2},{3}) {4}°", roomID, tempTileObject.transform.position.x, tempTileObject.transform.position.y, tempTileObject.transform.position.z, objectFacingYrot);
+               
+                tempTileObject.transform.SetParent(AreaTileParent.transform, true);
 
-                tempBelongMarker.transform.parent = tempTileObject.transform;
                 tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, Vector3.zero, Quaternion.identity);
-                tempBelongMarker.GetComponent<Renderer>().material.color = roomColor;
+                tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
+                tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
+                tempBelongMarker.transform.SetParent(tempTileObject.transform, false);
+
+                tempWorldObjectInfo = (GameObject)Instantiate(worldObjectInfo, Vector3.zero, Quaternion.identity);
+                tempWorldObjectInfo.transform.SetParent(tempTileObject.transform, false);
+
+               
             }
         }
 

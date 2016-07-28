@@ -8,7 +8,10 @@ public class RoomViewerMenu : MonoBehaviour {
     TileToPaintMenu tileToPaintScript;
 
     public List<GameObject> roomEntries = new List<GameObject>();
+
     public int activeRoomIndex;
+    public int activeRoomID;
+
 
     [SerializeField] GameObject roomEntryPrefab;
     [SerializeField] GameObject roomViewerArea;
@@ -77,7 +80,7 @@ public class RoomViewerMenu : MonoBehaviour {
 
 
     public void RoomInfoToObjectPaintMenu(Color roomColor) {
-        tileToPaintScript.SetCurrentRoomID(activeRoomIndex);
+        tileToPaintScript.SetCurrentRoomID(activeRoomID);
         tileToPaintScript.SetCurrentRoomColor(roomColor);
     }
 

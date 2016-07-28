@@ -84,13 +84,14 @@ public class AssetsViewerEntry_Props : MonoBehaviour {
         }
         iconSprite = assetEntryIcon;
         tilesetColor = assetTilesetColor;
+
+        //------- Assign Toggle Listener ----------
+        selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
     }
 
 
-    public void ThisSelected(){
+    public void ThisSelected(bool toggleStatus) {
         tileToPaintScript.SetCurrentTileSprite(assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
     }
-
-
 }

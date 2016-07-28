@@ -134,11 +134,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84bc6e80e14a6204d87ee2e6eb194932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AreaTileParent: {fileID: 0}
+  AreaEntityParent: {fileID: 0}
   tileToPaintMenu: {fileID: 0}
   entityToPaintMenu: {fileID: 0}
   tile0_entity1: 0
   placeholder: {fileID: 163264, guid: 595ae79fdaae7064698d7373616fa616, type: 2}
   roomBelongingMarker: {fileID: 194708, guid: dc171256c9f73a3428346c9fc9c30cab, type: 2}
+  worldObjectInfo: {fileID: 163774, guid: 2ddbc339c10472a49a62bbb94aa9e7cc, type: 2}
   gridSize: 2
 --- !u!114 &11494306
 MonoBehaviour:

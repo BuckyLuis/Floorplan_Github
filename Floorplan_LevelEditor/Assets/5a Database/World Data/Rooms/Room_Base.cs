@@ -21,11 +21,9 @@ public class Room_Base
     [XmlAttribute("CamBoundsBRPos")]     public string CamBoundsBR_Surrogate{ get { return "";}
                                                                            set { CamBoundsBRPos = new Vector3().FromString(value); }}
    
-/*
     [XmlArray("Tiles")]
     [XmlArrayItem("Tile")]
     public List<Tile_Base> tilesOfRoom = new List<Tile_Base>();
-*/
 
 
    

@@ -11,16 +11,15 @@ GameObject:
   - 114: {fileID: 11408788}
   - 114: {fileID: 11434348}
   - 114: {fileID: 11478270}
-  - 114: {fileID: 11457532}
   - 114: {fileID: 11405188}
-  - 114: {fileID: 11400792}
-  - 114: {fileID: 11484544}
-  - 114: {fileID: 11485554}
   - 114: {fileID: 11459282}
   - 114: {fileID: 11482124}
+  - 114: {fileID: 11402078}
+  - 114: {fileID: 11446322}
+  - 114: {fileID: 11406912}
   m_Layer: 0
   m_Name: '- == Database Controller == -'
-  m_TagString: Untagged
+  m_TagString: DBController
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +37,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11400792
+--- !u!114 &11402078
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -58,6 +57,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f6e454be3b375a438fe9dc8ae154906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaSavePanel: {fileID: 0}
+  areaLoadPanel: {fileID: 0}
+  ui_btnOpenSavePane: {fileID: 0}
+  ui_btnOpenLoadPane: {fileID: 0}
+  ui_displayName: {fileID: 0}
+  ui_displayID: {fileID: 0}
+  ui_btnSaveSave: {fileID: 0}
+  ui_btnSaveCancel: {fileID: 0}
+  ui_SaveName: {fileID: 0}
+  ui_SaveID: {fileID: 0}
+  ui_btnLoadLoad: {fileID: 0}
+  ui_btnLoadCancel: {fileID: 0}
+  ui_dropdownLoad: {fileID: 0}
+--- !u!114 &11406912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c682864cebcbbcf4e898b5b595c01880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11408788
@@ -87,7 +110,7 @@ MonoBehaviour:
   currFloorName: 
   currWallsName: 
   currWOrientFlag: 0
---- !u!114 &11457532
+--- !u!114 &11446322
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -95,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 150472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 154f07149b3091249afcce350f478d30, type: 3}
+  m_Script: {fileID: 11500000, guid: 966248d2d0412f748b3d674a74828b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11459282
@@ -111,7 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomEntries: []
   activeRoomIndex: 0
-  roomEntryPrefab: {fileID: 0}
+  activeRoomID: 0
+  roomEntryPrefab: {fileID: 152896, guid: dbd00bbba10932f44a238a0884de49d7, type: 2}
   roomViewerArea: {fileID: 0}
   colorPickerRef: {fileID: 0}
   userIsEditingAnEntry: 0
@@ -142,28 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AllowSwitchOff: 0
---- !u!114 &11484544
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 150472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 966248d2d0412f748b3d674a74828b6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11485554
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 150472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c682864cebcbbcf4e898b5b595c01880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

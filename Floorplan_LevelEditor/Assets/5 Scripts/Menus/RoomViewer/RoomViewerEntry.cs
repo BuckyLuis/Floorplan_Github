@@ -11,9 +11,12 @@ public class RoomViewerEntry : MonoBehaviour {
 
     [SerializeField]GameObject uiPanel_colorPicker;
 
+//------------ Room Data Object -------------------
+    public Room_Base ThisRoom_DataObject = new Room_Base(); 
+
 //------------ Config These! ---------------------
-    public int thisRoomIndex;
-    public int thisRoomID;
+    public int thisRoomIndex;   //index of room in Area list
+    public int thisRoomID;      //identifier for room,  for tiles to know
     string thisRoomIDstring;
 
     public string thisRoomName; 
@@ -21,7 +24,10 @@ public class RoomViewerEntry : MonoBehaviour {
     public Vector3 thisRoomCamTLPos;
     public Vector3 thisRoomCamBRPos;
 
-//------------------------------------------------
+//---------------- default value construction ---------
+
+
+//-------------------------------------------------
     public bool cbTLSetOnce = false;   //has the CamBounds been set by user at least once?
     public bool cbBRSetOnce = false;
 
@@ -40,7 +46,7 @@ public class RoomViewerEntry : MonoBehaviour {
     Text uiTx_RoomIndex;
     InputField uiIF_roomID;
     InputField uiIF_roomName;
-    Color uiCol_roomColor;
+    Image uiImg_roomColorImg;
     Button uiBtn_roomColor;
     public Toggle uiTgl_activeRoom;
     Button uiBtn_camTL;
@@ -70,7 +76,7 @@ public class RoomViewerEntry : MonoBehaviour {
         uiTx_RoomIndex = ui_txtRmIndex.GetComponent<Text>();
         uiIF_roomID = ui_fieldRoomID.GetComponent<InputField>();
         uiIF_roomName = ui_fieldRoomName.GetComponent<InputField>();
-        uiCol_roomColor = ui_btnRoomColor.GetComponent<Image>().color;
+        uiImg_roomColorImg = ui_btnRoomColor.GetComponent<Image>();
         uiBtn_roomColor = ui_btnRoomColor.GetComponent<Button>();
         uiTgl_activeRoom = ui_tglActiveRoom.GetComponent<Toggle>();
         uiBtn_camTL = ui_btnCamTL.GetComponent<Button>();
@@ -83,7 +89,9 @@ public class RoomViewerEntry : MonoBehaviour {
 
         uiTgl_activeRoom.group = databaseController.GetComponent<ToggleGroup>();  //assign ToggleGroup
 
+//-------- init Room --------------------
         SetRoomIndex();
+        SetRoomDefaultValues();
         theRoomViewerMenu.roomEntries.Add(gameObject);
         AssignButtonListeners();
         DeactivateRoomEntry();
@@ -101,10 +109,17 @@ public class RoomViewerEntry : MonoBehaviour {
     public void SetRoomIndex() {
         uiTx_RoomIndex.text = theRoomViewerMenu.roomEntries.Count.ToString();
         thisRoomIndex = theRoomViewerMenu.roomEntries.Count;
+
+        ThisRoom_DataObject.RoomAreaIndex = thisRoomIndex;
     }
 
     void SetRoomDefaultValues() {
         //RoomID:  devkey 1 digit + areaID 3 digits + roomIndex 2 digits  + (for modders 3 digits)
+       // thisRoomID = 
+        thisRoomColor = DistinctColors.GetNextDistinctColor();
+        uiImg_roomColorImg.color = thisRoomColor;
+
+        ThisRoom_DataObject.RoomColor = thisRoomColor;
     }
 
     void AssignButtonListeners() {
@@ -123,6 +138,8 @@ public class RoomViewerEntry : MonoBehaviour {
 
         thisRoomID = int.Parse(uiIF_roomID.text);
 
+        ThisRoom_DataObject.RoomID = thisRoomID;
+
         if(markerCamBoundsTL != null) {
             markerCamBoundsTL.GetComponent<CamBoundsMarker>().roomID = thisRoomID;
             markerCamBoundsTL.name = string.Format("CamBoundsTL: rm{0} ({1}, {2}, {3})", thisRoomID, markerCamBoundsTL.transform.position.x, markerCamBoundsTL.transform.position.y, markerCamBoundsTL.transform.position.z);
@@ -138,6 +155,8 @@ public class RoomViewerEntry : MonoBehaviour {
         TileToPaintMenu.anInputFieldIsInFocus = false;
 
         thisRoomName = uiIF_roomName.text;
+
+        ThisRoom_DataObject.RoomName = thisRoomName;
     }
 
     public void ChangeRoomColor(Color theColor) {       //set from ColorPicker.cs
@@ -163,6 +182,7 @@ public class RoomViewerEntry : MonoBehaviour {
     public void ToggleActiveRoom(bool toggleStatus) {
         if(toggleStatus == true) {
             theRoomViewerMenu.activeRoomIndex = thisRoomIndex;
+            theRoomViewerMenu.activeRoomID = thisRoomID;
             ActivateRoomEntry();
             theRoomViewerMenu.RoomInfoToObjectPaintMenu(thisRoomColor);
         }
@@ -206,6 +226,9 @@ public class RoomViewerEntry : MonoBehaviour {
     public void CamBoundsTLHasSet(Vector3 theTLPos) {
         theRoomViewerMenu.ActivateToggles();
         thisRoomCamTLPos = theTLPos;
+
+        ThisRoom_DataObject.CamBoundsTLPos = thisRoomCamTLPos;
+
         cbTLSetOnce = true;
         VerifyCamBounds();
     }
@@ -213,6 +236,9 @@ public class RoomViewerEntry : MonoBehaviour {
     public void CamBoundsBRHasSet(Vector3 theBRPos) {
         theRoomViewerMenu.ActivateToggles();
         thisRoomCamBRPos = theBRPos;
+
+        ThisRoom_DataObject.CamBoundsBRPos = thisRoomCamBRPos;
+
         cbBRSetOnce = true;
         VerifyCamBounds();
     }

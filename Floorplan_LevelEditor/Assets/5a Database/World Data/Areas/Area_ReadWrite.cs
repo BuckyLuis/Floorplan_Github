@@ -76,14 +76,14 @@ public class Area_ReadWrite : MonoBehaviour
         switch (IO_GetDatasPath.Pref_UserDataPath) 
         {
             case (0):
-                path = getDatasPath.CombinePath ("file:///", docsPath, "ModData", "VanillaData", "Xml", "WorldData", "Areas.xml");                      //Data Folder next to the compiled .exe
+                path = getDatasPath.CombinePath ("file:///", docsPath, "Data", "Xml", "WorldData", "Areas.xml");                      //Data Folder next to the compiled .exe
                 break;
             case (1):
-                path = getDatasPath.CombinePath ("file:///", docsPath, "My Games", "FloorPlan", "ModData", "VanillaData", "Xml", "WorldData", "Areas.xml");     //on Windows: the MyDocuments folder
+                path = getDatasPath.CombinePath ("file:///", docsPath, "My Games", "FloorPlan", "Data", "Xml", "WorldData", "Areas.xml");     //on Windows: the MyDocuments folder
                 break;      
 
             default:
-                path = getDatasPath.CombinePath ("file:///", docsPath, "ModData", "VanillaData", "Xml", "WorldData", "Areas.xml"); 
+                path = getDatasPath.CombinePath ("file:///", docsPath, "Data", "Xml", "WorldData", "Areas.xml"); 
                 break;
         }                                   
     }

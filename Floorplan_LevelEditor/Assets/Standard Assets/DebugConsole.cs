@@ -51,7 +51,7 @@ public class DebugConsole : MonoBehaviour
 {
     public GameObject DebugGui = null;             // The GUI that will be duplicated
     public Vector3 defaultGuiPosition = new Vector3(0.01F, 0.98F, 0F);
-    public Vector3 defaultGuiScale = new Vector3(0.5F, 0.5F, 1F);
+    public Vector3 defaultGuiScale = new Vector3(2F, 2F, 1F);
     public Color normal = Color.green;
     public Color warning = Color.yellow;
     public Color error = Color.red;

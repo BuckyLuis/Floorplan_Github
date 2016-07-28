@@ -15,6 +15,7 @@ public class Tile_Base
     
     [XmlElement("CategoryIndex")]   public int CategoryIndex {get; set;}
     [XmlElement("TileIndex")]	    public int TileIndex {get; set;}
+
     [XmlElement("TileFacingFlag")]  public int TileFacingFlag {get; set;}   //0-N, 1-E, 2-S, 3-W
 }
 

@@ -44,7 +44,7 @@ public class TileToPaintMenu : MonoBehaviour {
     Image uiImg_tileFacingSel_W;
 
     Text uiTxt_currRoomID;
-    Color uiCol_currRoomColor;
+    Image uiCol_currRoomColorImg;
 
     Image uiImg_currTileIcon;
 
@@ -52,12 +52,13 @@ public class TileToPaintMenu : MonoBehaviour {
 
 
 	void Start () {
-        tilePlacerObject = GameObject.FindWithTag("TilePlacer");
+     //   tilePlacerObject = GameObject.FindWithTag("TilePlacer");
         tilePlacerScript = tilePlacerObject.GetComponent<PlaceTile>();
+        tilePlacerObject.SetActive(false);
 
         uiImg_currTileIcon = ui_ImgTileIcon.GetComponent<Image>();
         uiTxt_currRoomID = ui_TxtRoomID.GetComponent<Text>();
-        uiCol_currRoomColor = ui_RoomColor.GetComponent<Image>().color;
+        uiCol_currRoomColorImg = ui_RoomColor.GetComponent<Image>();
 
         uiImg_tileFacingSel_N = ui_TileFacingSel_N.transform.GetComponent<Image>();
         uiImg_tileFacingSel_E = ui_TileFacingSel_E.transform.GetComponent<Image>();
@@ -138,7 +139,7 @@ public class TileToPaintMenu : MonoBehaviour {
 
     public void SetCurrentRoomColor(Color theColor) {
         currentRoomColor = theColor;
-        uiCol_currRoomColor = theColor;
+        uiCol_currRoomColorImg.color = theColor;
 
         tilePlacerScript.AssignRoomColor(theColor);
     }
