@@ -42,17 +42,17 @@ public class Area_ReadWrite : MonoBehaviour
         StartCoroutine(ProcessWWW(path));
     }
 
-    public void WriteXMLData(int writeDisplayName, string writeFileName)
+    public void WriteXMLData(Area_Base theAreaBase_ToWrite)
     {
-        Area_Base areaW = new Area_Base();
-        areaW.IndexID = writeDisplayName;
+     //   Area_Base areaW = new Area_Base();
+     //   areaW = writeIndexID;
         GetCombinedPath();
-        WriteToXML(areaW);
+        WriteToXML(theAreaBase_ToWrite);
     }
 
-    public static Area_DataList ReadFromXML(WWW _xml)  //string path
+    public Area_DataList ReadFromXML(WWW _xml)  //string path
     {
-        XmlSerializer serializerR = new XmlSerializer(typeof(Area_DataList));
+        XmlSerializer serializerR = new XmlSerializer(typeof(Area_Base));
         StringReader reader = new StringReader(_xml.text);
         Area_DataList readAreas = serializerR.Deserialize(reader) as Area_DataList;
         reader.Close();
@@ -62,28 +62,30 @@ public class Area_ReadWrite : MonoBehaviour
 
     void WriteToXML(Area_Base areaW) 
     {
+        XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
+        ns.Add(string.Empty, string.Empty);
         XmlSerializer serializerW = new XmlSerializer(typeof(Area_Base));
         using (TextWriter writer = new StreamWriter(path))
         {
-            serializerW.Serialize(writer, areaW);
+            serializerW.Serialize(writer, areaW, ns);
         }
     }
 
-    private void GetCombinedPath()
+    public void GetCombinedPath()
     {
         docsPath = getDatasPath.Pref_UserDatasPath();
 
         switch (IO_GetDatasPath.Pref_UserDataPath) 
         {
             case (0):
-                path = getDatasPath.CombinePath ("file:///", docsPath, "Data", "Xml", "WorldData", "Areas.xml");                      //Data Folder next to the compiled .exe
+                path = getDatasPath.CombinePath ("file:///", docsPath, "Data", "Xml", "World", "Areas.xml");                      //Data Folder next to the compiled .exe
                 break;
             case (1):
-                path = getDatasPath.CombinePath ("file:///", docsPath, "My Games", "FloorPlan", "Data", "Xml", "WorldData", "Areas.xml");     //on Windows: the MyDocuments folder
+                path = getDatasPath.CombinePath ("file:///", docsPath, "My Games", "FloorPlan", "Data", "Xml", "World", "Areas.xml");     //on Windows: the MyDocuments folder
                 break;      
 
             default:
-                path = getDatasPath.CombinePath ("file:///", docsPath, "Data", "Xml", "WorldData", "Areas.xml"); 
+                path = getDatasPath.CombinePath ("file:///", docsPath, "Data", "Xml", "World", "Areas.xml"); 
                 break;
         }                                   
     }

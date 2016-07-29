@@ -6,7 +6,7 @@ using System.IO;
 public class IO_GetDatasPath : MonoBehaviour 
 {	
 	private string path = "";
-	public static int Pref_UserDataPath = 2;
+	public static int Pref_UserDataPath = 1;
 
 
 

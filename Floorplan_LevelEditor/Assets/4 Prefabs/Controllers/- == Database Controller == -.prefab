@@ -17,6 +17,7 @@ GameObject:
   - 114: {fileID: 11402078}
   - 114: {fileID: 11446322}
   - 114: {fileID: 11406912}
+  - 114: {fileID: 11453940}
   m_Layer: 0
   m_Name: '- == Database Controller == -'
   m_TagString: DBController
@@ -59,6 +60,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6e454be3b375a438fe9dc8ae154906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainBlackoutPanel: {fileID: 0}
+  startMenuPanel: {fileID: 0}
+  startAreaLoadPanel: {fileID: 0}
+  startAreaCreatePanel: {fileID: 0}
+  devkeyField: {fileID: 0}
+  ui_createName: {fileID: 0}
+  ui_createID: {fileID: 0}
+  ui_btnCreateSave: {fileID: 0}
+  ui_dropdownStartLoad: {fileID: 0}
+  ui_btnLoadArea: {fileID: 0}
   areaSavePanel: {fileID: 0}
   areaLoadPanel: {fileID: 0}
   ui_btnOpenSavePane: {fileID: 0}
@@ -119,6 +130,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 966248d2d0412f748b3d674a74828b6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11453940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2916424bcfcd77c4191cd0452ffa5426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11459282
