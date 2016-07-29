@@ -8,7 +8,7 @@ public class TileToPaintMenu : MonoBehaviour {
     [SerializeField] GameObject tilePlacerObject;
     PlaceTile tilePlacerScript;
 
-    public static bool anInputFieldIsInFocus = false; 
+    public static bool anInputFieldIsInFocus; 
 
     [SerializeField] GameObject databaseController;
 
@@ -76,22 +76,18 @@ public class TileToPaintMenu : MonoBehaviour {
         if(anInputFieldIsInFocus == false) {
             if(InputManager.GetAxis("Vertical") > 0) {      // W - N
                 TileFacing_N();
-                tilePlacerScript.AssignFacingYrot(tileFacingFlag);
             }
 
             if(InputManager.GetAxis("Horizontal") > 0) {    // D - E
-                TileFacing_E();
-                tilePlacerScript.AssignFacingYrot(tileFacingFlag);
+                TileFacing_E(); 
             }
 
             if(InputManager.GetAxis("Vertical") < 0) {      // S - S
                 TileFacing_S();
-                tilePlacerScript.AssignFacingYrot(tileFacingFlag);
             }
 
             if(InputManager.GetAxis("Horizontal") < 0) {    // A - W
                 TileFacing_W();
-                tilePlacerScript.AssignFacingYrot(tileFacingFlag);
             }
         }
 
@@ -103,6 +99,8 @@ public class TileToPaintMenu : MonoBehaviour {
         uiImg_tileFacingSel_E.enabled = false;
         uiImg_tileFacingSel_S.enabled = false;
         uiImg_tileFacingSel_W.enabled = false; 
+
+        tilePlacerScript.AssignFacingYrot(tileFacingFlag);
     }
 
     public void TileFacing_E() {
@@ -111,6 +109,8 @@ public class TileToPaintMenu : MonoBehaviour {
         uiImg_tileFacingSel_E.enabled = true;
         uiImg_tileFacingSel_S.enabled = false;
         uiImg_tileFacingSel_W.enabled = false; 
+
+        tilePlacerScript.AssignFacingYrot(tileFacingFlag);
     }
 
     public void TileFacing_S() {
@@ -119,6 +119,8 @@ public class TileToPaintMenu : MonoBehaviour {
         uiImg_tileFacingSel_E.enabled = false;
         uiImg_tileFacingSel_S.enabled = true;
         uiImg_tileFacingSel_W.enabled = false; 
+
+        tilePlacerScript.AssignFacingYrot(tileFacingFlag);
     }
 
     public void TileFacing_W() {
@@ -127,6 +129,8 @@ public class TileToPaintMenu : MonoBehaviour {
         uiImg_tileFacingSel_E.enabled = false;
         uiImg_tileFacingSel_S.enabled = false;
         uiImg_tileFacingSel_W.enabled = true; 
+
+        tilePlacerScript.AssignFacingYrot(tileFacingFlag);
     }
 
 

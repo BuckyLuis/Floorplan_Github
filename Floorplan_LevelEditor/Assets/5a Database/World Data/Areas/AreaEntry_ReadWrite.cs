@@ -3,7 +3,7 @@ using System.Collections;
 using System.Xml.Serialization;
 using System.IO;
 
-public class Area_ReadWrite : MonoBehaviour 
+public class AreaEntry_ReadWrite : MonoBehaviour 
 {
     private string docsPath = "";
     private string path = "";
@@ -11,10 +11,9 @@ public class Area_ReadWrite : MonoBehaviour
 
     public WWW _xml;
 
-//===================================================
-    public Area_Base Area_DataObject;
-
-//===================================================
+    //===================================================
+    public AreaEntry_DataList AreaCatalog_DataObject;
+    //===================================================
 
 
     //  void Awake()
@@ -38,57 +37,56 @@ public class Area_ReadWrite : MonoBehaviour
     }
     */
 
-    public Area_Base ReadXMLData(string theArea_Name) 
+    public void ReadXMLData() 
     {
-        GetCombinedPath(theArea_Name);
+        GetCombinedPath();
         ProcessWWW(path);
-        return Area_DataObject;
-     //   StartCoroutine(ProcessWWW(path));
+        //   StartCoroutine(ProcessWWW(path));
     }
 
-    public void WriteXMLData(Area_Base theArea_ToWrite, string theArea_Name)
+    public void WriteXMLData(AreaEntry_DataList theCatalogToWrite)
     {
-        GetCombinedPath(theArea_Name);
-        WriteToXML(theArea_ToWrite);
+        GetCombinedPath();
+        WriteToXML(theCatalogToWrite);
     }
 
-    public Area_Base ReadFromXML(WWW _xml)  //string path
+    public AreaEntry_DataList ReadFromXML(WWW _xml)  //string path
     {
-        XmlSerializer serializerR = new XmlSerializer(typeof(Area_Base));
+        XmlSerializer serializerR = new XmlSerializer(typeof(AreaEntry_DataList));
         StringReader reader = new StringReader(_xml.text);
-        Area_Base readArea = serializerR.Deserialize(reader) as Area_Base;
+        AreaEntry_DataList readAreas = serializerR.Deserialize(reader) as AreaEntry_DataList;
         reader.Close();
 
-        return readArea;
+        return readAreas;
     }
 
-    void WriteToXML(Area_Base areaW) 
+    void WriteToXML(AreaEntry_DataList areaEntryListW) 
     {
         XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
         ns.Add(string.Empty, string.Empty);
 
-        XmlSerializer serializerW = new XmlSerializer(typeof(Area_Base));
+        XmlSerializer serializerW = new XmlSerializer(typeof(AreaEntry_DataList));
         using (TextWriter writer = new StreamWriter(path))
         {
-            serializerW.Serialize(writer, areaW, ns);
+            serializerW.Serialize(writer, areaEntryListW, ns);
         }
     }
 
-    public void GetCombinedPath(string theArea_Name)
+    public void GetCombinedPath()
     {
         docsPath = getDatasPath.Pref_UserDatasPath();
 
         switch (IO_GetDatasPath.Pref_UserDataPath) 
         {
             case (0):
-                path = getDatasPath.CombinePath ("file:///", docsPath, "Data", "Xml", "Areas", theArea_Name + ".xml");                      //Data Folder next to the compiled .exe
+                path = getDatasPath.CombinePath ("file:///", docsPath, "Data", "Xml", "Areas", "AreaCatalog.xml");                      //Data Folder next to the compiled .exe
                 break;
             case (1):
-                path = getDatasPath.CombinePath ("file:///", docsPath, "My Games", "FloorPlan", "Data", "Xml", "Areas", theArea_Name + ".xml");     //on Windows: the MyDocuments folder
+                path = getDatasPath.CombinePath ("file:///", docsPath, "My Games", "FloorPlan", "Data", "Xml", "Areas", "AreaCatalog.xml");     //on Windows: the MyDocuments folder
                 break;      
 
             default:
-                path = getDatasPath.CombinePath ("file:///", docsPath, "Data", "Xml", "Areas", theArea_Name + ".xml"); 
+                path = getDatasPath.CombinePath ("file:///", docsPath, "Data", "Xml", "Areas", "AreaCatalog.xml"); 
                 break;
         }                                   
     }
@@ -96,11 +94,11 @@ public class Area_ReadWrite : MonoBehaviour
     void ProcessWWW(string path)
     {
         WWW www = new WWW ("file:///" + path);              //  the "file:///" here and in the path IS necessary!
-     //   yield return www;
+        //   yield return www;
 
         if(www.error == null)
         {
-            Area_DataObject = ReadFromXML(www);
+            AreaCatalog_DataObject = ReadFromXML(www);
         }
         else
         {

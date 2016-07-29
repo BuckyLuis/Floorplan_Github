@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class CreateNewRoom : MonoBehaviour {
 
-    AreaObject ourAreaObject;
+    AreaObjectRegistrar ourAreaObject;
 
 //------------ Config These! -----------
     public int NewRoomID;
@@ -38,7 +38,7 @@ public class CreateNewRoom : MonoBehaviour {
 
 
 	void Start () {
-        ourAreaObject = GetComponent<AreaObject>();
+        ourAreaObject = GetComponent<AreaObjectRegistrar>();
 
         //---init Find UI fields---
         ui_btnAddRoom = GameObject.Find("Panel_NewRoom");

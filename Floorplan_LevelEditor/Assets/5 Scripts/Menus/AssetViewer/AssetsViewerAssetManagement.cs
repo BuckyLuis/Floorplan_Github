@@ -20,21 +20,21 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
     int assetIndexCounterCat2;
     int assetIndexCounterCat3;
 //------------- Assets Lists --------------------
-    [Header ("--- Asset Lists ---")]            //in the editor you setup references to all of the asset's assets 
+    [Header ("--- Asset Lists ---", order = 0)]            //in the editor you setup references to all of the asset's assets 
     public List<Asset_Floor_Base> assetsList_Floors = new List<Asset_Floor_Base>();
     public List<Asset_Wall_Base> assetsList_Walls = new List<Asset_Wall_Base>();
     public List<Asset_Doodad_Base> assetsList_Doodads = new List<Asset_Doodad_Base>();
     public List<Asset_Prop_Base> assetsList_Props = new List<Asset_Prop_Base>();
     public List<Asset_Actor_Base> assetsList_Actors = new List<Asset_Actor_Base>();
     public List<Asset_Trigger_Base> assetsList_Triggers = new List<Asset_Trigger_Base>();
-
-    [Header ("--- --- --- --- --- ---")]    
+    [Space(40, order = 1)]
+    [Header ("--- --- --- --- --- ---", order = 2)]    
 
 
 //----------- Assets Dicts ----------------------
+    [Space(200, order = 3)]
+    [Header (" --- Assets Dicts - DO NOT EDIT! --- ", order = 4)]  // these Dictionaries hold references to the constructed AssetViewerEntry objects
 
-    [Header (" --- Assets Dicts - DO NOT EDIT! --- ")]  // these Dictionaries hold references to the constructed AssetViewerEntry objects
-    [Space(200)]
 
 
     public Dictionary_sGo assetsDict_Floors;
@@ -45,8 +45,8 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
     public Dictionary_sGo assetsDict_Triggers;
    
 //---------------- UI refs ----------------------
-    [Space(30)]
-    [Header (" --- UI references - DO NOT EDIT! --- ")] 
+    [Space(30, order = 5)]
+    [Header (" --- UI references - DO NOT EDIT! --- ", order = 6)] 
 
  
     [SerializeField] GameObject viewAreaFloors;

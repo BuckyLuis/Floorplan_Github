@@ -6,7 +6,7 @@ public class RoomViewerEntry : MonoBehaviour {
 
     [SerializeField] GameObject databaseController;
 
-    AreaObject ourAreaObject;
+    AreaObjectRegistrar ourAreaObject;
     RoomViewerMenu theRoomViewerMenu;
 
     [SerializeField]GameObject uiPanel_colorPicker;

@@ -1,16 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5a Database\World Data\Areas\Area_Base.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs">
     <Files>
-      <File FileName="Assets\5 Scripts\Menus\CurrentArea\AreaSaveLoadUI.cs" Line="98" Column="9" />
-      <File FileName="Assets\5 Scripts\Placer\PlaceTile.cs" Line="130" Column="17" />
-      <File FileName="Assets\5a Database\World Data\Areas\Area_Base.cs" Line="12" Column="29" />
-      <File FileName="Assets\5a Database\World Data\Rooms\Room_Base.cs" Line="10" Column="4" />
-      <File FileName="Assets\5a Database\World Data\Tiles\Tile_Base.cs" Line="1" Column="1" />
-      <File FileName="Assets\5a Database\World Data\Areas\Area_ReadWrite.cs" Line="75" Column="6" />
-      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" Line="60" Column="4" />
-      <File FileName="Assets\5a Database\World Data\Areas\Area_Datalist.cs" Line="1" Column="1" />
-      <File FileName="Assets\5a Database\IO_GetDatasPath.cs" Line="47" Column="42" />
+      <File FileName="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs" Line="23" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

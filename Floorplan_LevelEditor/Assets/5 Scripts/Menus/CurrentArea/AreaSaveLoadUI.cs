@@ -7,14 +7,14 @@ public class AreaSaveLoadUI : MonoBehaviour {
     int _AreaIndexCounter;
     string currentGenAreaID;
 
-    Area_ReadWrite Area_ReadWriteScript;
-    AreaObject AreaObjectScript;
+
+//---------------------------------------------------
+    AreaEntry_ReadWrite AreaEntry_ReadWriteScript;
+    AreaObjectRegistrar AreaObjectScript;
 
     Area_Base TheLoadedAreaObject;
 
-
-    List<string> areasDropdownList = new List<string>();
-    string tempString;
+  
 
  // --- UI Refs ---
  //-------- Start Menu ----------------------------------
@@ -32,6 +32,20 @@ public class AreaSaveLoadUI : MonoBehaviour {
 
     [SerializeField] GameObject ui_dropdownStartLoad;
     [SerializeField] GameObject ui_btnLoadArea;
+    InputField uiIF_devkey;
+    public static string devKeyString;
+
+    InputField uiIF_createName;
+    InputField uiIF_createID;
+    string createNameString;
+    string createIDString;
+
+    Dropdown uiDrop_dropdownStartLoad;
+    string tempString;
+    List<string> areasDropdownList = new List<string>();
+
+    string ddItemString;
+    string areaIDfromDd;
 
  //---------------- In Main Program ----------------
     [SerializeField] GameObject areaSavePanel;
@@ -50,29 +64,16 @@ public class AreaSaveLoadUI : MonoBehaviour {
     [SerializeField] GameObject ui_btnLoadLoad;
     [SerializeField] GameObject ui_btnLoadCancel;
     [SerializeField] GameObject ui_dropdownLoad;
-    InputField uiIF_devkey;
-    public static string devKeyString;
-
-    InputField uiIF_createName;
-    InputField uiIF_createID;
-    string createNameString;
-    string createIDString;
-
-    Dropdown uiDrop_dropdownStartLoad;
-    string ddItemString;
-    int areaIndexIDfromDd;
-
-
-//----------- in main program ------------
     InputField uiIF_saveName;
     InputField uiIF_saveID;
 
     Dropdown uiDrop_dropdownLoad;
 
 
+
     void Start() {
-        Area_ReadWriteScript = GetComponent<Area_ReadWrite>();
-        AreaObjectScript = GetComponent<AreaObject>();
+        AreaEntry_ReadWriteScript = GetComponent<AreaEntry_ReadWrite>();
+        AreaObjectScript = GetComponent<AreaObjectRegistrar>();
 
         uiIF_devkey = devkeyField.GetComponent<InputField>();
         uiIF_createName = ui_createName.GetComponent<InputField>();
@@ -83,29 +84,29 @@ public class AreaSaveLoadUI : MonoBehaviour {
         AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = true;
         TileToPaintMenu.anInputFieldIsInFocus = true;
 
-        GetAreaListFromXML();
+
+        devKeyString = PlayerPrefs.GetString("DevKey");
+        uiIF_devkey.text = devKeyString;
+
+        GetAreaCatalogFromXML();
+        PopulateCatalogNDropdowns();
     }
 //------------------- Read AreaData from XML ----------------------- 
 
-    void GetAreaListFromXML() {
-        Area_ReadWriteScript.ReadXMLData();                                  //  <-----------  Call to ReadXMLData of Area_ReadWrite.cs 
-        PopulateAreaLoadDropdowns();
+    void GetAreaCatalogFromXML() {
+        AreaEntry_ReadWriteScript.ReadXMLData();     //  <-----------  Call to read AreaCatalog from Xml
     }
 
-    void PopulateAreaLoadDropdowns() {
+    void PopulateCatalogNDropdowns() {
         uiDrop_dropdownStartLoad.options.Clear();
      //   uiDrop_dropdownLoad.options.Clear();
 
-        if(Area_ReadWrite.Areas_DataObject != null) {
-            foreach (Area_Base areaObject in Area_ReadWrite.Areas_DataObject.areas) {                                              
-                tempString = string.Format("{0}|{1}|{2}", areaObject.IndexID, areaObject.AreaName, areaObject.AreaID);
-                uiDrop_dropdownStartLoad.options.Add(new Dropdown.OptionData(tempString));
-                uiDrop_dropdownLoad.options.Add(new Dropdown.OptionData(tempString));
-                _AreaIndexCounter = int.Parse(areaObject.IndexID) + 1;
-            }
-        }
-        else {      // if there is NO areas ever made
-            _AreaIndexCounter = 0;
+        foreach (AreaEntry_Base areaEntryObject in AreaEntry_ReadWriteScript.AreaCatalog_DataObject.areaEntries) {    
+            AreaObjectScript.The_AreaCatalog.areaEntries.Add(areaEntryObject);                   
+
+            tempString = string.Format("{0}| {1} ", areaEntryObject.AreaEntryID, areaEntryObject.AreaEntryName );       
+            uiDrop_dropdownStartLoad.options.Add(new Dropdown.OptionData() {text = tempString} );
+            _AreaIndexCounter = int.Parse(areaEntryObject.IndexID) + 1;
         }
     }
 
@@ -123,34 +124,33 @@ public class AreaSaveLoadUI : MonoBehaviour {
         
     public void DevKeyInput() {
         devKeyString = uiIF_devkey.text;
+        PlayerPrefs.SetString("DevKey", devKeyString);
     }
 //--------------- Start - Create New Area Menu -----------------------------------------
     public void Create_AreaNameInput() {
         createNameString = uiIF_createName.text;
-        if(createNameString != null && createIDString != null) {
+        if(createNameString != "" && createIDString != "") {
             ui_btnCreateSave.GetComponent<Button>().interactable = true;
         }
     }
-
     public void Create_AreaIDInput() {
         createIDString = uiIF_createID.text;
-        if(createNameString != null && createIDString != null) {
+        if(createNameString != "" && createIDString != "") {
             ui_btnCreateSave.GetComponent<Button>().interactable = true;
         }
     }
-
     public void Create_GenerateID() {
-        createIDString = string.Format("{0}_{2}", devKeyString, _AreaIndexCounter );
+        createIDString = string.Format("{0}.{1}", devKeyString, _AreaIndexCounter.ToString() );
         uiIF_createID.text = createIDString;
-        if(createNameString != null && createIDString != null) {
+        if(createNameString != "" && createIDString != "") {
             ui_btnCreateSave.GetComponent<Button>().interactable = true;
         }
     }
-
     public void Create_CancelButton() {
         startAreaCreatePanel.SetActive(false);
         startMenuPanel.SetActive(true);
     }
+
 
     public void Create_CreateAreaButton() {
         AreaObjectScript.Create_NewArea(_AreaIndexCounter.ToString(), createIDString, createNameString);
@@ -160,22 +160,21 @@ public class AreaSaveLoadUI : MonoBehaviour {
 //--------------- Start - Load Area Menu ----------------------------------------------
 
     public void Load_DropdownSelectInput() {
-        ddItemString = uiDrop_dropdownStartLoad.itemText.text;
+        ddItemString = uiDrop_dropdownStartLoad.captionText.text;
         string[] tempStringArray = ddItemString.Split('|');
-        areaIndexIDfromDd = int.Parse(tempStringArray[0]);
+        areaIDfromDd = tempStringArray[0];
 
         ui_btnLoadArea.GetComponent<Button>().interactable = true;
     }
-
     public void Load_CancelButton() {
         startAreaLoadPanel.SetActive(false);
         startMenuPanel.SetActive(true);
     }
 
+
     public void Load_LoadAreaButton() {
-        TheLoadedAreaObject = Area_ReadWrite.Areas_DataObject.areas[areaIndexIDfromDd];
-        AreaObjectScript.Load_LoadArea(TheLoadedAreaObject);
-        KillStartMenu();
+       AreaObjectScript.LoadAreaDataFromXml(areaIDfromDd);  
+       KillStartMenu();
     }
  
 //-------------------------------------------------------------------------------------

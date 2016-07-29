@@ -5,7 +5,7 @@ using TeamUtility.IO;
 
 public class AssetsViewerHotkeysUiControl : MonoBehaviour {
 
-    public static bool anInputFieldIsInFocus = false; 
+    public static bool anInputFieldIsInFocus;
 
     AssetsViewerAssetManagement assetManagerScript;
 

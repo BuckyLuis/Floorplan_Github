@@ -42,12 +42,10 @@ public class Room_ReadWrite : MonoBehaviour
 		StartCoroutine(ProcessWWW(path));
 	}
 
-	public void WriteXMLData(int writeDisplayName, string writeFileName)
+    public void WriteXMLData(Room_DataList The_RoomDataList)
 	{
-        Room_Base roomW = new Room_Base();
-        roomW.IndexID = writeDisplayName;
 		GetCombinedPath();
-		WriteToXML(roomW);
+        WriteToXML(The_RoomDataList);
 	}
 
 	public static Room_DataList ReadFromXML(WWW _xml)  //string path
@@ -60,12 +58,15 @@ public class Room_ReadWrite : MonoBehaviour
         return readRooms;
 	}
 
-    void WriteToXML(Room_Base roomW) 
+    void WriteToXML(Room_DataList roomW) 
 	{
-        XmlSerializer serializerW = new XmlSerializer(typeof(Room_Base));
+        XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
+        ns.Add(string.Empty, string.Empty);
+
+        XmlSerializer serializerW = new XmlSerializer(typeof(Room_DataList));
 		using (TextWriter writer = new StreamWriter(path))
 		{
-            serializerW.Serialize(writer, roomW);
+            serializerW.Serialize(writer, roomW, ns);
 		}
 	}
 
