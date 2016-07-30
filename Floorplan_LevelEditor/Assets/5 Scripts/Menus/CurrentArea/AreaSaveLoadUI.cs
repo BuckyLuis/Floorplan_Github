@@ -48,26 +48,29 @@ public class AreaSaveLoadUI : MonoBehaviour {
     string areaIDfromDd;
 
  //---------------- In Main Program ----------------
-    [SerializeField] GameObject areaSavePanel;
-    [SerializeField] GameObject areaLoadPanel;
+    [SerializeField] GameObject inAppMainPanel;
+    [SerializeField] GameObject inAppSavePanel;
+    [SerializeField] GameObject inAppLoadPanel;
 
-    [SerializeField] GameObject ui_btnOpenSavePane;
-    [SerializeField] GameObject ui_btnOpenLoadPane;
-    [SerializeField] GameObject ui_displayName;
-    [SerializeField] GameObject ui_displayID;
+    [SerializeField] GameObject ui_inAppDisplayName;
+    [SerializeField] GameObject ui_inAppDisplayID;
+    Text uiTxt_inAppDisplayName;
+    Text uiTxt_inAppDisplayID;
 
+    [SerializeField] GameObject ui_inAppSaveName;
+    [SerializeField] GameObject ui_inAppSaveID;
     [SerializeField] GameObject ui_btnSaveSave;
     [SerializeField] GameObject ui_btnSaveCancel;
-    [SerializeField] GameObject ui_SaveName;
-    [SerializeField] GameObject ui_SaveID;
 
     [SerializeField] GameObject ui_btnLoadLoad;
     [SerializeField] GameObject ui_btnLoadCancel;
-    [SerializeField] GameObject ui_dropdownLoad;
-    InputField uiIF_saveName;
-    InputField uiIF_saveID;
+    [SerializeField] GameObject ui_dropdownInAppLoad;
+    InputField uiIF_inAppSaveName;
+    InputField uiIF_inAppSaveID;
+    string saveNameString;
+    string saveIDString;
 
-    Dropdown uiDrop_dropdownLoad;
+    Dropdown uiDrop_dropdownInAppLoad;
 
 
 
@@ -80,6 +83,13 @@ public class AreaSaveLoadUI : MonoBehaviour {
         uiIF_createID = ui_createID.GetComponent<InputField>();
 
         uiDrop_dropdownStartLoad = ui_dropdownStartLoad.GetComponent<Dropdown>();
+        uiDrop_dropdownInAppLoad = ui_dropdownInAppLoad.GetComponent<Dropdown>();
+
+        uiTxt_inAppDisplayName = ui_inAppDisplayName.GetComponent<Text>();
+        uiTxt_inAppDisplayID = ui_inAppDisplayName.GetComponent<Text>();
+      
+        uiIF_inAppSaveName = ui_inAppSaveName.GetComponent<InputField>();
+        uiIF_inAppSaveID = ui_inAppSaveID.GetComponent<InputField>();
 
         AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = true;
         TileToPaintMenu.anInputFieldIsInFocus = true;
@@ -99,13 +109,14 @@ public class AreaSaveLoadUI : MonoBehaviour {
 
     void PopulateCatalogNDropdowns() {
         uiDrop_dropdownStartLoad.options.Clear();
-     //   uiDrop_dropdownLoad.options.Clear();
+        uiDrop_dropdownInAppLoad.options.Clear();
 
         foreach (AreaEntry_Base areaEntryObject in AreaEntry_ReadWriteScript.AreaCatalog_DataObject.areaEntries) {    
             AreaObjectScript.The_AreaCatalog.areaEntries.Add(areaEntryObject);                   
 
             tempString = string.Format("{0}| {1} ", areaEntryObject.AreaEntryID, areaEntryObject.AreaEntryName );       
             uiDrop_dropdownStartLoad.options.Add(new Dropdown.OptionData() {text = tempString} );
+            uiDrop_dropdownInAppLoad.options.Add(new Dropdown.OptionData() {text = tempString} );
             _AreaIndexCounter = int.Parse(areaEntryObject.IndexID) + 1;
         }
     }
@@ -129,12 +140,20 @@ public class AreaSaveLoadUI : MonoBehaviour {
 //--------------- Start - Create New Area Menu -----------------------------------------
     public void Create_AreaNameInput() {
         createNameString = uiIF_createName.text;
+
+        uiTxt_inAppDisplayName.text = createNameString;
+        uiIF_inAppSaveName.text = createNameString;
+
         if(createNameString != "" && createIDString != "") {
             ui_btnCreateSave.GetComponent<Button>().interactable = true;
         }
     }
     public void Create_AreaIDInput() {
         createIDString = uiIF_createID.text;
+
+        uiTxt_inAppDisplayID.text = createIDString;
+        uiIF_inAppSaveID.text = createIDString;
+
         if(createNameString != "" && createIDString != "") {
             ui_btnCreateSave.GetComponent<Button>().interactable = true;
         }
@@ -142,6 +161,10 @@ public class AreaSaveLoadUI : MonoBehaviour {
     public void Create_GenerateID() {
         createIDString = string.Format("{0}.{1}", devKeyString, _AreaIndexCounter.ToString() );
         uiIF_createID.text = createIDString;
+
+        uiTxt_inAppDisplayID.text = createIDString;
+        uiIF_inAppSaveID.text = createIDString;
+
         if(createNameString != "" && createIDString != "") {
             ui_btnCreateSave.GetComponent<Button>().interactable = true;
         }
@@ -170,15 +193,75 @@ public class AreaSaveLoadUI : MonoBehaviour {
         startAreaLoadPanel.SetActive(false);
         startMenuPanel.SetActive(true);
     }
-
+        
 
     public void Load_LoadAreaButton() {
        AreaObjectScript.LoadAreaDataFromXml(areaIDfromDd);  
        KillStartMenu();
     }
  
-//-------------------------------------------------------------------------------------
+//---------------- InApp Menu  --------------------------------------------------
   
+
+    public void InApp_OpenSaveMenu() {
+        inAppMainPanel.SetActive(false);
+        inAppSavePanel.SetActive(true);
+    }
+
+    public void InApp_OpenLoadMenu() {
+        inAppMainPanel.SetActive(false);
+        inAppLoadPanel.SetActive(true);
+    }
+
+
+//--------------- InApp Save -----------------------------------------------------
+
+    public void iaSave_AreaNameInput() {
+        saveNameString = uiIF_inAppSaveName.text;
+        uiTxt_inAppDisplayName.text = saveIDString;
+
+        if(saveNameString != "" && saveIDString != "") {
+            ui_btnSaveSave.GetComponent<Button>().interactable = true;
+        }
+    }
+    public void iaSave_AreaIDInput() {
+        saveIDString = uiIF_inAppSaveID.text;
+        uiTxt_inAppDisplayID.text = saveIDString;
+
+        if(saveNameString != "" && saveIDString != "") {
+            ui_btnSaveSave.GetComponent<Button>().interactable = true;
+        }
+    }
+    public void iaSave_GenerateID() {
+        saveIDString = string.Format("{0}.{1}", devKeyString, _AreaIndexCounter.ToString() );
+        uiIF_inAppSaveID.text = saveIDString;
+        uiTxt_inAppDisplayID.text = saveIDString;
+
+        if(createNameString != "" && createIDString != "") {
+            ui_btnCreateSave.GetComponent<Button>().interactable = true;
+        }
+    }
+
+    public void  iaSave_CancelButton() {
+        inAppSavePanel.SetActive(false);
+        inAppMainPanel.SetActive(true);
+    }
+
+
+    public void  iaSave_SaveAreaButton() {
+        AreaObjectScript.SaveAreaDataToXml(_AreaIndexCounter.ToString(), saveIDString, saveNameString);
+
+        inAppSavePanel.SetActive(false);
+        inAppMainPanel.SetActive(true);
+    }
+
+
+
+
+
+
+
+
     public void SaveAreaData() {
         
     }

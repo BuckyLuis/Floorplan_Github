@@ -47,7 +47,15 @@ public class AreaObjectRegistrar : MonoBehaviour {
         ThisAreaEntry_CatalogObject.AreaEntryName = theAreaName;
     }
 
-    public void SaveAreaDataToXml() {
+    public void SaveAreaDataToXml(string theIndexID, string theAreaID, string theAreaName) {
+        ThisArea_DataObject.IndexID = theIndexID;
+        ThisArea_DataObject.AreaID = theAreaID;
+        ThisArea_DataObject.AreaName = theAreaName;
+
+        ThisAreaEntry_CatalogObject.IndexID = theIndexID;
+        ThisAreaEntry_CatalogObject.AreaEntryID = theAreaID;
+        ThisAreaEntry_CatalogObject.AreaEntryName = theAreaName;
+
         The_AreaCatalog.areaEntries.Add(ThisAreaEntry_CatalogObject);                                   //register Entry to Catalog list
 
         AreaEntry_ReadWriteScript.WriteXMLData(The_AreaCatalog);                                        //write currentCatalog to xml

@@ -2,7 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs">
     <Files>
-      <File FileName="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs" Line="23" Column="5" />
+      <File FileName="Assets\5 Scripts\Menus\CurrentArea\AreaSaveLoadUI.cs" Line="173" Column="47" />
+      <File FileName="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs" Line="50" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
