@@ -5,12 +5,13 @@ using UnityEngine.UI;
 public class AssetsViewerEntry_Floors : MonoBehaviour {
    
     [SerializeField] GameObject assetsDbController;
+    TexturesViewerTexAtlasManagement textureViewerManageScript;
     TileToPaintMenu tileToPaintScript;
 
 
     public GameObject assetWorldObject;
 
-//------------- Asset Datas ------------------
+//------------- Asset Datas ------------------              //! @TODO get these entries objects to hold a ref to their BaseType Classes, instead of this stupid many vars
     public string assetName;
 
     public Categories_Floors categoryFloors;
@@ -23,6 +24,10 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
 
     public Sprite assetEntryIcon;
     public Color assetTilesetColor;
+
+    public int uvMapSectorFlag;
+    public int meshsetFlag;
+    public string meshsetString;
 //----------- UI Refs ---------------------
     [Space(30)]
     [SerializeField] GameObject nameObject;
@@ -45,7 +50,7 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
     Text hkText1;
 
     Sprite iconSprite;
-    Color tilesetColor;
+    Image tilesetColor;
 
     Toggle selectedToggle;
 
@@ -53,6 +58,7 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
 
 	void Start () {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
+        textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         tileToPaintScript = assetsDbController.GetComponent<TileToPaintMenu>();
 
         nameText = nameObject.GetComponent<Text>();
@@ -63,7 +69,7 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
         hkText1 = indexHkObject1.GetComponent<Text>();
 
         iconSprite = iconObject.GetComponent<Sprite>();
-        tilesetColor = colorObject.GetComponent<Image>().color;
+        tilesetColor = colorObject.GetComponent<Image>();
 
         selectedToggle = toggleObject.GetComponent<Toggle>();
         selectedToggle.group = assetsDbController.GetComponent<ToggleGroup>();
@@ -83,14 +89,26 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
             hkText1.text = "";   
         }
         iconSprite = assetEntryIcon;
-        tilesetColor = assetTilesetColor;
+        tilesetColor.color = assetTilesetColor;
 
         //------- Assign Toggle Listener ----------
         selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
     }
 
 
-    public void ThisSelected(bool toggleStatus) {
+    public void ThisSelected(bool toggleStatus) {                   //called by UItoggle
+        textureViewerManageScript.ShowCompatTexAtlases(meshsetString);
+
+        tileToPaintScript.SetCurrentTileSprite(assetEntryIcon);
+        tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+    }
+
+    public void SelectFromHotkey() {        //called by hotkey -- AssetsViewerAssetManagement.EntryFromHotkey() -- which is called by AssetsViewerHotkeysUiControl.HotkeyPressedAssetsFirstDigit()
+        selectedToggle.group.SetAllTogglesOff();
+        selectedToggle.isOn = true;
+
+        textureViewerManageScript.ShowCompatTexAtlases(meshsetString);
+
         tileToPaintScript.SetCurrentTileSprite(assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
     }

@@ -1,14 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerAssetManagement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5a Database\Assets Data\TextureAtlas_Base.cs">
     <Files>
-      <File FileName="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerAssetManagement.cs" Line="17" Column="59" />
-      <File FileName="Assets\5 Scripts\Menus\CurrentArea\AreaSaveLoadUI.cs" Line="142" Column="5" />
-      <File FileName="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs" Line="1" Column="1" />
-      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" Line="1" Column="1" />
-      <File FileName="Assets\5a Database\World Data\Areas\Area_Base.cs" Line="1" Column="1" />
-      <File FileName="Assets\5a Database\World Data\Rooms\Room_Base.cs" Line="1" Column="1" />
-      <File FileName="Assets\5a Database\World Data\Tiles\Tile_Base.cs" Line="1" Column="1" />
+      <File FileName="Assets\5a Database\Assets Data\TextureAtlas_Base.cs" Line="15" Column="1" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\TexturesViewerTexAtlasManagement.cs" Line="67" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

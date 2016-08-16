@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class AssetsViewerEntry_Triggers : MonoBehaviour {
 
     [SerializeField] GameObject assetsDbController;
+    TexturesViewerTexAtlasManagement textureViewerManageScript;
     TileToPaintMenu tileToPaintScript;
 
 
@@ -23,6 +24,9 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
 
     public Sprite assetEntryIcon;
     public Color assetTilesetColor;
+
+    //triggers have no ingame textures
+
     //----------- UI Refs ---------------------
     [Space(30)]
     [SerializeField] GameObject nameObject;
@@ -45,7 +49,7 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
     Text hkText1;
 
     Sprite iconSprite;
-    Color tilesetColor;
+    Image tilesetColor;
 
     Toggle selectedToggle;
 
@@ -53,6 +57,7 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
 
     void Start () {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
+        textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         tileToPaintScript = assetsDbController.GetComponent<TileToPaintMenu>();
 
         nameText = nameObject.GetComponent<Text>();
@@ -63,7 +68,7 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
         hkText1 = indexHkObject1.GetComponent<Text>();
 
         iconSprite = iconObject.GetComponent<Sprite>();
-        tilesetColor = colorObject.GetComponent<Image>().color;
+        tilesetColor = colorObject.GetComponent<Image>();
 
         selectedToggle = toggleObject.GetComponent<Toggle>();
         selectedToggle.group = assetsDbController.GetComponent<ToggleGroup>();
@@ -83,14 +88,22 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
             hkText1.text = "";
         }
         iconSprite = assetEntryIcon;
-        tilesetColor = assetTilesetColor;
+        tilesetColor.color = assetTilesetColor;
 
         //------- Assign Toggle Listener ----------
         selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
     }
 
 
-    public void ThisSelected(bool toggleStatus) {
+    public void ThisSelected(bool toggleStatus) {                   //called by UItoggle
+        tileToPaintScript.SetCurrentTileSprite(assetEntryIcon);
+        tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+    }
+
+    public void SelectFromHotkey() {        //called by hotkey -- AssetsViewerAssetManagement.EntryFromHotkey() -- which is called by AssetsViewerHotkeysUiControl.HotkeyPressedAssetsFirstDigit()
+        selectedToggle.group.SetAllTogglesOff();
+        selectedToggle.isOn = true;
+
         tileToPaintScript.SetCurrentTileSprite(assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
     }

@@ -55,6 +55,8 @@
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Props.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Triggers.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Walls.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\TexturesViewerEntry.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\TexturesViewerTexAtlasManagement.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ColorPicker.cs" />
      <Compile Include="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs" />
      <Compile Include="Assets\5 Scripts\Menus\CurrentArea\AreaSaveLoadUI.cs" />
@@ -89,6 +91,7 @@
      <Compile Include="Assets\5a Database\Assets Data\Asset_Prop_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Asset_Trigger_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Asset_Wall_Base.cs" />
+     <Compile Include="Assets\5a Database\Assets Data\TextureAtlas_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Tiles\Asset_Tile_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Tiles\Asset_Tile_Datalist.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Tiles\Asset_Tile_ReadWrite.cs" />

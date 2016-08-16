@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 475634}
   - 114: {fileID: 11461310}
+  - 114: {fileID: 11414772}
   - 114: {fileID: 11439132}
   - 114: {fileID: 11419270}
   - 114: {fileID: 11430856}
@@ -33,6 +34,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11414772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8090c00ddc007b46bbb064e46cb7942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texAtlasList:
+  - texAtlasName: 
+    texAtlasCategory: 0
+    texAtlasCompatMeshsets: 
+    texAtlasTilesetColor: {r: 0, g: 0, b: 0, a: 0}
+    texAtlasMatObject: {fileID: 0}
+  texAtlasEntriesDict:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  viewAreaTexAtlas: {fileID: 0}
+  texAtlasEntryPrefab: {fileID: 0}
 --- !u!114 &11419270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,27 +161,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assetsList_Floors:
   - assetName: Tile Floor
+    assetIndex: 0
     categoryFloors: 0
     assetUsageSet: 
     assetDesc: 
-    assetIndex: 0
     assetEntryIcon: {fileID: 0}
     assetTilesetColor: {r: 0, g: 0, b: 0, a: 0}
     worldObjectPrefab: {fileID: 178938, guid: fc041408698de5f47b86f8166e681a6a, type: 2}
+    uvMapSectorFlag: 0
+    meshsetFlag: 0
+    meshsetString: 
   assetsList_Walls:
   - assetName: TestWall0
+    assetIndex: 0
     categoryWalls: 0
     assetUsageSet: Walls
     assetDesc: 
-    assetIndex: 0
     assetEntryIcon: {fileID: 0}
-    assetTilesetColor: {r: 0, g: 1, b: 0.17241383, a: 0}
+    assetTilesetColor: {r: 0, g: 1, b: 0.17241383, a: 1}
     worldObjectPrefab: {fileID: 132144, guid: e8214cc73496a034586e14aa4e06beb9, type: 2}
+    uvMapSectorFlag: 0
+    meshsetFlag: 0
+    meshsetString: 
   assetsList_Doodads: []
   assetsList_Props: []
   assetsList_Actors: []
   assetsList_Triggers: []
-  assetsDict_Floors:
+  assetsEntriesDict_Floors:
     _Buckets: ffffffffffffffffffffffff
     _HashCodes: 000000000000000000000000
     _Next: 000000000000000000000000
@@ -161,7 +203,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-  assetsDict_Walls:
+  assetsEntriesDict_Walls:
     _Buckets: ffffffffffffffffffffffff
     _HashCodes: 000000000000000000000000
     _Next: 000000000000000000000000
@@ -177,7 +219,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-  assetsDict_Doodads:
+  assetsEntriesDict_Doodads:
     _Buckets: ffffffffffffffffffffffff
     _HashCodes: 000000000000000000000000
     _Next: 000000000000000000000000
@@ -193,7 +235,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-  assetsDict_Props:
+  assetsEntriesDict_Props:
     _Buckets: ffffffffffffffffffffffff
     _HashCodes: 000000000000000000000000
     _Next: 000000000000000000000000
@@ -209,7 +251,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-  assetsDict_Actors:
+  assetsEntriesDict_Actors:
     _Buckets: ffffffffffffffffffffffff
     _HashCodes: 000000000000000000000000
     _Next: 000000000000000000000000
@@ -225,7 +267,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-  assetsDict_Triggers:
+  assetsEntriesDict_Triggers:
     _Buckets: ffffffffffffffffffffffff
     _HashCodes: 000000000000000000000000
     _Next: 000000000000000000000000

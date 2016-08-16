@@ -29,6 +29,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     int currentPage;
     int currentCategory;
 
+    string entryDictKey;
+
 #region - vars UI Element References -
 //------------  UI Element Refs -----------------
     [SerializeField] GameObject btn_Floors;
@@ -257,7 +259,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
                     uiTxt_lastHotkeyEntered.text = "1";
                 }
                 keyPressed = 1;
-                HotkeyAutoReset();
+                HotkeyAuto_ResetTimer();
                 HotkeyWasPressed();
             }
             if(InputManager.GetButtonDown("2")) {
@@ -268,7 +270,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
                     uiTxt_lastHotkeyEntered.text = "2";
                 }
                 keyPressed = 2;
-                HotkeyAutoReset();
+                HotkeyAuto_ResetTimer();
                 HotkeyWasPressed();
             }
             if(InputManager.GetButtonDown("3")) {
@@ -279,7 +281,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
                     uiTxt_lastHotkeyEntered.text = "3";
                 }
                 keyPressed = 3;
-                HotkeyAutoReset();
+                HotkeyAuto_ResetTimer();
                 HotkeyWasPressed();
             }
             if(InputManager.GetButtonDown("4")) {
@@ -290,7 +292,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
                     uiTxt_lastHotkeyEntered.text = "4";
                 }
                 keyPressed = 4;
-                HotkeyAutoReset();
+                HotkeyAuto_ResetTimer();
                 HotkeyWasPressed();
             }
             if(InputManager.GetButtonDown("5")) {
@@ -301,7 +303,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
                     uiTxt_lastHotkeyEntered.text = "5";
                 }
                 keyPressed = 5;
-                HotkeyAutoReset();
+                HotkeyAuto_ResetTimer();
                 HotkeyWasPressed();
             }
             if(InputManager.GetButtonDown("6")) {
@@ -312,7 +314,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
                     uiTxt_lastHotkeyEntered.text = "6";
                 }
                 keyPressed = 6;   
-                HotkeyAutoReset();
+                HotkeyAuto_ResetTimer();
                 HotkeyWasPressed();
             }
             if(InputManager.GetButtonDown("7")) {
@@ -323,7 +325,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
                     uiTxt_lastHotkeyEntered.text = "7";
                 }
                 keyPressed = 7;
-                HotkeyAutoReset();
+                HotkeyAuto_ResetTimer();
                 HotkeyWasPressed();
             }
             if(InputManager.GetButtonDown("8")) {
@@ -334,7 +336,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
                     uiTxt_lastHotkeyEntered.text = "8";
                 }
                 keyPressed = 8;
-                HotkeyAutoReset();
+                HotkeyAuto_ResetTimer();
                 HotkeyWasPressed();
             }
             if(InputManager.GetButtonDown("9")) {
@@ -345,7 +347,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
                     uiTxt_lastHotkeyEntered.text = "9";
                 }
                 keyPressed = 9;
-                HotkeyAutoReset();
+                HotkeyAuto_ResetTimer();
                 HotkeyWasPressed();
             }
             if(InputManager.GetButtonDown("0")) {
@@ -356,7 +358,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
                     uiTxt_lastHotkeyEntered.text = "0";
                 }
                 keyPressed = 0;
-                HotkeyAutoReset();
+                HotkeyAuto_ResetTimer();
                 HotkeyWasPressed();
             }
         } //end of InputFieldInFocus test
@@ -488,7 +490,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
                 }    
                 break;  
             case 2:         //---------------- Assets ----------
-                HotkeyPressedAssetsFirstDigit();                            //TODO: hook the input hotkey numbers to point to database indexes
+                HotkeyPressedAssetsFirstDigit();                            
                 isHkStageTimerOn = true;
                 hkStageResetTimer = hkStageDuration;
                 break;  
@@ -500,21 +502,27 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         }    
     }
 
+
     void HotkeyPressedAssetsFirstDigit() {
         hotkeyStage = 3;
-        HotkeyStageReset();
+        HotkeyStage_ResetTimer();
         HotkeyStageColor();
+
+        entryDictKey = ((currentCategory - 1) % 10).ToString() + "," + keyPressed;      //we have the currentCategory var as: for example: "11" , this represents 'Page 1, category 1' in concern for the user's display ... but category "1" is enum index of 0 :: we want "0"
+        assetManagerScript.EntryFromHotkey(currentPage, entryDictKey);
     }
 
     void HotkeyPressedAssetsSecondDigit() {
         hotkeyStage = 2;
-        HotkeyStageReset();
+        HotkeyStage_ResetTimer();
         HotkeyStageColor();
+
+        entryDictKey = ((currentCategory - 1) % 10).ToString() + "," + keyPressed;
+        assetManagerScript.EntryFromHotkey(currentPage, entryDictKey);
     }
- #endregion
-
-
- #region HotkeyMethods
+#endregion
+        
+#region HotkeyTimerMethods
     void HotkeyStageColor() {
         switch (hotkeyStage) {
             case 0: 
@@ -533,12 +541,12 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_hotkeyStage.color = hotkeyStageColor;
     }
 
-    void HotkeyStageReset() {
+    void HotkeyStage_ResetTimer() {
         isHkStageTimerOn = true;
         hkStageResetTimer = hkStageDuration;
     }
 
-    void HotkeyAutoReset() {
+    void HotkeyAuto_ResetTimer() {
         if(allowHkAutoReset == true) {
             isAutoResetTimerOn = true;
             hkAutoResetTimer = hkAutoResetDuration;
@@ -551,7 +559,7 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         }
         if(uiTgl_allowAutoReset.isOn == true) {
             allowHkAutoReset = true;
-            HotkeyAutoReset();
+            HotkeyAuto_ResetTimer();
         }
     }  
  #endregion
