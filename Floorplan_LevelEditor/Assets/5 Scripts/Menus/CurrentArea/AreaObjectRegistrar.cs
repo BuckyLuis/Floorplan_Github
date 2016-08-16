@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class AreaObjectRegistrar : MonoBehaviour {
     
@@ -16,7 +17,6 @@ public class AreaObjectRegistrar : MonoBehaviour {
     AreaEntry_ReadWrite AreaEntry_ReadWriteScript;
 //========================================
 
-    public int ThisAreaID { get; protected set; }
     public List<Room_Base> ThisAreasRooms { get; protected set; }
     public List<Tile_Base> ThisAreasTiles { get; protected set; }
 
@@ -48,6 +48,23 @@ public class AreaObjectRegistrar : MonoBehaviour {
     }
 
     public void SaveAreaDataToXml(string theIndexID, string theAreaID, string theAreaName) {
+        ThisArea_DataObject.IndexID = theIndexID;
+        ThisArea_DataObject.AreaID = theAreaID;
+        ThisArea_DataObject.AreaName = theAreaName;
+
+        ThisAreaEntry_CatalogObject.IndexID = theIndexID;
+        ThisAreaEntry_CatalogObject.AreaEntryID = theAreaID;
+        ThisAreaEntry_CatalogObject.AreaEntryName = theAreaName;
+
+        The_AreaCatalog.areaEntries.Add(ThisAreaEntry_CatalogObject);                                   //register Entry to Catalog list
+
+        AreaEntry_ReadWriteScript.WriteXMLData(The_AreaCatalog);                                        //write currentCatalog to xml
+        Area_ReadWriteScript.WriteXMLData(ThisArea_DataObject, ThisArea_DataObject.AreaName);           //write currentArea to xml
+    }
+
+    public void SaveAs_AreaDataToXml(string theIndexID, string theAreaID, string theAreaName) {
+        ThisAreaEntry_CatalogObject = new AreaEntry_Base();                                          //create a new AreaEntry
+
         ThisArea_DataObject.IndexID = theIndexID;
         ThisArea_DataObject.AreaID = theAreaID;
         ThisArea_DataObject.AreaName = theAreaName;

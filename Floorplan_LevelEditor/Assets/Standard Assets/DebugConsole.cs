@@ -56,6 +56,7 @@ public class DebugConsole : MonoBehaviour
     public Color warning = Color.yellow;
     public Color error = Color.red;
     public int maxMessages = 30;                   // The max number of messages displayed
+    public int fontSize = 20;
     public float lineSpacing = 0.02F;              // The amount of space between lines
     [HideInInspector] public static bool acTimerActive = false;                  
     static float autoClearTimer;
@@ -376,6 +377,7 @@ public class DebugConsole : MonoBehaviour
                     }
 
                     //now set the text for this element
+                    gui.GetComponent<GUIText>().fontSize = fontSize;
                     gui.GetComponent<GUIText>().text = (string)messages[x];
 
                     //increment and loop

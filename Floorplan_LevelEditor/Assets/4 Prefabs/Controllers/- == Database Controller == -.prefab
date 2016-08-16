@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 411222}
   - 114: {fileID: 11408788}
-  - 114: {fileID: 11434348}
   - 114: {fileID: 11478270}
   - 114: {fileID: 11405188}
   - 114: {fileID: 11459282}
@@ -71,19 +70,27 @@ MonoBehaviour:
   ui_btnCreateSave: {fileID: 0}
   ui_dropdownStartLoad: {fileID: 0}
   ui_btnLoadArea: {fileID: 0}
-  areaSavePanel: {fileID: 0}
-  areaLoadPanel: {fileID: 0}
-  ui_btnOpenSavePane: {fileID: 0}
-  ui_btnOpenLoadPane: {fileID: 0}
-  ui_displayName: {fileID: 0}
-  ui_displayID: {fileID: 0}
-  ui_btnSaveSave: {fileID: 0}
-  ui_btnSaveCancel: {fileID: 0}
-  ui_SaveName: {fileID: 0}
-  ui_SaveID: {fileID: 0}
-  ui_btnLoadLoad: {fileID: 0}
-  ui_btnLoadCancel: {fileID: 0}
-  ui_dropdownLoad: {fileID: 0}
+  OptionsMainPanel: {fileID: 0}
+  OptionsSaveAsPanel: {fileID: 0}
+  OptionsLoadPanel: {fileID: 0}
+  OptionsCreateNewPanel: {fileID: 0}
+  OptionsQuitPanel: {fileID: 0}
+  ui_lastSaveTimeDisplay: {fileID: 0}
+  ui_inAppDisplayName: {fileID: 0}
+  ui_inAppDisplayID: {fileID: 0}
+  ui_OptDisplayName: {fileID: 0}
+  ui_OptDisplayID: {fileID: 0}
+  ui_OptSaveAsName: {fileID: 0}
+  ui_OptSaveAsID: {fileID: 0}
+  ui_btnSaveAsSaveAs: {fileID: 0}
+  ui_btnSaveAsCancel: {fileID: 0}
+  ui_btnOptLoadLoad: {fileID: 0}
+  ui_btnOptLoadCancel: {fileID: 0}
+  ui_dropdownOptLoad: {fileID: 0}
+  ui_OptCreateName: {fileID: 0}
+  ui_OptCreateID: {fileID: 0}
+  ui_btnOptCreateNew: {fileID: 0}
+  ui_btnOptCreateCancel: {fileID: 0}
 --- !u!114 &11406912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,22 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e34f286f9b29344a9aed92fcf74c9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11434348
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 150472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ec2f53356896f4ba7350942f526f91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currRoomID: 0
-  currRoomColor: {r: 0, g: 0, b: 0, a: 0}
-  currFloorName: 
-  currWallsName: 
-  currWOrientFlag: 0
 --- !u!114 &11436038
 MonoBehaviour:
   m_ObjectHideFlags: 1

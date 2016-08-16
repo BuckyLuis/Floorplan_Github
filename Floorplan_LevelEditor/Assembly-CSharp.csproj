@@ -68,6 +68,7 @@
      <Compile Include="Assets\5 Scripts\Placer\PlaceTile.cs" />
      <Compile Include="Assets\5 Scripts\Placer\PlacerMovement.cs" />
      <Compile Include="Assets\5 Scripts\Placer\TilePreviewer.cs" />
+     <Compile Include="Assets\5 Scripts\TimeSinceSave.cs" />
      <Compile Include="Assets\5 Scripts\old\BlueprintSys\DeActiveOnRClick.cs" />
      <Compile Include="Assets\5 Scripts\old\BlueprintSys\EraserScript.cs" />
      <Compile Include="Assets\5 Scripts\old\BlueprintSys2\DestroyOnRClick.cs" />
