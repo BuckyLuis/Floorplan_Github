@@ -17,4 +17,6 @@ public class Asset_Prop_Base {
     public Color assetTilesetColor;
     public GameObject worldObjectPrefab;
 
+    public int uvMapSectorFlag;
+
 }

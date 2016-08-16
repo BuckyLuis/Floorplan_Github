@@ -17,5 +17,5 @@ public class Asset_Doodad_Base {
     public Color assetTilesetColor;
     public GameObject worldObjectPrefab;
 
-
+    public int uvMapSectorFlag;
 }

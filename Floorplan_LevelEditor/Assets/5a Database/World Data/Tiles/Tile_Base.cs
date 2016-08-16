@@ -11,12 +11,15 @@ public class Tile_Base
 
     [XmlIgnore] public Vector3 Position;
     [XmlAttribute("Position")]      public string Pos_Surrogate{ get { return "";}
-                                                                      set { Position = new Vector3().FromString(value); }}
+                                                                 set { Position = new Vector3().FromString(value); }}
     
     [XmlElement("CategoryIndex")]   public int CategoryIndex {get; set;}
     [XmlElement("TileIndex")]	    public int TileIndex {get; set;}
 
     [XmlElement("TileFacingFlag")]  public int TileFacingFlag {get; set;}   //0-N, 1-E, 2-S, 3-W
+    [XmlElement("TextureSetName")]  public string TextureSetName {get; set;}
+
+
 }
 
 

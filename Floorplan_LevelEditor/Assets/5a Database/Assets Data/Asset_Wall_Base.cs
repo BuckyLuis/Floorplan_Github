@@ -17,5 +17,6 @@ public class Asset_Wall_Base {
     public Color assetTilesetColor;
     public GameObject worldObjectPrefab;
 
+    public int uvMapSectorFlag;
 
 }

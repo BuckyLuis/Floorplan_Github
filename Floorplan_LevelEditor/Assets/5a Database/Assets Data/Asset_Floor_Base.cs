@@ -16,4 +16,6 @@ public class Asset_Floor_Base  {
     public Sprite assetEntryIcon;
     public Color assetTilesetColor;
     public GameObject worldObjectPrefab;
+
+    public int uvMapSectorFlag;
 }
