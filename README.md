@@ -26,6 +26,7 @@
 * determine proper Asset Categories enums ( AssetsViewerAssetManagement.cs )
 
 
+
 * **- polish -**
 * draggable windows ??
 * additional hotkeys 
