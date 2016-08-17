@@ -21,7 +21,7 @@
 
 * save rooms and tiles to xml
 * reconstruct in-game runtime .xml to GameObjects -- Convert GameObject, Material etc references to be String refs = which tranlate to lookup the Gameobject, Material etc
-* AssetBundles ???
+* AssetBundles ??? .. or Resources folder ??? .. or a LevelGen Controller with Dictionaries ???
 
 * **EntityToPaint Menu**
 * determine what additional vars, etc.. each Entity Type requires , and the UI implementation for such vars
