@@ -13,11 +13,11 @@
 
 
 ## TODO: ##
-* 
 * toolbarUI
 * eraser, duplicates at a Pos prevention
 * map Tile[,] 2d array data basis
 * undo/redo , with multiple steps
+* removal of erased/ undone objects from Area lists
 
 * save rooms and tiles to xml
 * reconstruct in-game runtime .xml to GameObjects
