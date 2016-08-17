@@ -1,10 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TexturesViewerTexPreviewer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\AssetViewer\TexturesViewerTexAtlasManagement.cs">
     <Files>
-      <File FileName="Assets\5 Scripts\Menus\AssetViewer\TexturesViewerTexAtlasManagement.cs" Line="104" Column="10" />
-      <File FileName="Assets\5a Database\Assets Data\TextureAtlas_Base.cs" Line="10" Column="5" />
-      <File FileName="Assets\TexturesViewerTexPreviewer.cs" Line="60" Column="83" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\TexturesViewerTexAtlasManagement.cs" Line="25" Column="47" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerAssetManagement.cs" Line="9" Column="45" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\Entries\TexturesViewerEntry.cs" Line="28" Column="58" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\TexturesViewerTexPreviewer.cs" Line="13" Column="2" />
+      <File FileName="Assets\5a Database\Assets Data\TextureAtlas_Base.cs" Line="8" Column="46" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

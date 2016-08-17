@@ -14,22 +14,10 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
 
 //------------- Asset Datas ------------------              //! @TODO make all these assetViewerEntry BaseClasses Generic 
     public Asset_Floor_Base assetFloor_BaseObject;
-   /* public string assetName;
 
-    public Categories_Floors categoryFloors;
-
-    public string assetUsageSet;
-    public string assetDesc;
-*/
     public int assetIndex;
     string assetIndexString;
 
- /* public Sprite assetEntryIcon;
-    public Color assetTilesetColor;
-
-    public int uvMapSectorFlag;
-    public int meshsetFlag;
-    public string meshsetString;*/
 //----------- UI Refs ---------------------
     [Space(30)]
     [SerializeField] GameObject nameObject;
@@ -105,11 +93,10 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 1;
         textureViewerManageScript.ShowCompatTexAtlases(assetFloor_BaseObject.meshsetString);
 
-        tileToPaintScript.SetCurrentTileSprite(assetFloor_BaseObject.assetEntryIcon);
-        tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+        textureViewerManageScript.SelectDefaultTexAtlasEntry();   //calls SetSelectedMaterial()
     }
 
-    public void SelectFromHotkey() {        //called by hotkey -- AssetsViewerAssetManagement.EntryFromHotkey() -- which is called by AssetsViewerHotkeysUiControl.HotkeyPressedAssetsFirstDigit()
+    public void SelectFromHotkey() {                                //called by hotkey -- AssetsViewerAssetManagement.EntryFromHotkey() -- which is called by AssetsViewerHotkeysUiControl.HotkeyPressedAssetsFirstDigit()
         selectedToggle.group.SetAllTogglesOff();
         selectedToggle.isOn = true;
 
@@ -118,12 +105,20 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 1;
         textureViewerManageScript.ShowCompatTexAtlases(assetFloor_BaseObject.meshsetString);
 
-        tileToPaintScript.SetCurrentTileSprite(assetFloor_BaseObject.assetEntryIcon);
-        tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+        textureViewerManageScript.SelectDefaultTexAtlasEntry();     //calls SetSelectedMaterial()
     }
 
     public void SetSelectedMaterial(Material theMaterial) {
         assetFloor_BaseObject.assetMaterial = theMaterial;
+        assetFloor_BaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
+        textureViewerPreviewerScript.DrawTexturePreview(theMaterial);
+
+        SendInfoTo_TileToPaint();
+    }
+
+    void SendInfoTo_TileToPaint() {
+        tileToPaintScript.SetCurrentTileSprite(assetFloor_BaseObject.assetEntryIcon);
+        tileToPaintScript.SetCurrentTileGO(assetWorldObject);
     }
 
 }

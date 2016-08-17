@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class TexturesViewerEntry : MonoBehaviour {
 
     [SerializeField] GameObject assetsDbController;
+    TexturesViewerTexAtlasManagement textureViewerManageScript;
+    TexturesViewerTexPreviewer textureViewerPreviewerScript;
 
 
     public Material texAtlasMatObject;
@@ -49,6 +51,8 @@ public class TexturesViewerEntry : MonoBehaviour {
 
     void Start () {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
+        textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
+        textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
 
         nameText = nameObject.GetComponent<Text>();
         hkText2 = indexHkObject2.GetComponent<Text>();
@@ -88,17 +92,15 @@ public class TexturesViewerEntry : MonoBehaviour {
 
 
     public void ThisSelected(bool toggleStatus) {           //called by UItoggle
-
+        textureViewerManageScript.SelectAndApplyTexAtlasEntry(texAtlasBaseObject.texAtlasMatObject);
     }
 
     public void SelectFromHotkey() {
-        
+        selectedToggle.group.SetAllTogglesOff();
+        selectedToggle.isOn = true;
+
+        textureViewerManageScript.SelectAndApplyTexAtlasEntry(texAtlasBaseObject.texAtlasMatObject);
     }
-
-
-
-
-
-
+        
 
 }

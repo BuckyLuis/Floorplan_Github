@@ -45,6 +45,7 @@ GameObject:
   - 114: {fileID: 11439132}
   - 114: {fileID: 11419270}
   - 114: {fileID: 11430856}
+  - 114: {fileID: 11417852}
   m_Layer: 0
   m_Name: '- == AssetsDB Controller == -'
   m_TagString: AssetsDBController
@@ -105,11 +106,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texAtlasList:
-  - texAtlasName: 
+  - texAtlasName: TestAtlas000
     texAtlasCategory: 0
-    texAtlasCompatMeshsets: 
-    texAtlasTilesetColor: {r: 0, g: 0, b: 0, a: 0}
-    texAtlasMatObject: {fileID: 0}
+    texAtlasCompatMeshsets: 0
+    texAtlasTilesetColor: {r: 0.2769788, g: 0.8014706, b: 0.8014706, a: 0}
+    texAtlasMatObject: {fileID: 2100000, guid: 6835b341cb984014d8bb8dc2bfc9ae86, type: 2}
   texAtlasEntriesDict:
     _Buckets: ffffffffffffffffffffffff
     _HashCodes: 000000000000000000000000
@@ -126,9 +127,24 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+  currentSelAssetEntry: {fileID: 0}
+  currentSelAssetEntryTypeFlag: 0
+  currentCompatTexAtlasEntries: []
   viewAreaTexAtlas: {fileID: 0}
-  texAtlasEntryPrefab: {fileID: 0}
+  texAtlasEntryPrefab: {fileID: 140986, guid: cddc462539cd74f4f89795146c8bafa5, type: 2}
   ui_tglShowTexViewer: {fileID: 0}
+--- !u!114 &11417852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d037b5af4f7374a86c265baee06740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui_texPreviewerObject: {fileID: 0}
 --- !u!114 &11419270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -228,6 +244,7 @@ MonoBehaviour:
     assetEntryIcon: {fileID: 0}
     assetTilesetColor: {r: 0, g: 0, b: 0, a: 0}
     worldObjectPrefab: {fileID: 178938, guid: fc041408698de5f47b86f8166e681a6a, type: 2}
+    assetMaterial: {fileID: 0}
     uvMapSectorFlag: 0
     meshsetFlag: 0
     meshsetString: 
@@ -240,6 +257,7 @@ MonoBehaviour:
     assetEntryIcon: {fileID: 0}
     assetTilesetColor: {r: 0, g: 1, b: 0.17241383, a: 1}
     worldObjectPrefab: {fileID: 132144, guid: e8214cc73496a034586e14aa4e06beb9, type: 2}
+    assetMaterial: {fileID: 0}
     uvMapSectorFlag: 0
     meshsetFlag: 0
     meshsetString: 

@@ -42,7 +42,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theGridsObject: {fileID: 0}
   theMainCamera: {fileID: 0}
-  floorYSize: 2
+  floorYSize: 3
   ui_BtnElevateUp: {fileID: 0}
   ui_BtnCenterElevate: {fileID: 0}
   ui_BtnElevateDown: {fileID: 0}

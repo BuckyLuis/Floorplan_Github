@@ -49,6 +49,7 @@ public class AssetsViewerEntry_Walls : MonoBehaviour {
     void Start () {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
+        textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
         tileToPaintScript = assetsDbController.GetComponent<TileToPaintMenu>();
 
         nameText = nameObject.GetComponent<Text>();
@@ -89,14 +90,13 @@ public class AssetsViewerEntry_Walls : MonoBehaviour {
     public void ThisSelected(bool toggleStatus) {                   //called by UItoggle
         textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetWall_BaseObject.uvMapSectorFlag);
         textureViewerManageScript.currentSelAssetEntry = this.gameObject;
-        textureViewerManageScript.currentSelAssetEntryTypeFlag = 1;
+        textureViewerManageScript.currentSelAssetEntryTypeFlag = 2;
         textureViewerManageScript.ShowCompatTexAtlases(assetWall_BaseObject.meshsetString);
 
-        tileToPaintScript.SetCurrentTileSprite(assetWall_BaseObject.assetEntryIcon);
-        tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+        textureViewerManageScript.SelectDefaultTexAtlasEntry();   //calls SetSelectedMaterial()
     }
 
-    public void SelectFromHotkey() {        //called by hotkey -- AssetsViewerAssetManagement.EntryFromHotkey() -- which is called by AssetsViewerHotkeysUiControl.HotkeyPressedAssetsFirstDigit()
+    public void SelectFromHotkey() {                                //called by hotkey -- AssetsViewerAssetManagement.EntryFromHotkey() -- which is called by AssetsViewerHotkeysUiControl.HotkeyPressedAssetsFirstDigit()
         selectedToggle.group.SetAllTogglesOff();
         selectedToggle.isOn = true;
 
@@ -105,12 +105,20 @@ public class AssetsViewerEntry_Walls : MonoBehaviour {
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 2;
         textureViewerManageScript.ShowCompatTexAtlases(assetWall_BaseObject.meshsetString);
 
-        tileToPaintScript.SetCurrentTileSprite(assetWall_BaseObject.assetEntryIcon);
-        tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+        textureViewerManageScript.SelectDefaultTexAtlasEntry();     //calls SetSelectedMaterial()
     }
 
     public void SetSelectedMaterial(Material theMaterial) {
         assetWall_BaseObject.assetMaterial = theMaterial;
+        assetWall_BaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
+        textureViewerPreviewerScript.DrawTexturePreview(theMaterial);
+
+        SendInfoTo_TileToPaint();
+    }
+
+    void SendInfoTo_TileToPaint() {
+        tileToPaintScript.SetCurrentTileSprite(assetWall_BaseObject.assetEntryIcon);
+        tileToPaintScript.SetCurrentTileGO(assetWorldObject);
     }
 
 

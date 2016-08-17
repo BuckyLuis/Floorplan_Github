@@ -83,4 +83,12 @@ public class TexturesViewerTexPreviewer : MonoBehaviour {
                 break;
         }
 	}
+
+
+    public void DrawTexturePreview(Material theMaterial) {
+        uiRawImg_texPreviewer.texture = theMaterial.mainTexture;
+    }
+
+
+
 }
