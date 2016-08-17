@@ -24,8 +24,7 @@
 * determine what additional vars, etc.. each Entity Type requires , and the UI implementation for such vars
 
 * determine proper Asset Categories enums ( AssetsViewerAssetManagement.cs )
-
-
+------------
 
 * **- polish -**
 * draggable windows ??
