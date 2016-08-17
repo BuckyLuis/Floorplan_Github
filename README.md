@@ -11,7 +11,7 @@
 
 * other values = notApplicable / NotImplemented
 
-
+-----------------------------------
 ## TODO: ##
 * toolbarUI
 * eraser, duplicates at a Pos prevention
