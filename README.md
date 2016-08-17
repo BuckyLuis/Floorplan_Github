@@ -24,6 +24,7 @@
 
 * **EntityToPaint Menu**
 * determine what additional vars, etc.. each Entity Type requires , and the UI implementation for such vars
+* entity functionalities
 * determine proper Asset Categories enums ( AssetsViewerAssetManagement.cs )
 
 * **POPULATE ASSETS / TEXATLAS LISTS**
@@ -35,6 +36,8 @@
 * additional hotkeys 
 * tutorials for users
 * website links
+
+* possibly, a playtest ability ?
 
 
 
