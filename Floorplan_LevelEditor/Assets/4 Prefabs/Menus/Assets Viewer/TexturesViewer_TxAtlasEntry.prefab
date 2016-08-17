@@ -28,6 +28,7 @@ GameObject:
   - 222: {fileID: 22288984}
   - 114: {fileID: 11412382}
   - 114: {fileID: 11404480}
+  - 114: {fileID: 11415414}
   m_Layer: 0
   m_Name: TexturesViewer_TxAtlasEntry
   m_TagString: Untagged
@@ -200,6 +201,31 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11415414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03864aaa1eacb7946831c46fac59c046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assetsDbController: {fileID: 0}
+  texAtlasMatObject: {fileID: 0}
+  texAtlasBaseObject:
+    texAtlasName: 
+    texAtlasCategory: 0
+    texAtlasCompatMeshsets: 
+    texAtlasTilesetColor: {r: 0, g: 0, b: 0, a: 0}
+    texAtlasMatObject: {fileID: 0}
+  texAtlasDisplayTexture: {fileID: 0}
+  nameObject: {fileID: 0}
+  indexHkObject2: {fileID: 0}
+  indexHkObject3: {fileID: 0}
+  texDisplayObject: {fileID: 0}
+  toggleObject: {fileID: 0}
 --- !u!114 &11437452
 MonoBehaviour:
   m_ObjectHideFlags: 1

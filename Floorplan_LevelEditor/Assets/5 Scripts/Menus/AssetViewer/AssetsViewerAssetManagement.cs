@@ -103,18 +103,11 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempEntry = Instantiate(floorEntryPrefab);
             tempEntry.transform.SetParent(viewAreaFloors.transform, false);
             AssetsViewerEntry_Floors tempScript = tempEntry.GetComponent<AssetsViewerEntry_Floors>();
-            tempScript.categoryFloors = floorBasis.categoryFloors;
-            tempScript.assetName = floorBasis.assetName;
-            tempScript.assetUsageSet = floorBasis.assetUsageSet;
-            tempScript.assetDesc = floorBasis.assetDesc;
-            tempScript.assetIndex = floorBasis.assetIndex;
-            tempScript.assetEntryIcon = floorBasis.assetEntryIcon;
-            tempScript.assetTilesetColor = floorBasis.assetTilesetColor;
-            tempScript.assetWorldObject = floorBasis.worldObjectPrefab;
 
-            tempScript.uvMapSectorFlag = floorBasis.uvMapSectorFlag;       
-            tempScript.meshsetFlag = floorBasis.meshsetFlag;    
-            tempScript.meshsetString = "0|" + floorBasis.meshsetFlag.ToString();     //establish the texAtlasCategory relationship (0 - GEOMETRY)
+            tempScript.assetFloor_BaseObject = floorBasis;
+            tempScript.assetIndex = floorBasis.assetIndex;
+            tempScript.assetWorldObject = floorBasis.worldObjectPrefab;
+            tempScript.assetFloor_BaseObject.meshsetString = "0|" + floorBasis.meshsetFlag.ToString();     //establish the texAtlasCategory relationship (0 - GEOMETRY)
 
 
             assetsEntriesDict_Floors.Add(string.Format("{0},{1}", (int)floorBasis.categoryFloors, floorBasis.assetIndex), tempEntry);
@@ -148,18 +141,11 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempEntry = Instantiate(wallEntryPrefab);
             tempEntry.transform.SetParent(viewAreaWalls.transform, false);
             AssetsViewerEntry_Walls tempScript = tempEntry.GetComponent<AssetsViewerEntry_Walls>();
-            tempScript.categoryWalls = wallBasis.categoryWalls;
-            tempScript.assetName = wallBasis.assetName;
-            tempScript.assetUsageSet = wallBasis.assetUsageSet;
-            tempScript.assetDesc = wallBasis.assetDesc;
-            tempScript.assetIndex = wallBasis.assetIndex;
-            tempScript.assetEntryIcon = wallBasis.assetEntryIcon;
-            tempScript.assetTilesetColor = wallBasis.assetTilesetColor;
-            tempScript.assetWorldObject = wallBasis.worldObjectPrefab;
 
-            tempScript.uvMapSectorFlag = wallBasis.uvMapSectorFlag;
-            tempScript.meshsetFlag = wallBasis.meshsetFlag;
-            tempScript.meshsetString = "0|" + wallBasis.meshsetFlag.ToString();   //establish the texAtlasCategory relationship (0 - GEOMETRY)
+            tempScript.assetWall_BaseObject = wallBasis;
+            tempScript.assetIndex = wallBasis.assetIndex;
+            tempScript.assetWorldObject = wallBasis.worldObjectPrefab;
+            tempScript.assetWall_BaseObject.meshsetString = "0|" + wallBasis.meshsetFlag.ToString();   //establish the texAtlasCategory relationship (0 - GEOMETRY)
 
             assetsEntriesDict_Walls.Add(string.Format("{0},{1}", (int)wallBasis.categoryWalls, wallBasis.assetIndex), tempEntry);
         }
@@ -191,18 +177,11 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempEntry = Instantiate(doodadEntryPrefab);
             tempEntry.transform.SetParent(viewAreaDoodads.transform, false);
             AssetsViewerEntry_Doodads tempScript = tempEntry.GetComponent<AssetsViewerEntry_Doodads>();
-            tempScript.categoryDoodads = doodadBasis.categoryDoodads;
-            tempScript.assetName = doodadBasis.assetName;
-            tempScript.assetUsageSet = doodadBasis.assetUsageSet;
-            tempScript.assetDesc = doodadBasis.assetDesc;
-            tempScript.assetIndex = doodadBasis.assetIndex;
-            tempScript.assetEntryIcon = doodadBasis.assetEntryIcon;
-            tempScript.assetTilesetColor = doodadBasis.assetTilesetColor;
-            tempScript.assetWorldObject = doodadBasis.worldObjectPrefab;
 
-            tempScript.uvMapSectorFlag = doodadBasis.uvMapSectorFlag;
-            tempScript.meshsetFlag = doodadBasis.meshsetFlag;
-            tempScript.meshsetString = "1|" + doodadBasis.meshsetFlag.ToString();   //establish the texAtlasCategory relationship (1 - DOODADS)
+            tempScript.assetDoodad_BaseObject = doodadBasis;
+            tempScript.assetIndex = doodadBasis.assetIndex;
+            tempScript.assetWorldObject = doodadBasis.worldObjectPrefab;
+            tempScript.assetDoodad_BaseObject.meshsetString = "1|" + doodadBasis.meshsetFlag.ToString();   //establish the texAtlasCategory relationship (1 - DOODADS)
 
             assetsEntriesDict_Doodads.Add(string.Format("{0},{1}", (int)doodadBasis.categoryDoodads, doodadBasis.assetIndex), tempEntry);
         }
@@ -235,18 +214,11 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempEntry = Instantiate(propEntryPrefab);
             tempEntry.transform.SetParent(viewAreaProps.transform, false);
             AssetsViewerEntry_Props tempScript = tempEntry.GetComponent<AssetsViewerEntry_Props>();
-            tempScript.categoryProps = propBasis.categoryProps;
-            tempScript.assetName = propBasis.assetName;
-            tempScript.assetUsageSet = propBasis.assetUsageSet;
-            tempScript.assetDesc = propBasis.assetDesc;
-            tempScript.assetIndex = propBasis.assetIndex;
-            tempScript.assetEntryIcon = propBasis.assetEntryIcon;
-            tempScript.assetTilesetColor = propBasis.assetTilesetColor;
-            tempScript.assetWorldObject = propBasis.worldObjectPrefab;
 
-            tempScript.uvMapSectorFlag = propBasis.uvMapSectorFlag;
-            tempScript.meshsetFlag = propBasis.meshsetFlag;
-            tempScript.meshsetString = "2|" + propBasis.meshsetFlag.ToString();  //establish the texAtlasCategory relationship (2 - PROPS)
+            tempScript.assetProp_BaseObject = propBasis;
+            tempScript.assetIndex = propBasis.assetIndex;
+            tempScript.assetWorldObject = propBasis.worldObjectPrefab;
+            tempScript.assetProp_BaseObject.meshsetString = "2|" + propBasis.meshsetFlag.ToString();  //establish the texAtlasCategory relationship (2 - PROPS)
 
             assetsEntriesDict_Props.Add(string.Format("{0},{1}", (int)propBasis.categoryProps, propBasis.assetIndex), tempEntry);
         }
@@ -279,18 +251,11 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempEntry = Instantiate(actorEntryPrefab);
             tempEntry.transform.SetParent(viewAreaActors.transform, false);
             AssetsViewerEntry_Actors tempScript = tempEntry.GetComponent<AssetsViewerEntry_Actors>();
-            tempScript.categoryActors = actorBasis.categoryActors;
-            tempScript.assetName = actorBasis.assetName;
-            tempScript.assetUsageSet = actorBasis.assetUsageSet;
-            tempScript.assetDesc = actorBasis.assetDesc;
+         
+            tempScript.assetActor_BaseObject = actorBasis;
             tempScript.assetIndex = actorBasis.assetIndex;
-            tempScript.assetEntryIcon = actorBasis.assetEntryIcon;
-            tempScript.assetTilesetColor = actorBasis.assetTilesetColor;
             tempScript.assetWorldObject = actorBasis.worldObjectPrefab;
-
-            tempScript.uvMapSectorFlag = actorBasis.uvMapSectorFlag;
-            tempScript.meshsetFlag = actorBasis.meshsetFlag;
-            tempScript.meshsetString = "3|" + actorBasis.meshsetFlag.ToString(); //establish the texAtlasCategory relationship (3 - ACTORS)
+            tempScript.assetActor_BaseObject.meshsetString = "3|" + actorBasis.meshsetFlag.ToString(); //establish the texAtlasCategory relationship (3 - ACTORS)
 
             assetsEntriesDict_Actors.Add(string.Format("{0},{1}", (int)actorBasis.categoryActors, actorBasis.assetIndex), tempEntry);
         }
@@ -323,15 +288,10 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempEntry = Instantiate(triggerEntryPrefab);
             tempEntry.transform.SetParent(viewAreaTriggers.transform, false);
             AssetsViewerEntry_Triggers tempScript = tempEntry.GetComponent<AssetsViewerEntry_Triggers>();
-            tempScript.categoryTriggers = triggerBasis.categoryTriggers;
-            tempScript.assetName = triggerBasis.assetName;
-            tempScript.assetUsageSet = triggerBasis.assetUsageSet;
-            tempScript.assetDesc = triggerBasis.assetDesc;
-            tempScript.assetIndex = triggerBasis.assetIndex;
-            tempScript.assetEntryIcon = triggerBasis.assetEntryIcon;
-            tempScript.assetTilesetColor = triggerBasis.assetTilesetColor;
-            tempScript.assetWorldObject = triggerBasis.worldObjectPrefab;
 
+            tempScript.assetTrigger_BaseObject = triggerBasis;
+            tempScript.assetIndex = triggerBasis.assetIndex;
+            tempScript.assetWorldObject = triggerBasis.worldObjectPrefab;
             //triggers have no in-game texture
 
             assetsEntriesDict_Triggers.Add(string.Format("{0}|{1}", (int)triggerBasis.categoryTriggers, triggerBasis.assetIndex), tempEntry);

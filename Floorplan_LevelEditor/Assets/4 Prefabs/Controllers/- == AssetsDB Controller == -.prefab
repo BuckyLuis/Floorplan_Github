@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &107510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 424378}
+  - 114: {fileID: 11494768}
+  m_Layer: 0
+  m_Name: ToggleGroup_TexAtlases
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &188596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 480514}
+  - 114: {fileID: 11442878}
+  m_Layer: 0
+  m_Name: ToggleGroup_Assets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &192832
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +45,6 @@ GameObject:
   - 114: {fileID: 11439132}
   - 114: {fileID: 11419270}
   - 114: {fileID: 11430856}
-  - 114: {fileID: 11457842}
   m_Layer: 0
   m_Name: '- == AssetsDB Controller == -'
   m_TagString: AssetsDBController
@@ -21,6 +52,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &424378
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107510}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 475634}
+  m_RootOrder: 1
 --- !u!4 &475634
 Transform:
   m_ObjectHideFlags: 1
@@ -31,8 +75,23 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 480514}
+  - {fileID: 424378}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &480514
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 475634}
   m_RootOrder: 0
 --- !u!114 &11414772
 MonoBehaviour:
@@ -69,6 +128,7 @@ MonoBehaviour:
     - {fileID: 0}
   viewAreaTexAtlas: {fileID: 0}
   texAtlasEntryPrefab: {fileID: 0}
+  ui_tglShowTexViewer: {fileID: 0}
 --- !u!114 &11419270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,12 +196,12 @@ MonoBehaviour:
   ui_TxtRoomID: {fileID: 0}
   ui_RoomColor: {fileID: 0}
   ui_ImgTileIcon: {fileID: 0}
---- !u!114 &11457842
+--- !u!114 &11442878
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192832}
+  m_GameObject: {fileID: 188596}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1184210157, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
@@ -295,6 +355,18 @@ MonoBehaviour:
   propEntryPrefab: {fileID: 101784, guid: 307f48f53c727814fbea997a537e6a9f, type: 2}
   actorEntryPrefab: {fileID: 140424, guid: 385abfa716fa19246b8a219067836af5, type: 2}
   triggerEntryPrefab: {fileID: 178688, guid: 289b4d0d358e9a04d8afe1be52c7d072, type: 2}
+--- !u!114 &11494768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1184210157, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

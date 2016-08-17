@@ -16,6 +16,7 @@ public class Asset_Floor_Base  {
     public Color assetTilesetColor;
     public GameObject worldObjectPrefab;
 
+    [HideInInspector] public Material assetMaterial;
     public int uvMapSectorFlag;
     public int meshsetFlag;
     [HideInInspector] public string meshsetString;

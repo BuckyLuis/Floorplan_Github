@@ -12,18 +12,10 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
     public GameObject assetWorldObject;
 
     //------------- Asset Datas ------------------
-    public string assetName;
-
-    public Categories_Triggers categoryTriggers;
-
-    public string assetUsageSet;
-    public string assetDesc;
+    public Asset_Trigger_Base assetTrigger_BaseObject;
 
     public int assetIndex;
     string assetIndexString;
-
-    public Sprite assetEntryIcon;
-    public Color assetTilesetColor;
 
     //triggers have no ingame textures
 
@@ -71,12 +63,12 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
         tilesetColor = colorObject.GetComponent<Image>();
 
         selectedToggle = toggleObject.GetComponent<Toggle>();
-        selectedToggle.group = assetsDbController.GetComponent<ToggleGroup>();
+        selectedToggle.group = assetsDbController.transform.GetChild(0).GetComponent<ToggleGroup>();
 
         //---------------------- assign datas to asset entries ---------------------
-        nameText.text = assetName;
-        usageText.text = assetUsageSet;
-        descText.text = assetDesc;
+        nameText.text = assetTrigger_BaseObject.assetName;
+        usageText.text = assetTrigger_BaseObject.assetUsageSet;
+        descText.text = assetTrigger_BaseObject.assetDesc;
 
         assetIndexString = assetIndex.ToString();
         if(assetIndexString.Length > 1) {
@@ -87,8 +79,8 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
             hkText0.text = assetIndexString;   
             hkText1.text = "";
         }
-        iconSprite = assetEntryIcon;
-        tilesetColor.color = assetTilesetColor;
+        iconSprite = assetTrigger_BaseObject.assetEntryIcon;
+        tilesetColor.color = assetTrigger_BaseObject.assetTilesetColor;
 
         //------- Assign Toggle Listener ----------
         selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
@@ -96,7 +88,7 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
 
 
     public void ThisSelected(bool toggleStatus) {                   //called by UItoggle
-        tileToPaintScript.SetCurrentTileSprite(assetEntryIcon);
+        tileToPaintScript.SetCurrentTileSprite(assetTrigger_BaseObject.assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
     }
 
@@ -104,7 +96,7 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
         selectedToggle.group.SetAllTogglesOff();
         selectedToggle.isOn = true;
 
-        tileToPaintScript.SetCurrentTileSprite(assetEntryIcon);
+        tileToPaintScript.SetCurrentTileSprite(assetTrigger_BaseObject.assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
     }
 

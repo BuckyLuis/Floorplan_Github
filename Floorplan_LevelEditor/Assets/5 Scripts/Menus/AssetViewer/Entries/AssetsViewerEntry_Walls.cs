@@ -6,28 +6,18 @@ public class AssetsViewerEntry_Walls : MonoBehaviour {
 
     [SerializeField] GameObject assetsDbController;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
+    TexturesViewerTexPreviewer textureViewerPreviewerScript;
     TileToPaintMenu tileToPaintScript;
 
 
     public GameObject assetWorldObject;
 
     //------------- Asset Datas ------------------
-    public string assetName;
-
-    public Categories_Walls categoryWalls;
-
-    public string assetUsageSet;
-    public string assetDesc;
+    public Asset_Wall_Base assetWall_BaseObject;
 
     public int assetIndex;
     string assetIndexString;
 
-    public Sprite assetEntryIcon;
-    public Color assetTilesetColor;
-
-    public int uvMapSectorFlag;
-    public int meshsetFlag;
-    public string meshsetString;
     //----------- UI Refs ---------------------
     [Space(30)]
     [SerializeField] GameObject nameObject;
@@ -72,12 +62,12 @@ public class AssetsViewerEntry_Walls : MonoBehaviour {
         tilesetColor = colorObject.GetComponent<Image>();
 
         selectedToggle = toggleObject.GetComponent<Toggle>();
-        selectedToggle.group = assetsDbController.GetComponent<ToggleGroup>();
+        selectedToggle.group = assetsDbController.transform.GetChild(0).GetComponent<ToggleGroup>();
 
         //---------------------- assign datas to asset entries ---------------------
-        nameText.text = assetName;
-        usageText.text = assetUsageSet;
-        descText.text = assetDesc;
+        nameText.text = assetWall_BaseObject.assetName;
+        usageText.text = assetWall_BaseObject.assetUsageSet;
+        descText.text = assetWall_BaseObject.assetDesc;
 
         assetIndexString = assetIndex.ToString();
         if(assetIndexString.Length > 1) {
@@ -88,8 +78,8 @@ public class AssetsViewerEntry_Walls : MonoBehaviour {
             hkText0.text = assetIndexString;   
             hkText1.text = "";
         }
-        iconSprite = assetEntryIcon;
-        tilesetColor.color = assetTilesetColor;
+        iconSprite = assetWall_BaseObject.assetEntryIcon;
+        tilesetColor.color = assetWall_BaseObject.assetTilesetColor;
 
         //------- Assign Toggle Listener ----------
         selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
@@ -97,9 +87,12 @@ public class AssetsViewerEntry_Walls : MonoBehaviour {
 
 
     public void ThisSelected(bool toggleStatus) {                   //called by UItoggle
-        textureViewerManageScript.ShowCompatTexAtlases(meshsetString);
+        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetWall_BaseObject.uvMapSectorFlag);
+        textureViewerManageScript.currentSelAssetEntry = this.gameObject;
+        textureViewerManageScript.currentSelAssetEntryTypeFlag = 1;
+        textureViewerManageScript.ShowCompatTexAtlases(assetWall_BaseObject.meshsetString);
 
-        tileToPaintScript.SetCurrentTileSprite(assetEntryIcon);
+        tileToPaintScript.SetCurrentTileSprite(assetWall_BaseObject.assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
     }
 
@@ -107,10 +100,17 @@ public class AssetsViewerEntry_Walls : MonoBehaviour {
         selectedToggle.group.SetAllTogglesOff();
         selectedToggle.isOn = true;
 
-        textureViewerManageScript.ShowCompatTexAtlases(meshsetString);
+        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetWall_BaseObject.uvMapSectorFlag);
+        textureViewerManageScript.currentSelAssetEntry = this.gameObject;
+        textureViewerManageScript.currentSelAssetEntryTypeFlag = 2;
+        textureViewerManageScript.ShowCompatTexAtlases(assetWall_BaseObject.meshsetString);
 
-        tileToPaintScript.SetCurrentTileSprite(assetEntryIcon);
+        tileToPaintScript.SetCurrentTileSprite(assetWall_BaseObject.assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+    }
+
+    public void SetSelectedMaterial(Material theMaterial) {
+        assetWall_BaseObject.assetMaterial = theMaterial;
     }
 
 
