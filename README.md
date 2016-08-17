@@ -32,6 +32,7 @@
 -----------------------------------
 
 * **- polish -**
+* better assetPlacement drag painting
 * draggable windows ??
 * additional hotkeys 
 * tutorials for users
