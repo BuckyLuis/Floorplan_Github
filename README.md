@@ -12,6 +12,28 @@
 * other values = notApplicable / NotImplemented
 
 
+## TODO: ##
+* 
+* toolbarUI
+* eraser, duplicates at a Pos prevention
+* map Tile[,] 2d array data basis
+* undo/redo , with multiple steps
+* save rooms and tiles to xml
+* reconstruct in-game runtime .xml to GameObjects
+* **EntityToPaint Menu**
+* determine what additional vars, etc.. each Entity Type requires , and the UI implementation for such vars
+
+* determine proper Asset Categories enums ( AssetsViewerAssetManagement.cs )
+
+
+* **- polish -**
+* draggable windows ??
+* additional hotkeys 
+* tutorials for users
+* website links
+
+
+
 
 
 -----------------------------------
