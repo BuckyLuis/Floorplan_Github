@@ -1,5 +1,5 @@
 # README #
-**Floorplan** - tilebased level editor intended for 3D mesh application,  Unity3D 5.35
+**Floorplan** - tilebased level editor intended for use with 3D mesh applications,  Unity3D 5.35
 
 
 -----------------------------------
