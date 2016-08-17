@@ -20,7 +20,7 @@
 * removal of erased/ undone objects from Area lists
 
 * save rooms and tiles to xml
-* reconstruct in-game runtime .xml to GameObjects
+* reconstruct in-game runtime .xml to GameObjects -- Convert GameObject, Material etc references to be String refs = which tranlate to lookup the Gameobject, Material etc
 
 * **EntityToPaint Menu**
 * determine what additional vars, etc.. each Entity Type requires , and the UI implementation for such vars
