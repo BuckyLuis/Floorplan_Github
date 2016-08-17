@@ -21,7 +21,7 @@
 
 * add rooms/tiles to Area Lists -- save rooms and tiles to xml
 * reconstruct in-game runtime .xml to GameObjects -- Convert GameObject, Material etc references to be String refs = used to lookup the Gameobject, Material etc
-* AssetBundles ??? .. or Resources folder ??? .. or a LevelGenController with Dictionaries ???
+* AssetBundles ??? .. or Resources folder ??? .. or a LevelGenController with Dictionaries ??? .. XML Asset BaseClasses read ingame and load Prefabs
 
 * **EntityToPaint Menu**
 * determine what additional vars, etc.. each Entity Type requires , and the UI implementation for such vars
