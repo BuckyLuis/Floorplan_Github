@@ -38,7 +38,7 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
     GameObject tempEntry;
     string tempDictString;
 
-    int entriesHkIndexCounter;
+    int currEntriesIndexCounter;
 
 
 
@@ -76,7 +76,7 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
         string inCategoryFlag = tempStringArrayMS[0];
 
         currentCompatTexAtlasEntries.Clear();
-        entriesHkIndexCounter = 1;
+        currEntriesIndexCounter = 1;
         foreach (KeyValuePair<string, GameObject> texAtlasEntry in texAtlasEntriesDict) {
             tempStringArray0 = texAtlasEntry.Key.Split('|');    //split the DictKey string
             string theCategoryFlag = tempStringArray0[0];
@@ -84,8 +84,8 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
             if(theCategoryFlag == inCategoryFlag) {
                 if(SplitDictKey_GetCompat(texAtlasEntry, inMeshsetFlag) == true) {
                     texAtlasEntry.Value.SetActive(true);
-                    texAtlasEntry.Value.GetComponent<TexturesViewerEntry>().SetHkIndex(entriesHkIndexCounter);
-                    entriesHkIndexCounter++;
+                    texAtlasEntry.Value.GetComponent<TexturesViewerEntry>().SetHkIndex(currEntriesIndexCounter);
+                    currEntriesIndexCounter++;
                     currentCompatTexAtlasEntries.Add(texAtlasEntry.Value);
                 }
                 else {

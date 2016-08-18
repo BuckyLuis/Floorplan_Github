@@ -55,8 +55,8 @@ public class TexturesViewerEntry : MonoBehaviour {
         textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
 
         nameText = nameObject.GetComponent<Text>();
-        hkText2 = indexHkObject2.GetComponent<Text>();
-        hkText3 = indexHkObject3.GetComponent<Text>();    
+      //  hkText2 = indexHkObject2.GetComponent<Text>();
+      //  hkText3 = indexHkObject3.GetComponent<Text>();    
 
         tilesetColor = colorObject.GetComponent<Image>();
         texDisplayRawImg = texDisplayObject.GetComponent<RawImage>();
@@ -78,8 +78,11 @@ public class TexturesViewerEntry : MonoBehaviour {
 
     public void SetHkIndex(int inHkIndex) {
         hkIndex = inHkIndex;
-
         hkIndexString = hkIndex.ToString();
+
+        hkText2 = indexHkObject2.GetComponent<Text>();
+        hkText3 = indexHkObject3.GetComponent<Text>();    
+
         if(hkIndexString.Length > 1) {
             hkText2.text = hkIndexString[1].ToString();       // in the string "42"  4 is index 0 ... hkText0 is "2" 
             hkText3.text = hkIndexString[0].ToString();

@@ -110,7 +110,7 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempScript.assetFloor_BaseObject.meshsetString = "0|" + floorBasis.meshsetFlag.ToString();     //establish the texAtlasCategory relationship (0 - GEOMETRY)
 
 
-            assetsEntriesDict_Floors.Add(string.Format("{0},{1}", (int)floorBasis.categoryFloors, floorBasis.assetIndex), tempEntry);
+            assetsEntriesDict_Floors.Add(string.Format("{0}|{1}", (int)floorBasis.categoryFloors, floorBasis.assetIndex), tempEntry);
         }
 
         assetIndexCounterCat0 = 1;
@@ -147,7 +147,7 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempScript.assetWorldObject = wallBasis.worldObjectPrefab;
             tempScript.assetWall_BaseObject.meshsetString = "0|" + wallBasis.meshsetFlag.ToString();   //establish the texAtlasCategory relationship (0 - GEOMETRY)
 
-            assetsEntriesDict_Walls.Add(string.Format("{0},{1}", (int)wallBasis.categoryWalls, wallBasis.assetIndex), tempEntry);
+            assetsEntriesDict_Walls.Add(string.Format("{0}|{1}", (int)wallBasis.categoryWalls, wallBasis.assetIndex), tempEntry);
         }
 
         assetIndexCounterCat0 = 1;
@@ -183,7 +183,7 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempScript.assetWorldObject = doodadBasis.worldObjectPrefab;
             tempScript.assetDoodad_BaseObject.meshsetString = "1|" + doodadBasis.meshsetFlag.ToString();   //establish the texAtlasCategory relationship (1 - DOODADS)
 
-            assetsEntriesDict_Doodads.Add(string.Format("{0},{1}", (int)doodadBasis.categoryDoodads, doodadBasis.assetIndex), tempEntry);
+            assetsEntriesDict_Doodads.Add(string.Format("{0}|{1}", (int)doodadBasis.categoryDoodads, doodadBasis.assetIndex), tempEntry);
         }
 
         assetIndexCounterCat0 = 1;
@@ -220,7 +220,7 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempScript.assetWorldObject = propBasis.worldObjectPrefab;
             tempScript.assetProp_BaseObject.meshsetString = "2|" + propBasis.meshsetFlag.ToString();  //establish the texAtlasCategory relationship (2 - PROPS)
 
-            assetsEntriesDict_Props.Add(string.Format("{0},{1}", (int)propBasis.categoryProps, propBasis.assetIndex), tempEntry);
+            assetsEntriesDict_Props.Add(string.Format("{0}|{1}", (int)propBasis.categoryProps, propBasis.assetIndex), tempEntry);
         }
 
         assetIndexCounterCat0 = 1;
@@ -257,7 +257,7 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempScript.assetWorldObject = actorBasis.worldObjectPrefab;
             tempScript.assetActor_BaseObject.meshsetString = "3|" + actorBasis.meshsetFlag.ToString(); //establish the texAtlasCategory relationship (3 - ACTORS)
 
-            assetsEntriesDict_Actors.Add(string.Format("{0},{1}", (int)actorBasis.categoryActors, actorBasis.assetIndex), tempEntry);
+            assetsEntriesDict_Actors.Add(string.Format("{0}|{1}", (int)actorBasis.categoryActors, actorBasis.assetIndex), tempEntry);
         }
 
         assetIndexCounterCat0 = 1;
