@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TileData : MonoBehaviour 
 {
-	public int Tile_ID;
+/*	public int Tile_ID;
 
 	[HideInInspector] public int IndexID;
     [HideInInspector] public int RoomIndex;
@@ -19,8 +19,8 @@ public class TileData : MonoBehaviour
         RoomIndex = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].RoomID;
         Position = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].Position;
         CategoryIndex = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].CategoryIndex;
-        TileIndex = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].TileIndex;
+        TileIndex = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].AssetIndex;
         TileFacingFlag = Tile_ReadWrite.Tiles_DataObject.tiles[Tile_ID].TileFacingFlag;
     }       
-
+*/
 }

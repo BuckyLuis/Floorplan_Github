@@ -45,7 +45,6 @@ public class Entity_ReadWrite : MonoBehaviour
 	public void WriteXMLData(int writeDisplayName, string writeFileName)
 	{
         Tile_Base tileW = new Tile_Base();
-        tileW.IndexID = writeDisplayName;
 		GetCombinedPath();
 		WriteToXML(tileW);
 	}

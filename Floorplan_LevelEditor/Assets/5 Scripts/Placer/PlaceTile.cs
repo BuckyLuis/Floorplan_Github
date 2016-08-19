@@ -1,18 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.EventSystems;
 
 public class PlaceTile : MonoBehaviour {
 
-
     [SerializeField] GameObject AreaTileParent;
     [SerializeField] GameObject AreaEntityParent;
 
-    //-------------- Public vars - defined In-Editor ----------------------------------
-    [SerializeField] TileToPaintMenu tileToPaintMenu;
-    [SerializeField] EntityToPaintMenu entityToPaintMenu;
-    public bool tile0_entity1;
+ 
+    //---------------- Tile_Base vars ----------------------------------
+    Tile_Base tempTileBaseObject;
+    public int roomID  {get; protected set;}
+    int categoryIndex;
+    int assetIndex;
+    string materialName;
+    float tileFacingRot;
+  
 
+    //----------- undo - redo -----------------------------------------
+    [SerializeField] GameObject ToolsController;
+    UndoRedoManager undoRedoManagerScript;
+
+    List<GameObject> createdTilesListUR = new List<GameObject>();  //list to send to UndoRedoManager
+    List<Tile_Base> tileBaseListUR = new List<Tile_Base>();
+
+
+    //-------------- Public vars - defined In-Editor ----------------------------------
+
+    public bool tile0_entity1;
 
     public GameObject placeholder;
     private GameObject instPlaceholder;
@@ -20,23 +36,16 @@ public class PlaceTile : MonoBehaviour {
     [SerializeField] GameObject roomBelongingMarker;
     [SerializeField] GameObject worldObjectInfo;
 
-
     int tileGridSize = 2;
     int entityGridSize = 1;
-
     public int gridSize = 2;
 
     //-------------- Public vars - defined via Runtime GUI --------------------------------
 
     public float objectFacingYrot {get; protected set;}
 
-    public int roomID  {get; protected set;}
     public Color roomColor {get; protected set;}
-
     public GameObject objToPlace_Prefab {get; protected set;}
-   
-  
-
 
     //--------------- Temp vars ----------------------------
     GameObject tempTileObject;
@@ -57,6 +66,12 @@ public class PlaceTile : MonoBehaviour {
     int TileZPos;
     //-----------------------------------------------------------------
 
+
+
+
+    void Start() {
+        undoRedoManagerScript = ToolsController.GetComponent<UndoRedoManager>();
+    }
 
 
     void Update() {
@@ -120,10 +135,11 @@ public class PlaceTile : MonoBehaviour {
         
 
     void CreateTiles() {
+        createdTilesListUR.Clear();
         for(int xL = 0; xL < TileGridSizeX; xL++) {                 //xL , zL are local (relative to parentCell) coords!
             for(int zL = 0; zL < TileGridSizeZ; zL++) {
-                tempTileObject = (GameObject)Instantiate(objToPlace_Prefab, new Vector3((xL * gridSize)+ Click_origPos.x, 0, (zL * gridSize)+ Click_origPos.z), 
-                                                                    Quaternion.Euler(objToPlace_Prefab.transform.rotation.x, objectFacingYrot, objToPlace_Prefab.transform.rotation.z));
+                Vector3 thePosition = new Vector3((xL * gridSize)+ Click_origPos.x, 0, (zL * gridSize)+ Click_origPos.z);
+                tempTileObject = (GameObject)Instantiate(objToPlace_Prefab, thePosition, Quaternion.Euler(objToPlace_Prefab.transform.rotation.x, objectFacingYrot, objToPlace_Prefab.transform.rotation.z));
                 
                 tempTileObject.name = string.Format ("Rm: {0} / G: ({1},{2},{3}) {4}°", roomID, tempTileObject.transform.position.x, tempTileObject.transform.position.y, tempTileObject.transform.position.z, objectFacingYrot);
                
@@ -136,18 +152,35 @@ public class PlaceTile : MonoBehaviour {
 
                 tempWorldObjectInfo = (GameObject)Instantiate(worldObjectInfo, Vector3.zero, Quaternion.identity);
                 tempWorldObjectInfo.transform.SetParent(tempTileObject.transform, false);
+   
+                tempTileBaseObject = new Tile_Base();
+                tempTileBaseObject.RoomID = roomID;
+                tempTileBaseObject.Position = thePosition;
+                tempTileBaseObject.CategoryIndex = categoryIndex;
+                tempTileBaseObject.AssetIndex = assetIndex;
+                tempTileBaseObject.MaterialName = materialName;
+                tempTileBaseObject.TileFacingRot = tileFacingRot;
 
-               
+                tempTileBaseObject.editorGoName = tempTileObject.name;
+                tempTileBaseObject.theGameObjectPrefab = objToPlace_Prefab;
+
+                tempWorldObjectInfo.GetComponent<WorldObjectInfo>().tileObject = tempTileBaseObject;
+
+
+                createdTilesListUR.Add(tempTileObject); //undoRedoList
+                tileBaseListUR.Add(tempTileBaseObject);
             }
         }
+        undoRedoManagerScript.AddAStep(createdTilesListUR, tileBaseListUR);
 
     }
 
 
     //--------- Methods for GUI to process --------------
 
-    public void AssignFacingYrot(int tileFacingFlag) {
-        switch (tileFacingFlag)
+    public void AssignFacingYrot(float theTileFacingRot) {
+        tileFacingRot = theTileFacingRot;
+     /*   switch (tileFacingRot)
         {
             case 0:
                 objectFacingYrot = 0;
@@ -161,7 +194,7 @@ public class PlaceTile : MonoBehaviour {
             case 3:
                 objectFacingYrot = 270;
                 break;
-        }
+        }*/
     }
 
 
@@ -173,11 +206,17 @@ public class PlaceTile : MonoBehaviour {
         roomColor = theRoomColor;
     }
 
-
-
+    public void AssignIndicesAndMatName(int theCategoryIndex, int theAssetIndex, string theMaterialName)
+    {
+        categoryIndex = theCategoryIndex;
+        assetIndex = theAssetIndex;
+        materialName = theMaterialName;
+    }
+             
     public void AssignTileToBePlaced(GameObject theTileToPlace) {
         tile0_entity1 = false;
         gridSize = tileGridSize;
+
         objToPlace_Prefab = theTileToPlace;
     }
 
@@ -187,8 +226,7 @@ public class PlaceTile : MonoBehaviour {
         objToPlace_Prefab = theEntityToPlace;
     }
 
-
-
+  
   
 
 

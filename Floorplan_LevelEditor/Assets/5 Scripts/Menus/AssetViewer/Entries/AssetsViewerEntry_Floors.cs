@@ -9,6 +9,9 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
     TileToPaintMenu tileToPaintScript;
 
+    [SerializeField] GameObject tilePlacerObject;
+    PlaceTile tilePlacerScript;
+
 
     public GameObject assetWorldObject;
 
@@ -18,7 +21,7 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
     public int assetIndex;
     string assetIndexString;
 
-//----------- UI Refs ---------------------
+//----------- UI Refs ------------------------
     [Space(30)]
     [SerializeField] GameObject nameObject;
     [SerializeField] GameObject usageObject;
@@ -51,6 +54,9 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
         tileToPaintScript = assetsDbController.GetComponent<TileToPaintMenu>();
+
+        tilePlacerScript = tilePlacerObject.GetComponent<PlaceTile>();
+
 
         nameText = nameObject.GetComponent<Text>();
         usageText = usageObject.GetComponent<Text>();
@@ -108,7 +114,7 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
         textureViewerManageScript.SelectDefaultTexAtlasEntry();     //calls SetSelectedMaterial()
     }
 
-    public void SetSelectedMaterial(Material theMaterial) {
+    public void SetSelectedMaterial(Material theMaterial) {         //called by TexAtlasManager, when this assetEntry is selected(assigning default texAtlas) ... OR by way of a TexAtlasEntry having been selected 
         assetFloor_BaseObject.assetMaterial = theMaterial;
         assetFloor_BaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
         textureViewerPreviewerScript.DrawTexturePreview(theMaterial);
@@ -118,7 +124,7 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
 
     void SendInfoTo_TileToPaint() {
         tileToPaintScript.SetCurrentTileSprite(assetFloor_BaseObject.assetEntryIcon);
-        tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+        tilePlacerScript.AssignIndicesAndMatName((int)assetFloor_BaseObject.categoryFloors, assetFloor_BaseObject.assetIndex, assetFloor_BaseObject.assetMaterialName);
     }
 
 }

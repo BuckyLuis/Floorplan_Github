@@ -136,8 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AreaTileParent: {fileID: 0}
   AreaEntityParent: {fileID: 0}
-  tileToPaintMenu: {fileID: 0}
-  entityToPaintMenu: {fileID: 0}
+  ToolsController: {fileID: 0}
   tile0_entity1: 0
   placeholder: {fileID: 163264, guid: 595ae79fdaae7064698d7373616fa616, type: 2}
   roomBelongingMarker: {fileID: 194708, guid: dc171256c9f73a3428346c9fc9c30cab, type: 2}

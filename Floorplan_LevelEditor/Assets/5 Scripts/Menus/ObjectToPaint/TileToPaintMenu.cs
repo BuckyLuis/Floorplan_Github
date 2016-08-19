@@ -14,15 +14,10 @@ public class TileToPaintMenu : MonoBehaviour {
 
 
 //--------- Tile Data ---------------
-    public int tileFacingFlag  {get; protected set;}
+    public float tileFacingRot  {get; protected set;}
 
     public int currentRoomID  {get; protected set;}
     public Color currentRoomColor {get; protected set;}
- 
-    public Sprite tileIconSprite  {get; protected set;}
-    public GameObject tileGameObject {get; protected set;}
-
- 
 
     public int selectedTileIndex;
 
@@ -65,7 +60,7 @@ public class TileToPaintMenu : MonoBehaviour {
         uiImg_tileFacingSel_S = ui_TileFacingSel_S.transform.GetComponent<Image>();
         uiImg_tileFacingSel_W = ui_TileFacingSel_W.transform.GetComponent<Image>();
 
-        tileFacingFlag = 0;
+        tileFacingRot = 0;
         uiImg_tileFacingSel_N.enabled = true;
         uiImg_tileFacingSel_E.enabled = false;
         uiImg_tileFacingSel_S.enabled = false;
@@ -94,43 +89,43 @@ public class TileToPaintMenu : MonoBehaviour {
 	}
 
     public void TileFacing_N() {
-        tileFacingFlag = 0;
+        tileFacingRot = 180;
         uiImg_tileFacingSel_N.enabled = true;
         uiImg_tileFacingSel_E.enabled = false;
         uiImg_tileFacingSel_S.enabled = false;
         uiImg_tileFacingSel_W.enabled = false; 
 
-        tilePlacerScript.AssignFacingYrot(tileFacingFlag);
+        tilePlacerScript.AssignFacingYrot(tileFacingRot);
     }
 
     public void TileFacing_E() {
-        tileFacingFlag = 1;
+        tileFacingRot = 90;
         uiImg_tileFacingSel_N.enabled = false;
         uiImg_tileFacingSel_E.enabled = true;
         uiImg_tileFacingSel_S.enabled = false;
         uiImg_tileFacingSel_W.enabled = false; 
 
-        tilePlacerScript.AssignFacingYrot(tileFacingFlag);
+        tilePlacerScript.AssignFacingYrot(tileFacingRot);
     }
 
     public void TileFacing_S() {
-        tileFacingFlag = 2;
+        tileFacingRot = 0;
         uiImg_tileFacingSel_N.enabled = false;
         uiImg_tileFacingSel_E.enabled = false;
         uiImg_tileFacingSel_S.enabled = true;
         uiImg_tileFacingSel_W.enabled = false; 
 
-        tilePlacerScript.AssignFacingYrot(tileFacingFlag);
+        tilePlacerScript.AssignFacingYrot(tileFacingRot);
     }
 
     public void TileFacing_W() {
-        tileFacingFlag = 3;
+        tileFacingRot = 270;
         uiImg_tileFacingSel_N.enabled = false;
         uiImg_tileFacingSel_E.enabled = false;
         uiImg_tileFacingSel_S.enabled = false;
         uiImg_tileFacingSel_W.enabled = true; 
 
-        tilePlacerScript.AssignFacingYrot(tileFacingFlag);
+        tilePlacerScript.AssignFacingYrot(tileFacingRot);
     }
 
 
@@ -150,13 +145,10 @@ public class TileToPaintMenu : MonoBehaviour {
 
 
     public void SetCurrentTileSprite(Sprite theSprite) {                    //from AssetViewerEntry_XXX.cs Instances
-        tileIconSprite = theSprite;
         uiImg_currTileIcon.sprite = theSprite;
     }
 
     public void SetCurrentTileGO(GameObject theGameObject) {
-        tileGameObject = theGameObject;
-
         tilePlacerScript.AssignTileToBePlaced(theGameObject);
     }
 

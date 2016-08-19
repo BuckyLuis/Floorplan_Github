@@ -1,6 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\Tools\UndoRedoManager.cs">
+    <Files>
+      <File FileName="Assets\5a Database\World Data\Tiles\Tile_Base.cs" Line="24" Column="40" />
+      <File FileName="Assets\5 Scripts\Placer\PlaceTile.cs" Line="154" Column="90" />
+      <File FileName="Assets\5 Scripts\Menus\ObjectToPaint\TileToPaintMenu.cs" Line="89" Column="3" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Floors.cs" Line="6" Column="4" />
+      <File FileName="Assets\5 Scripts\Menus\Tools\UndoRedoManager.cs" Line="101" Column="46" />
+      <File FileName="Assets\5a Database\Assets Data\Asset_Floor_Base.cs" Line="5" Column="30" />
+      <File FileName="Assets\5a Database\Assets Data\AssetObject_Base.cs" Line="6" Column="3" />
+      <File FileName="Assets\5a Database\_DataIntegration\TileData.cs" Line="6" Column="3" />
+      <File FileName="Assets\5 Scripts\Placer\GenerateTiles.cs" Line="5" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

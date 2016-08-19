@@ -2,23 +2,23 @@
 using System.Collections;
 
 [System.Serializable]
-public class Asset_Floor_Base  {
+public class Asset_Floor_Base {
 
     public string assetName;
-    [HideInInspector] public int assetIndex;   //assigned by AssetsViewerAssetManagement.cs
+    [HideInInspector] public int assetIndex;   // index in AssetsDictionary -- used for ingame LevelConstruction        //assigned by AssetsViewerAssetManagement.cs 
+    public Categories_Floors categoryFloors;   // assetCategory -- used for ingame LevelConstruction
+    [HideInInspector] public string assetMaterialName;   //the material's name  -- used for LevelConstruction
 
-    public Categories_Floors categoryFloors;
- 
-    public string assetUsageSet;
-    public string assetDesc;
+    public string assetUsageSet;               //used only in editor, convenience
+    public string assetDesc;                  // used only in editor
 
-    public Sprite assetEntryIcon;
-    public Color assetTilesetColor;
-    public GameObject worldObjectPrefab;
+    public Sprite assetEntryIcon;            //only in editor
+    public Color assetTilesetColor;         //only in editor
+    public GameObject worldObjectPrefab;       //reference of GameObject Mesh Prefab -- only in editor
 
-    [HideInInspector] public Material assetMaterial;
-    public int uvMapSectorFlag;
-    public int meshsetFlag;
-    [HideInInspector] public string meshsetString;
+    [HideInInspector] public Material assetMaterial;   //reference of Material Mesh Texture -- only in editor
+    public int uvMapSectorFlag;                          //only in editor
+    public int meshsetFlag;                              //only in editor
+    [HideInInspector] public string meshsetString;       //only in editor*/
 
 }

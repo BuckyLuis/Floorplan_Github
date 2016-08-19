@@ -58,15 +58,17 @@
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\TexturesViewerEntry.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\TexturesViewerTexAtlasManagement.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\TexturesViewerTexPreviewer.cs" />
-     <Compile Include="Assets\5 Scripts\Menus\ColorPicker.cs" />
      <Compile Include="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs" />
      <Compile Include="Assets\5 Scripts\Menus\CurrentArea\AreaSaveLoadUI.cs" />
-     <Compile Include="Assets\5 Scripts\Menus\ElevationMenu.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectToPaint\EntityToPaintMenu.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectToPaint\TileToPaintMenu.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\RoomViewer\ColorPicker.cs" />
      <Compile Include="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" />
      <Compile Include="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\Tools\ElevationMenu.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\Tools\UndoRedoManager.cs" />
      <Compile Include="Assets\5 Scripts\Placer\CamBoundsMarker.cs" />
+     <Compile Include="Assets\5 Scripts\Placer\GenerateTiles.cs" />
      <Compile Include="Assets\5 Scripts\Placer\PlaceCamBoundsMarker.cs" />
      <Compile Include="Assets\5 Scripts\Placer\PlaceTile.cs" />
      <Compile Include="Assets\5 Scripts\Placer\PlacerMovement.cs" />
@@ -87,6 +89,7 @@
      <Compile Include="Assets\5 Scripts\oldold\PlaceNewRoomOrigin.cs" />
      <Compile Include="Assets\5 Scripts\oldold\RoomObject.cs" />
      <Compile Include="Assets\5 Scripts\oldold\TileObject.cs" />
+     <Compile Include="Assets\5a Database\Assets Data\AssetObject_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Asset_Actor_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Asset_Doodad_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Asset_Floor_Base.cs" />
@@ -159,6 +162,7 @@
      <Compile Include="Assets\8 Extensions\InputManager\Source\Runtime\_Support\ScanFlags.cs" />
      <Compile Include="Assets\8 Extensions\InputManager\Source\Runtime\_Support\ScanResult.cs" />
      <Compile Include="Assets\8 Extensions\InputManager\Source\Runtime\_Support\ScanSettings.cs" />
+     <Compile Include="Assets\8 Extensions\MaxStack.cs" />
      <Compile Include="Assets\8 Extensions\SerializableDictionary.cs" />
      <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\MultiKeyDictionary.cs" />
      <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\Reporter.cs" />
