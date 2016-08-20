@@ -6,8 +6,8 @@ public class Asset_Actor_Base {
     
     public string assetName;
     [HideInInspector] public int assetIndex;   //assigned by AssetsViewerAssetManagement.cs
-
     public Categories_Actors categoryActors;
+    [HideInInspector] public string assetMaterialName; 
   
     public string assetUsageSet;
     public string assetDesc;

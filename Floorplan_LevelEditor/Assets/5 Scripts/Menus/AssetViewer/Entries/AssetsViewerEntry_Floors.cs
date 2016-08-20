@@ -4,13 +4,13 @@ using UnityEngine.UI;
 
 public class AssetsViewerEntry_Floors : MonoBehaviour {
    
-    [SerializeField] GameObject assetsDbController;
+    GameObject assetsDbController;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
     TileToPaintMenu tileToPaintScript;
 
-    [SerializeField] GameObject tilePlacerObject;
-    PlaceTile tilePlacerScript;
+    GameObject toolsController;
+    WorldObjectInstantiator objInstantiatorScript;
 
 
     public GameObject assetWorldObject;
@@ -55,7 +55,8 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
         textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
         tileToPaintScript = assetsDbController.GetComponent<TileToPaintMenu>();
 
-        tilePlacerScript = tilePlacerObject.GetComponent<PlaceTile>();
+        toolsController = GameObject.FindWithTag("ToolsController");
+        objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
 
 
         nameText = nameObject.GetComponent<Text>();
@@ -124,7 +125,8 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
 
     void SendInfoTo_TileToPaint() {
         tileToPaintScript.SetCurrentTileSprite(assetFloor_BaseObject.assetEntryIcon);
-        tilePlacerScript.AssignIndicesAndMatName((int)assetFloor_BaseObject.categoryFloors, assetFloor_BaseObject.assetIndex, assetFloor_BaseObject.assetMaterialName);
+        tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+        objInstantiatorScript.AssignIndicesAndMatName((int)assetFloor_BaseObject.categoryFloors, assetFloor_BaseObject.assetIndex, assetFloor_BaseObject.assetMaterialName);
     }
 
 }

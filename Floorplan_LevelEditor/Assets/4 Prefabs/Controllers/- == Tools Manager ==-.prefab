@@ -9,10 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 448750}
   - 114: {fileID: 11475674}
-  - 114: {fileID: 11423266}
+  - 114: {fileID: 11489068}
+  - 114: {fileID: 11480610}
   m_Layer: 0
   m_Name: '- == Tools Manager ==-'
-  m_TagString: Untagged
+  m_TagString: ToolsController
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,22 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11423266
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa37f994c7c7211439cf4ff46093c25a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSteps: 0
-  AreaTileParent: {fileID: 0}
-  AreaEntityParent: {fileID: 0}
-  ui_undoButton: {fileID: 0}
-  ui_redoButton: {fileID: 0}
 --- !u!114 &11475674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,6 +50,35 @@ MonoBehaviour:
   ui_BtnElevateDown: {fileID: 0}
   ui_TxtCurrentFloor: {fileID: 0}
   ui_TxtCurrentYpos: {fileID: 0}
+--- !u!114 &11480610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2664c6ebe8b24e469d547ce53071f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSteps: 16
+  ui_undoButton: {fileID: 0}
+  ui_redoButton: {fileID: 0}
+--- !u!114 &11489068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f98c0a26b928224ea9e5eda6cbbf048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AreaTileParent: {fileID: 0}
+  AreaEntityParent: {fileID: 0}
+  roomBelongingMarker: {fileID: 194708, guid: dc171256c9f73a3428346c9fc9c30cab, type: 2}
+  worldObjectInfo: {fileID: 163774, guid: 2ddbc339c10472a49a62bbb94aa9e7cc, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -6,8 +6,8 @@ public class Asset_Prop_Base {
     
     public string assetName;
     [HideInInspector] public int assetIndex;   //assigned by AssetsViewerAssetManagement.cs
-
     public Categories_Props categoryProps;
+    [HideInInspector] public string assetMaterialName; 
   
     public string assetUsageSet;
     public string assetDesc;

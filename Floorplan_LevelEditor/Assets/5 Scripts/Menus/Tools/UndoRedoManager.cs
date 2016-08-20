@@ -4,8 +4,8 @@ using TeamUtility.IO;
 using UnityEngine.UI;
 
 public class UndoRedoManager : MonoBehaviour {
-
-    public int maxSteps;
+/*
+    public int maxSteps = 10;
 
     MaxStack<List<GameObject>> UndoStack_GOs;
    // MaxStack<List<GameObject>> RedoStack_GOs;
@@ -57,8 +57,8 @@ public class UndoRedoManager : MonoBehaviour {
 	}
 
     public void Undo() {
-        currentGOList = UndoStack_GOs.Pop();
-        currentTileBaseList = UndoStack_TileBases.Pop();
+        currentGOList = new List<GameObject>( UndoStack_GOs.Pop() );
+        currentTileBaseList = new List<GameObject>( UndoStack_TileBases.Pop() );
 
         RedoStack_TileBases.Push(currentTileBaseList);
 
@@ -67,7 +67,6 @@ public class UndoRedoManager : MonoBehaviour {
             Destroy(goToUndo);
         }
         currentGOList.Clear();
-
 
 
         //---- ui ---
@@ -84,10 +83,9 @@ public class UndoRedoManager : MonoBehaviour {
 
 
     public void Redo() {
-        currentTileBaseList = RedoStack_TileBases.Pop();
+        currentTileBaseList = new List<GameObject>( RedoStack_TileBases.Pop() );
 
-        Debug.Log(currentTileBaseList);
-        foreach(Tile_Base tileToGen in currentTileBaseList) {
+        foreach(Tile_Base tileToGen in currentTileBaseList) {       //! @TODO: replace with a call to a new Method that handles Tile Instantiation
             GameObject gameObjectToGen = (GameObject)Instantiate(tileToGen.theGameObjectPrefab, tileToGen.Position, Quaternion.Euler( new Vector3 (0,  tileToGen.TileFacingRot, 0)) );
 
             gameObjectToGen.transform.SetParent(AreaTileParent.transform, true);
@@ -97,13 +95,12 @@ public class UndoRedoManager : MonoBehaviour {
         }
         List<GameObject> tempGOList = new List<GameObject>();
         List<Tile_Base> tempTBList = new List<Tile_Base>();
+
         UndoStack_GOs.Push(tempGOList);
         UndoStack_TileBases.Push(tempTBList);
 
         currentGOList.Clear();
         currentTileBaseList.Clear();
-
-
 
         //---- ui ---
         uiBtn_undoButton.interactable = true;
@@ -121,7 +118,7 @@ public class UndoRedoManager : MonoBehaviour {
     public void AddAStep(List<GameObject> inGOList, List<Tile_Base> inTileBaseList) {
         UndoStack_GOs.Push(inGOList);
         UndoStack_TileBases.Push(inTileBaseList);
-
+       
         RedoStack_TileBases.Clear();
 
 
@@ -130,7 +127,7 @@ public class UndoRedoManager : MonoBehaviour {
         uiBtn_undoButton.interactable = true;
         uiBtn_redoButton.interactable = false;
     }
-
+*/
 }
 
 /*foreach(List<Tile_Base> tbList in RedoStack_TileBases) {

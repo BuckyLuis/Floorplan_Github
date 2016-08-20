@@ -4,9 +4,12 @@ using UnityEngine.UI;
 
 public class AssetsViewerEntry_Triggers : MonoBehaviour {
 
-    [SerializeField] GameObject assetsDbController;
+    GameObject assetsDbController;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TileToPaintMenu tileToPaintScript;
+
+    GameObject toolsController;
+    WorldObjectInstantiator objInstantiatorScript;
 
 
     public GameObject assetWorldObject;
@@ -51,6 +54,10 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         tileToPaintScript = assetsDbController.GetComponent<TileToPaintMenu>();
+
+        toolsController = GameObject.FindWithTag("ToolsController");
+        objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
+
 
         nameText = nameObject.GetComponent<Text>();
         usageText = usageObject.GetComponent<Text>();
@@ -98,6 +105,7 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
 
         tileToPaintScript.SetCurrentTileSprite(assetTrigger_BaseObject.assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+        objInstantiatorScript.AssignIndicesAndMatName((int)assetTrigger_BaseObject.categoryTriggers, assetTrigger_BaseObject.assetIndex, assetTrigger_BaseObject.assetMaterialName);
     }
 
 }

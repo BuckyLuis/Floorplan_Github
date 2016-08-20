@@ -3,10 +3,13 @@ using System.Collections;
 using UnityEngine.UI;
 using TeamUtility.IO;
 
-public class TileToPaintMenu : MonoBehaviour {
+public class TileToPaintMenu : MonoBehaviour {           //! @TODO: refactor/write this shit, this class should only handle displaying of the info, -- and setting TileFacingRot ... it shouldnt pass the variables thru it wtf 
 
     [SerializeField] GameObject tilePlacerObject;
     PlaceTile tilePlacerScript;
+    [SerializeField] GameObject toolsController;
+    WorldObjectInstantiator objInstantiatorScript;
+
 
     public static bool anInputFieldIsInFocus; 
 
@@ -47,9 +50,11 @@ public class TileToPaintMenu : MonoBehaviour {
 
 
 	void Start () {
-     //   tilePlacerObject = GameObject.FindWithTag("TilePlacer");
         tilePlacerScript = tilePlacerObject.GetComponent<PlaceTile>();
         tilePlacerObject.SetActive(false);
+
+        objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
+
 
         uiImg_currTileIcon = ui_ImgTileIcon.GetComponent<Image>();
         uiTxt_currRoomID = ui_TxtRoomID.GetComponent<Text>();
@@ -89,13 +94,13 @@ public class TileToPaintMenu : MonoBehaviour {
 	}
 
     public void TileFacing_N() {
-        tileFacingRot = 180;
+        tileFacingRot = 0;
         uiImg_tileFacingSel_N.enabled = true;
         uiImg_tileFacingSel_E.enabled = false;
         uiImg_tileFacingSel_S.enabled = false;
         uiImg_tileFacingSel_W.enabled = false; 
 
-        tilePlacerScript.AssignFacingYrot(tileFacingRot);
+        objInstantiatorScript.AssignObjectRot(tileFacingRot);
     }
 
     public void TileFacing_E() {
@@ -105,17 +110,17 @@ public class TileToPaintMenu : MonoBehaviour {
         uiImg_tileFacingSel_S.enabled = false;
         uiImg_tileFacingSel_W.enabled = false; 
 
-        tilePlacerScript.AssignFacingYrot(tileFacingRot);
+        objInstantiatorScript.AssignObjectRot(tileFacingRot);
     }
 
     public void TileFacing_S() {
-        tileFacingRot = 0;
+        tileFacingRot = 180;
         uiImg_tileFacingSel_N.enabled = false;
         uiImg_tileFacingSel_E.enabled = false;
         uiImg_tileFacingSel_S.enabled = true;
         uiImg_tileFacingSel_W.enabled = false; 
 
-        tilePlacerScript.AssignFacingYrot(tileFacingRot);
+        objInstantiatorScript.AssignObjectRot(tileFacingRot);
     }
 
     public void TileFacing_W() {
@@ -125,7 +130,7 @@ public class TileToPaintMenu : MonoBehaviour {
         uiImg_tileFacingSel_S.enabled = false;
         uiImg_tileFacingSel_W.enabled = true; 
 
-        tilePlacerScript.AssignFacingYrot(tileFacingRot);
+        objInstantiatorScript.AssignObjectRot(tileFacingRot);
     }
 
 
@@ -133,14 +138,14 @@ public class TileToPaintMenu : MonoBehaviour {
         currentRoomID = theRoomID;
         uiTxt_currRoomID.text = theRoomID.ToString();
 
-        tilePlacerScript.AssignRoomID(theRoomID);
+        objInstantiatorScript.AssignRoomID(theRoomID);
     }
 
     public void SetCurrentRoomColor(Color theColor) {
         currentRoomColor = theColor;
         uiCol_currRoomColorImg.color = theColor;
 
-        tilePlacerScript.AssignRoomColor(theColor);
+        objInstantiatorScript.AssignRoomColor(theColor);
     }
 
 

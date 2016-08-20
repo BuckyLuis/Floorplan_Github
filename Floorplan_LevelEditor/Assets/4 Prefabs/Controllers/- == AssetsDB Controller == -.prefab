@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePlacerObject: {fileID: 0}
+  toolsController: {fileID: 0}
   databaseController: {fileID: 0}
   selectedTileIndex: 0
   ui_TileFacingSel_N: {fileID: 0}
@@ -239,6 +240,7 @@ MonoBehaviour:
   - assetName: Tile Floor
     assetIndex: 0
     categoryFloors: 0
+    assetMaterialName: 
     assetUsageSet: 
     assetDesc: 
     assetEntryIcon: {fileID: 0}
@@ -252,6 +254,7 @@ MonoBehaviour:
   - assetName: TestWall0
     assetIndex: 0
     categoryWalls: 0
+    assetMaterialName: 
     assetUsageSet: Walls
     assetDesc: 
     assetEntryIcon: {fileID: 0}

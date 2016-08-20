@@ -6,8 +6,8 @@ public class Asset_Trigger_Base {
     
     public string assetName;
     [HideInInspector] public int assetIndex;   //assigned by AssetsViewerAssetManagement.cs
-
     public Categories_Triggers categoryTriggers;
+    [HideInInspector] public string assetMaterialName; 
  
     public string assetUsageSet;
     public string assetDesc;
@@ -16,7 +16,10 @@ public class Asset_Trigger_Base {
     public Color assetTilesetColor;
     public GameObject worldObjectPrefab;
 
-    //triggers have no ingame texture
+  
+    [HideInInspector] public Material assetMaterial;   //triggers have no ingame texture .. but have an in-editor texture
 
-
+/*    public int uvMapSectorFlag;
+    public int meshsetFlag;
+    [HideInInspector] public string meshsetString;*/
 }

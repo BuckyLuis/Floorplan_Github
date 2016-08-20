@@ -5,52 +5,35 @@ using UnityEngine.EventSystems;
 
 public class PlaceTile : MonoBehaviour {
 
-    [SerializeField] GameObject AreaTileParent;
-    [SerializeField] GameObject AreaEntityParent;
+    [SerializeField] GameObject toolsController;
+    WorldObjectInstantiator objInstantiatorScript;
+    UndoRedoManagerr undoRedoManagerScript;
 
- 
-    //---------------- Tile_Base vars ----------------------------------
-    Tile_Base tempTileBaseObject;
-    public int roomID  {get; protected set;}
-    int categoryIndex;
-    int assetIndex;
-    string materialName;
-    float tileFacingRot;
+
+
+    public GameObject objToPlace_Prefab {get; protected set;}
+
+    //------------------- comms with Instantiator ----------------------------
   
+    Vector3 thePosition;
+
+    GameObject constructedGO;
+    Tile_Base constructedTileBase;
 
     //----------- undo - redo -----------------------------------------
-    [SerializeField] GameObject ToolsController;
-    UndoRedoManager undoRedoManagerScript;
 
-    List<GameObject> createdTilesListUR = new List<GameObject>();  //list to send to UndoRedoManager
-    List<Tile_Base> tileBaseListUR = new List<Tile_Base>();
+    List<GameObject> currGOList_forUndoRedo = new List<GameObject>();  //list to send to UndoRedoManager
+    List<Tile_Base> currTBList_forUndoRedo = new List<Tile_Base>();
 
-
-    //-------------- Public vars - defined In-Editor ----------------------------------
-
-    public bool tile0_entity1;
-
+    //--------------- Placer thingys --------------------
     public GameObject placeholder;
     private GameObject instPlaceholder;
 
-    [SerializeField] GameObject roomBelongingMarker;
-    [SerializeField] GameObject worldObjectInfo;
+    bool tile0_entity1;   
 
     int tileGridSize = 2;
     int entityGridSize = 1;
-    public int gridSize = 2;
-
-    //-------------- Public vars - defined via Runtime GUI --------------------------------
-
-    public float objectFacingYrot {get; protected set;}
-
-    public Color roomColor {get; protected set;}
-    public GameObject objToPlace_Prefab {get; protected set;}
-
-    //--------------- Temp vars ----------------------------
-    GameObject tempTileObject;
-    GameObject tempBelongMarker;
-    GameObject tempWorldObjectInfo;
+    int gridSize = 2;
 
     //-------------- Placer Workings -------------------------------------------------
     Vector3 Click_origPos;
@@ -58,19 +41,19 @@ public class PlaceTile : MonoBehaviour {
     bool Click_init = false;
     bool xIsNeg = false;
     bool zIsNeg = false;
-    int tempGridSizeX;
-    int tempGridSizeZ;
-    int TileGridSizeX;
-    int TileGridSizeZ;
+    int tempPaintSizeX;
+    int tempPaintSizeZ;
+    int paintSizeX;
+    int paintSizeZ;
     int TileXPos;
     int TileZPos;
-    //-----------------------------------------------------------------
 
 
 
 
     void Start() {
-        undoRedoManagerScript = ToolsController.GetComponent<UndoRedoManager>();
+        objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
+        undoRedoManagerScript = toolsController.GetComponent<UndoRedoManagerr>();
     }
 
 
@@ -94,20 +77,20 @@ public class PlaceTile : MonoBehaviour {
 
     void PlacerCalcs() {
         Click_destPos = PlacerMovement.destinationPos;
-        TileGridSizeX = Mathf.RoundToInt ( (Click_destPos.x / gridSize) - (Click_origPos.x / gridSize) ) + 1;
-        TileGridSizeZ = Mathf.RoundToInt ( (Click_destPos.z / gridSize) - (Click_origPos.z / gridSize) ) + 1;
+        paintSizeX = Mathf.RoundToInt ( (Click_destPos.x / gridSize) - (Click_origPos.x / gridSize) ) + 1;
+        paintSizeZ = Mathf.RoundToInt ( (Click_destPos.z / gridSize) - (Click_origPos.z / gridSize) ) + 1;
 
         if(Click_destPos.x < Click_origPos.x) {
-            tempGridSizeX = Mathf.RoundToInt ( (Click_destPos.x / gridSize) - (Click_origPos.x / gridSize) - 1);
-            TileGridSizeX = Mathf.Abs (tempGridSizeX);
+            tempPaintSizeX = Mathf.RoundToInt ( (Click_destPos.x / gridSize) - (Click_origPos.x / gridSize) - 1);
+            paintSizeX = Mathf.Abs (tempPaintSizeX);
             xIsNeg = true;
         }
         else    
             xIsNeg = false;
 
         if(Click_destPos.z < Click_origPos.z) {
-            tempGridSizeZ = Mathf.RoundToInt ( (Click_destPos.z / gridSize)- (Click_origPos.z / gridSize) - 1); 
-            TileGridSizeZ = Mathf.Abs (tempGridSizeZ);
+            tempPaintSizeZ = Mathf.RoundToInt ( (Click_destPos.z / gridSize)- (Click_origPos.z / gridSize) - 1); 
+            paintSizeZ = Mathf.Abs (tempPaintSizeZ);
             zIsNeg = true;
         }
         else
@@ -127,15 +110,53 @@ public class PlaceTile : MonoBehaviour {
             if(xIsNeg == true && zIsNeg == true) {
                 Click_origPos = Click_destPos;
             }
-            CreateTiles();
+            CallObjectCreation();
         }
         else {}  
         Click_init = false;
     }
         
 
-    void CreateTiles() {
-        createdTilesListUR.Clear();
+    void CallObjectCreation() {     
+        currGOList_forUndoRedo.Clear();
+        currTBList_forUndoRedo.Clear();
+
+        for(int xL = 0; xL < paintSizeX; xL++) {        //xL , zL are local (relative to placerOrig) coords!
+            for(int zL = 0; zL < paintSizeZ; zL++) {
+                thePosition = new Vector3((xL * gridSize)+ Click_origPos.x, 0, (zL * gridSize)+ Click_origPos.z);
+                objInstantiatorScript.CreateTiles(objToPlace_Prefab, thePosition, out constructedGO, out constructedTileBase);
+
+                currGOList_forUndoRedo.Add(constructedGO); //undoRedoList
+                currTBList_forUndoRedo.Add(constructedTileBase);
+            }
+        }
+        undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo);
+    }
+       
+
+    public void AssignTileToBePlaced(GameObject theTileToPlace) {
+        tile0_entity1 = false;
+        gridSize = tileGridSize;
+
+        objToPlace_Prefab = theTileToPlace;
+    }
+
+    public void AssignEntityToBePlaced(GameObject theEntityToPlace) {
+        tile0_entity1 = true;
+        gridSize = entityGridSize;
+
+        objToPlace_Prefab = theEntityToPlace;
+    }
+
+
+}
+
+
+
+
+    //-- trash - refactor --
+
+  /*      createdTilesListUR.Clear();
         for(int xL = 0; xL < TileGridSizeX; xL++) {                 //xL , zL are local (relative to parentCell) coords!
             for(int zL = 0; zL < TileGridSizeZ; zL++) {
                 Vector3 thePosition = new Vector3((xL * gridSize)+ Click_origPos.x, 0, (zL * gridSize)+ Click_origPos.z);
@@ -172,15 +193,15 @@ public class PlaceTile : MonoBehaviour {
             }
         }
         undoRedoManagerScript.AddAStep(createdTilesListUR, tileBaseListUR);
-
-    }
+*/
+ //   }
 
 
     //--------- Methods for GUI to process --------------
-
+/*
     public void AssignFacingYrot(float theTileFacingRot) {
         tileFacingRot = theTileFacingRot;
-     /*   switch (tileFacingRot)
+        switch (tileFacingRot)
         {
             case 0:
                 objectFacingYrot = 0;
@@ -194,11 +215,11 @@ public class PlaceTile : MonoBehaviour {
             case 3:
                 objectFacingYrot = 270;
                 break;
-        }*/
+        }
     }
+*/
 
-
-    public void AssignRoomID(int theRoomID) {
+/*    public void AssignRoomID(int theRoomID) {
         roomID = theRoomID;
     }
 
@@ -226,8 +247,8 @@ public class PlaceTile : MonoBehaviour {
         objToPlace_Prefab = theEntityToPlace;
     }
 
-  
+  */
   
 
 
-}
+

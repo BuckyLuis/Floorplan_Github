@@ -4,10 +4,13 @@ using UnityEngine.UI;
 
 public class AssetsViewerEntry_Doodads : MonoBehaviour {
 
-    [SerializeField] GameObject assetsDbController;
+    GameObject assetsDbController;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
     TileToPaintMenu tileToPaintScript;
+
+    GameObject toolsController;
+    WorldObjectInstantiator objInstantiatorScript;
 
 
     public GameObject assetWorldObject;
@@ -51,6 +54,10 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour {
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
         tileToPaintScript = assetsDbController.GetComponent<TileToPaintMenu>();
+
+        toolsController = GameObject.FindWithTag("ToolsController");
+        objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
+
 
         nameText = nameObject.GetComponent<Text>();
         usageText = usageObject.GetComponent<Text>();
@@ -119,6 +126,7 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour {
     void SendInfoTo_TileToPaint() {
         tileToPaintScript.SetCurrentTileSprite(assetDoodad_BaseObject.assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+        objInstantiatorScript.AssignIndicesAndMatName((int)assetDoodad_BaseObject.categoryDoodads, assetDoodad_BaseObject.assetIndex, assetDoodad_BaseObject.assetMaterialName);
     }
 
 }

@@ -6,8 +6,8 @@ public class Asset_Wall_Base {
 
     public string assetName;
     [HideInInspector] public int assetIndex;   //assigned by AssetsViewerAssetManagement.cs
-
     public Categories_Walls categoryWalls;
+    [HideInInspector] public string assetMaterialName; 
    
     public string assetUsageSet;
     public string assetDesc;
