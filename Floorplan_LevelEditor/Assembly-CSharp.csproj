@@ -67,14 +67,13 @@
      <Compile Include="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs" />
      <Compile Include="Assets\5 Scripts\Menus\Tools\ElevationMenu.cs" />
      <Compile Include="Assets\5 Scripts\Menus\Tools\UndoRedoManager.cs" />
-     <Compile Include="Assets\5 Scripts\Menus\Tools\UndoRedoManagerr.cs" />
      <Compile Include="Assets\5 Scripts\Menus\Tools\UndoRedoOperation.cs" />
      <Compile Include="Assets\5 Scripts\Menus\Tools\WorldObjectInstantiator.cs" />
      <Compile Include="Assets\5 Scripts\Placer\CamBoundsMarker.cs" />
      <Compile Include="Assets\5 Scripts\Placer\GenerateTiles.cs" />
      <Compile Include="Assets\5 Scripts\Placer\PlaceCamBoundsMarker.cs" />
-     <Compile Include="Assets\5 Scripts\Placer\PlaceTile.cs" />
      <Compile Include="Assets\5 Scripts\Placer\PlacerMovement.cs" />
+     <Compile Include="Assets\5 Scripts\Placer\TilePlacer.cs" />
      <Compile Include="Assets\5 Scripts\Placer\TilePreviewer.cs" />
      <Compile Include="Assets\5 Scripts\TimeSinceSave.cs" />
      <Compile Include="Assets\5 Scripts\WorldObjectInfo.cs" />
@@ -111,6 +110,10 @@
      <Compile Include="Assets\5a Database\World Data\Areas\AreaEntry_ReadWrite.cs" />
      <Compile Include="Assets\5a Database\World Data\Areas\Area_Base.cs" />
      <Compile Include="Assets\5a Database\World Data\Areas\Area_ReadWrite.cs" />
+     <Compile Include="Assets\5a Database\World Data\Entities\Ent_Actor_Base.cs" />
+     <Compile Include="Assets\5a Database\World Data\Entities\Ent_Doodad_Base.cs" />
+     <Compile Include="Assets\5a Database\World Data\Entities\Ent_Prop_Base.cs" />
+     <Compile Include="Assets\5a Database\World Data\Entities\Ent_Trigger_Base.cs" />
      <Compile Include="Assets\5a Database\World Data\Entities\Entity_Base.cs" />
      <Compile Include="Assets\5a Database\World Data\Entities\Entity_Datalist.cs" />
      <Compile Include="Assets\5a Database\World Data\Entities\Entity_ReadWrite.cs" />
@@ -173,6 +176,7 @@
      <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
      <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\Test\Rotate.cs" />
      <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
+     <Compile Include="Assets\AreaTilesRegistry.cs" />
      <None Include="Assets\8 Extensions\InputManager\Addons\JoystickMapping\Resources\joystick_mappings\xbox_360_linux.xml" />
      <None Include="Assets\8 Extensions\InputManager\Examples\01 - Controls Menu\Data\default_input.xml" />
      <None Include="Assets\8 Extensions\InputManager\Addons\InputAdapter\Resources\input_adapter_default_config.xml" />

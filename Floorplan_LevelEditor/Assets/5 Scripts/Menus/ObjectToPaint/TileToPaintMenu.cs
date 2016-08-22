@@ -6,7 +6,7 @@ using TeamUtility.IO;
 public class TileToPaintMenu : MonoBehaviour {           //! @TODO: refactor/write this shit, this class should only handle displaying of the info, -- and setting TileFacingRot ... it shouldnt pass the variables thru it wtf 
 
     [SerializeField] GameObject tilePlacerObject;
-    PlaceTile tilePlacerScript;
+    TilePlacer tilePlacerScript;
     [SerializeField] GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
 
@@ -50,7 +50,7 @@ public class TileToPaintMenu : MonoBehaviour {           //! @TODO: refactor/wri
 
 
 	void Start () {
-        tilePlacerScript = tilePlacerObject.GetComponent<PlaceTile>();
+        tilePlacerScript = tilePlacerObject.GetComponent<TilePlacer>();
         tilePlacerObject.SetActive(false);
 
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();

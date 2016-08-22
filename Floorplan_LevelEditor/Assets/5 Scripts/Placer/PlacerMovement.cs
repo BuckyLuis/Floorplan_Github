@@ -3,10 +3,12 @@ using System.Collections;
 
 public class PlacerMovement: MonoBehaviour
 {		
-	public static Vector3 destinationPos;
-	public int size = 1;
+    public LayerMask mask;
 
-    public static int tilePlacerYpos;
+	public Vector3 destinationPos;
+
+    public bool tile0_entity1;
+    public int tilePlacerYpos;
 
     void Start() {
         tilePlacerYpos = 0;
@@ -15,12 +17,21 @@ public class PlacerMovement: MonoBehaviour
     void Update() {	
 		RaycastHit hit;
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
 		{
 			Vector3 wantedPos = hit.point;
-			float xPos = Mathf.Round(wantedPos.x / size);                                                           //snap to grid
-			float zPos = Mathf.Round(wantedPos.z / size);
-            destinationPos = new Vector3(xPos * size, tilePlacerYpos, zPos * size);
+
+            if(tile0_entity1 == false) {
+                float xPos = Mathf.Round(wantedPos.x / 2);                                                          
+                float zPos = Mathf.Round(wantedPos.z / 2);
+                destinationPos = new Vector3(xPos * 2, tilePlacerYpos, zPos * 2);
+            }
+            else {
+                float xPos = Mathf.Round(wantedPos.x / 1);                                                          
+                float zPos = Mathf.Round(wantedPos.z / 1);
+                destinationPos = new Vector3(xPos + 0.5f, tilePlacerYpos, zPos + 0.5f);
+            }
+           
 			transform.position = destinationPos;
 		}
 	}

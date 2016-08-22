@@ -13,7 +13,7 @@ GameObject:
   - 65: {fileID: 6519818}
   - 114: {fileID: 11417932}
   - 114: {fileID: 11447728}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Placer Widget _ SetCamBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8d2cd9b49ac08d34c8c99b405879e07c, type: 2}
+  - {fileID: 2100000, guid: 62e2b88330e79ba40a60b9601f002a53, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -89,7 +89,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7bcda02622ea943916c176276d5cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 2
+  mask:
+    serializedVersion: 2
+    m_Bits: 256
+  destinationPos: {x: 0, y: 0, z: 0}
+  tile0_entity1: 0
+  tilePlacerYpos: 0
 --- !u!114 &11447728
 MonoBehaviour:
   m_ObjectHideFlags: 1

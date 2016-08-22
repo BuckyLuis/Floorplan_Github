@@ -4,23 +4,26 @@ using TeamUtility.IO;
 using UnityEngine.UI;
 
 public class UndoRedoManager : MonoBehaviour {
-/*
-    public int maxSteps = 10;
 
-    MaxStack<List<GameObject>> UndoStack_GOs;
-   // MaxStack<List<GameObject>> RedoStack_GOs;
+    WorldObjectInstantiator objInstantiatorScript;
 
-    MaxStack<List<Tile_Base>> UndoStack_TileBases;
-    MaxStack<List<Tile_Base>> RedoStack_TileBases;
+    [SerializeField] GameObject databaseController;
+    AreaTilesRegistry areaTilesRegistryScript;
 
+   
+    public int maxSteps = 16;
 
-    List<GameObject> currentGOList = new List<GameObject>();
-    List<Tile_Base> currentTileBaseList = new List<Tile_Base>();
+    MaxStack<UndoRedoOperation> UndoStack;
+    MaxStack<UndoRedoOperation> RedoStack;
 
+    UndoRedoOperation operationAssignment;
 
-    //---------- Scene Refs -----------------
-    [SerializeField] GameObject AreaTileParent;
-    [SerializeField] GameObject AreaEntityParent;
+    UndoRedoOperation currentOperation;
+    List<GameObject> currentGOList;
+    List<Tile_Base> currentTileBaseList;
+
+    GameObject constructedGO;
+
     //---------- UI Refs --------------
 
     [SerializeField] GameObject ui_undoButton;
@@ -28,25 +31,27 @@ public class UndoRedoManager : MonoBehaviour {
     Button uiBtn_undoButton;
     Button uiBtn_redoButton;
 
-  
 
 
 
-	void Awake () {
-        UndoStack_GOs = new MaxStack<List<GameObject>>(maxSteps);
-    //    RedoStack_GOs = new MaxStack<List<GameObject>>(maxSteps);
 
-        UndoStack_TileBases = new MaxStack<List<Tile_Base>>(maxSteps);
-        RedoStack_TileBases = new MaxStack<List<Tile_Base>>(maxSteps);
-	}
+    void Awake () {
+        UndoStack = new MaxStack<UndoRedoOperation>(maxSteps);
+        RedoStack = new MaxStack<UndoRedoOperation>(maxSteps);
+    }
 
     void Start() {
+        objInstantiatorScript = GetComponent<WorldObjectInstantiator>();
+
+        databaseController = GameObject.FindGameObjectWithTag("DBController");
+        areaTilesRegistryScript = databaseController.GetComponent<AreaTilesRegistry>();
+
         uiBtn_undoButton = ui_undoButton.GetComponent<Button>();
         uiBtn_redoButton = ui_redoButton.GetComponent<Button>();
     }
-        
+	
 
-	void Update () {
+    void Update () {
         if( (InputManager.GetButton("Ctrl") && InputManager.GetButtonDown("Z")) ) {    //Undo
             Undo();    
         }
@@ -54,72 +59,53 @@ public class UndoRedoManager : MonoBehaviour {
         if( (InputManager.GetButton("Ctrl") && InputManager.GetButtonDown("Y")) ) {    //Redo
             Redo();
         }
-	}
+    }
+
 
     public void Undo() {
-        currentGOList = new List<GameObject>( UndoStack_GOs.Pop() );
-        currentTileBaseList = new List<GameObject>( UndoStack_TileBases.Pop() );
+        currentOperation = UndoStack.Pop();
+        RedoStack.Push(currentOperation);
+        Undo_ObjectsDeletion();
 
-        RedoStack_TileBases.Push(currentTileBaseList);
 
-
-        foreach(GameObject goToUndo in currentGOList) {
-            Destroy(goToUndo);
-        }
-        currentGOList.Clear();
 
 
         //---- ui ---
         uiBtn_redoButton.interactable = true;
-        if(UndoStack_TileBases.Count > 0) {
+        if(UndoStack.Count > 0) {
             uiBtn_undoButton.interactable = true;
         }
         else {
             uiBtn_undoButton.interactable = false;
         }
-
-        Debug.Log("Undo!");
     }
 
-
     public void Redo() {
-        currentTileBaseList = new List<GameObject>( RedoStack_TileBases.Pop() );
+        currentOperation = RedoStack.Pop();
+        Redo_CallsObjectCreation();
+        UndoStack.Push(currentOperation);
 
-        foreach(Tile_Base tileToGen in currentTileBaseList) {       //! @TODO: replace with a call to a new Method that handles Tile Instantiation
-            GameObject gameObjectToGen = (GameObject)Instantiate(tileToGen.theGameObjectPrefab, tileToGen.Position, Quaternion.Euler( new Vector3 (0,  tileToGen.TileFacingRot, 0)) );
 
-            gameObjectToGen.transform.SetParent(AreaTileParent.transform, true);
-            gameObjectToGen.name = tileToGen.editorGoName;
 
-            currentGOList.Add(gameObjectToGen);
-        }
-        List<GameObject> tempGOList = new List<GameObject>();
-        List<Tile_Base> tempTBList = new List<Tile_Base>();
-
-        UndoStack_GOs.Push(tempGOList);
-        UndoStack_TileBases.Push(tempTBList);
-
-        currentGOList.Clear();
-        currentTileBaseList.Clear();
 
         //---- ui ---
         uiBtn_undoButton.interactable = true;
-        if(RedoStack_TileBases.Count > 0) {
+        if(RedoStack.Count > 0) {
             uiBtn_redoButton.interactable = true;
         }
         else {
             uiBtn_redoButton.interactable = false;
         }
-
-        Debug.Log("Redo!");
     }
 
 
+
     public void AddAStep(List<GameObject> inGOList, List<Tile_Base> inTileBaseList) {
-        UndoStack_GOs.Push(inGOList);
-        UndoStack_TileBases.Push(inTileBaseList);
-       
-        RedoStack_TileBases.Clear();
+        operationAssignment = new UndoRedoOperation(inGOList, inTileBaseList);
+
+        UndoStack.Push(operationAssignment);
+        RedoStack.Clear();
+
 
 
 
@@ -127,9 +113,28 @@ public class UndoRedoManager : MonoBehaviour {
         uiBtn_undoButton.interactable = true;
         uiBtn_redoButton.interactable = false;
     }
-*/
-}
 
-/*foreach(List<Tile_Base> tbList in RedoStack_TileBases) {
-    tbList.Clear();
-}*/
+
+    void Undo_ObjectsDeletion() {
+        for (int i = 0; i <  currentOperation.theOperationList_GO.Count; i++)
+        {
+            areaTilesRegistryScript.Tile_RemoveFromGrid(currentOperation.theOperationList_TileBase[i]);
+            Destroy( currentOperation.theOperationList_GO[i] );
+        }
+        currentOperation.theOperationList_GO.Clear();
+    }
+
+    void Redo_CallsObjectCreation() {
+        foreach(Tile_Base tileBaseToGen in currentOperation.theOperationList_TileBase) {
+             if(areaTilesRegistryScript.Tile_PosUnoccupied(tileBaseToGen.Position) == true) {        // the check for TileRegistry occupation, isnt really necessary here, but i will keep it, for error security
+                objInstantiatorScript.CreateTiles_UndoRedo(tileBaseToGen, out constructedGO);
+                currentOperation.theOperationList_GO.Add(constructedGO);
+
+                areaTilesRegistryScript.Tile_AddToGrid(tileBaseToGen);
+             }
+        }
+    }
+
+
+
+}

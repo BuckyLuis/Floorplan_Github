@@ -57,7 +57,7 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
             tempScript.texAtlasBaseObject = texAtlasBasis;
             tempScript.texAtlasDisplayTexture = texAtlasBasis.texAtlasMatObject.mainTexture;
 
-            /*tempDictString = "";              //I had this as a list of integers, but i changed it to a string that user seperates with commas
+            /*tempDictString = "";              //I had this as a list of integers, but i changed it to a string that is seperated by commas when populating Floorplan's asset lists.
             foreach (var compatMeshsetID in texAtlasBasis.texAtlasCompatMeshsets) {
                 tempDictString += compatMeshsetID.ToString() + ",";
             }*/

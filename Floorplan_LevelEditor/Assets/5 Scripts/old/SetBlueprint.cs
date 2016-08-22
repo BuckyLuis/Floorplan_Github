@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public class SetBlueprint : MonoBehaviour 
 {
 	
-	//-------------- grid tiles -------------------------------------------------
+	/*//-------------- grid tiles -------------------------------------------------
 	public Transform TileBlueprint;
 	public Transform TileParent;
 	
@@ -141,7 +141,7 @@ public class SetBlueprint : MonoBehaviour
 	}
 	
 	
-	
+	*/
 	
 	
 }

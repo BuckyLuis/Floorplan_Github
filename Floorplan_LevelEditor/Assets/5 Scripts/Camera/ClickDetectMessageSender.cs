@@ -7,6 +7,8 @@ public class ClickDetectMessageSender : MonoBehaviour {
     public Camera detectionCamera;
     public bool debug = true;
 
+    public LayerMask mask;
+
     Ray ray;
     RaycastHit hit;
     Camera theCamera;
@@ -25,7 +27,7 @@ public class ClickDetectMessageSender : MonoBehaviour {
         {
             if (Input.GetMouseButtonDown(0)) {
                 ray = theCamera.ScreenPointToRay(Input.mousePosition); 
-                if(Physics.Raycast(ray, out hit, Mathf.Infinity)) {
+                if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
                     hit.transform.gameObject.SendMessage("Clicked", hit.point, SendMessageOptions.DontRequireReceiver);
                     if(debug)
                         Debug.Log("You clicked: " + hit.collider.gameObject.name, hit.collider.gameObject);
@@ -34,7 +36,7 @@ public class ClickDetectMessageSender : MonoBehaviour {
 
             if (Input.GetMouseButtonDown(1)) {
                 ray = theCamera.ScreenPointToRay(Input.mousePosition); 
-                if(Physics.Raycast(ray, out hit, Mathf.Infinity)) {
+                if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
                     hit.transform.gameObject.SendMessage("RightClicked", hit.point, SendMessageOptions.DontRequireReceiver);
                     if(debug)
                         Debug.Log("You clicked: " + hit.collider.gameObject.name, hit.collider.gameObject);
@@ -44,7 +46,7 @@ public class ClickDetectMessageSender : MonoBehaviour {
 
             if (Input.GetMouseButtonDown(2) && !EventSystem.current.IsPointerOverGameObject()) {
                 ray = theCamera.ScreenPointToRay(Input.mousePosition); 
-                if(Physics.Raycast(ray, out hit, Mathf.Infinity)) {
+                if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
                     hit.transform.gameObject.SendMessage("MiddleClicked", hit.point, SendMessageOptions.DontRequireReceiver);
                     if(debug)
                         Debug.Log("You clicked: " + hit.collider.gameObject.name, hit.collider.gameObject);

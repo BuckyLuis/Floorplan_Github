@@ -4,11 +4,13 @@ using System.Collections.Generic;
 
 public class WorldObjectInstantiator : MonoBehaviour {
 
+
     [SerializeField] GameObject AreaTileParent;
     [SerializeField] GameObject AreaEntityParent;
 
     [SerializeField] GameObject roomBelongingMarker;
     [SerializeField] GameObject worldObjectInfo;
+
 
     //---------------- Tile_Base vars ----------------------------------
     Tile_Base tempTileBaseObject;
@@ -27,9 +29,8 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
 
 
-
     public void CreateTiles(GameObject theObjectToPlace, Vector3 thePosition, out GameObject constructedGO, out Tile_Base constructedTileBase) {     //! @TODO: replace with a call to a new Class and Method that handles Tile Instantiation
-        
+
         tempTileObject = (GameObject)Instantiate(theObjectToPlace, thePosition, Quaternion.Euler(theObjectToPlace.transform.rotation.x, tileFacingRot, theObjectToPlace.transform.rotation.z));
         tempTileObject.name = string.Format ("Rm: {0} / G: ({1},{2},{3}) {4}°", roomID, tempTileObject.transform.position.x, tempTileObject.transform.position.y, tempTileObject.transform.position.z, tileFacingRot);
         tempTileObject.transform.SetParent(AreaTileParent.transform, true);

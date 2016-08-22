@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 public class EraserScript : MonoBehaviour 
 {
+/*    placerMovementScript
 	
 	//-------------- grid tiles -------------------------------------------------
 	public Transform TileBlueprint;
@@ -39,7 +40,7 @@ public class EraserScript : MonoBehaviour
 		//	{}
 		//	else
 		//	{
-				mClik_destPos = PlacerMovement.destinationPos;
+                mClik_destPos = placerMovementScript.destinationPos;
 				TileGridSizeX = Mathf.RoundToInt (mClik_destPos.x - mClik_origPos.x) + 1;
 				TileGridSizeZ = Mathf.RoundToInt (mClik_destPos.z - mClik_origPos.z) + 1;
 				
@@ -127,7 +128,7 @@ public class EraserScript : MonoBehaviour
 
 	
 	
-	
+	*/
 	
 	
 }

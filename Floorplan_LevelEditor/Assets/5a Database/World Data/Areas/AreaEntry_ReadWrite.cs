@@ -21,7 +21,7 @@ public class AreaEntry_ReadWrite : MonoBehaviour
     //      ReadXMLData();
     //  }
 
-    void Start()
+    void Awake()
     {
         getDatasPath = GetComponent<IO_GetDatasPath>();
     }

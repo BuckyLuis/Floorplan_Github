@@ -4,6 +4,11 @@ using UnityEngine.UI;
 
 public class ElevationMenu : MonoBehaviour {
 
+    [SerializeField] GameObject theTilePlacer;
+    PlacerMovement placerMovementScript;
+
+
+
     [SerializeField] GameObject theGridsObject;
     [SerializeField] GameObject theMainCamera;
 
@@ -27,7 +32,10 @@ public class ElevationMenu : MonoBehaviour {
 
 
 
-	void Start () {
+	void Awake () {
+        theTilePlacer = GameObject.FindGameObjectWithTag("TilePlacer");
+        placerMovementScript = theTilePlacer.GetComponent<PlacerMovement>();
+
         uiTxt_CurrentFloor = ui_TxtCurrentFloor.GetComponent<Text>();
         uiTxt_CurrentYpos = ui_TxtCurrentYpos.GetComponent<Text>();
         currentFloor = 0;
@@ -38,36 +46,40 @@ public class ElevationMenu : MonoBehaviour {
 	}
 	
 	public void FloorUp () {
-        theGridsObject.transform.position = new Vector3 (20f, theGridsObject.transform.position.y + floorYSize, 20f);
-        theMainCamera.transform.position = new Vector3 (0, theMainCamera.transform.position.y + floorYSize, 0);
-        PlacerMovement.tilePlacerYpos = PlacerMovement.tilePlacerYpos + floorYSize;
+        if(currentFloor < 9) {
+            theGridsObject.transform.position = new Vector3 (19f, theGridsObject.transform.position.y + floorYSize, 19f);
+            theMainCamera.transform.position = new Vector3 (0, theMainCamera.transform.position.y + floorYSize, 0);
+            placerMovementScript.tilePlacerYpos = placerMovementScript.tilePlacerYpos + floorYSize;
 
-        currentFloor++;
-        currentYpos += floorYSize;
-        if(currentFloor > -1) 
-            posF0_negB1 = false;
-        FigureDisplayInfo();
-        uiTxt_CurrentYpos.text = string.Format( "{0} y", currentYpos ) ;
+            currentFloor++;
+            currentYpos += floorYSize;
+            if(currentFloor > -1) 
+                posF0_negB1 = false;
+            FigureDisplayInfo();
+            uiTxt_CurrentYpos.text = string.Format( "{0} y", currentYpos ) ;
+        }
 	}
 
     public void FloorDown () {
-        theGridsObject.transform.position = new Vector3 (20f, theGridsObject.transform.position.y - floorYSize, 20f);
-        theMainCamera.transform.position = new Vector3 (0,  theMainCamera.transform.position.y - floorYSize, 0);
-        PlacerMovement.tilePlacerYpos = PlacerMovement.tilePlacerYpos - floorYSize;
+        if(currentFloor > -10) {
+            theGridsObject.transform.position = new Vector3 (19f, theGridsObject.transform.position.y - floorYSize, 19f);
+            theMainCamera.transform.position = new Vector3 (0,  theMainCamera.transform.position.y - floorYSize, 0);
+            placerMovementScript.tilePlacerYpos = placerMovementScript.tilePlacerYpos - floorYSize;
 
-        currentFloor--;
-        currentYpos -= floorYSize;
-        if(currentFloor < 0) 
-            posF0_negB1 = true;
-        FigureDisplayInfo();
-        uiTxt_CurrentYpos.text = string.Format( "{0} y", currentYpos ) ;
+            currentFloor--;
+            currentYpos -= floorYSize;
+            if(currentFloor < 0) 
+                posF0_negB1 = true;
+            FigureDisplayInfo();
+            uiTxt_CurrentYpos.text = string.Format( "{0} y", currentYpos ) ;
+        }
        
     }
 
     public void FloorCenter () {
-        theGridsObject.transform.position = new Vector3 (20f, -0.1f, 20f);
+        theGridsObject.transform.position = new Vector3 (19f, -0.1f, 19f);
         theMainCamera.transform.position = new Vector3 (0, 0, 0);
-        PlacerMovement.tilePlacerYpos = 0;
+        placerMovementScript.tilePlacerYpos = 0;
 
         currentFloor = 0;
         currentYpos = 0;

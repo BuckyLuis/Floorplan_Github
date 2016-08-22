@@ -5,8 +5,6 @@ using System.Xml.Serialization;
 
 public class Tile_Base 
 {
-//	[XmlElement("IndexID")] 		public int IndexID {get; set;}    //simply for display, otherwise youd have to count! (itd royally suck)
-
     [XmlElement("RoomID")]          public int RoomID {get; set;}
 
     [XmlIgnore] public Vector3 Position;
@@ -24,14 +22,6 @@ public class Tile_Base
     [XmlIgnore] public Color roomColor;
     [XmlIgnore] public GameObject theGameObjectPrefab;
 
- /*   public Tile_Base(int roomID, Vector3 position, int categoryIndex, int assetIndex, int tileFacingFlag, string materialName) {
-        RoomID = roomID;
-        Position = position;
-        CategoryIndex = categoryIndex;
-        AssetIndex = assetIndex;
-        MaterialName = materialName;
-        TileFacingFlag = tileFacingFlag;
-    }*/
 }
 
 
