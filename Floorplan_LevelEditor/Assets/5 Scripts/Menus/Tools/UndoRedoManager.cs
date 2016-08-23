@@ -64,10 +64,20 @@ public class UndoRedoManager : MonoBehaviour {
 
     public void Undo() {
         currentOperation = UndoStack.Pop();
-        RedoStack.Push(currentOperation);
-        Undo_ObjectsDeletion();
-
-
+      
+        switch (currentOperation.operationFlag)
+        {
+            case 0:
+                RedoStack.Push(currentOperation);
+                ObjectsDeletion();
+                break;
+            case 1:
+                ObjectsRecreation();
+               // Undo_Erase_ObjectsRecreation();
+                RedoStack.Push(currentOperation);
+                break;
+        }
+     
 
 
         //---- ui ---
@@ -82,9 +92,20 @@ public class UndoRedoManager : MonoBehaviour {
 
     public void Redo() {
         currentOperation = RedoStack.Pop();
-        Redo_CallsObjectCreation();
-        UndoStack.Push(currentOperation);
 
+        switch (currentOperation.operationFlag)
+        {
+            case 0:
+                ObjectsRecreation();
+                UndoStack.Push(currentOperation);
+                break;
+            case 1:
+                UndoStack.Push(currentOperation);
+                ObjectsDeletion();
+                //Redo_Erase_ObjectsDeletion();
+                break;
+        }
+       
 
 
 
@@ -100,12 +121,11 @@ public class UndoRedoManager : MonoBehaviour {
 
 
 
-    public void AddAStep(List<GameObject> inGOList, List<Tile_Base> inTileBaseList) {
-        operationAssignment = new UndoRedoOperation(inGOList, inTileBaseList);
+    public void AddAStep(List<GameObject> inGOList, List<Tile_Base> inTileBaseList, int theOperationFlag) {
+        operationAssignment = new UndoRedoOperation(inGOList, inTileBaseList, theOperationFlag);
 
         UndoStack.Push(operationAssignment);
         RedoStack.Clear();
-
 
 
 
@@ -115,16 +135,27 @@ public class UndoRedoManager : MonoBehaviour {
     }
 
 
-    void Undo_ObjectsDeletion() {
-        for (int i = 0; i <  currentOperation.theOperationList_GO.Count; i++)
-        {
-            areaTilesRegistryScript.Tile_RemoveFromGrid(currentOperation.theOperationList_TileBase[i]);
-            Destroy( currentOperation.theOperationList_GO[i] );
+    void ObjectsDeletion() {
+        for (int i = 0; i < currentOperation.theOperationList_TileBase.Count; i++) {
+            if(areaTilesRegistryScript.Tile_PosUnoccupied(currentOperation.theOperationList_TileBase[i]) == false) {
+                string tempGoNameToErase = string.Format("({0}, {1}, {2})"
+                    , currentOperation.theOperationList_TileBase[i].Position.x
+                    , currentOperation.theOperationList_TileBase[i].Position.y
+                    , currentOperation.theOperationList_TileBase[i].Position.z );
+                GameObject tempGoToErase = GameObject.Find(tempGoNameToErase);
+
+                areaTilesRegistryScript.Tile_RemoveFromGrid(tempGoToErase.GetComponent<WorldObjectInfo>().tileObject);
+                Destroy(tempGoToErase);
+            }
+            else {
+                areaTilesRegistryScript.Tile_RemoveFromGrid(currentOperation.theOperationList_TileBase[i]);
+                Destroy( currentOperation.theOperationList_GO[i] );
+            }
         }
         currentOperation.theOperationList_GO.Clear();
     }
-
-    void Redo_CallsObjectCreation() {
+        
+    void ObjectsRecreation() {
         foreach(Tile_Base tileBaseToGen in currentOperation.theOperationList_TileBase) {
              if(areaTilesRegistryScript.Tile_PosUnoccupied(tileBaseToGen.Position) == true) {        // the check for TileRegistry occupation, isnt really necessary here, but i will keep it, for error security
                 objInstantiatorScript.CreateTiles_UndoRedo(tileBaseToGen, out constructedGO);
@@ -136,5 +167,26 @@ public class UndoRedoManager : MonoBehaviour {
     }
 
 
+/*
+    void Undo_Erase_ObjectsRecreation () {
+        foreach(Tile_Base tileBaseToGen in currentOperation.theOperationList_TileBase) {
+            if(areaTilesRegistryScript.Tile_PosUnoccupied(tileBaseToGen.Position) == true) {        
+                objInstantiatorScript.CreateTiles_UndoRedo(tileBaseToGen, out constructedGO);
+                currentOperation.theOperationList_GO.Add(constructedGO);
+
+                areaTilesRegistryScript.Tile_AddToGrid(tileBaseToGen);
+            }
+        }
+    }
+
+    void Redo_Erase_ObjectsDeletion () {
+        for (int i = 0; i < currentOperation.theOperationList_GO.Count; i++) {
+            areaTilesRegistryScript.Tile_RemoveFromGrid(currentOperation.theOperationList_TileBase[i]);
+            Destroy( currentOperation.theOperationList_GO[i] );
+        }
+        currentOperation.theOperationList_GO.Clear();
+    }
+
+*/
 
 }

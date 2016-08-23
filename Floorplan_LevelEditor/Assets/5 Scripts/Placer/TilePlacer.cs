@@ -90,11 +90,11 @@ public class TilePlacer : MonoBehaviour {
 
     void PlacerCalcs() {
         Click_destPos = placerMovementScript.destinationPos;
-        paintSizeX = Mathf.RoundToInt ( (Click_destPos.x / gridSize) - (Click_origPos.x / gridSize) ) + 1;
+        paintSizeX = Mathf.RoundToInt ( (Click_destPos.x / gridSize) - (Click_origPos.x / gridSize) ) + 1; 
         paintSizeZ = Mathf.RoundToInt ( (Click_destPos.z / gridSize) - (Click_origPos.z / gridSize) ) + 1;
 
         if(Click_destPos.x < Click_origPos.x) {
-            tempPaintSizeX = Mathf.RoundToInt ( (Click_destPos.x / gridSize) - (Click_origPos.x / gridSize) - 1);
+            tempPaintSizeX = Mathf.RoundToInt ( (Click_destPos.x / gridSize) - (Click_origPos.x / gridSize) - 1); 
             paintSizeX = Mathf.Abs (tempPaintSizeX);
             xIsNeg = true;
         }
@@ -102,7 +102,7 @@ public class TilePlacer : MonoBehaviour {
             xIsNeg = false;
 
         if(Click_destPos.z < Click_origPos.z) {
-            tempPaintSizeZ = Mathf.RoundToInt ( (Click_destPos.z / gridSize)- (Click_origPos.z / gridSize) - 1); 
+            tempPaintSizeZ =  Mathf.RoundToInt ( (Click_destPos.z / gridSize)- (Click_origPos.z / gridSize) - 1);
             paintSizeZ = Mathf.Abs (tempPaintSizeZ);
             zIsNeg = true;
         }
@@ -136,7 +136,8 @@ public class TilePlacer : MonoBehaviour {
 
         for(int xL = 0; xL < paintSizeX; xL++) {        //xL , zL are local (relative to placerOrig) coords!
             for(int zL = 0; zL < paintSizeZ; zL++) {
-                thePosition = new Vector3((xL * gridSize)+ Click_origPos.x, Click_origPos.y, (zL * gridSize)+ Click_origPos.z);
+                thePosition = new Vector3((xL * gridSize)+ Click_origPos.x, Click_origPos.y, (zL * gridSize)+ Click_origPos.z );
+                Debug.Log("place " + thePosition);
 
                 if(areaTilesRegistryScript.Tile_PosUnoccupied(thePosition) == true) {
                     objInstantiatorScript.CreateTiles(objToPlace_Prefab, thePosition, out constructedGO, out constructedTileBase);
@@ -148,7 +149,7 @@ public class TilePlacer : MonoBehaviour {
                 }
             }
         }
-        undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo);
+        undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo, 0);
     }
        
 

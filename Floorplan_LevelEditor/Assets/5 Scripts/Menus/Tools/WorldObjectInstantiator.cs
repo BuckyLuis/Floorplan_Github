@@ -32,7 +32,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
     public void CreateTiles(GameObject theObjectToPlace, Vector3 thePosition, out GameObject constructedGO, out Tile_Base constructedTileBase) {     //! @TODO: replace with a call to a new Class and Method that handles Tile Instantiation
 
         tempTileObject = (GameObject)Instantiate(theObjectToPlace, thePosition, Quaternion.Euler(theObjectToPlace.transform.rotation.x, tileFacingRot, theObjectToPlace.transform.rotation.z));
-        tempTileObject.name = string.Format ("Rm: {0} / G: ({1},{2},{3}) {4}°", roomID, tempTileObject.transform.position.x, tempTileObject.transform.position.y, tempTileObject.transform.position.z, tileFacingRot);
+        tempTileObject.name = string.Format ("({0}, {1}, {2})", tempTileObject.transform.position.x, tempTileObject.transform.position.y, tempTileObject.transform.position.z );
         tempTileObject.transform.SetParent(AreaTileParent.transform, true);
 
         tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, Vector3.zero, Quaternion.identity);
@@ -40,8 +40,8 @@ public class WorldObjectInstantiator : MonoBehaviour {
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
         tempBelongMarker.transform.SetParent(tempTileObject.transform, false);
 
-        tempWorldObjectInfo = (GameObject)Instantiate(worldObjectInfo, Vector3.zero, Quaternion.identity);
-        tempWorldObjectInfo.transform.SetParent(tempTileObject.transform, false);
+   //     tempWorldObjectInfo = (GameObject)Instantiate(worldObjectInfo, Vector3.zero, Quaternion.identity);
+   //     tempWorldObjectInfo.transform.SetParent(tempTileObject.transform, false);
 
         tempTileBaseObject = new Tile_Base();
         tempTileBaseObject.RoomID = roomID;
@@ -54,7 +54,8 @@ public class WorldObjectInstantiator : MonoBehaviour {
         tempTileBaseObject.editorGoName = tempTileObject.name;
         tempTileBaseObject.theGameObjectPrefab = theObjectToPlace;
 
-        tempWorldObjectInfo.GetComponent<WorldObjectInfo>().tileObject = tempTileBaseObject;
+        tempTileObject.AddComponent<WorldObjectInfo>();
+        tempTileObject.GetComponent<WorldObjectInfo>().tileObject = tempTileBaseObject;
 
         constructedGO = tempTileObject;
         constructedTileBase = tempTileBaseObject;
@@ -80,10 +81,11 @@ public class WorldObjectInstantiator : MonoBehaviour {
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
         tempBelongMarker.transform.SetParent(tempTileObject.transform, false);
 
-        tempWorldObjectInfo = (GameObject)Instantiate(worldObjectInfo, Vector3.zero, Quaternion.identity);
-        tempWorldObjectInfo.transform.SetParent(tempTileObject.transform, false);
+      //  tempWorldObjectInfo = (GameObject)Instantiate(worldObjectInfo, Vector3.zero, Quaternion.identity);
+      //  tempWorldObjectInfo.transform.SetParent(tempTileObject.transform, false);
 
-        tempWorldObjectInfo.GetComponent<WorldObjectInfo>().tileObject = theTileBase;
+        tempTileObject.AddComponent<WorldObjectInfo>();
+        tempTileObject.GetComponent<WorldObjectInfo>().tileObject = theTileBase;
 
         constructedGO = tempTileObject;
     }

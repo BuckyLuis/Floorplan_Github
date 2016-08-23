@@ -70,6 +70,7 @@
      <Compile Include="Assets\5 Scripts\Menus\Tools\UndoRedoOperation.cs" />
      <Compile Include="Assets\5 Scripts\Menus\Tools\WorldObjectInstantiator.cs" />
      <Compile Include="Assets\5 Scripts\Placer\CamBoundsMarker.cs" />
+     <Compile Include="Assets\5 Scripts\Placer\EraserWidget.cs" />
      <Compile Include="Assets\5 Scripts\Placer\GenerateTiles.cs" />
      <Compile Include="Assets\5 Scripts\Placer\PlaceCamBoundsMarker.cs" />
      <Compile Include="Assets\5 Scripts\Placer\PlacerMovement.cs" />
