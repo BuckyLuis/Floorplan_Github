@@ -53,6 +53,8 @@
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Doodads.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Floors.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Props.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Templates.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Tilesets.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Triggers.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Walls.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\TexturesViewerEntry.cs" />
@@ -97,6 +99,8 @@
      <Compile Include="Assets\5a Database\Assets Data\Asset_Doodad_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Asset_Floor_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Asset_Prop_Base.cs" />
+     <Compile Include="Assets\5a Database\Assets Data\Asset_Template_Base.cs" />
+     <Compile Include="Assets\5a Database\Assets Data\Asset_Tileset_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Asset_Trigger_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Asset_Wall_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\TextureAtlas_Base.cs" />

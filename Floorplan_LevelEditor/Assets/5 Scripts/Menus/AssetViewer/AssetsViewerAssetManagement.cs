@@ -9,6 +9,8 @@ public enum Categories_Doodads { STANDARD, DECAL, SIGNS, SPECIAL }
 public enum Categories_Props { STANDARD, ITEM, HAZARD, SPECIAL }
 public enum Categories_Actors { STANDARD, FRIENDLY, ENEMY, BOSS }
 public enum Categories_Triggers { STANDARD, SPAWNER, HAZARD, SPECIAL }
+public enum Categories_Tilesets { STANDARD, SPAWNER, HAZARD, SPECIAL }
+public enum Categories_Templates { STANDARD, SPAWNER, HAZARD, SPECIAL }
 
 [Serializable] public class Dictionary_sGo : SerializableDictionary<string, GameObject> { }
 
@@ -27,6 +29,8 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
     public List<Asset_Prop_Base> assetsList_Props = new List<Asset_Prop_Base>();
     public List<Asset_Actor_Base> assetsList_Actors = new List<Asset_Actor_Base>();
     public List<Asset_Trigger_Base> assetsList_Triggers = new List<Asset_Trigger_Base>();
+    public List<Asset_Tileset_Base> assetsList_Tilesets = new List<Asset_Tileset_Base>();
+    public List<Asset_Template_Base> assetsList_Templates = new List<Asset_Template_Base>();
     [Space(40, order = 1)]
     [Header (" ^^^ ^^^ --- --- --- --- --- --- ^^^ ^^^ ", order = 2)]    
 
@@ -43,6 +47,8 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
     public Dictionary_sGo assetsEntriesDict_Props;
     public Dictionary_sGo assetsEntriesDict_Actors;
     public Dictionary_sGo assetsEntriesDict_Triggers;
+    public Dictionary_sGo assetsEntriesDict_Tilesets;
+    public Dictionary_sGo assetsEntriesDict_Templates;
    
 //---------------- UI refs ----------------------
     [Space(20, order = 5)]
@@ -55,6 +61,8 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
     [SerializeField] GameObject viewAreaProps;
     [SerializeField] GameObject viewAreaActors;
     [SerializeField] GameObject viewAreaTriggers;
+    [SerializeField] GameObject viewAreaTilesets;
+    [SerializeField] GameObject viewAreaTemplates;
 
     [SerializeField] GameObject floorEntryPrefab;
     [SerializeField] GameObject wallEntryPrefab;
@@ -62,6 +70,8 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
     [SerializeField] GameObject propEntryPrefab;
     [SerializeField] GameObject actorEntryPrefab;
     [SerializeField] GameObject triggerEntryPrefab;
+    [SerializeField] GameObject tilesetEntryPrefab;
+    [SerializeField] GameObject templateEntryPrefab;
 
     [Header ("--- --- --- --- --- ---", order = 7)]    
 
@@ -296,7 +306,80 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
 
             assetsEntriesDict_Triggers.Add(string.Format("{0}|{1}", (int)triggerBasis.categoryTriggers, triggerBasis.assetIndex), tempEntry);
         }
-            
+
+        assetIndexCounterCat0 = 1;
+        assetIndexCounterCat1 = 1;
+        assetIndexCounterCat2 = 1;
+        assetIndexCounterCat3 = 1;
+        foreach (var tilesetBasis in assetsList_Tilesets) {
+            switch ((int)tilesetBasis.categoryTilesets)
+            {
+                case 0:
+                    tilesetBasis.assetIndex = assetIndexCounterCat0;  
+                    assetIndexCounterCat0++;
+                    break;
+                case 1:
+                    tilesetBasis.assetIndex = assetIndexCounterCat1;  
+                    assetIndexCounterCat1++;
+                    break;
+                case 2:
+                    tilesetBasis.assetIndex = assetIndexCounterCat2;  
+                    assetIndexCounterCat2++;
+                    break;
+                case 3:
+                    tilesetBasis.assetIndex = assetIndexCounterCat3;  
+                    assetIndexCounterCat3++;
+                    break;
+            }
+
+            tempEntry = Instantiate(tilesetEntryPrefab);
+            tempEntry.transform.SetParent(viewAreaTilesets.transform, false);
+            AssetsViewerEntry_Tilesets tempScript = tempEntry.GetComponent<AssetsViewerEntry_Tilesets>();
+
+            tempScript.assetTileset_BaseObject = tilesetBasis;
+            tempScript.assetIndex = tilesetBasis.assetIndex;
+            tempScript.assetWorldObject = tilesetBasis.worldObjectPrefab;
+            //triggers have no in-game texture
+
+            assetsEntriesDict_Tilesets.Add(string.Format("{0}|{1}", (int)tilesetBasis.categoryTilesets, tilesetBasis.assetIndex), tempEntry);
+        }
+
+        assetIndexCounterCat0 = 1;
+        assetIndexCounterCat1 = 1;
+        assetIndexCounterCat2 = 1;
+        assetIndexCounterCat3 = 1;
+        foreach (var templateBasis in assetsList_Templates) {
+            switch ((int)templateBasis.categoryTemplates)
+            {
+                case 0:
+                    templateBasis.assetIndex = assetIndexCounterCat0;  
+                    assetIndexCounterCat0++;
+                    break;
+                case 1:
+                    templateBasis.assetIndex = assetIndexCounterCat1;  
+                    assetIndexCounterCat1++;
+                    break;
+                case 2:
+                    templateBasis.assetIndex = assetIndexCounterCat2;  
+                    assetIndexCounterCat2++;
+                    break;
+                case 3:
+                    templateBasis.assetIndex = assetIndexCounterCat3;  
+                    assetIndexCounterCat3++;
+                    break;
+            }
+
+            tempEntry = Instantiate(templateEntryPrefab);
+            tempEntry.transform.SetParent(viewAreaTemplates.transform, false);
+            AssetsViewerEntry_Templates tempScript = tempEntry.GetComponent<AssetsViewerEntry_Templates>();
+
+            tempScript.assetTemplate_BaseObject = templateBasis;
+            tempScript.assetIndex = templateBasis.assetIndex;
+            tempScript.assetWorldObject = templateBasis.worldObjectPrefab;
+            //triggers have no in-game texture
+
+            assetsEntriesDict_Templates.Add(string.Format("{0}|{1}", (int)templateBasis.categoryTemplates, templateBasis.assetIndex), tempEntry);
+        }   
     }
 #endregion
 	
@@ -363,6 +446,28 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             }
             else {
                 triggerEntry.Value.SetActive(false);
+            }
+        }
+    }
+
+    public void ShowCategory_Tilesets(int categoryIndex) {
+        foreach (KeyValuePair<string, GameObject> tilesetEntry in assetsEntriesDict_Triggers) {
+            if(SplitDictKey_GetCategory(tilesetEntry) == categoryIndex) {
+                tilesetEntry.Value.SetActive(true);
+            }
+            else {
+                tilesetEntry.Value.SetActive(false);
+            }
+        }
+    }
+
+    public void ShowCategory_Templates(int categoryIndex) {
+        foreach (KeyValuePair<string, GameObject> templateEntry in assetsEntriesDict_Triggers) {
+            if(SplitDictKey_GetCategory(templateEntry) == categoryIndex) {
+                templateEntry.Value.SetActive(true);
+            }
+            else {
+                templateEntry.Value.SetActive(false);
             }
         }
     }

@@ -39,12 +39,16 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     [SerializeField] GameObject btn_Props;
     [SerializeField] GameObject btn_Actors;
     [SerializeField] GameObject btn_Triggers;
+    [SerializeField] GameObject btn_Tilesets;
+    [SerializeField] GameObject btn_Templates;
     Image uiImg_HighlightFloors;
     Image uiImg_HighlightWalls;
     Image uiImg_HighlightDoodads;
     Image uiImg_HighlightProps;
     Image uiImg_HighlightActors;
     Image uiImg_HighlightTriggers;
+    Image uiImg_HighlightTilesets;
+    Image uiImg_HighlightTemplates;
 
     [SerializeField] GameObject sv_Floors;
     [SerializeField] GameObject sv_Walls;
@@ -52,6 +56,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     [SerializeField] GameObject sv_Props;
     [SerializeField] GameObject sv_Actors;
     [SerializeField] GameObject sv_Triggers;
+    [SerializeField] GameObject sv_Tilesets;
+    [SerializeField] GameObject sv_Templates;
 
     [SerializeField] GameObject header_Floors;
     [SerializeField] GameObject header_Walls;
@@ -59,6 +65,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     [SerializeField] GameObject header_Props;
     [SerializeField] GameObject header_Actors;
     [SerializeField] GameObject header_Triggers;
+    [SerializeField] GameObject header_Tilesets;
+    [SerializeField] GameObject header_Templates;
     Image uiImg_HlFloorCat1;
     Image uiImg_HlFloorCat2;
     Image uiImg_HlFloorCat3;
@@ -88,6 +96,16 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
     Image uiImg_HlTriggersCat2;
     Image uiImg_HlTriggersCat3;
     Image uiImg_HlTriggersCat4;
+
+    Image uiImg_HlTilesetsCat1;
+    Image uiImg_HlTilesetsCat2;
+    Image uiImg_HlTilesetsCat3;
+    Image uiImg_HlTilesetsCat4;
+
+    Image uiImg_HlTemplatesCat1;
+    Image uiImg_HlTemplatesCat2;
+    Image uiImg_HlTemplatesCat3;
+    Image uiImg_HlTemplatesCat4;
 
   /*  [SerializeField] GameObject view_Floors;
     [SerializeField] GameObject view_Walls;
@@ -119,6 +137,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HighlightProps = btn_Props.transform.GetChild(2).GetComponent<Image>();
         uiImg_HighlightActors = btn_Actors.transform.GetChild(2).GetComponent<Image>();
         uiImg_HighlightTriggers = btn_Triggers.transform.GetChild(2).GetComponent<Image>();
+        uiImg_HighlightTilesets = btn_Tilesets.transform.GetChild(2).GetComponent<Image>();
+        uiImg_HighlightTemplates = btn_Templates.transform.GetChild(2).GetComponent<Image>();
 
         uiImg_HighlightFloors.enabled = false;
         uiImg_HighlightWalls.enabled = false;
@@ -126,6 +146,9 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HighlightProps.enabled = false; 
         uiImg_HighlightActors.enabled = false; 
         uiImg_HighlightTriggers.enabled = false; 
+        uiImg_HighlightTilesets.enabled = false; 
+        uiImg_HighlightTemplates.enabled = false; 
+
 
         uiImg_HlFloorCat1 = header_Floors.transform.GetChild(1).transform.GetChild(2).GetComponent<Image>();
         uiImg_HlFloorCat2 = header_Floors.transform.GetChild(2).transform.GetChild(2).GetComponent<Image>();
@@ -181,6 +204,24 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HlTriggersCat3.enabled = false;
         uiImg_HlTriggersCat4.enabled = false;
 
+        uiImg_HlTilesetsCat1 = header_Tilesets.transform.GetChild(1).transform.GetChild(2).GetComponent<Image>();
+        uiImg_HlTilesetsCat2 = header_Tilesets.transform.GetChild(2).transform.GetChild(2).GetComponent<Image>();
+        uiImg_HlTilesetsCat3 = header_Tilesets.transform.GetChild(3).transform.GetChild(2).GetComponent<Image>();
+        uiImg_HlTilesetsCat4 = header_Tilesets.transform.GetChild(4).transform.GetChild(2).GetComponent<Image>();
+        uiImg_HlTilesetsCat1.enabled = false;
+        uiImg_HlTilesetsCat2.enabled = false;
+        uiImg_HlTilesetsCat3.enabled = false;
+        uiImg_HlTilesetsCat4.enabled = false;
+
+        uiImg_HlTemplatesCat1 = header_Templates.transform.GetChild(1).transform.GetChild(2).GetComponent<Image>();
+        uiImg_HlTemplatesCat2 = header_Templates.transform.GetChild(2).transform.GetChild(2).GetComponent<Image>();
+        uiImg_HlTemplatesCat3 = header_Templates.transform.GetChild(3).transform.GetChild(2).GetComponent<Image>();
+        uiImg_HlTemplatesCat4 = header_Templates.transform.GetChild(4).transform.GetChild(2).GetComponent<Image>();
+        uiImg_HlTemplatesCat1.enabled = false;
+        uiImg_HlTemplatesCat2.enabled = false;
+        uiImg_HlTemplatesCat3.enabled = false;
+        uiImg_HlTemplatesCat4.enabled = false;
+
         uiTgl_allowAutoReset = tgl_allowAutoReset.GetComponent<Toggle>();
 
         sv_Floors.SetActive(false);
@@ -195,6 +236,10 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         header_Actors.SetActive(false);
         sv_Triggers.SetActive(false);
         header_Triggers.SetActive(false);
+        sv_Tilesets.SetActive(false);
+        header_Tilesets.SetActive(false);
+        sv_Templates.SetActive(false);
+        header_Templates.SetActive(false);
 
 	}
 	
@@ -387,6 +432,12 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
                     case 6: 
                         SetTriggersPage();
                         break;  
+                    case 9:
+                        SetTilesetsPage();
+                        break;
+                    case 0: 
+                        SetTemplatesPage();
+                        break;
                 }    
                 break; 
             case 1:         //---------------- Categories ---------- 
@@ -487,6 +538,39 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
                                 break;  
                         }    
                         break;
+                    case 7:                         //tilesets Categories
+                        switch (keyPressed) {
+                            case 1: 
+                                TilesetsCategory1();
+                                break;  
+                            case 2: 
+                                TilesetsCategory2();
+                                break;  
+                            case 3: 
+                                TilesetsCategory3();
+                                break;  
+                            case 4: 
+                                TilesetsCategory4();
+                                break;  
+                        }    
+                        break;
+                    case 8:                         //templates Categories
+                        switch (keyPressed) {
+                            case 1: 
+                                TemplatesCategory1();
+                                break;  
+                            case 2: 
+                                TemplatesCategory2();
+                                break;  
+                            case 3: 
+                                TemplatesCategory3();
+                                break;  
+                            case 4: 
+                                TemplatesCategory4();
+                                break;  
+                        }    
+                        break;
+                       
                 }    
                 break;  
             case 2:         //---------------- Assets ----------
@@ -572,6 +656,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HighlightProps.enabled = false; 
         uiImg_HighlightActors.enabled = false; 
         uiImg_HighlightTriggers.enabled = false; 
+        uiImg_HighlightTilesets.enabled = false; 
+        uiImg_HighlightTemplates.enabled = false; 
 
  
         sv_Walls.SetActive(false);
@@ -584,6 +670,10 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         header_Actors.SetActive(false);
         sv_Triggers.SetActive(false);
         header_Triggers.SetActive(false);
+        sv_Tilesets.SetActive(false);
+        header_Tilesets.SetActive(false);
+        sv_Templates.SetActive(false);
+        header_Templates.SetActive(false);
 
         header_Floors.SetActive(true);
 
@@ -660,6 +750,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HighlightProps.enabled = false; 
         uiImg_HighlightActors.enabled = false; 
         uiImg_HighlightTriggers.enabled = false; 
+        uiImg_HighlightTilesets.enabled = false; 
+        uiImg_HighlightTemplates.enabled = false;
 
         sv_Floors.SetActive(false);
         header_Floors.SetActive(false);
@@ -671,6 +763,10 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         header_Actors.SetActive(false);
         sv_Triggers.SetActive(false);
         header_Triggers.SetActive(false);
+        sv_Tilesets.SetActive(false);
+        header_Tilesets.SetActive(false);
+        sv_Templates.SetActive(false);
+        header_Templates.SetActive(false);
 
         header_Walls.SetActive(true);
 
@@ -742,6 +838,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HighlightProps.enabled = false; 
         uiImg_HighlightActors.enabled = false; 
         uiImg_HighlightTriggers.enabled = false; 
+        uiImg_HighlightTilesets.enabled = false; 
+        uiImg_HighlightTemplates.enabled = false;
 
         sv_Floors.SetActive(false);
         header_Floors.SetActive(false);
@@ -753,6 +851,10 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         header_Actors.SetActive(false);
         sv_Triggers.SetActive(false);
         header_Triggers.SetActive(false);
+        sv_Tilesets.SetActive(false);
+        header_Tilesets.SetActive(false);
+        sv_Templates.SetActive(false);
+        header_Templates.SetActive(false);
 
         header_Doodads.SetActive(true);
 
@@ -828,6 +930,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
             uiImg_HighlightProps.enabled = true; 
         uiImg_HighlightActors.enabled = false; 
         uiImg_HighlightTriggers.enabled = false; 
+        uiImg_HighlightTilesets.enabled = false; 
+        uiImg_HighlightTemplates.enabled = false;
 
         sv_Floors.SetActive(false);
         header_Floors.SetActive(false);
@@ -839,6 +943,10 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         header_Actors.SetActive(false);
         sv_Triggers.SetActive(false);
         header_Triggers.SetActive(false);
+        sv_Tilesets.SetActive(false);
+        header_Tilesets.SetActive(false);
+        sv_Templates.SetActive(false);
+        header_Templates.SetActive(false);
 
         header_Props.SetActive(true);
 
@@ -914,6 +1022,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HighlightProps.enabled = false; 
             uiImg_HighlightActors.enabled = true; 
         uiImg_HighlightTriggers.enabled = false; 
+        uiImg_HighlightTilesets.enabled = false; 
+        uiImg_HighlightTemplates.enabled = false;
 
         sv_Floors.SetActive(false);
         header_Floors.SetActive(false);
@@ -925,6 +1035,10 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         header_Props.SetActive(false);
         sv_Triggers.SetActive(false);
         header_Triggers.SetActive(false);
+        sv_Tilesets.SetActive(false);
+        header_Tilesets.SetActive(false);
+        sv_Templates.SetActive(false);
+        header_Templates.SetActive(false);
 
         header_Actors.SetActive(true);
 
@@ -1000,6 +1114,8 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         uiImg_HighlightProps.enabled = false; 
         uiImg_HighlightActors.enabled = false; 
             uiImg_HighlightTriggers.enabled = true; 
+        uiImg_HighlightTilesets.enabled = false; 
+        uiImg_HighlightTemplates.enabled = false;
      
         sv_Floors.SetActive(false);
         header_Floors.SetActive(false);
@@ -1011,6 +1127,10 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         header_Props.SetActive(false);
         sv_Actors.SetActive(false);
         header_Actors.SetActive(false);
+        sv_Tilesets.SetActive(false);
+        header_Tilesets.SetActive(false);
+        sv_Templates.SetActive(false);
+        header_Templates.SetActive(false);
 
         header_Triggers.SetActive(true);
 
@@ -1075,6 +1195,191 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
         assetManagerScript.ShowCategory_Triggers(3);
 
         currentCategory = 34;
+        hotkeyStage = 2;
+        HotkeyStageColor();
+    }
+
+
+    public void SetTilesetsPage() {
+        uiImg_HighlightFloors.enabled = false;
+        uiImg_HighlightWalls.enabled = false;
+        uiImg_HighlightDoodads.enabled = false;
+        uiImg_HighlightProps.enabled = false; 
+        uiImg_HighlightActors.enabled = false; 
+        uiImg_HighlightTriggers.enabled = false; 
+            uiImg_HighlightTilesets.enabled = true; 
+        uiImg_HighlightTemplates.enabled = false; 
+
+        sv_Floors.SetActive(false);
+        header_Floors.SetActive(false);
+        sv_Walls.SetActive(false);
+        header_Walls.SetActive(false);
+        sv_Doodads.SetActive(false);
+        header_Doodads.SetActive(false);
+        sv_Props.SetActive(false);
+        header_Props.SetActive(false);
+        sv_Actors.SetActive(false);
+        header_Actors.SetActive(false);
+        sv_Triggers.SetActive(false);
+        header_Triggers.SetActive(false);
+        sv_Templates.SetActive(false);
+        header_Templates.SetActive(false);
+
+        header_Tilesets.SetActive(true);
+
+        currentPage = 7;
+        hotkeyStage = 1;
+        HotkeyStageColor();
+    }
+
+    public void TilesetsCategory1() {
+        sv_Tilesets.SetActive(true);
+
+        uiImg_HlTilesetsCat1.enabled = true;
+        uiImg_HlTilesetsCat2.enabled = false;
+        uiImg_HlTilesetsCat3.enabled = false;
+        uiImg_HlTilesetsCat4.enabled = false;
+
+        assetManagerScript.ShowCategory_Tilesets(0);
+
+        currentCategory = 71;
+        hotkeyStage = 2;
+        HotkeyStageColor();
+    }
+
+    public void TilesetsCategory2() {
+        sv_Tilesets.SetActive(true);
+
+        uiImg_HlTilesetsCat1.enabled = false;
+        uiImg_HlTilesetsCat2.enabled = true;
+        uiImg_HlTilesetsCat3.enabled = false;
+        uiImg_HlTilesetsCat4.enabled = false;
+
+        assetManagerScript.ShowCategory_Tilesets(1);
+
+        currentCategory = 72;
+        hotkeyStage = 2;
+        HotkeyStageColor();
+    }
+
+    public void TilesetsCategory3() {
+        sv_Tilesets.SetActive(true);
+
+        uiImg_HlTilesetsCat1.enabled = false;
+        uiImg_HlTilesetsCat2.enabled = false;
+        uiImg_HlTilesetsCat3.enabled = true;
+        uiImg_HlTilesetsCat4.enabled = false;
+
+        assetManagerScript.ShowCategory_Tilesets(2);
+
+        currentCategory = 73;
+        hotkeyStage = 2;
+        HotkeyStageColor();
+    }
+
+    public void TilesetsCategory4() {
+        sv_Tilesets.SetActive(true);
+
+        uiImg_HlTilesetsCat1.enabled = false;
+        uiImg_HlTilesetsCat2.enabled = false;
+        uiImg_HlTilesetsCat3.enabled = false;
+        uiImg_HlTilesetsCat4.enabled = true;
+
+        assetManagerScript.ShowCategory_Tilesets(3);
+
+        currentCategory = 74;
+        hotkeyStage = 2;
+        HotkeyStageColor();
+    }
+       
+    public void SetTemplatesPage() {
+        uiImg_HighlightFloors.enabled = false;
+        uiImg_HighlightWalls.enabled = false;
+        uiImg_HighlightDoodads.enabled = false;
+        uiImg_HighlightProps.enabled = false; 
+        uiImg_HighlightActors.enabled = false; 
+        uiImg_HighlightTriggers.enabled = false; 
+        uiImg_HighlightTilesets.enabled = false; 
+            uiImg_HighlightTemplates.enabled = true; 
+
+        sv_Floors.SetActive(false);
+        header_Floors.SetActive(false);
+        sv_Walls.SetActive(false);
+        header_Walls.SetActive(false);
+        sv_Doodads.SetActive(false);
+        header_Doodads.SetActive(false);
+        sv_Props.SetActive(false);
+        header_Props.SetActive(false);
+        sv_Actors.SetActive(false);
+        header_Actors.SetActive(false);
+        sv_Triggers.SetActive(false);
+        header_Triggers.SetActive(false);
+        sv_Tilesets.SetActive(false);
+        header_Tilesets.SetActive(false);
+
+        header_Templates.SetActive(true);
+
+        currentPage = 8;
+        hotkeyStage = 1;
+        HotkeyStageColor();
+    }
+
+    public void TemplatesCategory1() {
+        sv_Templates.SetActive(true);
+
+        uiImg_HlTemplatesCat1.enabled = true;
+        uiImg_HlTemplatesCat2.enabled = false;
+        uiImg_HlTemplatesCat3.enabled = false;
+        uiImg_HlTemplatesCat4.enabled = false;
+
+        assetManagerScript.ShowCategory_Templates(0);
+
+        currentCategory = 81;
+        hotkeyStage = 2;
+        HotkeyStageColor();
+    }
+
+    public void TemplatesCategory2() {
+        sv_Templates.SetActive(true);
+
+        uiImg_HlTemplatesCat1.enabled = false;
+        uiImg_HlTemplatesCat2.enabled = true;
+        uiImg_HlTemplatesCat3.enabled = false;
+        uiImg_HlTemplatesCat4.enabled = false;
+
+        assetManagerScript.ShowCategory_Templates(1);
+
+        currentCategory = 82;
+        hotkeyStage = 2;
+        HotkeyStageColor();
+    }
+
+    public void TemplatesCategory3() {
+        sv_Templates.SetActive(true);
+
+        uiImg_HlTemplatesCat1.enabled = false;
+        uiImg_HlTemplatesCat2.enabled = false;
+        uiImg_HlTemplatesCat3.enabled = true;
+        uiImg_HlTemplatesCat4.enabled = false;
+
+        assetManagerScript.ShowCategory_Templates(2);
+
+        currentCategory = 83;
+        hotkeyStage = 2;
+        HotkeyStageColor();
+    }
+
+    public void TemplatesCategory4() {
+        sv_Templates.SetActive(true);
+
+        uiImg_HlTemplatesCat1.enabled = false;
+        uiImg_HlTemplatesCat2.enabled = false;
+        uiImg_HlTemplatesCat3.enabled = false;
+        uiImg_HlTemplatesCat4.enabled = true;
+
+        assetManagerScript.ShowCategory_Templates(3);
+
+        currentCategory = 84;
         hotkeyStage = 2;
         HotkeyStageColor();
     }
