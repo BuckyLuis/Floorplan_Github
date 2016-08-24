@@ -41,7 +41,6 @@ public class TilePlacer : MonoBehaviour {
     //--------------- Placer thingys --------------------
     public GameObject placeholder_Place;
     public GameObject placeholder_Erase;
-    public GameObject placeholder_Replace;
     private GameObject instPlaceholder;
 
     bool? tile0_entity1;   
@@ -85,10 +84,12 @@ public class TilePlacer : MonoBehaviour {
     void Update() {
         if(Input.GetMouseButtonUp(0)) {
             if(click0_Middle1 == false)
+                PlacerCalcs();
                 PlacerWork(); 
         }
         if(Input.GetMouseButtonUp(2)) {
             if(click0_Middle1 == true)
+                PlacerCalcs();
                 PlacerWork(); 
         }
     }
@@ -97,15 +98,13 @@ public class TilePlacer : MonoBehaviour {
     void Clicked() {   //called by ClickDetectMessageSender.cs
         click0_Middle1 = false;
         click_origPos = transform.position;
-        PlacerCalcs();
         instPlaceholder = (GameObject)Instantiate(placeholder_Place, transform.position ,transform.rotation); 
     }
         
     void MiddleClicked() {
         click0_Middle1 = true;
         click_origPos = transform.position;
-        PlacerCalcs();
-        instPlaceholder = (GameObject)Instantiate(placeholder_Replace, transform.position ,transform.rotation);
+        instPlaceholder = (GameObject)Instantiate(placeholder_Erase, transform.position ,transform.rotation);
     }
 
     void RightClicked() {
@@ -138,20 +137,23 @@ public class TilePlacer : MonoBehaviour {
 
     void PlacerWork() {
         Destroy(instPlaceholder);
-        if(xIsNeg == true) {
-            click_origPos.x = click_destPos.x;
-        }
-        if(zIsNeg == true) {
-            click_origPos.z = click_destPos.z;
-        }
-        if(xIsNeg == true && zIsNeg == true) {
-            click_origPos = click_destPos;
-        }
-        if(click0_Middle1 == false) {
-            CallObjectCreation();
-        }
-        else if(click0_Middle1 == true) {
-            EraserWork();
+        if(click0_Middle1 != null) {
+            if(xIsNeg == true) {
+                click_origPos.x = click_destPos.x;
+            }
+            if(zIsNeg == true) {
+                click_origPos.z = click_destPos.z;
+            }
+            if(xIsNeg == true && zIsNeg == true) {
+                click_origPos = click_destPos;
+            }
+    
+            if(click0_Middle1 == false) {
+                CallObjectCreation();
+            }
+            else if(click0_Middle1 == true) {
+                EraserWork();
+            }
         }
         tile0_entity1 = null;
     }

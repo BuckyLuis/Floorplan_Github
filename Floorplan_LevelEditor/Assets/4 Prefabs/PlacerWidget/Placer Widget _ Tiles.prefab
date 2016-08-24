@@ -153,9 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toolsController: {fileID: 0}
   databaseController: {fileID: 0}
-  placeholder_Place: {fileID: 163264, guid: 595ae79fdaae7064698d7373616fa616, type: 2}
-  placeholder_Erase: {fileID: 163264, guid: 595ae79fdaae7064698d7373616fa616, type: 2}
-  placeholder_Replace: {fileID: 163264, guid: 595ae79fdaae7064698d7373616fa616, type: 2}
+  placeholder_Place: {fileID: 142050, guid: 199b48efc1030844798cecca41351ac6, type: 2}
+  placeholder_Erase: {fileID: 143772, guid: b895d5d0091e6a54eba15cad2615f6b9, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

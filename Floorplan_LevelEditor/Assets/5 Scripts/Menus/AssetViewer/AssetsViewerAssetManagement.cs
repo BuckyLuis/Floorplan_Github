@@ -338,7 +338,7 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
 
             tempScript.assetTileset_BaseObject = tilesetBasis;
             tempScript.assetIndex = tilesetBasis.assetIndex;
-            tempScript.assetWorldObject = tilesetBasis.worldObjectPrefab;
+           // tempScript.assetWorldObject = tilesetBasis.worldObjectPrefab;
             //triggers have no in-game texture
 
             assetsEntriesDict_Tilesets.Add(string.Format("{0}|{1}", (int)tilesetBasis.categoryTilesets, tilesetBasis.assetIndex), tempEntry);

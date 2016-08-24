@@ -117,7 +117,7 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
 
     public void SetSelectedMaterial(Material theMaterial) {
         assetTileset_BaseObject.assetMaterial = theMaterial;
-        assetTileset_BaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
+//        assetTileset_BaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
         textureViewerPreviewerScript.DrawTexturePreview(theMaterial);
 
         SendInfoTo_TileToPaint();

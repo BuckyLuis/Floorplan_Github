@@ -14,7 +14,15 @@ public class Asset_Tileset_Base {
 
     public Sprite assetEntryIcon;
     public Color assetTilesetColor;
-    public GameObject worldObjectPrefab;
+
+
+    public GameObject wallPrefab;
+    public GameObject cornerPrefab;
+    public GameObject cornerInversePrefab;
+
+
+
+
 
     [HideInInspector] public Material assetMaterial;
     public int uvMapSectorFlag;
