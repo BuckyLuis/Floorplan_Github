@@ -36,6 +36,9 @@ public class TileToPaintMenu : MonoBehaviour {           //! @TODO: refactor/wri
 
     [SerializeField] GameObject ui_ImgTileIcon;
 
+    [SerializeField] GameObject ui_btnTilePlacer;
+    Button uiBtn_tilePlacer;
+
     Image uiImg_tileFacingSel_N;
     Image uiImg_tileFacingSel_E;
     Image uiImg_tileFacingSel_S;
@@ -49,12 +52,14 @@ public class TileToPaintMenu : MonoBehaviour {           //! @TODO: refactor/wri
 
 
 
+
 	void Start () {
         tilePlacerScript = tilePlacerObject.GetComponent<TilePlacer>();
         tilePlacerObject.SetActive(false);
 
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
 
+        uiBtn_tilePlacer = ui_btnTilePlacer.GetComponent<Button>();
 
         uiImg_currTileIcon = ui_ImgTileIcon.GetComponent<Image>();
         uiTxt_currRoomID = ui_TxtRoomID.GetComponent<Text>();
@@ -155,6 +160,7 @@ public class TileToPaintMenu : MonoBehaviour {           //! @TODO: refactor/wri
 
     public void SetCurrentTileGO(GameObject theGameObject) {
         tilePlacerScript.AssignTileToBePlaced(theGameObject);
+        uiBtn_tilePlacer.interactable = true;
     }
 
 }

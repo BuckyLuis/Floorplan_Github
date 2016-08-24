@@ -16,11 +16,15 @@ public class UndoRedoManager : MonoBehaviour {
     MaxStack<UndoRedoOperation> UndoStack;
     MaxStack<UndoRedoOperation> RedoStack;
 
+    MaxStack<UndoRedoOperation> UndoReplace_theOld_Stack;
+    MaxStack<UndoRedoOperation> RedoReplace_theOld_Stack;
+
     UndoRedoOperation operationAssignment;
 
     UndoRedoOperation currentOperation;
     List<GameObject> currentGOList;
     List<Tile_Base> currentTileBaseList;
+
 
     GameObject constructedGO;
 
@@ -73,7 +77,6 @@ public class UndoRedoManager : MonoBehaviour {
                 break;
             case 1:
                 ObjectsRecreation();
-               // Undo_Erase_ObjectsRecreation();
                 RedoStack.Push(currentOperation);
                 break;
         }
@@ -102,11 +105,9 @@ public class UndoRedoManager : MonoBehaviour {
             case 1:
                 UndoStack.Push(currentOperation);
                 ObjectsDeletion();
-                //Redo_Erase_ObjectsDeletion();
                 break;
         }
        
-
 
 
         //---- ui ---
@@ -133,6 +134,7 @@ public class UndoRedoManager : MonoBehaviour {
         uiBtn_undoButton.interactable = true;
         uiBtn_redoButton.interactable = false;
     }
+
 
 
     void ObjectsDeletion() {
@@ -167,26 +169,93 @@ public class UndoRedoManager : MonoBehaviour {
     }
 
 
+
 /*
-    void Undo_Erase_ObjectsRecreation () {
-        foreach(Tile_Base tileBaseToGen in currentOperation.theOperationList_TileBase) {
-            if(areaTilesRegistryScript.Tile_PosUnoccupied(tileBaseToGen.Position) == true) {        
-                objInstantiatorScript.CreateTiles_UndoRedo(tileBaseToGen, out constructedGO);
-                currentOperation.theOperationList_GO.Add(constructedGO);
+    UndoReplace_theOld_Stack = new MaxStack<UndoRedoOperation>(maxSteps);
+    RedoReplace_theOld_Stack = new MaxStack<UndoRedoOperation>(maxSteps);
 
-                areaTilesRegistryScript.Tile_AddToGrid(tileBaseToGen);
-            }
+
+    UndoRedoOperation tempOperation;
+
+/*
+    public void ReplaceOp_OldObjs(List<GameObject> inGOList, List<Tile_Base> inTileBaseList, int theOperationFlag) {
+        operationAssignment = new UndoRedoOperation(inGOList, inTileBaseList, theOperationFlag);
+
+        UndoReplace_theOld_Stack.Push(operationAssignment);
+    }
+*/
+
+/*
+    public void Undo() {
+        currentOperation = UndoStack.Pop();
+
+        switch (currentOperation.operationFlag)
+        {
+            case 0:
+                RedoStack.Push(currentOperation);
+                ObjectsDeletion();
+                break;
+            case 1:
+                ObjectsRecreation();
+                RedoStack.Push(currentOperation);
+                break;
+            case 2:
+                RedoStack.Push(currentOperation);
+                ObjectsDeletion();
+                currentOperation = UndoReplace_theOld_Stack.Pop();
+                ObjectsRecreation();
+                RedoReplace_theOld_Stack.Push(currentOperation);
+                break;
+        }
+
+
+
+        //---- ui ---
+        uiBtn_redoButton.interactable = true;
+        if(UndoStack.Count > 0) {
+            uiBtn_undoButton.interactable = true;
+        }
+        else {
+            uiBtn_undoButton.interactable = false;
         }
     }
 
-    void Redo_Erase_ObjectsDeletion () {
-        for (int i = 0; i < currentOperation.theOperationList_GO.Count; i++) {
-            areaTilesRegistryScript.Tile_RemoveFromGrid(currentOperation.theOperationList_TileBase[i]);
-            Destroy( currentOperation.theOperationList_GO[i] );
-        }
-        currentOperation.theOperationList_GO.Clear();
-    }
+    public void Redo() {
+        currentOperation = RedoStack.Pop();
 
+        switch (currentOperation.operationFlag)
+        {
+            case 0:
+                ObjectsRecreation();
+                UndoStack.Push(currentOperation);
+                break;
+            case 1:
+                UndoStack.Push(currentOperation);
+                ObjectsDeletion();
+                break;
+            case 2:
+                tempOperation = currentOperation;
+                currentOperation = RedoReplace_theOld_Stack.Pop();
+                ObjectsDeletion();
+                RedoReplace_theOld_Stack.Push(currentOperation);
+                currentOperation = tempOperation;
+                ObjectsRecreation();
+                UndoStack.Push(tempOperation);       
+                break;
+        }
+
+
+
+
+        //---- ui ---
+        uiBtn_undoButton.interactable = true;
+        if(RedoStack.Count > 0) {
+            uiBtn_redoButton.interactable = true;
+        }
+        else {
+            uiBtn_redoButton.interactable = false;
+        }
+    }
 */
 
 }

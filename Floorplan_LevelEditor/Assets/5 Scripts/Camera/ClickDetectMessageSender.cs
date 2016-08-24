@@ -39,7 +39,7 @@ public class ClickDetectMessageSender : MonoBehaviour {
                 if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
                     hit.transform.gameObject.SendMessage("RightClicked", hit.point, SendMessageOptions.DontRequireReceiver);
                     if(debug)
-                        Debug.Log("You clicked: " + hit.collider.gameObject.name, hit.collider.gameObject);
+                        Debug.Log("You right clicked: " + hit.collider.gameObject.name, hit.collider.gameObject);
                 }
 
             }
@@ -49,7 +49,7 @@ public class ClickDetectMessageSender : MonoBehaviour {
                 if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
                     hit.transform.gameObject.SendMessage("MiddleClicked", hit.point, SendMessageOptions.DontRequireReceiver);
                     if(debug)
-                        Debug.Log("You clicked: " + hit.collider.gameObject.name, hit.collider.gameObject);
+                        Debug.Log("You middle clicked: " + hit.collider.gameObject.name, hit.collider.gameObject);
                 }
 
             }

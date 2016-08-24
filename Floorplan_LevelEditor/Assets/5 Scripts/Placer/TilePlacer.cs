@@ -18,12 +18,20 @@ public class TilePlacer : MonoBehaviour {
 
     public GameObject objToPlace_Prefab {get; protected set;}
 
+    bool tileSlotWasEmpty;
+
     //------------------- comms with Instantiator ----------------------------
   
     Vector3 thePosition;
 
+    //placing
     GameObject constructedGO;
     Tile_Base constructedTileBase;
+
+    //erasing
+    string tempGoNameToErase;
+    GameObject tempGoToErase;
+
 
     //----------- undo - redo -----------------------------------------
 
@@ -31,10 +39,12 @@ public class TilePlacer : MonoBehaviour {
     List<Tile_Base> currTBList_forUndoRedo = new List<Tile_Base>();
 
     //--------------- Placer thingys --------------------
-    public GameObject placeholder;
+    public GameObject placeholder_Place;
+    public GameObject placeholder_Erase;
+    public GameObject placeholder_Replace;
     private GameObject instPlaceholder;
 
-    bool tile0_entity1;   
+    bool? tile0_entity1;   
 
     float gridSize = 2;
 
@@ -42,9 +52,11 @@ public class TilePlacer : MonoBehaviour {
     Vector3 entityScale = new Vector3(1, 1, 1);
 
     //-------------- Placer Workings -------------------------------------------------
-    Vector3 Click_origPos;
-    Vector3 Click_destPos;
-    bool Click_init = false;
+    Vector3 click_origPos;
+    Vector3 click_destPos;
+
+    bool click0_Middle1;
+
     bool xIsNeg = false;
     bool zIsNeg = false;
     float tempPaintSizeX;
@@ -71,38 +83,51 @@ public class TilePlacer : MonoBehaviour {
 
 
     void Update() {
-        if(Input.GetMouseButton(0)) {
-            PlacerCalcs();
-        }
-            
         if(Input.GetMouseButtonUp(0)) {
-            PlacerWork(); 
+            if(click0_Middle1 == false)
+                PlacerWork(); 
+        }
+        if(Input.GetMouseButtonUp(2)) {
+            if(click0_Middle1 == true)
+                PlacerWork(); 
         }
     }
 
 
     void Clicked() {   //called by ClickDetectMessageSender.cs
-        Click_init = true;
-        Click_origPos = transform.position;
-        instPlaceholder = (GameObject)Instantiate(placeholder, transform.position ,transform.rotation);
+        click0_Middle1 = false;
+        click_origPos = transform.position;
+        PlacerCalcs();
+        instPlaceholder = (GameObject)Instantiate(placeholder_Place, transform.position ,transform.rotation); 
+    }
+        
+    void MiddleClicked() {
+        click0_Middle1 = true;
+        click_origPos = transform.position;
+        PlacerCalcs();
+        instPlaceholder = (GameObject)Instantiate(placeholder_Replace, transform.position ,transform.rotation);
+    }
+
+    void RightClicked() {
+        gameObject.SetActive(false);
     }
 
 
     void PlacerCalcs() {
-        Click_destPos = placerMovementScript.destinationPos;
-        paintSizeX = Mathf.RoundToInt ( (Click_destPos.x / gridSize) - (Click_origPos.x / gridSize) ) + 1; 
-        paintSizeZ = Mathf.RoundToInt ( (Click_destPos.z / gridSize) - (Click_origPos.z / gridSize) ) + 1;
+        click_destPos = placerMovementScript.destinationPos;
+        paintSizeX = Mathf.RoundToInt ( (click_destPos.x / gridSize) - (click_origPos.x / gridSize) ) + 1; 
+        paintSizeZ = Mathf.RoundToInt ( (click_destPos.z / gridSize) - (click_origPos.z / gridSize) ) + 1;
 
-        if(Click_destPos.x < Click_origPos.x) {
-            tempPaintSizeX = Mathf.RoundToInt ( (Click_destPos.x / gridSize) - (Click_origPos.x / gridSize) - 1); 
+        if(click_destPos.x < click_origPos.x) {
+            tempPaintSizeX = Mathf.RoundToInt ( (click_destPos.x / gridSize) - (click_origPos.x / gridSize) - 1); 
             paintSizeX = Mathf.Abs (tempPaintSizeX);
             xIsNeg = true;
         }
         else    
             xIsNeg = false;
 
-        if(Click_destPos.z < Click_origPos.z) {
-            tempPaintSizeZ =  Mathf.RoundToInt ( (Click_destPos.z / gridSize)- (Click_origPos.z / gridSize) - 1);
+        if(click_destPos.z < click_origPos.z) {
+            tempPaintSizeZ =  Mathf.RoundToInt ( (click_destPos.z / gridSize)- (click_origPos.z / gridSize) - 1);
             paintSizeZ = Mathf.Abs (tempPaintSizeZ);
             zIsNeg = true;
         }
@@ -113,22 +138,25 @@ public class TilePlacer : MonoBehaviour {
 
     void PlacerWork() {
         Destroy(instPlaceholder);
-        if(Click_init == true) {
-            if(xIsNeg == true) {
-                Click_origPos.x = Click_destPos.x;
-            }
-            if(zIsNeg == true) {
-                Click_origPos.z = Click_destPos.z;
-            }
-            if(xIsNeg == true && zIsNeg == true) {
-                Click_origPos = Click_destPos;
-            }
+        if(xIsNeg == true) {
+            click_origPos.x = click_destPos.x;
+        }
+        if(zIsNeg == true) {
+            click_origPos.z = click_destPos.z;
+        }
+        if(xIsNeg == true && zIsNeg == true) {
+            click_origPos = click_destPos;
+        }
+        if(click0_Middle1 == false) {
             CallObjectCreation();
         }
-        else {}  
-        Click_init = false;
+        else if(click0_Middle1 == true) {
+            EraserWork();
+        }
+        tile0_entity1 = null;
     }
         
+
 
     void CallObjectCreation() {     
         currGOList_forUndoRedo.Clear();
@@ -136,21 +164,60 @@ public class TilePlacer : MonoBehaviour {
 
         for(int xL = 0; xL < paintSizeX; xL++) {        //xL , zL are local (relative to placerOrig) coords!
             for(int zL = 0; zL < paintSizeZ; zL++) {
-                thePosition = new Vector3((xL * gridSize)+ Click_origPos.x, Click_origPos.y, (zL * gridSize)+ Click_origPos.z );
+                thePosition = new Vector3((xL * gridSize)+ click_origPos.x, click_origPos.y, (zL * gridSize)+ click_origPos.z );
                 Debug.Log("place " + thePosition);
 
                 if(areaTilesRegistryScript.Tile_PosUnoccupied(thePosition) == true) {
+                    tileSlotWasEmpty = true;
                     objInstantiatorScript.CreateTiles(objToPlace_Prefab, thePosition, out constructedGO, out constructedTileBase);
+                    areaTilesRegistryScript.Tile_AddToGrid(constructedTileBase);
 
                     currGOList_forUndoRedo.Add(constructedGO); //undoRedoList
                     currTBList_forUndoRedo.Add(constructedTileBase);
-
-                    areaTilesRegistryScript.Tile_AddToGrid(constructedTileBase);
+                }
+                else {
+                    tileSlotWasEmpty = false;
                 }
             }
         }
-        undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo, 0);
+        if(tileSlotWasEmpty == true) {
+            undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo, 0);
+        }
     }
+
+
+    void EraserWork() {
+        currGOList_forUndoRedo.Clear();
+        currTBList_forUndoRedo.Clear();
+
+        for(int xL = 0; xL < paintSizeX; xL++) {        //xL , zL are local (relative to placerOrig) coords!
+            for(int zL = 0; zL < paintSizeZ; zL++) {
+                thePosition = new Vector3((xL * gridSize)+ click_origPos.x, click_origPos.y, (zL * gridSize)+ click_origPos.z);
+                Debug.Log("erase " + thePosition);
+
+                if(areaTilesRegistryScript.Tile_PosUnoccupied(thePosition) == false) { 
+                    tileSlotWasEmpty = false;
+                    tempGoNameToErase = string.Format("({0}, {1}, {2})", thePosition.x, thePosition.y, thePosition.z );
+                    tempGoToErase = GameObject.Find(tempGoNameToErase);
+
+                    currGOList_forUndoRedo.Add(tempGoToErase);
+                    currTBList_forUndoRedo.Add(tempGoToErase.GetComponent<WorldObjectInfo>().tileObject);
+                }
+                else {
+                    tileSlotWasEmpty = true;
+                }
+            }
+        }
+        if(tileSlotWasEmpty == false) {
+            undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo, 1);
+
+            foreach(GameObject goToErase in currGOList_forUndoRedo) {
+                areaTilesRegistryScript.Tile_RemoveFromGrid(goToErase.GetComponent<WorldObjectInfo>().tileObject);
+                Destroy(goToErase);
+            }
+        }
+    }
+
        
 
     public void AssignTileToBePlaced(GameObject theTileToPlace) {
@@ -175,6 +242,47 @@ public class TilePlacer : MonoBehaviour {
 }
 
 
+
+/*
+    void ReplacerWork() {     
+        currGOList_forUndoRedo.Clear();
+        currTBList_forUndoRedo.Clear();
+
+        for(int xL = 0; xL < paintSizeX; xL++) {        //xL , zL are local (relative to placerOrig) coords!
+            for(int zL = 0; zL < paintSizeZ; zL++) {
+                thePosition = new Vector3((xL * gridSize)+ click_origPos.x, click_origPos.y, (zL * gridSize)+ click_origPos.z);
+                Debug.Log("erase " + thePosition);
+
+                if(areaTilesRegistryScript.Tile_PosUnoccupied(thePosition) == false) { 
+                    tileSlotWasEmpty = false;
+                    tempGoNameToErase = string.Format("({0}, {1}, {2})", thePosition.x, thePosition.y, thePosition.z );
+                    tempGoToErase = GameObject.Find(tempGoNameToErase);
+
+                    currGOList_forUndoRedo.Add(tempGoToErase);
+                    currTBList_forUndoRedo.Add(tempGoToErase.GetComponent<WorldObjectInfo>().tileObject);
+                }
+                else {
+                    tileSlotWasEmpty = true;
+                }
+            }
+        }
+        if(tileSlotWasEmpty == false) {
+            undoRedoManagerScript.ReplaceOp_OldObjs(currGOList_forUndoRedo, currTBList_forUndoRedo, 2);
+  
+            foreach(GameObject goToErase in currGOList_forUndoRedo) {
+                areaTilesRegistryScript.Tile_RemoveFromGrid(goToErase.GetComponent<WorldObjectInfo>().tileObject);        //erase
+                Destroy(goToErase);
+
+                objInstantiatorScript.CreateTiles(objToPlace_Prefab, thePosition, out constructedGO, out constructedTileBase); //create new
+                areaTilesRegistryScript.Tile_AddToGrid(constructedTileBase);
+
+                currGOList_forUndoRedo.Add(constructedGO); //undoRedoList
+                currTBList_forUndoRedo.Add(constructedTileBase);
+            }
+            undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo, 2);
+        }
+    }
+*/
 
 
     //-- trash - refactor --

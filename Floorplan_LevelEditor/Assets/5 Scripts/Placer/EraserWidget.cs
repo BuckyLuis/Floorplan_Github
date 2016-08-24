@@ -16,6 +16,8 @@ public class EraserWidget : MonoBehaviour {
 
 
 
+    bool tileSlotWasEmpty;
+
     Vector3 thePosition;
     string tempGoNameToErase;
     GameObject tempGoToErase;
@@ -127,7 +129,6 @@ public class EraserWidget : MonoBehaviour {
             }
             EraserWork();
         }
-        else {}  
         Click_init = false;
     }
 
@@ -143,21 +144,26 @@ public class EraserWidget : MonoBehaviour {
                 Debug.Log("erase " + thePosition);
 
                 if(areaTilesRegistryScript.Tile_PosUnoccupied(thePosition) == false) { 
+                    tileSlotWasEmpty = false;
                     tempGoNameToErase = string.Format("({0}, {1}, {2})", thePosition.x, thePosition.y, thePosition.z );
                     tempGoToErase = GameObject.Find(tempGoNameToErase);
 
                     currGOList_forUndoRedo.Add(tempGoToErase);
                     currTBList_forUndoRedo.Add(tempGoToErase.GetComponent<WorldObjectInfo>().tileObject);
                 }
+                else {
+                    tileSlotWasEmpty = true;
+                }
             }
         }
-        undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo, 1);
+        if(tileSlotWasEmpty = false) {
+            undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo, 1);
 
-        foreach(GameObject goToErase in currGOList_forUndoRedo) {
-            areaTilesRegistryScript.Tile_RemoveFromGrid(goToErase.GetComponent<WorldObjectInfo>().tileObject);
-            Destroy(goToErase);
+            foreach(GameObject goToErase in currGOList_forUndoRedo) {
+                areaTilesRegistryScript.Tile_RemoveFromGrid(goToErase.GetComponent<WorldObjectInfo>().tileObject);
+                Destroy(goToErase);
+            }
         }
     }
-
 
 }

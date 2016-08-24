@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   databaseController: {fileID: 0}
-  maxSteps: 16
+  maxSteps: 40
   ui_undoButton: {fileID: 0}
   ui_redoButton: {fileID: 0}
 --- !u!114 &11475674

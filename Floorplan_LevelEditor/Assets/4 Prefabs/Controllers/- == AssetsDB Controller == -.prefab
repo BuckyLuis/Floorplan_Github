@@ -213,6 +213,7 @@ MonoBehaviour:
   ui_TxtRoomID: {fileID: 0}
   ui_RoomColor: {fileID: 0}
   ui_ImgTileIcon: {fileID: 0}
+  ui_btnTilePlacer: {fileID: 0}
 --- !u!114 &11442878
 MonoBehaviour:
   m_ObjectHideFlags: 1
