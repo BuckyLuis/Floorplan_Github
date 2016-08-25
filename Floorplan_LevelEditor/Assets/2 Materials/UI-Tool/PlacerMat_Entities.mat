@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: TilePlacerMat
-  m_Shader: {fileID: 4800000, guid: 5d0fd018be1c8f14fb981e73af1a4cc1, type: 3}
+  m_Name: PlacerMat_Entities
+  m_Shader: {fileID: 4800000, guid: 98a00dca16137d24586905dbd6d2a04d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2001
+  m_CustomRenderQueue: 4001
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: f06358a95b5f81d449b8dc70591491c1, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -136,11 +136,3 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _Color1
-        second: {r: 0.24137926, g: 0, b: 1, a: 1}
-      data:
-        first:
-          name: _Color2
-        second: {r: 0.24313727, g: 0, b: 1, a: 1}

@@ -43,7 +43,7 @@ public class TilePlacer : MonoBehaviour {
     public GameObject placeholder_Erase;
     private GameObject instPlaceholder;
 
-    bool? tile0_entity1;   
+    bool tile0_entity1;   
 
     float gridSize = 2;
 
@@ -54,7 +54,7 @@ public class TilePlacer : MonoBehaviour {
     Vector3 click_origPos;
     Vector3 click_destPos;
 
-    bool click0_Middle1;
+    bool? click0_Middle1;
 
     bool xIsNeg = false;
     bool zIsNeg = false;
@@ -155,7 +155,7 @@ public class TilePlacer : MonoBehaviour {
                 EraserWork();
             }
         }
-        tile0_entity1 = null;
+        click0_Middle1 = null;
     }
         
 

@@ -165,18 +165,24 @@ MonoBehaviour:
   btn_Props: {fileID: 0}
   btn_Actors: {fileID: 0}
   btn_Triggers: {fileID: 0}
+  btn_Tilesets: {fileID: 0}
+  btn_Templates: {fileID: 0}
   sv_Floors: {fileID: 0}
   sv_Walls: {fileID: 0}
   sv_Doodads: {fileID: 0}
   sv_Props: {fileID: 0}
   sv_Actors: {fileID: 0}
   sv_Triggers: {fileID: 0}
+  sv_Tilesets: {fileID: 0}
+  sv_Templates: {fileID: 0}
   header_Floors: {fileID: 0}
   header_Walls: {fileID: 0}
   header_Doodads: {fileID: 0}
   header_Props: {fileID: 0}
   header_Actors: {fileID: 0}
   header_Triggers: {fileID: 0}
+  header_Tilesets: {fileID: 0}
+  header_Templates: {fileID: 0}
   tgl_allowAutoReset: {fileID: 0}
   ui_txtLastHotkeyEntered: {fileID: 0}
   ui_imgHotkeyStage: {fileID: 0}
@@ -242,8 +248,6 @@ MonoBehaviour:
     assetIndex: 0
     categoryFloors: 0
     assetMaterialName: 
-    assetUsageSet: 
-    assetDesc: 
     assetEntryIcon: {fileID: 0}
     assetTilesetColor: {r: 0, g: 0, b: 0, a: 0}
     worldObjectPrefab: {fileID: 178938, guid: fc041408698de5f47b86f8166e681a6a, type: 2}
@@ -251,13 +255,12 @@ MonoBehaviour:
     uvMapSectorFlag: 0
     meshsetFlag: 0
     meshsetString: 
+    assetUsageIcon: {fileID: 0}
   assetsList_Walls:
   - assetName: TestWall0
     assetIndex: 0
     categoryWalls: 0
     assetMaterialName: 
-    assetUsageSet: Walls
-    assetDesc: 
     assetEntryIcon: {fileID: 0}
     assetTilesetColor: {r: 0, g: 1, b: 0.17241383, a: 1}
     worldObjectPrefab: {fileID: 132144, guid: e8214cc73496a034586e14aa4e06beb9, type: 2}
@@ -265,10 +268,29 @@ MonoBehaviour:
     uvMapSectorFlag: 0
     meshsetFlag: 0
     meshsetString: 
+    assetUsageIcon: {fileID: 0}
   assetsList_Doodads: []
   assetsList_Props: []
   assetsList_Actors: []
   assetsList_Triggers: []
+  assetsList_Tilesets:
+  - assetName: 
+    assetIndex: 0
+    categoryTilesets: 0
+    assetMaterialName: 
+    assetEntryIcon_wall: {fileID: 0}
+    assetEntryIcon_corner: {fileID: 0}
+    assetEntryIcon_cornerInv: {fileID: 0}
+    assetTilesetColor: {r: 0, g: 0, b: 0, a: 0}
+    wallPrefab: {fileID: 0}
+    cornerPrefab: {fileID: 0}
+    cornerInversePrefab: {fileID: 0}
+    assetMaterial: {fileID: 0}
+    uvMapSectorFlag: 0
+    meshsetFlag: 0
+    meshsetString: 
+    assetUsageIcon: {fileID: 0}
+  assetsList_Templates: []
   assetsEntriesDict_Floors:
     _Buckets: ffffffffffffffffffffffff
     _HashCodes: 000000000000000000000000
@@ -365,18 +387,54 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+  assetsEntriesDict_Tilesets:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  assetsEntriesDict_Templates:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   viewAreaFloors: {fileID: 0}
   viewAreaWalls: {fileID: 0}
   viewAreaDoodads: {fileID: 0}
   viewAreaProps: {fileID: 0}
   viewAreaActors: {fileID: 0}
   viewAreaTriggers: {fileID: 0}
-  floorEntryPrefab: {fileID: 167270, guid: 559380a3bf81bf8469532f794f2e6ea9, type: 2}
-  wallEntryPrefab: {fileID: 100030, guid: c4d185dc66efff94a945503721509aa8, type: 2}
-  doodadEntryPrefab: {fileID: 134226, guid: 793ec5899f25a664ba2a56362b8f71e2, type: 2}
-  propEntryPrefab: {fileID: 101784, guid: 307f48f53c727814fbea997a537e6a9f, type: 2}
-  actorEntryPrefab: {fileID: 140424, guid: 385abfa716fa19246b8a219067836af5, type: 2}
-  triggerEntryPrefab: {fileID: 178688, guid: 289b4d0d358e9a04d8afe1be52c7d072, type: 2}
+  viewAreaTilesets: {fileID: 0}
+  viewAreaTemplates: {fileID: 0}
+  floorEntryPrefab: {fileID: 187772, guid: 52e86c2a3f2bdf34da5538a81841c703, type: 2}
+  wallEntryPrefab: {fileID: 182112, guid: 77aafb7775cbba04a9bbc0edc3dca74a, type: 2}
+  doodadEntryPrefab: {fileID: 101388, guid: 2295f002bbd125b44aa20a87d614aac0, type: 2}
+  propEntryPrefab: {fileID: 155762, guid: bbfba0b174d3fce459c4370236362e6c, type: 2}
+  actorEntryPrefab: {fileID: 164370, guid: 67668915c59802d4f9edc234eaa5817c, type: 2}
+  triggerEntryPrefab: {fileID: 157482, guid: 0e69bcc2762d142408f295cfaca3d2f5, type: 2}
+  tilesetEntryPrefab: {fileID: 135190, guid: 0f8a0e6c0bd4bdc40841636a92f5a214, type: 2}
+  templateEntryPrefab: {fileID: 137794, guid: 9ef5610a070aa174e831c52e154e1629, type: 2}
 --- !u!114 &11494768
 MonoBehaviour:
   m_ObjectHideFlags: 1

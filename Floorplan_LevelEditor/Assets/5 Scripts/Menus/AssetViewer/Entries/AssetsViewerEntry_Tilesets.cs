@@ -25,24 +25,28 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
     [Space(30)]
     [SerializeField] GameObject nameObject;
     [SerializeField] GameObject usageObject;
-    [SerializeField] GameObject descObject;
 
     [SerializeField] GameObject indexHkObject0;
     [SerializeField] GameObject indexHkObject1;
 
-    [SerializeField] GameObject iconObject;
+    [SerializeField] GameObject iconObject_wall;
+    [SerializeField] GameObject iconObject_corner;
+    [SerializeField] GameObject iconObject_cornerInv
+    ;
     [SerializeField] GameObject colorObject;
 
     [SerializeField] GameObject toggleObject;
     //---  ---  ---  ---  ---  ---  ---  ---  
     Text nameText;
-    Text usageText;
-    Text descText;
+    Image usageIcon;
 
     Text hkText0;
     Text hkText1;
 
-    Sprite iconSprite;
+    Sprite iconSprite_wall;
+    Sprite iconSprite_corner;
+    Sprite iconSprite_cornerInv;
+
     Image tilesetColor;
 
     Toggle selectedToggle;
@@ -60,13 +64,15 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
 
 
         nameText = nameObject.GetComponent<Text>();
-        usageText = usageObject.GetComponent<Text>();
-        descText = descObject.GetComponent<Text>();
+        usageIcon = usageObject.GetComponent<Image>();
 
         hkText0 = indexHkObject0.GetComponent<Text>();
         hkText1 = indexHkObject1.GetComponent<Text>();
 
-        iconSprite = iconObject.GetComponent<Sprite>();
+        iconSprite_wall = iconObject_wall.GetComponent<Sprite>();
+        iconSprite_corner = iconObject_corner.GetComponent<Sprite>();
+        iconSprite_cornerInv = iconObject_cornerInv.GetComponent<Sprite>();
+
         tilesetColor = colorObject.GetComponent<Image>();
 
         selectedToggle = toggleObject.GetComponent<Toggle>();
@@ -74,8 +80,7 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
 
         //---------------------- assign datas to asset entries ---------------------
         nameText.text = assetTileset_BaseObject.assetName;
-        usageText.text = assetTileset_BaseObject.assetUsageSet;
-        descText.text = assetTileset_BaseObject.assetDesc;
+        usageIcon.sprite = assetTileset_BaseObject.assetUsageIcon;
 
         assetIndexString = assetIndex.ToString();
         if(assetIndexString.Length > 1) {
@@ -86,7 +91,10 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
             hkText0.text = assetIndexString;   
             hkText1.text = "";
         }
-        iconSprite = assetTileset_BaseObject.assetEntryIcon;
+        iconSprite_wall = assetTileset_BaseObject.assetEntryIcon_wall;
+        iconSprite_corner = assetTileset_BaseObject.assetEntryIcon_corner;
+        iconSprite_cornerInv = assetTileset_BaseObject.assetEntryIcon_cornerInv;
+
         tilesetColor.color = assetTileset_BaseObject.assetTilesetColor;
 
         //------- Assign Toggle Listener ----------
@@ -124,7 +132,7 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
     }
 
     void SendInfoTo_TileToPaint() {
-        tileToPaintScript.SetCurrentTileSprite(assetTileset_BaseObject.assetEntryIcon);
+      //  tileToPaintScript.SetCurrentTileSprite(assetTileset_BaseObject.assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
         objInstantiatorScript.AssignIndicesAndMatName((int)assetTileset_BaseObject.categoryTilesets, assetTileset_BaseObject.assetIndex, assetTileset_BaseObject.assetMaterialName);
     }

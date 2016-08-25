@@ -25,7 +25,6 @@ public class AssetsViewerEntry_Props : MonoBehaviour {
     [Space(30)]
     [SerializeField] GameObject nameObject;
     [SerializeField] GameObject usageObject;
-    [SerializeField] GameObject descObject;
 
     [SerializeField] GameObject indexHkObject0;
     [SerializeField] GameObject indexHkObject1;
@@ -36,8 +35,7 @@ public class AssetsViewerEntry_Props : MonoBehaviour {
     [SerializeField] GameObject toggleObject;
     //---  ---  ---  ---  ---  ---  ---  ---  
     Text nameText;
-    Text usageText;
-    Text descText;
+    Image usageIcon;
 
     Text hkText0;
     Text hkText1;
@@ -60,8 +58,7 @@ public class AssetsViewerEntry_Props : MonoBehaviour {
 
 
         nameText = nameObject.GetComponent<Text>();
-        usageText = usageObject.GetComponent<Text>();
-        descText = descObject.GetComponent<Text>();
+        usageIcon = usageObject.GetComponent<Image>();
 
         hkText0 = indexHkObject0.GetComponent<Text>();
         hkText1 = indexHkObject1.GetComponent<Text>();
@@ -74,8 +71,7 @@ public class AssetsViewerEntry_Props : MonoBehaviour {
 
         //---------------------- assign datas to asset entries ---------------------
         nameText.text = assetProp_BaseObject.assetName;
-        usageText.text = assetProp_BaseObject.assetUsageSet;
-        descText.text = assetProp_BaseObject.assetDesc;
+        usageIcon.sprite = assetProp_BaseObject.assetUsageIcon;
 
         assetIndexString = assetIndex.ToString();
         if(assetIndexString.Length > 1) {

@@ -9,23 +9,21 @@ public class Asset_Tileset_Base {
     public Categories_Tilesets categoryTilesets;
     [HideInInspector] public string assetMaterialName; 
 
-    public string assetUsageSet;
-    public string assetDesc;
+    public Sprite assetEntryIcon_wall;
+    public Sprite assetEntryIcon_corner;
+    public Sprite assetEntryIcon_cornerInv;
 
-    public Sprite assetEntryIcon;
     public Color assetTilesetColor;
-
 
     public GameObject wallPrefab;
     public GameObject cornerPrefab;
     public GameObject cornerInversePrefab;
 
 
-
-
-
     [HideInInspector] public Material assetMaterial;
     public int uvMapSectorFlag;
     public int meshsetFlag;
     [HideInInspector] public string meshsetString;
+    public Sprite assetUsageIcon;               //used only in editor, convenience
+
 }

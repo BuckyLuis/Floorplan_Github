@@ -9,9 +9,6 @@ public class Asset_Floor_Base {
     public Categories_Floors categoryFloors;   // assetCategory -- used for ingame LevelConstruction
     [HideInInspector] public string assetMaterialName;   //the material's name  -- used for LevelConstruction
 
-    public string assetUsageSet;               //used only in editor, convenience
-    public string assetDesc;                  // used only in editor
-
     public Sprite assetEntryIcon;            //only in editor
     public Color assetTilesetColor;         //only in editor
     public GameObject worldObjectPrefab;       //reference of GameObject Mesh Prefab -- only in editor
@@ -20,5 +17,6 @@ public class Asset_Floor_Base {
     public int uvMapSectorFlag;                          //only in editor
     public int meshsetFlag;                              //only in editor
     [HideInInspector] public string meshsetString;       //only in editor*/
+    public Sprite assetUsageIcon;               //used only in editor, convenience
 
 }

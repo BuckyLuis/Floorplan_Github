@@ -5,21 +5,18 @@ using System.Collections;
 public class Asset_Trigger_Base {
     
     public string assetName;
-    [HideInInspector] public int assetIndex;   //assigned by AssetsViewerAssetManagement.cs
-    public Categories_Triggers categoryTriggers;
-    [HideInInspector] public string assetMaterialName; 
- 
-    public string assetUsageSet;
-    public string assetDesc;
+    [HideInInspector] public int assetIndex;   // index in AssetsDictionary -- used for ingame LevelConstruction        //assigned by AssetsViewerAssetManagement.cs 
+    public Categories_Triggers categoryTriggers;   // assetCategory -- used for ingame LevelConstruction
+    [HideInInspector] public string assetMaterialName;   //the material's name  -- used for LevelConstruction
 
-    public Sprite assetEntryIcon;
-    public Color assetTilesetColor;
-    public GameObject worldObjectPrefab;
+    public Sprite assetEntryIcon;            //only in editor
+    public Color assetTilesetColor;         //only in editor
+    public GameObject worldObjectPrefab;       //reference of GameObject Mesh Prefab -- only in editor
 
-  
-    [HideInInspector] public Material assetMaterial;   //triggers have no ingame texture .. but have an in-editor texture
+    [HideInInspector] public Material assetMaterial;   //reference of Material Mesh Texture -- only in editor
+    public int uvMapSectorFlag;                          //only in editor
+    public int meshsetFlag;                              //only in editor
+    [HideInInspector] public string meshsetString;       //only in editor*/
+    public Sprite assetUsageIcon;               //used only in editor, convenience
 
-/*    public int uvMapSectorFlag;
-    public int meshsetFlag;
-    [HideInInspector] public string meshsetString;*/
 }

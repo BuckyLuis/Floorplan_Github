@@ -64,7 +64,6 @@ GameObject:
   - 222: {fileID: 22287246}
   - 114: {fileID: 11429406}
   - 114: {fileID: 11474430}
-  - 114: {fileID: 11486484}
   - 114: {fileID: 11467748}
   m_Layer: 0
   m_Name: AssetViewer_TemplatesEntry
@@ -667,41 +666,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0.9019608, g: 0.62352943, b: 0, a: 1}
   m_EffectDistance: {x: 0.5, y: 0.5}
   m_UseGraphicAlpha: 1
---- !u!114 &11486484
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cbeaf1c21c0d0c49b2ad4db9c055f70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  assetWorldObject: {fileID: 0}
-  assetTileset_BaseObject:
-    assetName: 
-    assetIndex: 0
-    categoryTilesets: 0
-    assetMaterialName: 
-    assetUsageSet: 
-    assetDesc: 
-    assetEntryIcon: {fileID: 0}
-    assetTilesetColor: {r: 0, g: 0, b: 0, a: 0}
-    worldObjectPrefab: {fileID: 0}
-    assetMaterial: {fileID: 0}
-    uvMapSectorFlag: 0
-    meshsetFlag: 0
-    meshsetString: 
-  assetIndex: 0
-  nameObject: {fileID: 0}
-  usageObject: {fileID: 0}
-  descObject: {fileID: 0}
-  indexHkObject0: {fileID: 0}
-  indexHkObject1: {fileID: 0}
-  iconObject: {fileID: 0}
-  colorObject: {fileID: 0}
-  toggleObject: {fileID: 0}
 --- !u!222 &22203924
 CanvasRenderer:
   m_ObjectHideFlags: 1
