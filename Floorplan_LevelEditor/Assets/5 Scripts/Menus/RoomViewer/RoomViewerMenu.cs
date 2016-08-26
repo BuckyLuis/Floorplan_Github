@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class RoomViewerMenu : MonoBehaviour {
 
     GameObject assetsDbController;
-    TileToPaintMenu tileToPaintScript;
+    TileOptions tileToPaintScript;
 
     public List<GameObject> roomEntries = new List<GameObject>();
 
@@ -34,7 +34,7 @@ public class RoomViewerMenu : MonoBehaviour {
 
     void Start() {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
-        tileToPaintScript = assetsDbController.GetComponent<TileToPaintMenu>();
+        tileToPaintScript = assetsDbController.GetComponent<TileOptions>();
 
         placeCamBoundsScript = placerWidget_CamBounds.GetComponent<PlaceCamBoundsMarker>();
         colorPickerRef.SetActive(false);

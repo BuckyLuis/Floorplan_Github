@@ -16,9 +16,6 @@ public class UndoRedoManager : MonoBehaviour {
     MaxStack<UndoRedoOperation> UndoStack;
     MaxStack<UndoRedoOperation> RedoStack;
 
-    MaxStack<UndoRedoOperation> UndoReplace_theOld_Stack;
-    MaxStack<UndoRedoOperation> RedoReplace_theOld_Stack;
-
     UndoRedoOperation operationAssignment;
 
     UndoRedoOperation currentOperation;

@@ -1,21 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Linq;
 
 public class AssetsViewerEntry_Tilesets : MonoBehaviour {
 
     GameObject assetsDbController;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
-    TileToPaintMenu tileToPaintScript;
+    TileOptions tileToPaintScript;
 
     GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
+    ObjectOptionsController objectOptionsContScript;
 
 
-    public GameObject assetWorldObject;
+    public List<GameObject> displayMembers = new List<GameObject>();
 
     //------------- Asset Datas ------------------
+
     public Asset_Tileset_Base assetTileset_BaseObject;
 
     public int assetIndex;
@@ -31,8 +35,9 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
 
     [SerializeField] GameObject iconObject_wall;
     [SerializeField] GameObject iconObject_corner;
-    [SerializeField] GameObject iconObject_cornerInv
-    ;
+    [SerializeField] GameObject iconObject_cornerInv;
+    [SerializeField] GameObject iconObject_floor;
+
     [SerializeField] GameObject colorObject;
 
     [SerializeField] GameObject toggleObject;
@@ -46,6 +51,7 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
     Sprite iconSprite_wall;
     Sprite iconSprite_corner;
     Sprite iconSprite_cornerInv;
+    Sprite iconSprite_floor;
 
     Image tilesetColor;
 
@@ -57,11 +63,11 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
-        tileToPaintScript = assetsDbController.GetComponent<TileToPaintMenu>();
+        tileToPaintScript = assetsDbController.GetComponent<TileOptions>();
 
         toolsController = GameObject.FindWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
-
+        objectOptionsContScript = toolsController.GetComponent<ObjectOptionsController>();
 
         nameText = nameObject.GetComponent<Text>();
         usageIcon = usageObject.GetComponent<Image>();
@@ -72,6 +78,7 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
         iconSprite_wall = iconObject_wall.GetComponent<Sprite>();
         iconSprite_corner = iconObject_corner.GetComponent<Sprite>();
         iconSprite_cornerInv = iconObject_cornerInv.GetComponent<Sprite>();
+        iconSprite_floor = iconObject_floor.GetComponent<Sprite>();
 
         tilesetColor = colorObject.GetComponent<Image>();
 
@@ -99,20 +106,36 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
 
         //------- Assign Toggle Listener ----------
         selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
+        //-------------------------------------------------------------------------------------------
+
+       //--- arrange Tileset Members ---
+
+        displayMembers = assetTileset_BaseObject.tilesetMembers.OrderBy( member => (int)member.GetComponent<AssetBasis>().tilesetRole).ToList();
+   
+
+
+
+
     }
 
 
     public void ThisSelected(bool toggleStatus) {                   //called by UItoggle
-        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetTileset_BaseObject.uvMapSectorFlag);
+
+
+        objectOptionsContScript.ActivateTilesetsOptions();
+     /*   textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetTileset_BaseObject.uvMapSectorFlag);
         textureViewerManageScript.currentSelAssetEntry = this.gameObject;
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 2;
         textureViewerManageScript.ShowCompatTexAtlases(assetTileset_BaseObject.meshsetString);
 
-        textureViewerManageScript.SelectDefaultTexAtlasEntry();   //calls SetSelectedMaterial()
+        textureViewerManageScript.SelectDefaultTexAtlasEntry();   //calls SetSelectedMaterial()*/
     }
 
     public void SelectFromHotkey() {                                //called by hotkey -- AssetsViewerAssetManagement.EntryFromHotkey() -- which is called by AssetsViewerHotkeysUiControl.HotkeyPressedAssetsFirstDigit()
-        selectedToggle.group.SetAllTogglesOff();
+
+
+        objectOptionsContScript.ActivateTilesetsOptions();
+       /* selectedToggle.group.SetAllTogglesOff();
         selectedToggle.isOn = true;
 
         textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetTileset_BaseObject.uvMapSectorFlag);
@@ -120,21 +143,26 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 2;
         textureViewerManageScript.ShowCompatTexAtlases(assetTileset_BaseObject.meshsetString);
 
-        textureViewerManageScript.SelectDefaultTexAtlasEntry();     //calls SetSelectedMaterial()
+        textureViewerManageScript.SelectDefaultTexAtlasEntry();     //calls SetSelectedMaterial()*/
     }
 
     public void SetSelectedMaterial(Material theMaterial) {
-        assetTileset_BaseObject.assetMaterial = theMaterial;
+
+
+       /* assetTileset_BaseObject.assetMaterial = theMaterial;
 //        assetTileset_BaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
         textureViewerPreviewerScript.DrawTexturePreview(theMaterial);
 
-        SendInfoTo_TileToPaint();
+        SendInfoTo_TileToPaint();*/
     }
 
     void SendInfoTo_TileToPaint() {
-      //  tileToPaintScript.SetCurrentTileSprite(assetTileset_BaseObject.assetEntryIcon);
+
+
+
+     /* //  tileToPaintScript.SetCurrentTileSprite(assetTileset_BaseObject.assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName((int)assetTileset_BaseObject.categoryTilesets, assetTileset_BaseObject.assetIndex, assetTileset_BaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndicesAndMatName((int)assetTileset_BaseObject.categoryTilesets, assetTileset_BaseObject.assetIndex, assetTileset_BaseObject.assetMaterialName);*/
     }
 
 

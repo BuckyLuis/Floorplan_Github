@@ -5,11 +5,13 @@ using UnityEngine.UI;
 public class AssetsViewerEntry_Triggers : MonoBehaviour {
 
     GameObject assetsDbController;
+    AssetsViewerAssetManagement assetViewerMgmtScript;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
-    TileToPaintMenu tileToPaintScript;
+    TileOptions tileToPaintScript;
 
     GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
+    ObjectOptionsController objectOptionsContScript;
 
 
     public GameObject assetWorldObject;
@@ -43,6 +45,9 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
 
     Sprite iconSprite;
     Image tilesetColor;
+    Text tilesetNumber;
+    int tilesetIndexAdjust;
+    Color32 noTilesetColor = new Color32(0, 0, 0, 0);
 
     Toggle selectedToggle;
 
@@ -50,11 +55,13 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
 
     void Start () {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
+        assetViewerMgmtScript = assetsDbController.GetComponent<AssetsViewerAssetManagement>();
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
-        tileToPaintScript = assetsDbController.GetComponent<TileToPaintMenu>();
+        tileToPaintScript = assetsDbController.GetComponent<TileOptions>();
 
         toolsController = GameObject.FindWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
+        objectOptionsContScript = toolsController.GetComponent<ObjectOptionsController>();
 
 
         nameText = nameObject.GetComponent<Text>();
@@ -83,7 +90,17 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
             hkText1.text = "";
         }
         iconSprite = assetTrigger_BaseObject.assetEntryIcon;
-        tilesetColor.color = assetTrigger_BaseObject.assetTilesetColor;
+
+        if(assetTrigger_BaseObject.tilesetIndex != 0) {
+            tilesetIndexAdjust = assetTrigger_BaseObject.tilesetIndex - 1;
+            tilesetColor.color = assetViewerMgmtScript.assetsList_Tilesets[tilesetIndexAdjust].assetTilesetColor;
+
+            tilesetNumber.text = assetTrigger_BaseObject.tilesetIndex.ToString();
+        }
+        else {
+            tilesetColor.color = noTilesetColor;
+            tilesetNumber.text = "";
+        }
 
         //------- Assign Toggle Listener ----------
         selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
@@ -91,8 +108,12 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
 
 
     public void ThisSelected(bool toggleStatus) {                   //called by UItoggle
+        objectOptionsContScript.ActivateEntitiesOptions();
+
         tileToPaintScript.SetCurrentTileSprite(assetTrigger_BaseObject.assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+
+        objectOptionsContScript.ActivateEntitiesOptions();
     }
 
     public void SelectFromHotkey() {        //called by hotkey -- AssetsViewerAssetManagement.EntryFromHotkey() -- which is called by AssetsViewerHotkeysUiControl.HotkeyPressedAssetsFirstDigit()
@@ -102,6 +123,8 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour {
         tileToPaintScript.SetCurrentTileSprite(assetTrigger_BaseObject.assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
         objInstantiatorScript.AssignIndicesAndMatName((int)assetTrigger_BaseObject.categoryTriggers, assetTrigger_BaseObject.assetIndex, assetTrigger_BaseObject.assetMaterialName);
+
+        objectOptionsContScript.ActivateEntitiesOptions();
     }
 
 }

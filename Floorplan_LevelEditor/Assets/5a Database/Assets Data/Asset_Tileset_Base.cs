@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class Asset_Tileset_Base {
@@ -12,12 +13,16 @@ public class Asset_Tileset_Base {
     public Sprite assetEntryIcon_wall;
     public Sprite assetEntryIcon_corner;
     public Sprite assetEntryIcon_cornerInv;
+    public Sprite assetEntryIcon_floor;
 
     public Color assetTilesetColor;
+    [HideInInspector] public List<GameObject> tilesetMembers = new List<GameObject>();
+
 
     public GameObject wallPrefab;
     public GameObject cornerPrefab;
     public GameObject cornerInversePrefab;
+    public GameObject floorPrefab;
 
 
     [HideInInspector] public Material assetMaterial;

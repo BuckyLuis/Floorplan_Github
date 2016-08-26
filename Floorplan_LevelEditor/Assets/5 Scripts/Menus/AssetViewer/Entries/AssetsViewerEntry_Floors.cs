@@ -5,12 +5,14 @@ using UnityEngine.UI;
 public class AssetsViewerEntry_Floors : MonoBehaviour {
    
     GameObject assetsDbController;
+    AssetsViewerAssetManagement assetViewerMgmtScript;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
-    TileToPaintMenu tileToPaintScript;
+    TileOptions tileToPaintScript;
 
     GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
+    ObjectOptionsController objectOptionsContScript;
 
 
     public GameObject assetWorldObject;
@@ -31,6 +33,7 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
 
     [SerializeField] GameObject iconObject;
     [SerializeField] GameObject colorObject;
+    [SerializeField] GameObject tilesetNumberObject;
 
     [SerializeField] GameObject toggleObject;
 //---  ---  ---  ---  ---  ---  ---  ---  
@@ -41,20 +44,26 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
     Text hkText1;
 
     Sprite iconSprite;
+
     Image tilesetColor;
+    Text tilesetNumber;
+    int tilesetIndexAdjust;
+    Color32 noTilesetColor = new Color32(0, 0, 0, 0);
 
     Toggle selectedToggle;
 
-
+  
 
 	void Start () {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
+        assetViewerMgmtScript = assetsDbController.GetComponent<AssetsViewerAssetManagement>();
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
-        tileToPaintScript = assetsDbController.GetComponent<TileToPaintMenu>();
+        tileToPaintScript = assetsDbController.GetComponent<TileOptions>();
 
         toolsController = GameObject.FindWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
+        objectOptionsContScript = toolsController.GetComponent<ObjectOptionsController>();
 
 
         nameText = nameObject.GetComponent<Text>();
@@ -65,6 +74,7 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
 
         iconSprite = iconObject.GetComponent<Sprite>();
         tilesetColor = colorObject.GetComponent<Image>();
+        tilesetNumber = tilesetNumberObject.GetComponent<Text>();
 
         selectedToggle = toggleObject.GetComponent<Toggle>();
         selectedToggle.group = assetsDbController.transform.GetChild(0).GetComponent<ToggleGroup>();
@@ -83,7 +93,17 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
             hkText1.text = "";   
         }
         iconSprite = assetFloor_BaseObject.assetEntryIcon;
-        tilesetColor.color = assetFloor_BaseObject.assetTilesetColor;
+
+        if(assetFloor_BaseObject.tilesetIndex != 0) {
+            tilesetIndexAdjust = assetFloor_BaseObject.tilesetIndex - 1;
+            tilesetColor.color = assetViewerMgmtScript.assetsList_Tilesets[tilesetIndexAdjust].assetTilesetColor;
+
+            tilesetNumber.text = assetFloor_BaseObject.tilesetIndex.ToString();
+        }
+        else {
+            tilesetColor.color = noTilesetColor;
+            tilesetNumber.text = "";
+        }
 
         //------- Assign Toggle Listener ----------
         selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
@@ -94,9 +114,11 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
         textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetFloor_BaseObject.uvMapSectorFlag);
         textureViewerManageScript.currentSelAssetEntry = this.gameObject;
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 1;
-        textureViewerManageScript.ShowCompatTexAtlases(assetFloor_BaseObject.meshsetString);
+        textureViewerManageScript.ShowCompatTexAtlases(assetFloor_BaseObject.texturesetString);
 
         textureViewerManageScript.SelectDefaultTexAtlasEntry();   //calls SetSelectedMaterial()
+
+        objectOptionsContScript.ActivateTileOptions();
     }
 
     public void SelectFromHotkey() {                                //called by hotkey -- AssetsViewerAssetManagement.EntryFromHotkey() -- which is called by AssetsViewerHotkeysUiControl.HotkeyPressedAssetsFirstDigit()
@@ -106,9 +128,11 @@ public class AssetsViewerEntry_Floors : MonoBehaviour {
         textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetFloor_BaseObject.uvMapSectorFlag);
         textureViewerManageScript.currentSelAssetEntry = this.gameObject;
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 1;
-        textureViewerManageScript.ShowCompatTexAtlases(assetFloor_BaseObject.meshsetString);
+        textureViewerManageScript.ShowCompatTexAtlases(assetFloor_BaseObject.texturesetString);
 
         textureViewerManageScript.SelectDefaultTexAtlasEntry();     //calls SetSelectedMaterial()
+
+        objectOptionsContScript.ActivateTileOptions();
     }
 
     public void SetSelectedMaterial(Material theMaterial) {         //called by TexAtlasManager, when this assetEntry is selected(assigning default texAtlas) ... OR by way of a TexAtlasEntry having been selected 
