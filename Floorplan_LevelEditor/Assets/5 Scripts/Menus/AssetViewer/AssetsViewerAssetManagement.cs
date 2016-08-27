@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 
 public enum Categories_Floors { STANDARD, PUZZLE, HAZARD, SPECIAL }
@@ -9,12 +10,15 @@ public enum Categories_Doodads { STANDARD, DECAL, SIGNS, SPECIAL }
 public enum Categories_Props { STANDARD, ITEM, HAZARD, SPECIAL }
 public enum Categories_Actors { STANDARD, FRIENDLY, ENEMY, BOSS }
 public enum Categories_Triggers { STANDARD, SPAWNER, HAZARD, SPECIAL }
+
 public enum Categories_Tilesets { STANDARD, SPAWNER, HAZARD, SPECIAL }
 public enum Categories_Templates { STANDARD, SPAWNER, HAZARD, SPECIAL }
 
 [Serializable] public class Dictionary_sGo : SerializableDictionary<string, GameObject> { }
 
 public class AssetsViewerAssetManagement : MonoBehaviour {
+
+    TilesetOptionsAndManager tilesetOptionsScript;
 
 
     int assetIndexCounterCat0;  //these counters assign indices to assets, it is used to assign hotkey #s
@@ -80,11 +84,13 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
 
  #region PopulateViews
 	void Start () {
+        tilesetOptionsScript = GetComponent<TilesetOptionsAndManager>();
         PopulateAssetViews();
 	}
 
     void PopulateAssetViews() {
-        
+
+//--------------------------------------------- FLOORS -----------------------------------------
         assetIndexCounterCat0 = 1;
         assetIndexCounterCat1 = 1;
         assetIndexCounterCat2 = 1;
@@ -109,20 +115,25 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
                     assetIndexCounterCat3++;
                     break;
             }
+            floorBasis.pageName = "Floors";
+            floorBasis.categoryName = floorBasis.categoryFloors.ToString();
+            floorBasis.categoryHotkey = (int)floorBasis.categoryFloors + 1;
+
 
             tempEntry = Instantiate(floorEntryPrefab);
             tempEntry.transform.SetParent(viewAreaFloors.transform, false);
             AssetsViewerEntry_Floors tempScript = tempEntry.GetComponent<AssetsViewerEntry_Floors>();
 
-            tempScript.assetFloor_BaseObject = floorBasis;
+            tempScript.assetBaseObject = floorBasis;
             tempScript.assetIndex = floorBasis.assetIndex;
             tempScript.assetWorldObject = floorBasis.worldObjectPrefab;
-            tempScript.assetFloor_BaseObject.texturesetString = "0|" + floorBasis.texturesetFlag.ToString();     //establish the texAtlasCategory relationship (0 - GEOMETRY)
+            tempScript.assetBaseObject.texturesetString = "0|" + floorBasis.texturesetFlag.ToString();     //establish the texAtlasCategory relationship (0 - GEOMETRY)
 
 
             assetsEntriesDict_Floors.Add(string.Format("{0}|{1}|{2}", (int)floorBasis.categoryFloors, floorBasis.assetIndex, floorBasis.tilesetIndex - 1), tempEntry);
         }
 
+//--------------------------------------------- WALLS -----------------------------------------
         assetIndexCounterCat0 = 1;
         assetIndexCounterCat1 = 1;
         assetIndexCounterCat2 = 1;
@@ -147,19 +158,24 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
                     assetIndexCounterCat3++;
                     break;
             }
+            wallBasis.pageName = "Walls";
+            wallBasis.categoryName = wallBasis.categoryWalls.ToString();
+            wallBasis.categoryHotkey = (int)wallBasis.categoryWalls + 1;
+
 
             tempEntry = Instantiate(wallEntryPrefab);
             tempEntry.transform.SetParent(viewAreaWalls.transform, false);
             AssetsViewerEntry_Walls tempScript = tempEntry.GetComponent<AssetsViewerEntry_Walls>();
 
-            tempScript.assetWall_BaseObject = wallBasis;
+            tempScript.assetBaseObject = wallBasis;
             tempScript.assetIndex = wallBasis.assetIndex;
             tempScript.assetWorldObject = wallBasis.worldObjectPrefab;
-            tempScript.assetWall_BaseObject.texturesetString = "0|" + wallBasis.texturesetFlag.ToString();   //establish the texAtlasCategory relationship (0 - GEOMETRY)
+            tempScript.assetBaseObject.texturesetString = "0|" + wallBasis.texturesetFlag.ToString();   //establish the texAtlasCategory relationship (0 - GEOMETRY)
 
             assetsEntriesDict_Walls.Add(string.Format("{0}|{1}|{2}", (int)wallBasis.categoryWalls, wallBasis.assetIndex, wallBasis.tilesetIndex - 1), tempEntry);
         }
 
+//--------------------------------------------- DOODADS -----------------------------------------
         assetIndexCounterCat0 = 1;
         assetIndexCounterCat1 = 1;
         assetIndexCounterCat2 = 1;
@@ -184,18 +200,24 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
                     assetIndexCounterCat3++;
                     break;
             }
+            doodadBasis.pageName = "Doodads";
+            doodadBasis.categoryName = doodadBasis.categoryDoodads.ToString();
+            doodadBasis.categoryHotkey = (int)doodadBasis.categoryDoodads + 1;
+
+
             tempEntry = Instantiate(doodadEntryPrefab);
             tempEntry.transform.SetParent(viewAreaDoodads.transform, false);
             AssetsViewerEntry_Doodads tempScript = tempEntry.GetComponent<AssetsViewerEntry_Doodads>();
 
-            tempScript.assetDoodad_BaseObject = doodadBasis;
+            tempScript.assetBaseObject = doodadBasis;
             tempScript.assetIndex = doodadBasis.assetIndex;
             tempScript.assetWorldObject = doodadBasis.worldObjectPrefab;
-            tempScript.assetDoodad_BaseObject.texturesetString = "1|" + doodadBasis.texturesetFlag.ToString();   //establish the texAtlasCategory relationship (1 - DOODADS)
+            tempScript.assetBaseObject.texturesetString = "1|" + doodadBasis.texturesetFlag.ToString();   //establish the texAtlasCategory relationship (1 - DOODADS)
 
             assetsEntriesDict_Doodads.Add(string.Format("{0}|{1}|{2}", (int)doodadBasis.categoryDoodads, doodadBasis.assetIndex, doodadBasis.tilesetIndex - 1), tempEntry);
         }
-
+            
+//--------------------------------------------- PROPS -----------------------------------------
         assetIndexCounterCat0 = 1;
         assetIndexCounterCat1 = 1;
         assetIndexCounterCat2 = 1;
@@ -220,19 +242,24 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
                     assetIndexCounterCat3++;
                     break;
             }
+            propBasis.pageName = "Props";
+            propBasis.categoryName = propBasis.categoryProps.ToString();
+            propBasis.categoryHotkey = (int)propBasis.categoryProps + 1;
+
 
             tempEntry = Instantiate(propEntryPrefab);
             tempEntry.transform.SetParent(viewAreaProps.transform, false);
             AssetsViewerEntry_Props tempScript = tempEntry.GetComponent<AssetsViewerEntry_Props>();
 
-            tempScript.assetProp_BaseObject = propBasis;
+            tempScript.assetBaseObject = propBasis;
             tempScript.assetIndex = propBasis.assetIndex;
             tempScript.assetWorldObject = propBasis.worldObjectPrefab;
-            tempScript.assetProp_BaseObject.texturesetString = "2|" + propBasis.texturesetFlag.ToString();  //establish the texAtlasCategory relationship (2 - PROPS)
+            tempScript.assetBaseObject.texturesetString = "2|" + propBasis.texturesetFlag.ToString();  //establish the texAtlasCategory relationship (2 - PROPS)
 
             assetsEntriesDict_Props.Add(string.Format("{0}|{1}|{2}", (int)propBasis.categoryProps, propBasis.assetIndex, propBasis.tilesetIndex - 1), tempEntry);
         }
 
+//--------------------------------------------- ACTORS -----------------------------------------
         assetIndexCounterCat0 = 1;
         assetIndexCounterCat1 = 1;
         assetIndexCounterCat2 = 1;
@@ -257,19 +284,24 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
                     assetIndexCounterCat3++;
                     break;
             }
+            actorBasis.pageName = "Actors";
+            actorBasis.categoryName = actorBasis.categoryActors.ToString();
+            actorBasis.categoryHotkey = (int)actorBasis.categoryActors + 1;
+
 
             tempEntry = Instantiate(actorEntryPrefab);
             tempEntry.transform.SetParent(viewAreaActors.transform, false);
             AssetsViewerEntry_Actors tempScript = tempEntry.GetComponent<AssetsViewerEntry_Actors>();
          
-            tempScript.assetActor_BaseObject = actorBasis;
+            tempScript.assetBaseObject = actorBasis;
             tempScript.assetIndex = actorBasis.assetIndex;
             tempScript.assetWorldObject = actorBasis.worldObjectPrefab;
-            tempScript.assetActor_BaseObject.texturesetString = "3|" + actorBasis.texturesetFlag.ToString(); //establish the texAtlasCategory relationship (3 - ACTORS)
+            tempScript.assetBaseObject.texturesetString = "3|" + actorBasis.texturesetFlag.ToString(); //establish the texAtlasCategory relationship (3 - ACTORS)
 
             assetsEntriesDict_Actors.Add(string.Format("{0}|{1}", (int)actorBasis.categoryActors, actorBasis.assetIndex), tempEntry);
         }
 
+//--------------------------------------------- TRIGGERS -----------------------------------------
         assetIndexCounterCat0 = 1;
         assetIndexCounterCat1 = 1;
         assetIndexCounterCat2 = 1;
@@ -294,12 +326,16 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
                     assetIndexCounterCat3++;
                     break;
             }
+            triggerBasis.pageName = "Triggers";
+            triggerBasis.categoryName = triggerBasis.categoryTriggers.ToString();
+            triggerBasis.categoryHotkey = (int)triggerBasis.categoryTriggers + 1;
+
 
             tempEntry = Instantiate(triggerEntryPrefab);
             tempEntry.transform.SetParent(viewAreaTriggers.transform, false);
             AssetsViewerEntry_Triggers tempScript = tempEntry.GetComponent<AssetsViewerEntry_Triggers>();
 
-            tempScript.assetTrigger_BaseObject = triggerBasis;
+            tempScript.assetBaseObject = triggerBasis;
             tempScript.assetIndex = triggerBasis.assetIndex;
             tempScript.assetWorldObject = triggerBasis.worldObjectPrefab;
             //triggers have no in-game texture
@@ -307,11 +343,12 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             assetsEntriesDict_Triggers.Add(string.Format("{0}|{1}", (int)triggerBasis.categoryTriggers, triggerBasis.assetIndex), tempEntry);
         }
 
+//--------------------------------------------- TILESETS -----------------------------------------
         assetIndexCounterCat0 = 1;
         assetIndexCounterCat1 = 1;
         assetIndexCounterCat2 = 1;
         assetIndexCounterCat3 = 1;
-        for (int i = 0; i < assetsList_Tilesets.Count; i++) { //foreach (var tilesetBasis in assetsList_Tilesets) {  //
+        for (int i = 0; i < assetsList_Tilesets.Count; i++) { //foreach (var tilesetBasis in assetsList_Tilesets) {  //use a for() here because i need to work with the index of the currentTileset
             Asset_Tileset_Base tilesetBasis = assetsList_Tilesets[i];
 
             switch ((int)tilesetBasis.categoryTilesets)
@@ -336,10 +373,12 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
 
             tempEntry = Instantiate(tilesetEntryPrefab);
             tempEntry.transform.SetParent(viewAreaTilesets.transform, false);
+
             AssetsViewerEntry_Tilesets tempScript = tempEntry.GetComponent<AssetsViewerEntry_Tilesets>();
 
             tempScript.assetTileset_BaseObject = tilesetBasis;
             tempScript.assetIndex = tilesetBasis.assetIndex;
+            tempScript.assetTileset_BaseObject.tilesetIndex = i;
 
             GameObject tempGO;
             foreach (KeyValuePair<string, GameObject> floorEntry in assetsEntriesDict_Floors) {
@@ -363,10 +402,13 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
                     tempScript.assetTileset_BaseObject.tilesetMembers.Add(tempGO);
             }
 
+            tilesetBasis.displayMembers = tilesetBasis.tilesetMembers.OrderBy( member => (int)member.GetComponent<AssetBasis>().tilesetRole).ToList();
 
+            tilesetOptionsScript.PopulateMembersDict(tilesetBasis, tilesetBasis.tilesetIndex);
             assetsEntriesDict_Tilesets.Add(string.Format("{0}|{1}|{2}", (int)tilesetBasis.categoryTilesets, tilesetBasis.assetIndex, i), tempEntry);
         }
 
+//--------------------------------------------- TEMPLATES -----------------------------------------
         assetIndexCounterCat0 = 1;
         assetIndexCounterCat1 = 1;
         assetIndexCounterCat2 = 1;

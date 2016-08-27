@@ -6,10 +6,13 @@ public class TilesetMemberEntry : MonoBehaviour {
 
     GameObject assetsDbController;
 
-    AssetBasis_Tile theAssetBaseObject;
 
-    public int assetIndex;
-    string assetIndexString;
+    public GameObject theAssetEntry;
+    IAssetViewerEntry theEntryScript;       //AssetsViewerEntry_Floors , for example
+    AssetBasis theAssetBase;                //Asset_Floor_Base of ^ , for example
+
+
+    string hotkeyPageString;
 
     //----------- UI Refs ---------------------
     [Space(30)]
@@ -38,7 +41,7 @@ public class TilesetMemberEntry : MonoBehaviour {
 
 
 
-    void Start () {
+    void Awake () {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
 
 
@@ -53,7 +56,46 @@ public class TilesetMemberEntry : MonoBehaviour {
       
         theToggle = toggleObject.GetComponent<Toggle>();
         theToggle.group = assetsDbController.transform.GetChild(2).GetComponent<ToggleGroup>();
-
-        //---------------------- assign datas to asset entries ---------------------
     }
+
+
+    public void AssignDatasToUI() {
+        //---------------------- assign datas to asset entries ---------------------
+
+        theEntryScript = theAssetEntry.GetComponent<IAssetViewerEntry>();
+        theAssetBase = theEntryScript.GetAssetBaseObject();
+
+        Debug.Log(theAssetBase.pageName);
+
+        pageText.text = theAssetBase.pageName;
+        categoryText.text = theAssetBase.categoryName;
+
+
+        switch (theAssetBase.pageName)
+        {
+            case "Floors":
+                hotkeyPageString = "1";
+                break;
+            case "Walls":
+                hotkeyPageString = "2";
+                break;
+            case "Doodads":
+                hotkeyPageString = "3";
+                break;
+            case "Props":
+                hotkeyPageString = "4";
+                break;
+            case "Actors":
+                hotkeyPageString = "5";
+                break;
+        }
+        hotkeyText.text = hotkeyPageString + ", " + theAssetBase.categoryHotkey + ", " + theAssetBase.assetIndex;
+
+
+        usageImage.sprite = theAssetBase.assetUsageIcon;
+        assetIconImage.sprite = theAssetBase.assetEntryIcon;
+        assetName.text = theAssetBase.assetName;
+    }
+
+
 }

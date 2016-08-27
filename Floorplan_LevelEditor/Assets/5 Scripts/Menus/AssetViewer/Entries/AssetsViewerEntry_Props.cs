@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class AssetsViewerEntry_Props : MonoBehaviour {
+public class AssetsViewerEntry_Props : MonoBehaviour, IAssetViewerEntry {
 
     GameObject assetsDbController;
     AssetsViewerAssetManagement assetViewerMgmtScript;
@@ -18,7 +18,7 @@ public class AssetsViewerEntry_Props : MonoBehaviour {
     public GameObject assetWorldObject;
 
     //------------- Asset Datas ------------------
-    public Asset_Prop_Base assetProp_BaseObject;
+    public Asset_Prop_Base assetBaseObject;
 
     public int assetIndex;
     string assetIndexString;
@@ -80,8 +80,8 @@ public class AssetsViewerEntry_Props : MonoBehaviour {
         selectedToggle.group = assetsDbController.transform.GetChild(0).GetComponent<ToggleGroup>();
 
         //---------------------- assign datas to asset entries ---------------------
-        nameText.text = assetProp_BaseObject.assetName;
-        usageIcon.sprite = assetProp_BaseObject.assetUsageIcon;
+        nameText.text = assetBaseObject.assetName;
+        usageIcon.sprite = assetBaseObject.assetUsageIcon;
 
         assetIndexString = assetIndex.ToString();
         if(assetIndexString.Length > 1) {
@@ -92,18 +92,23 @@ public class AssetsViewerEntry_Props : MonoBehaviour {
             hkText0.text = assetIndexString;   
             hkText1.text = "";
         }
-        iconSprite = assetProp_BaseObject.assetEntryIcon;
+        iconSprite = assetBaseObject.assetEntryIcon;
 
-        if(assetProp_BaseObject.tilesetIndex != 0) {
-            tilesetIndexAdjust = assetProp_BaseObject.tilesetIndex - 1;
+        if(assetBaseObject.tilesetIndex != 0) {
+            tilesetIndexAdjust = assetBaseObject.tilesetIndex - 1;
             tilesetColor.color = assetViewerMgmtScript.assetsList_Tilesets[tilesetIndexAdjust].assetTilesetColor;
 
-            tilesetNumber.text = assetProp_BaseObject.tilesetIndex.ToString();
+            tilesetNumber.text = assetBaseObject.tilesetIndex.ToString();
         }
         else {
             tilesetColor.color = noTilesetColor;
             tilesetNumber.text = "";
         }
+
+        assetBaseObject.pageName = "Props";
+        assetBaseObject.categoryName = assetBaseObject.categoryProps.ToString();
+        assetBaseObject.categoryHotkey = (int)assetBaseObject.categoryProps + 1;
+
 
         //------- Assign Toggle Listener ----------
         selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
@@ -111,10 +116,10 @@ public class AssetsViewerEntry_Props : MonoBehaviour {
 
 
     public void ThisSelected(bool toggleStatus) {                   //called by UItoggle
-        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetProp_BaseObject.uvMapSectorFlag);
+        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetBaseObject.uvMapSectorFlag);
         textureViewerManageScript.currentSelAssetEntry = this.gameObject;
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 4;
-        textureViewerManageScript.ShowCompatTexAtlases(assetProp_BaseObject.texturesetString);
+        textureViewerManageScript.ShowCompatTexAtlases(assetBaseObject.texturesetString);
 
         textureViewerManageScript.SelectDefaultTexAtlasEntry();   //calls SetSelectedMaterial()
 
@@ -125,10 +130,10 @@ public class AssetsViewerEntry_Props : MonoBehaviour {
         selectedToggle.group.SetAllTogglesOff();
         selectedToggle.isOn = true;
 
-        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetProp_BaseObject.uvMapSectorFlag);
+        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetBaseObject.uvMapSectorFlag);
         textureViewerManageScript.currentSelAssetEntry = this.gameObject;
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 4;
-        textureViewerManageScript.ShowCompatTexAtlases(assetProp_BaseObject.texturesetString);
+        textureViewerManageScript.ShowCompatTexAtlases(assetBaseObject.texturesetString);
 
         textureViewerManageScript.SelectDefaultTexAtlasEntry();     //calls SetSelectedMaterial()
 
@@ -136,17 +141,21 @@ public class AssetsViewerEntry_Props : MonoBehaviour {
     }
 
     public void SetSelectedMaterial(Material theMaterial) {
-        assetProp_BaseObject.assetMaterial = theMaterial;
-        assetProp_BaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
+        assetBaseObject.assetMaterial = theMaterial;
+        assetBaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
         textureViewerPreviewerScript.DrawTexturePreview(theMaterial);
 
         SendInfoTo_TileToPaint();
     }
 
     void SendInfoTo_TileToPaint() {
-        tileToPaintScript.SetCurrentTileSprite(assetProp_BaseObject.assetEntryIcon);
+        tileToPaintScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName((int)assetProp_BaseObject.categoryProps, assetProp_BaseObject.assetIndex, assetProp_BaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndicesAndMatName((int)assetBaseObject.categoryProps, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+    }
+
+    public AssetBasis GetAssetBaseObject() {
+        return assetBaseObject;
     }
 
 }

@@ -42,14 +42,32 @@ GameObject:
   - 4: {fileID: 475634}
   - 114: {fileID: 11461310}
   - 114: {fileID: 11414772}
-  - 114: {fileID: 11439132}
   - 114: {fileID: 11419270}
   - 114: {fileID: 11430856}
   - 114: {fileID: 11417852}
+  - 114: {fileID: 11485074}
+  - 114: {fileID: 11404564}
+  - 114: {fileID: 11477396}
   m_Layer: 0
   m_Name: '- == AssetsDB Controller == -'
   m_TagString: AssetsDBController
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &199414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 455036}
+  - 114: {fileID: 11485092}
+  m_Layer: 0
+  m_Name: ToggleGroup_TilesetsMembers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -66,6 +84,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 475634}
   m_RootOrder: 1
+--- !u!4 &455036
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 475634}
+  m_RootOrder: 2
 --- !u!4 &475634
 Transform:
   m_ObjectHideFlags: 1
@@ -79,6 +110,7 @@ Transform:
   m_Children:
   - {fileID: 480514}
   - {fileID: 424378}
+  - {fileID: 455036}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &480514
@@ -94,6 +126,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 475634}
   m_RootOrder: 0
+--- !u!114 &11404564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9663e049f19673e42b3923e8267fc0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11414772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,29 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a24322d7fb19c4db047787ef4dc95e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11439132
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 928a78d88af8dd248ac23389e224785d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilePlacerObject: {fileID: 0}
-  toolsController: {fileID: 0}
-  databaseController: {fileID: 0}
-  selectedTileIndex: 0
-  ui_TileFacingSel_N: {fileID: 0}
-  ui_TileFacingSel_E: {fileID: 0}
-  ui_TileFacingSel_S: {fileID: 0}
-  ui_TileFacingSel_W: {fileID: 0}
-  ui_TxtRoomID: {fileID: 0}
-  ui_RoomColor: {fileID: 0}
-  ui_ImgTileIcon: {fileID: 0}
-  ui_btnTilePlacer: {fileID: 0}
 --- !u!114 &11442878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,30 +265,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assetsList_Floors:
   - assetName: Tile Floor
+    assetMaterialName: 
+    assetEntryIcon: {fileID: 0}
+    worldObjectPrefab: {fileID: 178938, guid: fc041408698de5f47b86f8166e681a6a, type: 2}
+    tilesetIndex: 1
+    tilesetRole: 4
+    assetMaterial: {fileID: 0}
+    uvMapSectorFlag: 0
+    texturesetFlag: 0
+    texturesetString: 
+    assetUsageIcon: {fileID: 0}
+    pageName: 
+    categoryName: 
+    categoryHotkey: 0
     assetIndex: 0
     categoryFloors: 0
-    assetMaterialName: 
-    assetEntryIcon: {fileID: 0}
-    assetTilesetColor: {r: 0, g: 0, b: 0, a: 0}
-    worldObjectPrefab: {fileID: 178938, guid: fc041408698de5f47b86f8166e681a6a, type: 2}
-    assetMaterial: {fileID: 0}
-    uvMapSectorFlag: 0
-    meshsetFlag: 0
-    meshsetString: 
-    assetUsageIcon: {fileID: 0}
   assetsList_Walls:
   - assetName: TestWall0
-    assetIndex: 0
-    categoryWalls: 0
     assetMaterialName: 
     assetEntryIcon: {fileID: 0}
-    assetTilesetColor: {r: 0, g: 1, b: 0.17241383, a: 1}
     worldObjectPrefab: {fileID: 132144, guid: e8214cc73496a034586e14aa4e06beb9, type: 2}
+    tilesetIndex: 0
+    tilesetRole: 0
     assetMaterial: {fileID: 0}
     uvMapSectorFlag: 0
-    meshsetFlag: 0
-    meshsetString: 
+    texturesetFlag: 0
+    texturesetString: 
     assetUsageIcon: {fileID: 0}
+    pageName: 
+    categoryName: 
+    categoryHotkey: 0
+    assetIndex: 0
+    categoryWalls: 0
   assetsList_Doodads: []
   assetsList_Props: []
   assetsList_Actors: []
@@ -281,10 +309,15 @@ MonoBehaviour:
     assetEntryIcon_wall: {fileID: 0}
     assetEntryIcon_corner: {fileID: 0}
     assetEntryIcon_cornerInv: {fileID: 0}
+    assetEntryIcon_floor: {fileID: 0}
     assetTilesetColor: {r: 0, g: 0, b: 0, a: 0}
+    tilesetIndex: 0
+    tilesetMembers: []
+    displayMembers: []
     wallPrefab: {fileID: 0}
     cornerPrefab: {fileID: 0}
     cornerInversePrefab: {fileID: 0}
+    floorPrefab: {fileID: 0}
     assetMaterial: {fileID: 0}
     uvMapSectorFlag: 0
     meshsetFlag: 0
@@ -427,14 +460,71 @@ MonoBehaviour:
   viewAreaTriggers: {fileID: 0}
   viewAreaTilesets: {fileID: 0}
   viewAreaTemplates: {fileID: 0}
-  floorEntryPrefab: {fileID: 187772, guid: 52e86c2a3f2bdf34da5538a81841c703, type: 2}
+  floorEntryPrefab: {fileID: 154934, guid: 52e86c2a3f2bdf34da5538a81841c703, type: 2}
   wallEntryPrefab: {fileID: 182112, guid: 77aafb7775cbba04a9bbc0edc3dca74a, type: 2}
-  doodadEntryPrefab: {fileID: 101388, guid: 2295f002bbd125b44aa20a87d614aac0, type: 2}
-  propEntryPrefab: {fileID: 155762, guid: bbfba0b174d3fce459c4370236362e6c, type: 2}
-  actorEntryPrefab: {fileID: 164370, guid: 67668915c59802d4f9edc234eaa5817c, type: 2}
+  doodadEntryPrefab: {fileID: 132050, guid: 2295f002bbd125b44aa20a87d614aac0, type: 2}
+  propEntryPrefab: {fileID: 181938, guid: bbfba0b174d3fce459c4370236362e6c, type: 2}
+  actorEntryPrefab: {fileID: 115606, guid: 67668915c59802d4f9edc234eaa5817c, type: 2}
   triggerEntryPrefab: {fileID: 157482, guid: 0e69bcc2762d142408f295cfaca3d2f5, type: 2}
-  tilesetEntryPrefab: {fileID: 135190, guid: 0f8a0e6c0bd4bdc40841636a92f5a214, type: 2}
+  tilesetEntryPrefab: {fileID: 137882, guid: 0f8a0e6c0bd4bdc40841636a92f5a214, type: 2}
   templateEntryPrefab: {fileID: 137794, guid: 9ef5610a070aa174e831c52e154e1629, type: 2}
+--- !u!114 &11477396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 400bc366f5de700488a2bc9a622dc536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tsMembersEntriesDict:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys: 000000000000000000000000
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  memberEntryPrefab: {fileID: 144620, guid: f52730a33c1b2d947b553c7bd53e5692, type: 2}
+  viewAreaTilesetMembers: {fileID: 0}
+--- !u!114 &11485074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2243c063c43b442b326e4659fa9fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePlacerObject: {fileID: 0}
+  toolsController: {fileID: 0}
+  databaseController: {fileID: 0}
+  selectedTileIndex: 0
+  ui_TxtRoomID: {fileID: 0}
+  ui_RoomColor: {fileID: 0}
+  ui_ImgTileIcon: {fileID: 0}
+  ui_btnTilePlacer: {fileID: 0}
+--- !u!114 &11485092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1184210157, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 0
 --- !u!114 &11494768
 MonoBehaviour:
   m_ObjectHideFlags: 1

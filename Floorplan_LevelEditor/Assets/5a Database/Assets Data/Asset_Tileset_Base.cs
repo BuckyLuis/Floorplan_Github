@@ -16,7 +16,9 @@ public class Asset_Tileset_Base {
     public Sprite assetEntryIcon_floor;
 
     public Color assetTilesetColor;
+    [HideInInspector] public int tilesetIndex;
     [HideInInspector] public List<GameObject> tilesetMembers = new List<GameObject>();
+    [HideInInspector] public List<GameObject> displayMembers = new List<GameObject>();
 
 
     public GameObject wallPrefab;

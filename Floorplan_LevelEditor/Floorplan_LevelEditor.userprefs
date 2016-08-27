@@ -1,24 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\ObjectOptions\TileOptions.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5a Database\Assets Data\Asset_Tileset_Base.cs">
     <Files>
-      <File FileName="Assets\5 Scripts\Menus\ObjectOptions\TileOptions.cs" Line="10" Column="49" />
-      <File FileName="Assets\5 Scripts\Menus\ObjectOptions\TilesetOptions.cs" Line="16" Column="1" />
-      <File FileName="Assets\5 Scripts\Menus\ObjectOptions\ObjectOptionsController.cs" Line="17" Column="9" />
-      <File FileName="Assets\5 Scripts\Menus\AssetViewer\Entries\TilesetMemberEntry.cs" Line="21" Column="5" />
-      <File FileName="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Tilesets.cs" Line="113" Column="144" />
-      <File FileName="Assets\5a Database\Assets Data\Asset_Tileset_Base.cs" Line="9" Column="92" />
-      <File FileName="Assets\5a Database\Assets Data\AssetBasis.cs" Line="6" Column="5" />
-      <File FileName="Assets\5a Database\Assets Data\AssetBasis_Tile.cs" Line="3" Column="1" />
-      <File FileName="Assets\5a Database\Assets Data\Asset_Floor_Base.cs" Line="4" Column="22" />
-      <File FileName="Assets\5a Database\Assets Data\Asset_Wall_Base.cs" Line="3" Column="1" />
-      <File FileName="Assets\5a Database\Assets Data\Asset_Doodad_Base.cs" Line="8" Column="4" />
-      <File FileName="Assets\5a Database\Assets Data\Asset_Prop_Base.cs" Line="5" Column="44" />
-      <File FileName="Assets\5a Database\Assets Data\Asset_Actor_Base.cs" Line="8" Column="3" />
-      <File FileName="Assets\5a Database\Assets Data\Asset_Trigger_Base.cs" Line="7" Column="105" />
-      <File FileName="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Actors.cs" Line="59" Column="105" />
-      <File FileName="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Floors.cs" Line="6" Column="4" />
-      <File FileName="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Triggers.cs" Line="86" Column="59" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\Entries\TilesetMemberEntry.cs" Line="92" Column="80" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Tilesets.cs" Line="98" Column="71" />
+      <File FileName="Assets\5a Database\Assets Data\Asset_Tileset_Base.cs" Line="19" Column="47" />
+      <File FileName="Assets\5 Scripts\Menus\ObjectOptions\TilesetOptionsAndManager.cs" Line="15" Column="5" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerAssetManagement.cs" Line="344" Column="10" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Floors.cs" Line="106" Column="10" />
+      <File FileName="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Walls.cs" Line="156" Column="12" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

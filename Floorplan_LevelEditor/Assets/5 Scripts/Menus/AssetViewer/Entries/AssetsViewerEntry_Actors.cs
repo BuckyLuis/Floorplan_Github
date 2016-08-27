@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class AssetsViewerEntry_Actors : MonoBehaviour {
+public class AssetsViewerEntry_Actors : MonoBehaviour, IAssetViewerEntry {
 
     GameObject assetsDbController;
     AssetsViewerAssetManagement assetViewerMgmtScript;
@@ -18,7 +18,7 @@ public class AssetsViewerEntry_Actors : MonoBehaviour {
     public GameObject assetWorldObject;
 
     //------------- Asset Datas ------------------
-    public Asset_Actor_Base assetActor_BaseObject;
+    public Asset_Actor_Base assetBaseObject; 
 
     public int assetIndex;
     string assetIndexString;
@@ -33,6 +33,7 @@ public class AssetsViewerEntry_Actors : MonoBehaviour {
 
     [SerializeField] GameObject iconObject;
     [SerializeField] GameObject colorObject;
+    [SerializeField] GameObject tilesetNumberObject;
 
     [SerializeField] GameObject toggleObject;
     //---  ---  ---  ---  ---  ---  ---  ---  
@@ -78,8 +79,8 @@ public class AssetsViewerEntry_Actors : MonoBehaviour {
         selectedToggle.group = assetsDbController.transform.GetChild(0).GetComponent<ToggleGroup>();
 
         //---------------------- assign datas to asset entries ---------------------
-        nameText.text = assetActor_BaseObject.assetName;
-        usageIcon.sprite = assetActor_BaseObject.assetUsageIcon;
+        nameText.text = assetBaseObject.assetName;
+        usageIcon.sprite = assetBaseObject.assetUsageIcon;
 
         assetIndexString = assetIndex.ToString();
         if(assetIndexString.Length > 1) {
@@ -90,28 +91,33 @@ public class AssetsViewerEntry_Actors : MonoBehaviour {
             hkText0.text = assetIndexString;   
             hkText1.text = "";
         }
-        iconSprite = assetActor_BaseObject.assetEntryIcon;
+        iconSprite = assetBaseObject.assetEntryIcon;
 
-        if(assetActor_BaseObject.tilesetIndex != 0) {
-            tilesetIndexAdjust = assetActor_BaseObject.tilesetIndex - 1;
+        if(assetBaseObject.tilesetIndex != 0) {
+            tilesetIndexAdjust = assetBaseObject.tilesetIndex - 1;
             tilesetColor.color = assetViewerMgmtScript.assetsList_Tilesets[tilesetIndexAdjust].assetTilesetColor;
 
-            tilesetNumber.text = assetActor_BaseObject.tilesetIndex.ToString();
+            tilesetNumber.text = assetBaseObject.tilesetIndex.ToString();
         }
         else {
             tilesetColor.color = noTilesetColor;
             tilesetNumber.text = "";
         }
+
+        assetBaseObject.pageName = "Actors";
+        assetBaseObject.categoryName = assetBaseObject.categoryActors.ToString();
+        assetBaseObject.categoryHotkey = (int)assetBaseObject.categoryActors + 1;
+
         //------- Assign Toggle Listener ----------
         selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
     }
 
 
     public void ThisSelected(bool toggleStatus) {                   //called by UItoggle
-        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetActor_BaseObject.uvMapSectorFlag);
+        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetBaseObject.uvMapSectorFlag);
         textureViewerManageScript.currentSelAssetEntry = this.gameObject;
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 5;
-        textureViewerManageScript.ShowCompatTexAtlases(assetActor_BaseObject.texturesetString);
+        textureViewerManageScript.ShowCompatTexAtlases(assetBaseObject.texturesetString);
 
         textureViewerManageScript.SelectDefaultTexAtlasEntry();   //calls SetSelectedMaterial()
 
@@ -122,10 +128,10 @@ public class AssetsViewerEntry_Actors : MonoBehaviour {
         selectedToggle.group.SetAllTogglesOff();
         selectedToggle.isOn = true;
 
-        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetActor_BaseObject.uvMapSectorFlag);
+        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetBaseObject.uvMapSectorFlag);
         textureViewerManageScript.currentSelAssetEntry = this.gameObject;
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 5;
-        textureViewerManageScript.ShowCompatTexAtlases(assetActor_BaseObject.texturesetString);
+        textureViewerManageScript.ShowCompatTexAtlases(assetBaseObject.texturesetString);
 
         textureViewerManageScript.SelectDefaultTexAtlasEntry();     //calls SetSelectedMaterial()
 
@@ -133,18 +139,21 @@ public class AssetsViewerEntry_Actors : MonoBehaviour {
     }
 
     public void SetSelectedMaterial(Material theMaterial) {
-        assetActor_BaseObject.assetMaterial = theMaterial;
-        assetActor_BaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
+        assetBaseObject.assetMaterial = theMaterial;
+        assetBaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
         textureViewerPreviewerScript.DrawTexturePreview(theMaterial);
 
         SendInfoTo_TileToPaint();
     }
 
     void SendInfoTo_TileToPaint() {
-        tileToPaintScript.SetCurrentTileSprite(assetActor_BaseObject.assetEntryIcon);
+        tileToPaintScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName((int)assetActor_BaseObject.categoryActors, assetActor_BaseObject.assetIndex, assetActor_BaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndicesAndMatName((int)assetBaseObject.categoryActors, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
     }
 
+    public AssetBasis GetAssetBaseObject() {
+        return assetBaseObject;
+    }
 
 }

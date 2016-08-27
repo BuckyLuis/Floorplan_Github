@@ -57,6 +57,7 @@
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Tilesets.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Triggers.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Walls.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\IAssetViewerEntry.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\TexturesViewerEntry.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\TilesetMemberEntry.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\TexturesViewerTexAtlasManagement.cs" />
@@ -64,9 +65,10 @@
      <Compile Include="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs" />
      <Compile Include="Assets\5 Scripts\Menus\CurrentArea\AreaSaveLoadUI.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\EntityOptions.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\ObjectFacingToolbar.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\ObjectOptionsController.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\TileOptions.cs" />
-     <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\TilesetOptions.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\TilesetOptionsAndManager.cs" />
      <Compile Include="Assets\5 Scripts\Menus\RoomViewer\ColorPicker.cs" />
      <Compile Include="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" />
      <Compile Include="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs" />
@@ -99,7 +101,6 @@
      <Compile Include="Assets\5 Scripts\oldold\TileObject.cs" />
      <Compile Include="Assets\5a Database\Assets Data\AssetBasis.cs" />
      <Compile Include="Assets\5a Database\Assets Data\AssetBasis_Tile.cs" />
-     <Compile Include="Assets\5a Database\Assets Data\AssetObject_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Asset_Actor_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Asset_Doodad_Base.cs" />
      <Compile Include="Assets\5a Database\Assets Data\Asset_Floor_Base.cs" />

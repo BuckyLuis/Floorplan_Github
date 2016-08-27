@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class AssetsViewerEntry_Doodads : MonoBehaviour {
+public class AssetsViewerEntry_Doodads : MonoBehaviour, IAssetViewerEntry {
 
     GameObject assetsDbController;
     AssetsViewerAssetManagement assetViewerMgmtScript;
@@ -18,7 +18,7 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour {
     public GameObject assetWorldObject;
 
     //------------- Asset Datas ------------------
-    public Asset_Doodad_Base assetDoodad_BaseObject;
+    public Asset_Doodad_Base assetBaseObject;
 
     public int assetIndex;
     string assetIndexString;
@@ -80,8 +80,8 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour {
         selectedToggle.group = assetsDbController.transform.GetChild(0).GetComponent<ToggleGroup>();
 
         //---------------------- assign datas to asset entries ---------------------
-        nameText.text = assetDoodad_BaseObject.assetName;
-        usageIcon.sprite = assetDoodad_BaseObject.assetUsageIcon;
+        nameText.text = assetBaseObject.assetName;
+        usageIcon.sprite = assetBaseObject.assetUsageIcon;
 
         assetIndexString = assetIndex.ToString();
         if(assetIndexString.Length > 1) {
@@ -92,18 +92,23 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour {
             hkText0.text = assetIndexString;   
             hkText1.text = "";
         }
-        iconSprite = assetDoodad_BaseObject.assetEntryIcon;
+        iconSprite = assetBaseObject.assetEntryIcon;
 
-        if(assetDoodad_BaseObject.tilesetIndex != 0) {
-            tilesetIndexAdjust = assetDoodad_BaseObject.tilesetIndex - 1;
+        if(assetBaseObject.tilesetIndex != 0) {
+            tilesetIndexAdjust = assetBaseObject.tilesetIndex - 1;
             tilesetColor.color = assetViewerMgmtScript.assetsList_Tilesets[tilesetIndexAdjust].assetTilesetColor;
 
-            tilesetNumber.text = assetDoodad_BaseObject.tilesetIndex.ToString();
+            tilesetNumber.text = assetBaseObject.tilesetIndex.ToString();
         }
         else {
             tilesetColor.color = noTilesetColor;
             tilesetNumber.text = "";
         }  
+
+        assetBaseObject.pageName = "Doodads";
+        assetBaseObject.categoryName = assetBaseObject.categoryDoodads.ToString();
+        assetBaseObject.categoryHotkey = (int)assetBaseObject.categoryDoodads + 1;
+
 
         //------- Assign Toggle Listener ----------
         selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
@@ -111,10 +116,10 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour {
 
 
     public void ThisSelected(bool toggleStatus) {                   //called by UItoggle
-        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetDoodad_BaseObject.uvMapSectorFlag);
+        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetBaseObject.uvMapSectorFlag);
         textureViewerManageScript.currentSelAssetEntry = this.gameObject;
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 3;
-        textureViewerManageScript.ShowCompatTexAtlases(assetDoodad_BaseObject.texturesetString);
+        textureViewerManageScript.ShowCompatTexAtlases(assetBaseObject.texturesetString);
 
         textureViewerManageScript.SelectDefaultTexAtlasEntry();   //calls SetSelectedMaterial()
 
@@ -125,10 +130,10 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour {
         selectedToggle.group.SetAllTogglesOff();
         selectedToggle.isOn = true;
 
-        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetDoodad_BaseObject.uvMapSectorFlag);
+        textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetBaseObject.uvMapSectorFlag);
         textureViewerManageScript.currentSelAssetEntry = this.gameObject;
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 3;
-        textureViewerManageScript.ShowCompatTexAtlases(assetDoodad_BaseObject.texturesetString);
+        textureViewerManageScript.ShowCompatTexAtlases(assetBaseObject.texturesetString);
 
         textureViewerManageScript.SelectDefaultTexAtlasEntry();     //calls SetSelectedMaterial()
 
@@ -136,17 +141,21 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour {
     }
 
     public void SetSelectedMaterial(Material theMaterial) {
-        assetDoodad_BaseObject.assetMaterial = theMaterial;
-        assetDoodad_BaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
+        assetBaseObject.assetMaterial = theMaterial;
+        assetBaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
         textureViewerPreviewerScript.DrawTexturePreview(theMaterial);
 
         SendInfoTo_TileToPaint();
     }
 
     void SendInfoTo_TileToPaint() {
-        tileToPaintScript.SetCurrentTileSprite(assetDoodad_BaseObject.assetEntryIcon);
+        tileToPaintScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName((int)assetDoodad_BaseObject.categoryDoodads, assetDoodad_BaseObject.assetIndex, assetDoodad_BaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndicesAndMatName((int)assetBaseObject.categoryDoodads, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+    }
+
+    public AssetBasis GetAssetBaseObject() {
+        return assetBaseObject;
     }
 
 }

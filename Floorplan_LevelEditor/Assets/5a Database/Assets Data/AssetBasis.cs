@@ -5,7 +5,7 @@ using System.Collections;
 public class AssetBasis {
     
     public string assetName;
-    [HideInInspector] public int assetIndex;   // index in AssetsDictionary -- used for ingame LevelConstruction        //assigned by AssetsViewerAssetManagement.cs 
+  
     [HideInInspector] public string assetMaterialName;   //the material's name  -- used for LevelConstruction
 
     public Sprite assetEntryIcon;            //only in editor
@@ -19,4 +19,11 @@ public class AssetBasis {
     public int texturesetFlag;                              //only in editor
     [HideInInspector] public string texturesetString;       //only in editor
     public Sprite assetUsageIcon;               //used only in editor, convenience
+
+    //-- for Tileset Member--
+    [HideInInspector] public string pageName;
+    [HideInInspector] public string categoryName;
+    [HideInInspector] public int categoryHotkey;
+    [HideInInspector] public int assetIndex;   // index in AssetsDictionary -- used for ingame LevelConstruction        //assigned by AssetsViewerAssetManagement.cs 
+
 }

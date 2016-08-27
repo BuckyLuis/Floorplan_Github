@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EntityToPaintMenu : MonoBehaviour {
+public class EntityOptions : MonoBehaviour {
 
 	void Start () {
 	

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Linq;
 
@@ -9,14 +8,12 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
     GameObject assetsDbController;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
-    TileOptions tileToPaintScript;
+    TilesetOptionsAndManager tilesetOptionsScript;
 
     GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
     ObjectOptionsController objectOptionsContScript;
-
-
-    public List<GameObject> displayMembers = new List<GameObject>();
+   
 
     //------------- Asset Datas ------------------
 
@@ -63,7 +60,7 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
-        tileToPaintScript = assetsDbController.GetComponent<TileOptions>();
+        tilesetOptionsScript = assetsDbController.GetComponent<TilesetOptionsAndManager>();
 
         toolsController = GameObject.FindWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
@@ -107,22 +104,13 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
         //------- Assign Toggle Listener ----------
         selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
         //-------------------------------------------------------------------------------------------
-
-       //--- arrange Tileset Members ---
-
-        displayMembers = assetTileset_BaseObject.tilesetMembers.OrderBy( member => (int)member.GetComponent<AssetBasis>().tilesetRole).ToList();
-   
-
-
-
-
     }
 
 
     public void ThisSelected(bool toggleStatus) {                   //called by UItoggle
-
-
         objectOptionsContScript.ActivateTilesetsOptions();
+        tilesetOptionsScript.ActivateChosenTsMembers(assetTileset_BaseObject.tilesetIndex);
+
      /*   textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetTileset_BaseObject.uvMapSectorFlag);
         textureViewerManageScript.currentSelAssetEntry = this.gameObject;
         textureViewerManageScript.currentSelAssetEntryTypeFlag = 2;
@@ -135,6 +123,7 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
 
 
         objectOptionsContScript.ActivateTilesetsOptions();
+        tilesetOptionsScript.ActivateChosenTsMembers(assetTileset_BaseObject.tilesetIndex);
        /* selectedToggle.group.SetAllTogglesOff();
         selectedToggle.isOn = true;
 
