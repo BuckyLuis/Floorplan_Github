@@ -102,7 +102,7 @@ public class RoomViewerEntry : MonoBehaviour {
     void Update() {
         if( uiIF_roomID.isFocused || uiIF_roomName.isFocused ) {
             AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = true;
-            TileOptions.anInputFieldIsInFocus = true;
+            GeomOptions.anInputFieldIsInFocus = true;
         }
     }
 
@@ -134,7 +134,7 @@ public class RoomViewerEntry : MonoBehaviour {
 
     public void ChangeRoomID() {
         AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = false;
-        TileOptions.anInputFieldIsInFocus = false;
+        GeomOptions.anInputFieldIsInFocus = false;
 
         thisRoomID = int.Parse(uiIF_roomID.text);
 
@@ -152,7 +152,7 @@ public class RoomViewerEntry : MonoBehaviour {
 	
     public void ChangeRoomName() {
         AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = false;
-        TileOptions.anInputFieldIsInFocus = false;
+        GeomOptions.anInputFieldIsInFocus = false;
 
         thisRoomName = uiIF_roomName.text;
 

@@ -43,7 +43,7 @@ public class TilePlacer : MonoBehaviour {
     public GameObject placeholder_Erase;
     private GameObject instPlaceholder;
 
-    bool tile0_entity1;   
+    bool geom0_entity1;   
 
     float gridSize = 2;
 
@@ -222,18 +222,18 @@ public class TilePlacer : MonoBehaviour {
 
        
 
-    public void AssignTileToBePlaced(GameObject theTileToPlace) {
-        tile0_entity1 = false;
-        placerMovementScript.tile0_entity1 = false;
+    public void GeomPlacementMode(GameObject theGeomToPlace) {
+        geom0_entity1 = false;
+        placerMovementScript.geom0_entity1 = false;
         gameObject.transform.localScale = tileScale;
         gridSize = 2;
 
-        objToPlace_Prefab = theTileToPlace;
+        objToPlace_Prefab = theGeomToPlace;
     }
 
-    public void AssignEntityToBePlaced(GameObject theEntityToPlace) {
-        tile0_entity1 = true;
-        placerMovementScript.tile0_entity1 = true;
+    public void EntityPlacementMode(GameObject theEntityToPlace) {
+        geom0_entity1 = true;
+        placerMovementScript.geom0_entity1 = true;
         gameObject.transform.localScale = entityScale;
         gridSize = 1;
 

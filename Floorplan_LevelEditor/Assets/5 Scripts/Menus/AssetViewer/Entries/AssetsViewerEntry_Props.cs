@@ -8,7 +8,7 @@ public class AssetsViewerEntry_Props : MonoBehaviour, IAssetViewerEntry {
     AssetsViewerAssetManagement assetViewerMgmtScript;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
-    TileOptions tileToPaintScript;
+    GeomOptions tileToPaintScript;
 
     GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
@@ -59,7 +59,7 @@ public class AssetsViewerEntry_Props : MonoBehaviour, IAssetViewerEntry {
         assetViewerMgmtScript = assetsDbController.GetComponent<AssetsViewerAssetManagement>();
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
-        tileToPaintScript = assetsDbController.GetComponent<TileOptions>();
+        tileToPaintScript = assetsDbController.GetComponent<GeomOptions>();
 
         toolsController = GameObject.FindWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();

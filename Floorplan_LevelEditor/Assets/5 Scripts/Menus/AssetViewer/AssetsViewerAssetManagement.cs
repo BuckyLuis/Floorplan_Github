@@ -90,13 +90,13 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
 
     void PopulateAssetViews() {
 
-//--------------------------------------------- FLOORS -----------------------------------------
-        assetIndexCounterCat0 = 1;
+//--------------------------------------------- FLOORS -----------------------------------------        
+        assetIndexCounterCat0 = 1;                                                                                        //init counter
         assetIndexCounterCat1 = 1;
         assetIndexCounterCat2 = 1;
         assetIndexCounterCat3 = 1;
-        foreach (var floorBasis in assetsList_Floors) {
-            switch ((int)floorBasis.categoryFloors)
+        foreach (var floorBasis in assetsList_Floors) {                                                        
+            switch ((int)floorBasis.categoryFloors)                                                                            //which category does the assetData belong to?
             {
                 case 0:
                     floorBasis.assetIndex = assetIndexCounterCat0;  
@@ -115,22 +115,22 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
                     assetIndexCounterCat3++;
                     break;
             }
-            floorBasis.pageName = "Floors";
+            floorBasis.pageName = "Floors";                                                                                     //setup these vars, the info is for Tileset Viewer 
             floorBasis.categoryName = floorBasis.categoryFloors.ToString();
             floorBasis.categoryHotkey = (int)floorBasis.categoryFloors + 1;
 
 
-            tempEntry = Instantiate(floorEntryPrefab);
+            tempEntry = Instantiate(floorEntryPrefab);                                                                                        //instance the 3d mesh prefab 
             tempEntry.transform.SetParent(viewAreaFloors.transform, false);
-            AssetsViewerEntry_Floors tempScript = tempEntry.GetComponent<AssetsViewerEntry_Floors>();
+            AssetsViewerEntry_Floors tempScript = tempEntry.GetComponent<AssetsViewerEntry_Floors>();                                           //its script and the vars info for it
 
             tempScript.assetBaseObject = floorBasis;
             tempScript.assetIndex = floorBasis.assetIndex;
             tempScript.assetWorldObject = floorBasis.worldObjectPrefab;
-            tempScript.assetBaseObject.texturesetString = "0|" + floorBasis.texturesetFlag.ToString();     //establish the texAtlasCategory relationship (0 - GEOMETRY)
+            tempScript.assetBaseObject.texturesetString = "0|" + floorBasis.texturesetFlag.ToString();           //establish the texAtlasCategory relationship (0 - GEOMETRY)
 
 
-            assetsEntriesDict_Floors.Add(string.Format("{0}|{1}|{2}", (int)floorBasis.categoryFloors, floorBasis.assetIndex, floorBasis.tilesetIndex - 1), tempEntry);
+            assetsEntriesDict_Floors.Add(string.Format("{0}|{1}|{2}", (int)floorBasis.categoryFloors, floorBasis.assetIndex, floorBasis.tilesetIndex - 1), tempEntry);          //add to this script's Dictionary of UI entries - it lets UI scripts know the Category and Page, and Dict is also used for tileset 
         }
 
 //--------------------------------------------- WALLS -----------------------------------------

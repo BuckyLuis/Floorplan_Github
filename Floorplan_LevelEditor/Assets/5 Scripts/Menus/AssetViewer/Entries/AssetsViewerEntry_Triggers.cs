@@ -8,7 +8,7 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour, IAssetViewerEntry {
     AssetsViewerAssetManagement assetViewerMgmtScript;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
-    TileOptions tileToPaintScript;
+    GeomOptions tileToPaintScript;
 
     GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
@@ -60,7 +60,7 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour, IAssetViewerEntry {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
         assetViewerMgmtScript = assetsDbController.GetComponent<AssetsViewerAssetManagement>();
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
-        tileToPaintScript = assetsDbController.GetComponent<TileOptions>();
+        tileToPaintScript = assetsDbController.GetComponent<GeomOptions>();
 
         toolsController = GameObject.FindWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();

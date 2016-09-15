@@ -65,9 +65,9 @@
      <Compile Include="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs" />
      <Compile Include="Assets\5 Scripts\Menus\CurrentArea\AreaSaveLoadUI.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\EntityOptions.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\GeomOptions.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\ObjectFacingToolbar.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\ObjectOptionsController.cs" />
-     <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\TileOptions.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\TilesetOptionsAndManager.cs" />
      <Compile Include="Assets\5 Scripts\Menus\RoomViewer\ColorPicker.cs" />
      <Compile Include="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" />
@@ -188,6 +188,7 @@
      <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\Test\Rotate.cs" />
      <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
      <Compile Include="Assets\AreaTilesRegistry.cs" />
+     <Compile Include="Assets\EntityPropertyEntry.cs" />
      <None Include="Assets\8 Extensions\InputManager\Addons\JoystickMapping\Resources\joystick_mappings\xbox_360_linux.xml" />
      <None Include="Assets\8 Extensions\InputManager\Examples\01 - Controls Menu\Data\default_input.xml" />
      <None Include="Assets\8 Extensions\InputManager\Addons\InputAdapter\Resources\input_adapter_default_config.xml" />

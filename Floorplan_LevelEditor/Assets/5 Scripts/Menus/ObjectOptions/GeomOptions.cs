@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class TileOptions : MonoBehaviour {           //! @TODO: refactor/write this shit, this class should only handle displaying of the info, -- and setting TileFacingRot ... it shouldnt pass the variables thru it wtf 
+public class GeomOptions : MonoBehaviour {           //! @TODO: refactor/write this shit, this class should only handle displaying of the info, -- and setting TileFacingRot ... it shouldnt pass the variables thru it wtf 
 
     [SerializeField] GameObject tilePlacerObject;
     TilePlacer tilePlacerScript;
@@ -77,7 +77,7 @@ public class TileOptions : MonoBehaviour {           //! @TODO: refactor/write t
     }
 
     public void SetCurrentTileGO(GameObject theGameObject) {
-        tilePlacerScript.AssignTileToBePlaced(theGameObject);
+        tilePlacerScript.GeomPlacementMode(theGameObject);
         uiBtn_tilePlacer.interactable = true;
     }
 

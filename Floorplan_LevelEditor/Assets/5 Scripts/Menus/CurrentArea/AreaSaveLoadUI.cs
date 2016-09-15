@@ -130,7 +130,7 @@ public class AreaSaveLoadUI : MonoBehaviour {
 
 
         AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = true;
-        TileOptions.anInputFieldIsInFocus = true;
+        GeomOptions.anInputFieldIsInFocus = true;
 
         devKeyString = PlayerPrefs.GetString("DevKey");
         uiIF_devkey.text = devKeyString;
@@ -264,7 +264,7 @@ public class AreaSaveLoadUI : MonoBehaviour {
             mainBlackoutPanel.SetActive(true);
             MoveCamera.cameraLockForStartupMenu = true;
             AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = true;
-            TileOptions.anInputFieldIsInFocus = true;
+            GeomOptions.anInputFieldIsInFocus = true;
         }
         else if (welcomeMenuActive == false && OptionsMainPanel.activeSelf == true){
             OptionsMainPanel.SetActive(false);
@@ -454,7 +454,7 @@ public class AreaSaveLoadUI : MonoBehaviour {
         mainBlackoutPanel.SetActive(false);
         MoveCamera.cameraLockForStartupMenu = false;
         AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = false;
-        TileOptions.anInputFieldIsInFocus = false;
+        GeomOptions.anInputFieldIsInFocus = false;
     }
    
       

@@ -151,10 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a78ebf1fca1db48b8a73465e9b6017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollBoundary: 5
-  scrollSpeed: 10
-  minZoom: -5
-  maxZoom: 30
+  scrollBoundary: 12
+  scrollSpeed: 50
+  zoomSpeed: 300
+  minZoom: -32
+  maxZoom: 550
   cameraLock: 0
 --- !u!114 &11463368
 MonoBehaviour:

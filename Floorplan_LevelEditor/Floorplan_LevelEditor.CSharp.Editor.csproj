@@ -117,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\2a Shaders\SolidColorWithZTest.shader" />
+    <None Include="Assets\2a Shaders\TextureWithZTest.shader" />
     <None Include="Assets\8 Extensions\InputManager\Addons\InputAdapter\Resources\input_adapter_default_config.xml" />
     <None Include="Assets\8 Extensions\InputManager\Addons\JoystickMapping\Resources\joystick_mapping_index.xml" />
     <None Include="Assets\8 Extensions\InputManager\Addons\JoystickMapping\Resources\joystick_mappings\playstation_3.xml" />

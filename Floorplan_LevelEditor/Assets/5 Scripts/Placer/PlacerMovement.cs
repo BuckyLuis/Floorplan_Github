@@ -7,7 +7,7 @@ public class PlacerMovement: MonoBehaviour
 
 	public Vector3 destinationPos;
 
-    public bool tile0_entity1;
+    public bool geom0_entity1;
     public int tilePlacerYpos;
 
     void Start() {
@@ -21,7 +21,7 @@ public class PlacerMovement: MonoBehaviour
 		{
 			Vector3 wantedPos = hit.point;
 
-            if(tile0_entity1 == false) {
+            if(geom0_entity1 == false) {
                 float xPos = Mathf.Round(wantedPos.x / 2);                                                          
                 float zPos = Mathf.Round(wantedPos.z / 2);
                 destinationPos = new Vector3(xPos * 2, tilePlacerYpos, zPos * 2);
