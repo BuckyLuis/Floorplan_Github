@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlacerMovement: MonoBehaviour
-{		
+public class PlacerMovement: MonoBehaviour {		
+
+    [SerializeField] GameObject AssetsDBController;
+    OptionsInfoDisplay optionsInfoScript;
+
     public LayerMask mask;
 
 	public Vector3 destinationPos;
 
-    public bool geom0_entity1;
+  //  public bool geom0_entity1;
     public int tilePlacerYpos;
 
     void Start() {
+        optionsInfoScript = AssetsDBController.GetComponent<OptionsInfoDisplay>();
         tilePlacerYpos = 0;
     }
 
@@ -21,7 +25,7 @@ public class PlacerMovement: MonoBehaviour
 		{
 			Vector3 wantedPos = hit.point;
 
-            if(geom0_entity1 == false) {
+            if(optionsInfoScript.geom0_entity1 == false) {
                 float xPos = Mathf.Round(wantedPos.x / 2);                                                          
                 float zPos = Mathf.Round(wantedPos.z / 2);
                 destinationPos = new Vector3(xPos * 2, tilePlacerYpos, zPos * 2);

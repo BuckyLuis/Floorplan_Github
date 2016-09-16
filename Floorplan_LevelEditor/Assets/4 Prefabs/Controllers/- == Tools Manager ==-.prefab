@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11489068}
   - 114: {fileID: 11423086}
   - 114: {fileID: 11499316}
+  - 114: {fileID: 11413878}
   m_Layer: 0
   m_Name: '- == Tools Manager ==-'
   m_TagString: ToolsController
@@ -32,6 +33,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11413878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12f77b7a3bd430144959b5523bb23058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui_TileFacingSel_N: {fileID: 0}
+  ui_TileFacingSel_E: {fileID: 0}
+  ui_TileFacingSel_S: {fileID: 0}
+  ui_TileFacingSel_W: {fileID: 0}
 --- !u!114 &11423086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,10 +109,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5379f9dcf0f594bab56960a33167a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileOptionsMenu: {fileID: 0}
+  geomOptionsMenu: {fileID: 0}
   entityOptionsMenu: {fileID: 0}
   tilesetOptionsMenu: {fileID: 0}
   templatesOptionsMenu: {fileID: 0}
+  optionsTitle_Geom: {fileID: 0}
+  optionsTitle_Entity: {fileID: 0}
+  optionsTitle_Tileset: {fileID: 0}
+  optionsTitle_Template: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

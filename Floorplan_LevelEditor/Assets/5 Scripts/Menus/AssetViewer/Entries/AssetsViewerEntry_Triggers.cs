@@ -8,7 +8,7 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour, IAssetViewerEntry {
     AssetsViewerAssetManagement assetViewerMgmtScript;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
-    GeomOptions tileToPaintScript;
+    OptionsInfoDisplay optionsInfoScript;
 
     GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
@@ -60,7 +60,7 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour, IAssetViewerEntry {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
         assetViewerMgmtScript = assetsDbController.GetComponent<AssetsViewerAssetManagement>();
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
-        tileToPaintScript = assetsDbController.GetComponent<GeomOptions>();
+        optionsInfoScript = assetsDbController.GetComponent<OptionsInfoDisplay>();
 
         toolsController = GameObject.FindWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
@@ -113,8 +113,8 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour, IAssetViewerEntry {
     public void ThisSelected(bool toggleStatus) {                   //called by UItoggle
         objectOptionsContScript.ActivateEntitiesOptions();
 
-        tileToPaintScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
-        tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+        optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
+        optionsInfoScript.SetCurrentTileGO(assetWorldObject);
 
         objectOptionsContScript.ActivateEntitiesOptions();
     }
@@ -123,8 +123,8 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour, IAssetViewerEntry {
         selectedToggle.group.SetAllTogglesOff();
         selectedToggle.isOn = true;
 
-        tileToPaintScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
-        tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+        optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
+        optionsInfoScript.SetCurrentTileGO(assetWorldObject);
         objInstantiatorScript.AssignIndicesAndMatName((int)assetBaseObject.categoryTriggers, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
 
         objectOptionsContScript.ActivateEntitiesOptions();

@@ -189,6 +189,8 @@
      <Compile Include="Assets\8 Extensions\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
      <Compile Include="Assets\AreaTilesRegistry.cs" />
      <Compile Include="Assets\EntityPropertyEntry.cs" />
+     <Compile Include="Assets\OptionsInfoDisplay.cs" />
+     <Compile Include="Assets\SelectionDisplayInfo.cs" />
      <None Include="Assets\8 Extensions\InputManager\Addons\JoystickMapping\Resources\joystick_mappings\xbox_360_linux.xml" />
      <None Include="Assets\8 Extensions\InputManager\Examples\01 - Controls Menu\Data\default_input.xml" />
      <None Include="Assets\8 Extensions\InputManager\Addons\InputAdapter\Resources\input_adapter_default_config.xml" />

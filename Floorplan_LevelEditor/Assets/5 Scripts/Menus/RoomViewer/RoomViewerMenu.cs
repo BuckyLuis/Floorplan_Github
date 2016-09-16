@@ -4,8 +4,12 @@ using UnityEngine.UI;
 
 public class RoomViewerMenu : MonoBehaviour {
 
+    [SerializeField] GameObject toolsController;
+    WorldObjectInstantiator objInstantiatorScript;
+
+
     GameObject assetsDbController;
-    GeomOptions tileToPaintScript;
+    OptionsInfoDisplay optionsInfoScript;
 
     public List<GameObject> roomEntries = new List<GameObject>();
 
@@ -34,7 +38,8 @@ public class RoomViewerMenu : MonoBehaviour {
 
     void Start() {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
-        tileToPaintScript = assetsDbController.GetComponent<GeomOptions>();
+        optionsInfoScript = assetsDbController.GetComponent<OptionsInfoDisplay>();
+        objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
 
         placeCamBoundsScript = placerWidget_CamBounds.GetComponent<PlaceCamBoundsMarker>();
         colorPickerRef.SetActive(false);
@@ -80,8 +85,11 @@ public class RoomViewerMenu : MonoBehaviour {
 
 
     public void RoomInfoToObjectPaintMenu(Color roomColor) {
-        tileToPaintScript.SetCurrentRoomID(activeRoomID);
-        tileToPaintScript.SetCurrentRoomColor(roomColor);
+        objInstantiatorScript.AssignRoomID(activeRoomID);
+        objInstantiatorScript.AssignRoomColor(roomColor);
+
+        optionsInfoScript.SetCurrentRoomID(activeRoomID);
+        optionsInfoScript.SetCurrentRoomColor(roomColor);
     }
 
 

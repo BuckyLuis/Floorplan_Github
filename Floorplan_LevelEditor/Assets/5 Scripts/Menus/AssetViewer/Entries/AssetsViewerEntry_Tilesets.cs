@@ -9,6 +9,7 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
     TilesetOptionsAndManager tilesetOptionsScript;
+    OptionsInfoDisplay optionsInfoScript;
 
     GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
@@ -61,6 +62,7 @@ public class AssetsViewerEntry_Tilesets : MonoBehaviour {
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
         tilesetOptionsScript = assetsDbController.GetComponent<TilesetOptionsAndManager>();
+        optionsInfoScript = assetsDbController.GetComponent<OptionsInfoDisplay>();
 
         toolsController = GameObject.FindWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();

@@ -45,9 +45,10 @@ GameObject:
   - 114: {fileID: 11419270}
   - 114: {fileID: 11430856}
   - 114: {fileID: 11417852}
-  - 114: {fileID: 11485074}
+  - 114: {fileID: 11452910}
   - 114: {fileID: 11404564}
   - 114: {fileID: 11477396}
+  - 114: {fileID: 11499112}
   m_Layer: 0
   m_Name: '- == AssetsDB Controller == -'
   m_TagString: AssetsDBController
@@ -137,6 +138,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9663e049f19673e42b3923e8267fc0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilePlacerObject: {fileID: 0}
+  toolsController: {fileID: 0}
+  databaseController: {fileID: 0}
+  selectedTileIndex: 0
+  ui_TxtRoomID: {fileID: 0}
+  ui_RoomColor: {fileID: 0}
+  ui_ImgTileIcon: {fileID: 0}
+  ui_btnGeomPlacer: {fileID: 0}
+  ui_btnEntityPlacer: {fileID: 0}
 --- !u!114 &11414772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,6 +262,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AllowSwitchOff: 0
+--- !u!114 &11452910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6f88796a60f8a4d852876158d5fcb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePlacerObject: {fileID: 0}
+  toolsController: {fileID: 0}
+  databaseController: {fileID: 0}
+  selectedTileIndex: 0
+  ui_TxtRoomID: {fileID: 0}
+  ui_RoomColor: {fileID: 0}
+  ui_ImgTileIcon: {fileID: 0}
+  ui_btnGeomPlacer: {fileID: 0}
+  ui_btnEntityPlacer: {fileID: 0}
 --- !u!114 &11461310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,7 +340,7 @@ MonoBehaviour:
     assetEntryIcon_corner: {fileID: 0}
     assetEntryIcon_cornerInv: {fileID: 0}
     assetEntryIcon_floor: {fileID: 0}
-    assetTilesetColor: {r: 0, g: 0, b: 0, a: 0}
+    assetTilesetColor: {r: 0.6137934, g: 0, b: 1, a: 1}
     tilesetIndex: 0
     tilesetMembers: []
     displayMembers: []
@@ -494,25 +524,6 @@ MonoBehaviour:
     - {fileID: 0}
   memberEntryPrefab: {fileID: 144620, guid: f52730a33c1b2d947b553c7bd53e5692, type: 2}
   viewAreaTilesetMembers: {fileID: 0}
---- !u!114 &11485074
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b2243c063c43b442b326e4659fa9fcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilePlacerObject: {fileID: 0}
-  toolsController: {fileID: 0}
-  databaseController: {fileID: 0}
-  selectedTileIndex: 0
-  ui_TxtRoomID: {fileID: 0}
-  ui_RoomColor: {fileID: 0}
-  ui_ImgTileIcon: {fileID: 0}
-  ui_btnTilePlacer: {fileID: 0}
 --- !u!114 &11485092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -537,6 +548,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AllowSwitchOff: 0
+--- !u!114 &11499112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc96e77b9d74f34fbe2d962daa5a416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePlacerObject: {fileID: 0}
+  toolsController: {fileID: 0}
+  databaseController: {fileID: 0}
+  selectedTileIndex: 0
+  ui_TxtRoomID: {fileID: 0}
+  ui_RoomColor: {fileID: 0}
+  ui_ImgTileIcon: {fileID: 0}
+  ui_btnGeomPlacer: {fileID: 0}
+  ui_btnEntityPlacer: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

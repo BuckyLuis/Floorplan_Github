@@ -12,6 +12,9 @@ public class TilePlacer : MonoBehaviour {
     [SerializeField] GameObject databaseController;
     AreaTilesRegistry areaTilesRegistryScript;
 
+    [SerializeField] GameObject AssetsDBController;
+    OptionsInfoDisplay optionsInfoScript;
+
     PlacerMovement placerMovementScript;
 
 
@@ -43,11 +46,11 @@ public class TilePlacer : MonoBehaviour {
     public GameObject placeholder_Erase;
     private GameObject instPlaceholder;
 
-    bool geom0_entity1;   
+ //   bool geom0_entity1;   
 
     float gridSize = 2;
 
-    Vector3 tileScale = new Vector3(2, 1, 2);
+    Vector3 geomScale = new Vector3(2, 1, 2);
     Vector3 entityScale = new Vector3(1, 1, 1);
 
     //-------------- Placer Workings -------------------------------------------------
@@ -72,16 +75,26 @@ public class TilePlacer : MonoBehaviour {
         toolsController = GameObject.FindGameObjectWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
         undoRedoManagerScript = toolsController.GetComponent<UndoRedoManager>();
+        optionsInfoScript = AssetsDBController.GetComponent<OptionsInfoDisplay>();
 
         databaseController = GameObject.FindGameObjectWithTag("DBController");
         areaTilesRegistryScript = databaseController.GetComponent<AreaTilesRegistry>();
 
-        placerMovementScript = gameObject.GetComponent<PlacerMovement>();
+        placerMovementScript = GetComponent<PlacerMovement>();
         gameObject.SetActive(false);
     }
 
-
     void Update() {
+
+        if(optionsInfoScript.geom0_entity1 == false) {
+            gameObject.transform.localScale = geomScale;
+            gridSize = 2;
+        }
+        else {
+            gameObject.transform.localScale = entityScale;
+            gridSize = 1;
+        }
+
         if(Input.GetMouseButtonUp(0)) {
             if(click0_Middle1 == false)
                 PlacerCalcs();
@@ -94,8 +107,10 @@ public class TilePlacer : MonoBehaviour {
         }
     }
 
-
     void Clicked() {   //called by ClickDetectMessageSender.cs
+        if( optionsInfoScript.theTileToPlace != null)
+            objToPlace_Prefab = optionsInfoScript.theTileToPlace;
+        
         click0_Middle1 = false;
         click_origPos = transform.position;
         instPlaceholder = (GameObject)Instantiate(placeholder_Place, transform.position ,transform.rotation); 
@@ -221,8 +236,9 @@ public class TilePlacer : MonoBehaviour {
     }
 
        
-
+/*
     public void GeomPlacementMode(GameObject theGeomToPlace) {
+/*        
         geom0_entity1 = false;
         placerMovementScript.geom0_entity1 = false;
         gameObject.transform.localScale = tileScale;
@@ -232,6 +248,7 @@ public class TilePlacer : MonoBehaviour {
     }
 
     public void EntityPlacementMode(GameObject theEntityToPlace) {
+/*        
         geom0_entity1 = true;
         placerMovementScript.geom0_entity1 = true;
         gameObject.transform.localScale = entityScale;
@@ -239,7 +256,7 @@ public class TilePlacer : MonoBehaviour {
 
         objToPlace_Prefab = theEntityToPlace;
     }
-
+*/
 
 }
 

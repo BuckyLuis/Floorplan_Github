@@ -73,7 +73,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: ff8f1fb17f92aa441b6e3d8c83ebd16e, type: 2}
+  - {fileID: 2100000, guid: 075455a34ee6d5e4bb0ae02efedaec51, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -134,11 +134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7bcda02622ea943916c176276d5cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssetsDBController: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 256
   destinationPos: {x: 0, y: 0, z: 0}
-  tile0_entity1: 0
   tilePlacerYpos: 0
 --- !u!114 &11466746
 MonoBehaviour:
@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toolsController: {fileID: 0}
   databaseController: {fileID: 0}
+  AssetsDBController: {fileID: 0}
   placeholder_Place: {fileID: 142050, guid: 199b48efc1030844798cecca41351ac6, type: 2}
   placeholder_Erase: {fileID: 143772, guid: b895d5d0091e6a54eba15cad2615f6b9, type: 2}
 --- !u!1001 &100100000

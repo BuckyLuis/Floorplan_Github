@@ -7,7 +7,7 @@ public class AssetsViewerEntry_Templates : MonoBehaviour {
     GameObject assetsDbController;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
-    GeomOptions tileToPaintScript;
+    OptionsInfoDisplay optionsInfoScript;
 
     GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
@@ -53,7 +53,7 @@ public class AssetsViewerEntry_Templates : MonoBehaviour {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
-        tileToPaintScript = assetsDbController.GetComponent<GeomOptions>();
+        optionsInfoScript = assetsDbController.GetComponent<OptionsInfoDisplay>();
 
         toolsController = GameObject.FindWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
@@ -90,10 +90,10 @@ public class AssetsViewerEntry_Templates : MonoBehaviour {
         tilesetColor.color = assetTemplate_BaseObject.assetTilesetColor;
 
         //------- Assign Toggle Listener ----------
-        selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
+//        selectedToggle.onValueChanged.AddListener(delegate {ThisSelected(selectedToggle.isOn); });
     }
 
-
+/*
     public void ThisSelected(bool toggleStatus) {                   //called by UItoggle
         textureViewerPreviewerScript.ReceiveAssetUvMapFlag(assetTemplate_BaseObject.uvMapSectorFlag);
         textureViewerManageScript.currentSelAssetEntry = this.gameObject;
@@ -128,6 +128,6 @@ public class AssetsViewerEntry_Templates : MonoBehaviour {
         tileToPaintScript.SetCurrentTileGO(assetWorldObject);
         objInstantiatorScript.AssignIndicesAndMatName((int)assetTemplate_BaseObject.categoryTemplates, assetTemplate_BaseObject.assetIndex, assetTemplate_BaseObject.assetMaterialName);
     }
-        
+        */
 }
 

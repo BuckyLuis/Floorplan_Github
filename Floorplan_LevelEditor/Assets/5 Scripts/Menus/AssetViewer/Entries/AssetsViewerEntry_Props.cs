@@ -8,7 +8,7 @@ public class AssetsViewerEntry_Props : MonoBehaviour, IAssetViewerEntry {
     AssetsViewerAssetManagement assetViewerMgmtScript;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
-    GeomOptions tileToPaintScript;
+    OptionsInfoDisplay optionsInfoScript;
 
     GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
@@ -59,7 +59,7 @@ public class AssetsViewerEntry_Props : MonoBehaviour, IAssetViewerEntry {
         assetViewerMgmtScript = assetsDbController.GetComponent<AssetsViewerAssetManagement>();
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
-        tileToPaintScript = assetsDbController.GetComponent<GeomOptions>();
+        optionsInfoScript = assetsDbController.GetComponent<OptionsInfoDisplay>();
 
         toolsController = GameObject.FindWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
@@ -145,12 +145,12 @@ public class AssetsViewerEntry_Props : MonoBehaviour, IAssetViewerEntry {
         assetBaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
         textureViewerPreviewerScript.DrawTexturePreview(theMaterial);
 
-        SendInfoTo_TileToPaint();
+        SendInfoTo_ObjectsInfo();
     }
 
-    void SendInfoTo_TileToPaint() {
-        tileToPaintScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
-        tileToPaintScript.SetCurrentTileGO(assetWorldObject);
+    void SendInfoTo_ObjectsInfo() {
+        optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
+        optionsInfoScript.SetCurrentTileGO(assetWorldObject);
         objInstantiatorScript.AssignIndicesAndMatName((int)assetBaseObject.categoryProps, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
     }
 

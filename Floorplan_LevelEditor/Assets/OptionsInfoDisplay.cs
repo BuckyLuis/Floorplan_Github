@@ -2,25 +2,30 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class GeomOptions : MonoBehaviour {           //! @TODO: refactor/write this shit, this class should only handle displaying of the info, -- and setting TileFacingRot ... it shouldnt pass the variables thru it wtf 
-/*
+public class OptionsInfoDisplay : MonoBehaviour {
+
     [SerializeField] GameObject tilePlacerObject;
     TilePlacer tilePlacerScript;
     [SerializeField] GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
 
+
     [SerializeField] GameObject databaseController;
 
 
-//--------- Tile Data ---------------
+    public bool geom0_entity1;
+    public GameObject theTileToPlace;
+
+
+    //--------- Tile Data ---------------
 
     public int currentRoomID  {get; protected set;}
     public Color currentRoomColor {get; protected set;}
 
     public int selectedTileIndex;
 
-//------- UI Element Refs ----------------
-   
+    //------- UI Element Refs ----------------
+
     [SerializeField] GameObject ui_TxtRoomID;
     [SerializeField] GameObject ui_RoomColor;
 
@@ -41,7 +46,7 @@ public class GeomOptions : MonoBehaviour {           //! @TODO: refactor/write t
 
 
 
-	void Start () {
+    void Start () {
         tilePlacerScript = tilePlacerObject.GetComponent<TilePlacer>();
         tilePlacerObject.SetActive(false);
 
@@ -53,9 +58,8 @@ public class GeomOptions : MonoBehaviour {           //! @TODO: refactor/write t
         uiImg_currTileIcon = ui_ImgTileIcon.GetComponent<Image>();
         uiTxt_currRoomID = ui_TxtRoomID.GetComponent<Text>();
         uiCol_currRoomColorImg = ui_RoomColor.GetComponent<Image>();
+    }
 
-	}
-	
 
     public void SetCurrentRoomID(int theRoomID) {                           //from RoomViewerMenu.cs   via   RoomViewerEntry.cs Instances
         currentRoomID = theRoomID;
@@ -73,9 +77,10 @@ public class GeomOptions : MonoBehaviour {           //! @TODO: refactor/write t
     }
 
     public void SetCurrentTileGO(GameObject theGameObject) {
-        tilePlacerScript.GeomPlacementMode(theGameObject);
+        theTileToPlace = theGameObject;
+//        tilePlacerScript.GeomPlacementMode(theGameObject);
         uiBtn_entityPlacer.interactable = false;
         uiBtn_geomPlacer.interactable = true;
     }
-*/
+
 }
