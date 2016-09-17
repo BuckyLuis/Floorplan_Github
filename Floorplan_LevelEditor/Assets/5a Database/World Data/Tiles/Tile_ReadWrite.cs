@@ -44,7 +44,7 @@ public class Tile_ReadWrite : MonoBehaviour
 
 	public void WriteXMLData(int writeDisplayName, string writeFileName)
 	{
-        Tile_Base tileW = new Tile_Base();
+        Geom_Base tileW = new Geom_Base();
 		GetCombinedPath();
 		WriteToXML(tileW);
 	}
@@ -59,9 +59,9 @@ public class Tile_ReadWrite : MonoBehaviour
         return readTiles;
 	}
 
-    void WriteToXML(Tile_Base tileW) 
+    void WriteToXML(Geom_Base tileW) 
 	{
-		XmlSerializer serializerW = new XmlSerializer(typeof(Tile_Base));
+		XmlSerializer serializerW = new XmlSerializer(typeof(Geom_Base));
 		using (TextWriter writer = new StreamWriter(path))
 		{
             serializerW.Serialize(writer, tileW);

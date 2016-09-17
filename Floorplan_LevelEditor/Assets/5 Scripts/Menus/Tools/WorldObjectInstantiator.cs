@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 public class WorldObjectInstantiator : MonoBehaviour {
 
+    [SerializeField] GameObject AssetsDbController;
+    AssetsViewerAssetManagement theAssetManagerScript;
 
-    [SerializeField] GameObject AreaTileParent;
+    [SerializeField] GameObject AreaGeomParent;
     [SerializeField] GameObject AreaEntityParent;
 
     [SerializeField] GameObject roomBelongingMarker;
@@ -13,9 +15,11 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
 
     //---------------- Tile_Base vars ----------------------------------
-    Tile_Base tempTileBaseObject;
+    Geom_Base tempGeomBaseObject;
+    Entity_Base tempEntityBaseObject;
 
     public int roomID  {get; protected set;}
+    public int typeIndex {get; protected set;}
     public int categoryIndex {get; protected set;}
     public int assetIndex {get; protected set;}
     public string materialName {get; protected set;}
@@ -27,13 +31,21 @@ public class WorldObjectInstantiator : MonoBehaviour {
     GameObject tempBelongMarker;
     GameObject tempWorldObjectInfo;
 
+    GameObject tempWorldGOPrefab;
 
 
-    public void CreateTiles(GameObject theObjectToPlace, Vector3 thePosition, out GameObject constructedGO, out Tile_Base constructedTileBase) {     //! @TODO: replace with a call to a new Class and Method that handles Tile Instantiation
+    void Start() {
+        AssetsDbController = GameObject.FindGameObjectWithTag("AssetsDBController");
+        theAssetManagerScript = AssetsDbController.GetComponent<AssetsViewerAssetManagement>();
+    }
+
+
+
+    public void CreateGeoms(GameObject theObjectToPlace, Vector3 thePosition, out GameObject constructedGO, out Geom_Base constructedGeomBase) {     //! @TODO: replace with a call to a new Class and Method that handles Tile Instantiation
 
         tempTileObject = (GameObject)Instantiate(theObjectToPlace, thePosition, Quaternion.Euler(theObjectToPlace.transform.rotation.x, tileFacingRot, theObjectToPlace.transform.rotation.z));
-        tempTileObject.name = string.Format ("({0}, {1}, {2})", tempTileObject.transform.position.x, tempTileObject.transform.position.y, tempTileObject.transform.position.z );
-        tempTileObject.transform.SetParent(AreaTileParent.transform, true);
+        tempTileObject.name = string.Format ("G: ({0}, {1}, {2})", tempTileObject.transform.position.x, tempTileObject.transform.position.y, tempTileObject.transform.position.z );
+        tempTileObject.transform.SetParent(AreaGeomParent.transform, true);
 
         tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, Vector3.zero, Quaternion.identity);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
@@ -43,38 +55,41 @@ public class WorldObjectInstantiator : MonoBehaviour {
    //     tempWorldObjectInfo = (GameObject)Instantiate(worldObjectInfo, Vector3.zero, Quaternion.identity);
    //     tempWorldObjectInfo.transform.SetParent(tempTileObject.transform, false);
 
-        tempTileBaseObject = new Tile_Base();
-        tempTileBaseObject.RoomID = roomID;
-        tempTileBaseObject.Position = thePosition;
-        tempTileBaseObject.CategoryIndex = categoryIndex;
-        tempTileBaseObject.AssetIndex = assetIndex;
-        tempTileBaseObject.MaterialName = materialName;
-        tempTileBaseObject.TileFacingRot = tileFacingRot;
+        tempGeomBaseObject = new Geom_Base();
+        tempGeomBaseObject.RoomID = roomID;
+        tempGeomBaseObject.Position = thePosition;
+        tempGeomBaseObject.TypeIndex = typeIndex;
+        tempGeomBaseObject.CategoryIndex = categoryIndex;
+        tempGeomBaseObject.AssetIndex = assetIndex;
+        tempGeomBaseObject.MaterialName = materialName;
+        tempGeomBaseObject.TileFacingRot = tileFacingRot;
 
-        tempTileBaseObject.editorGoName = tempTileObject.name;
-        tempTileBaseObject.theGameObjectPrefab = theObjectToPlace;
+        tempGeomBaseObject.editorGoName = tempTileObject.name;
+        tempGeomBaseObject.theGameObjectPrefab = theObjectToPlace;
 
-        tempTileObject.AddComponent<WorldObjectInfo>();
-        tempTileObject.GetComponent<WorldObjectInfo>().tileObject = tempTileBaseObject;
+        tempTileObject.AddComponent<GeomObjectInfo>();
+        tempTileObject.GetComponent<GeomObjectInfo>().geomObject = tempGeomBaseObject;
 
         constructedGO = tempTileObject;
-        constructedTileBase = tempTileBaseObject;
+        constructedGeomBase = tempGeomBaseObject;
     }
 
-    public void CreateTiles_UndoRedo(Tile_Base theTileBase, out GameObject constructedGO) {  
+    public void CreateGeoms_UndoRedo(Geom_Base theGeomBase, out GameObject constructedGO) {  
         
-        roomID = theTileBase.RoomID;
-        Vector3 thePosition = theTileBase.Position;
-        categoryIndex = theTileBase.CategoryIndex;
-        assetIndex = theTileBase.AssetIndex;
-        materialName = theTileBase.MaterialName;
-        tileFacingRot = theTileBase.TileFacingRot;
+        roomID = theGeomBase.RoomID;
+        roomColor = theGeomBase.roomColor;
+        Vector3 thePosition = theGeomBase.Position;
+        typeIndex = theGeomBase.TypeIndex;
+        categoryIndex = theGeomBase.CategoryIndex;
+        assetIndex = theGeomBase.AssetIndex;
+        materialName = theGeomBase.MaterialName;
+        tileFacingRot = theGeomBase.TileFacingRot;
 
-        tempTileObject = (GameObject)Instantiate(theTileBase.theGameObjectPrefab, thePosition, Quaternion.Euler(theTileBase.theGameObjectPrefab.transform.rotation.x, tileFacingRot, theTileBase.theGameObjectPrefab.transform.rotation.z));
-        tempTileObject.name = theTileBase.editorGoName;
+        tempTileObject = (GameObject)Instantiate(theGeomBase.theGameObjectPrefab, thePosition, Quaternion.Euler(theGeomBase.theGameObjectPrefab.transform.rotation.x, tileFacingRot, theGeomBase.theGameObjectPrefab.transform.rotation.z));
+        tempTileObject.name = theGeomBase.editorGoName;
 
 
-        tempTileObject.transform.SetParent(AreaTileParent.transform, true);
+        tempTileObject.transform.SetParent(AreaGeomParent.transform, true);
 
         tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, Vector3.zero, Quaternion.identity);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
@@ -84,11 +99,139 @@ public class WorldObjectInstantiator : MonoBehaviour {
       //  tempWorldObjectInfo = (GameObject)Instantiate(worldObjectInfo, Vector3.zero, Quaternion.identity);
       //  tempWorldObjectInfo.transform.SetParent(tempTileObject.transform, false);
 
-        tempTileObject.AddComponent<WorldObjectInfo>();
-        tempTileObject.GetComponent<WorldObjectInfo>().tileObject = theTileBase;
+        tempTileObject.AddComponent<GeomObjectInfo>();
+        tempTileObject.GetComponent<GeomObjectInfo>().geomObject = theGeomBase;
 
         constructedGO = tempTileObject;
     }
+
+
+    public void CreateGeoms_AreaLoad(Geom_Base theGeomBase) {
+        roomID = theGeomBase.RoomID;
+        roomColor = theGeomBase.roomColor;
+        Vector3 thePosition = theGeomBase.Position;
+        typeIndex = theGeomBase.TypeIndex;
+        categoryIndex = theGeomBase.CategoryIndex;
+        assetIndex = theGeomBase.AssetIndex;
+        materialName = theGeomBase.MaterialName;
+        tileFacingRot = theGeomBase.TileFacingRot;
+
+        tempWorldGOPrefab = RetrieveGOFromIndices(typeIndex, categoryIndex, assetIndex);
+
+        tempTileObject = (GameObject)Instantiate(tempWorldGOPrefab, thePosition, Quaternion.Euler(tempWorldGOPrefab.transform.rotation.x, tileFacingRot, tempWorldGOPrefab.transform.rotation.z));
+        tempTileObject.name = theGeomBase.editorGoName;
+
+
+        tempTileObject.transform.SetParent(AreaGeomParent.transform, true);
+
+        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, Vector3.zero, Quaternion.identity);
+        tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
+        tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
+        tempBelongMarker.transform.SetParent(tempTileObject.transform, false);
+
+        //  tempWorldObjectInfo = (GameObject)Instantiate(worldObjectInfo, Vector3.zero, Quaternion.identity);
+        //  tempWorldObjectInfo.transform.SetParent(tempTileObject.transform, false);
+
+        tempTileObject.AddComponent<GeomObjectInfo>();
+        tempTileObject.GetComponent<GeomObjectInfo>().geomObject = theGeomBase;
+    }
+
+
+
+
+
+    public void CreateEntities(GameObject theObjectToPlace, Vector3 thePosition, out GameObject constructedGO, out Entity_Base constructedEntityBase) {     //! @TODO: replace with a call to a new Class and Method that handles Tile Instantiation
+        tempTileObject = (GameObject)Instantiate(theObjectToPlace, thePosition, Quaternion.Euler(theObjectToPlace.transform.rotation.x, tileFacingRot, theObjectToPlace.transform.rotation.z));
+        tempTileObject.name = string.Format ("E: ({0}, {1}, {2})", tempTileObject.transform.position.x, tempTileObject.transform.position.y, tempTileObject.transform.position.z );
+        tempTileObject.transform.SetParent(AreaEntityParent.transform, true);
+
+        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, Vector3.zero, Quaternion.identity);
+        tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
+        tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
+        tempBelongMarker.transform.SetParent(tempTileObject.transform, false);
+
+        //     tempWorldObjectInfo = (GameObject)Instantiate(worldObjectInfo, Vector3.zero, Quaternion.identity);
+        //     tempWorldObjectInfo.transform.SetParent(tempTileObject.transform, false);
+
+        tempEntityBaseObject = new Entity_Base();
+        tempEntityBaseObject.RoomID = roomID;
+        tempEntityBaseObject.Position = thePosition;
+        tempEntityBaseObject.TypeIndex = typeIndex;
+        tempEntityBaseObject.CategoryIndex = categoryIndex;
+        tempEntityBaseObject.AssetIndex = assetIndex;
+        tempEntityBaseObject.MaterialName = materialName;
+        tempEntityBaseObject.TileFacingRot = tileFacingRot;
+
+        tempEntityBaseObject.editorGoName = tempTileObject.name;
+        tempEntityBaseObject.theGameObjectPrefab = theObjectToPlace;
+
+        tempTileObject.AddComponent<EntityObjectInfo>();
+        tempTileObject.GetComponent<EntityObjectInfo>().entityObject = tempEntityBaseObject;
+
+        constructedGO = tempTileObject;
+        constructedEntityBase = tempEntityBaseObject;
+    }
+
+    public void CreateEntities_UndoRedo(Entity_Base theEntityBase, out GameObject constructedGO) {  
+        roomID = theEntityBase.RoomID;
+        roomColor = theEntityBase.roomColor;
+        Vector3 thePosition = theEntityBase.Position;
+        typeIndex = theEntityBase.TypeIndex;
+        categoryIndex = theEntityBase.CategoryIndex;
+        assetIndex = theEntityBase.AssetIndex;
+        materialName = theEntityBase.MaterialName;
+        tileFacingRot = theEntityBase.TileFacingRot;
+
+        tempTileObject = (GameObject)Instantiate(theEntityBase.theGameObjectPrefab, thePosition, Quaternion.Euler(theEntityBase.theGameObjectPrefab.transform.rotation.x, tileFacingRot, theEntityBase.theGameObjectPrefab.transform.rotation.z));
+        tempTileObject.name = theEntityBase.editorGoName;
+
+
+        tempTileObject.transform.SetParent(AreaEntityParent.transform, true);
+
+        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, Vector3.zero, Quaternion.identity);
+        tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
+        tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
+        tempBelongMarker.transform.SetParent(tempTileObject.transform, false);
+
+        //  tempWorldObjectInfo = (GameObject)Instantiate(worldObjectInfo, Vector3.zero, Quaternion.identity);
+        //  tempWorldObjectInfo.transform.SetParent(tempTileObject.transform, false);
+
+        tempTileObject.AddComponent<EntityObjectInfo>();
+        tempTileObject.GetComponent<EntityObjectInfo>().entityObject = theEntityBase;
+
+        constructedGO = tempTileObject;
+    }
+
+    public void CreateEntities_AreaLoad(Entity_Base theEntityBase) {
+        roomID = theEntityBase.RoomID;
+        roomColor = theEntityBase.roomColor;
+        Vector3 thePosition = theEntityBase.Position;
+        typeIndex = theEntityBase.TypeIndex;
+        categoryIndex = theEntityBase.CategoryIndex;
+        assetIndex = theEntityBase.AssetIndex;
+        materialName = theEntityBase.MaterialName;
+        tileFacingRot = theEntityBase.TileFacingRot;
+
+        tempWorldGOPrefab = RetrieveGOFromIndices(typeIndex, categoryIndex, assetIndex);
+
+        tempTileObject = (GameObject)Instantiate(tempWorldGOPrefab, thePosition, Quaternion.Euler(tempWorldGOPrefab.transform.rotation.x, tileFacingRot, tempWorldGOPrefab.transform.rotation.z));
+        tempTileObject.name = theEntityBase.editorGoName;
+
+
+        tempTileObject.transform.SetParent(AreaEntityParent.transform, true);
+
+        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, Vector3.zero, Quaternion.identity);
+        tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
+        tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
+        tempBelongMarker.transform.SetParent(tempTileObject.transform, false);
+
+        //  tempWorldObjectInfo = (GameObject)Instantiate(worldObjectInfo, Vector3.zero, Quaternion.identity);
+        //  tempWorldObjectInfo.transform.SetParent(tempTileObject.transform, false);
+
+        tempTileObject.AddComponent<EntityObjectInfo>();
+        tempTileObject.GetComponent<EntityObjectInfo>().entityObject = theEntityBase;
+    }
+
         
 
     public void AssignObjectRot(float theTileFacingRot) {
@@ -103,12 +246,72 @@ public class WorldObjectInstantiator : MonoBehaviour {
         roomColor = theRoomColor;
     }
 
-    public void AssignIndicesAndMatName(int theCategoryIndex, int theAssetIndex, string theMaterialName)
+    public void AssignIndicesAndMatName(int theTypeIndex ,int theCategoryIndex, int theAssetIndex, string theMaterialName)
     {
+        typeIndex = theTypeIndex;
         categoryIndex = theCategoryIndex;
         assetIndex = theAssetIndex;
         materialName = theMaterialName;
     }
 
+
+
+    GameObject RetrieveGOFromIndices(int theTypeIndex, int theCategoryIndex, int theAssetIndex) {
+        string tempLookupKey = theCategoryIndex + "|" + theAssetIndex;
+
+        switch(theTypeIndex) {
+            case 1:
+                foreach (KeyValuePair<string, GameObject> floorEntry in theAssetManagerScript.assetsEntriesDict_Floors) {
+                    if(SplitDictKey_GetCompareKey(floorEntry) == tempLookupKey) {
+                        return floorEntry.Value.GetComponent<AssetsViewerEntry_Floors>().assetWorldObject;
+                    }
+                }
+                break;
+            case 2:
+                foreach (KeyValuePair<string, GameObject> wallEntry in theAssetManagerScript.assetsEntriesDict_Walls) {
+                    if(SplitDictKey_GetCompareKey(wallEntry) == tempLookupKey) {
+                        return wallEntry.Value.GetComponent<AssetsViewerEntry_Walls>().assetWorldObject;
+                    }
+                }
+                break;
+            case 3:
+                foreach (KeyValuePair<string, GameObject> doodadEntry in theAssetManagerScript.assetsEntriesDict_Doodads) {
+                    if(SplitDictKey_GetCompareKey(doodadEntry) == tempLookupKey) {
+                        return doodadEntry.Value.GetComponent<AssetsViewerEntry_Doodads>().assetWorldObject;
+                    }
+                }
+                break;
+            case 4:
+                foreach (KeyValuePair<string, GameObject> propEntry in theAssetManagerScript.assetsEntriesDict_Props) {
+                    if(SplitDictKey_GetCompareKey(propEntry) == tempLookupKey) {
+                        return propEntry.Value.GetComponent<AssetsViewerEntry_Props>().assetWorldObject;
+                    }
+                }
+                break;
+            case 5:
+                foreach (KeyValuePair<string, GameObject> actorEntry in theAssetManagerScript.assetsEntriesDict_Actors) {
+                    if(SplitDictKey_GetCompareKey(actorEntry) == tempLookupKey) {
+                        return actorEntry.Value.GetComponent<AssetsViewerEntry_Actors>().assetWorldObject;
+                    }
+                }
+                break;
+            case 6:
+                foreach (KeyValuePair<string, GameObject> triggerEntry in theAssetManagerScript.assetsEntriesDict_Triggers) {
+                    if(SplitDictKey_GetCompareKey(triggerEntry) == tempLookupKey) {
+                        return triggerEntry.Value.GetComponent<AssetsViewerEntry_Triggers>().assetWorldObject;
+                    }
+                }
+                break;
+        }
+        DebugConsole.Log("<b>Loading of an Area Object Failed!</b> - WorldObjectInstantiator.RetrieveGOFromIndices = c: " + theCategoryIndex + " a: " + theAssetIndex, "error");
+        return null;
+    }
+   
+
+    string SplitDictKey_GetCompareKey(KeyValuePair<string, GameObject> entryToSplit) {
+        string[] tempStringArray = entryToSplit.Key.Split('|');
+        string keyToCompare = tempStringArray[0] + "|" + tempStringArray[1];
+        return keyToCompare;
+    }   
   
 }

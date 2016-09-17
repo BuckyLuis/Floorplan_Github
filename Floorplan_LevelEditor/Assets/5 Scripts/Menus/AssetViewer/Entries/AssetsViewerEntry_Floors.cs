@@ -118,7 +118,7 @@ public class AssetsViewerEntry_Floors : MonoBehaviour, IAssetViewerEntry {
 
         textureViewerManageScript.SelectDefaultTexAtlasEntry();   //calls SetSelectedMaterial()
 
-        objectOptionsContScript.ActivateTileOptions();
+        objectOptionsContScript.ActivateGeomOptions();
     }
 
     public void SelectFromHotkey() {                                //called by hotkey -- AssetsViewerAssetManagement.EntryFromHotkey() -- which is called by AssetsViewerHotkeysUiControl.HotkeyPressedAssetsFirstDigit()
@@ -132,7 +132,7 @@ public class AssetsViewerEntry_Floors : MonoBehaviour, IAssetViewerEntry {
 
         textureViewerManageScript.SelectDefaultTexAtlasEntry();     //calls SetSelectedMaterial()
 
-        objectOptionsContScript.ActivateTileOptions();
+        objectOptionsContScript.ActivateGeomOptions();
     }
 
     public void SetSelectedMaterial(Material theMaterial) {         //called by TexAtlasManager, when this assetEntry is selected(assigning default texAtlas) ... OR by way of a TexAtlasEntry having been selected 
@@ -146,7 +146,7 @@ public class AssetsViewerEntry_Floors : MonoBehaviour, IAssetViewerEntry {
     void SendInfoTo_OptionsInfo() {
         optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName((int)assetBaseObject.categoryFloors, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndicesAndMatName( 1, (int)assetBaseObject.categoryFloors, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
     }
 
 

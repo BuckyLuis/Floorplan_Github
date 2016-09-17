@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 
 [Serializable, XmlRoot("AreaEntry")]
-public class AreaEntry_Base 
+public class AreaEntry_Base             //AreaEntry in the AreaCatalog
 {
     [XmlElement("IndexID")]     public string IndexID {get; set;}    //simply for display, otherwise youd have to count! (itd royally suck)
 

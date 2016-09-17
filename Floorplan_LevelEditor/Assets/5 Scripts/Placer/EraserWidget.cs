@@ -25,7 +25,7 @@ public class EraserWidget : MonoBehaviour {
     //----------- undo - redo -----------------------------------------
 
     List<GameObject> currGOList_forUndoRedo = new List<GameObject>();  //list to send to UndoRedoManager
-    List<Tile_Base> currTBList_forUndoRedo = new List<Tile_Base>();
+    List<Geom_Base> currTBList_forUndoRedo = new List<Geom_Base>();
 
     //--------------- Placer thingys --------------------
     public GameObject placeholder;
@@ -143,7 +143,7 @@ public class EraserWidget : MonoBehaviour {
                 thePosition = new Vector3((xL * gridSize)+ Click_origPos.x, Click_origPos.y, (zL * gridSize)+ Click_origPos.z);
                 Debug.Log("erase " + thePosition);
 
-                if(areaTilesRegistryScript.Tile_PosUnoccupied(thePosition) == false) { 
+                if(areaTilesRegistryScript.Geom_PosUnoccupied(thePosition) == false) { 
                     tileSlotWasEmpty = false;
                     tempGoNameToErase = string.Format("({0}, {1}, {2})", thePosition.x, thePosition.y, thePosition.z );
                     tempGoToErase = GameObject.Find(tempGoNameToErase);
@@ -160,7 +160,7 @@ public class EraserWidget : MonoBehaviour {
             undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo, 1);
 
             foreach(GameObject goToErase in currGOList_forUndoRedo) {
-                areaTilesRegistryScript.Tile_RemoveFromGrid(goToErase.GetComponent<WorldObjectInfo>().tileObject);
+                areaTilesRegistryScript.Geom_RemoveFromGrid(goToErase.GetComponent<WorldObjectInfo>().tileObject);
                 Destroy(goToErase);
             }
         }

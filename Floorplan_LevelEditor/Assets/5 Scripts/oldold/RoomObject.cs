@@ -13,7 +13,7 @@ public class RoomObject : MonoBehaviour {
     public Color ThisRoomColor { get; protected set; }
 
     public Vector3 ThisRoomOriginPos { get; protected set; }
-    public List<Tile_Base> ThisRoomsTiles { get; protected set; }
+    public List<Geom_Base> ThisRoomsTiles { get; protected set; }
 
 //--------info worldUI components----
     public Transform uiRmID;

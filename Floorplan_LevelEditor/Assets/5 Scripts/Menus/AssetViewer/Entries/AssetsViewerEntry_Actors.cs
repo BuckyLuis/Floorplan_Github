@@ -149,7 +149,7 @@ public class AssetsViewerEntry_Actors : MonoBehaviour, IAssetViewerEntry {
     void SendInfoTo_ObjectsInfo() {
         optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName((int)assetBaseObject.categoryActors, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndicesAndMatName( 5, (int)assetBaseObject.categoryActors, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
     }
 
     public AssetBasis GetAssetBaseObject() {

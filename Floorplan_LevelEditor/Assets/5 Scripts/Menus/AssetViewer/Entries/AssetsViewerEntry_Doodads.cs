@@ -151,7 +151,7 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour, IAssetViewerEntry {
     void SendInfoTo_ObjectsInfo() {
         optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName((int)assetBaseObject.categoryDoodads, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndicesAndMatName( 3, (int)assetBaseObject.categoryDoodads, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
     }
 
     public AssetBasis GetAssetBaseObject() {

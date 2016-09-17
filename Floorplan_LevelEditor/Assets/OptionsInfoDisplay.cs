@@ -31,11 +31,6 @@ public class OptionsInfoDisplay : MonoBehaviour {
 
     [SerializeField] GameObject ui_ImgTileIcon;
 
-    [SerializeField] GameObject ui_btnGeomPlacer;
-    [SerializeField] GameObject ui_btnEntityPlacer;
-    Button uiBtn_geomPlacer;
-    Button uiBtn_entityPlacer;
-
 
     Text uiTxt_currRoomID;
     Image uiCol_currRoomColorImg;
@@ -52,8 +47,7 @@ public class OptionsInfoDisplay : MonoBehaviour {
 
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
 
-        uiBtn_geomPlacer = ui_btnGeomPlacer.GetComponent<Button>();
-        uiBtn_entityPlacer = ui_btnEntityPlacer.GetComponent<Button>();
+      
 
         uiImg_currTileIcon = ui_ImgTileIcon.GetComponent<Image>();
         uiTxt_currRoomID = ui_TxtRoomID.GetComponent<Text>();
@@ -78,9 +72,6 @@ public class OptionsInfoDisplay : MonoBehaviour {
 
     public void SetCurrentTileGO(GameObject theGameObject) {
         theTileToPlace = theGameObject;
-//        tilePlacerScript.GeomPlacementMode(theGameObject);
-        uiBtn_entityPlacer.interactable = false;
-        uiBtn_geomPlacer.interactable = true;
     }
 
 }

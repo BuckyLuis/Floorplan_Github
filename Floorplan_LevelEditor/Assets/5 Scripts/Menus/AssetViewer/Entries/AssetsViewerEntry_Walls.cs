@@ -122,7 +122,7 @@ public class AssetsViewerEntry_Walls : MonoBehaviour, IAssetViewerEntry {
 
         textureViewerManageScript.SelectDefaultTexAtlasEntry();   //calls SetSelectedMaterial()
 
-        objectOptionsContScript.ActivateTileOptions();
+        objectOptionsContScript.ActivateGeomOptions();
     }
 
     public void SelectFromHotkey() {                                //called by hotkey -- AssetsViewerAssetManagement.EntryFromHotkey() -- which is called by AssetsViewerHotkeysUiControl.HotkeyPressedAssetsFirstDigit()
@@ -136,7 +136,7 @@ public class AssetsViewerEntry_Walls : MonoBehaviour, IAssetViewerEntry {
 
         textureViewerManageScript.SelectDefaultTexAtlasEntry();     //calls SetSelectedMaterial()
 
-        objectOptionsContScript.ActivateTileOptions();
+        objectOptionsContScript.ActivateGeomOptions();
     }
 
     public void SetSelectedMaterial(Material theMaterial) {
@@ -150,7 +150,7 @@ public class AssetsViewerEntry_Walls : MonoBehaviour, IAssetViewerEntry {
     void SendInfoTo_ObjectsInfo() {
         optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName((int)assetBaseObject.categoryWalls, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndicesAndMatName( 2, (int)assetBaseObject.categoryWalls, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
     }
 
     public AssetBasis GetAssetBaseObject() {

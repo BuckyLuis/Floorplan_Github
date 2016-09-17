@@ -7,5 +7,5 @@ public class Entity_DataList
 {
 	[XmlArray("Tiles")]
 	[XmlArrayItem("Tile")]
-	public List<Tile_Base> tiles = new List<Tile_Base>();
+	public List<Geom_Base> tiles = new List<Geom_Base>();
 }

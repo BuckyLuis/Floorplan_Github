@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 
 public class AreaObjectRegistrar : MonoBehaviour {
-    
+
 //============= Loaded Area Data =========
 
     //============ Area Object ==========
@@ -18,19 +18,27 @@ public class AreaObjectRegistrar : MonoBehaviour {
 //========================================
 
     public List<Room_Base> ThisAreasRooms { get; protected set; }
-    public List<Tile_Base> ThisAreasTiles { get; protected set; }
+    public List<Geom_Base> ThisAreasTiles { get; protected set; }
 
 
 //------------ Refs to Objects to Communicate to------------
-    RoomViewerMenu theRoomViewerMenu;
+    RoomViewerMenu theRoomViewerMenuScript;
+    AreaTilesRegistry theTilesRegistryScript;
+
+    [SerializeField] GameObject toolsController;
+    WorldObjectInstantiator objInstantiatorScript;
 
 
 
 
     void Start() {
+        toolsController = GameObject.FindGameObjectWithTag("ToolsController");
+        objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
+
         Area_ReadWriteScript = GetComponent<Area_ReadWrite>();
         AreaEntry_ReadWriteScript = GetComponent<AreaEntry_ReadWrite>();
-        theRoomViewerMenu = GetComponent<RoomViewerMenu>();
+        theRoomViewerMenuScript = GetComponent<RoomViewerMenu>();
+        theTilesRegistryScript = GetComponent<AreaTilesRegistry>();
     }
 
 
@@ -56,6 +64,9 @@ public class AreaObjectRegistrar : MonoBehaviour {
         ThisAreaEntry_CatalogObject.AreaEntryID = theAreaID;
         ThisAreaEntry_CatalogObject.AreaEntryName = theAreaName;
 
+        AddRoomsToAreaRoomList();
+        AddTilesToAreaTilesList();
+
         The_AreaCatalog.areaEntries.Add(ThisAreaEntry_CatalogObject);                                   //register Entry to Catalog list
 
         AreaEntry_ReadWriteScript.WriteXMLData(The_AreaCatalog);                                        //write currentCatalog to xml
@@ -73,6 +84,9 @@ public class AreaObjectRegistrar : MonoBehaviour {
         ThisAreaEntry_CatalogObject.AreaEntryID = theAreaID;
         ThisAreaEntry_CatalogObject.AreaEntryName = theAreaName;
 
+        AddRoomsToAreaRoomList();
+        AddTilesToAreaTilesList();
+
         The_AreaCatalog.areaEntries.Add(ThisAreaEntry_CatalogObject);                                   //register Entry to Catalog list
 
         AreaEntry_ReadWriteScript.WriteXMLData(The_AreaCatalog);                                        //write currentCatalog to xml
@@ -84,6 +98,7 @@ public class AreaObjectRegistrar : MonoBehaviour {
         {
             if(areaEntryObject.AreaEntryID == requestedAreaID) {
                 ThisArea_DataObject = Area_ReadWriteScript.ReadXMLData(areaEntryObject.AreaEntryName);      //call and retrieve AreaData from Xml
+                ConstructLevelFromLoadedArea();
             }
         }
     }
@@ -91,24 +106,38 @@ public class AreaObjectRegistrar : MonoBehaviour {
 //----------------------------------------------------------------------------------------------------------------------
 
 
-    public void AddRoomsToAreaRoomList() {
-        foreach(GameObject roomEntry in theRoomViewerMenu.roomEntries) {
-            ThisAreasRooms.Add(roomEntry.GetComponent<RoomViewerEntry>().ThisRoom_DataObject);
+    void AddRoomsToAreaRoomList() {
+        foreach(GameObject roomEntry in theRoomViewerMenuScript.roomEntries) {
+            ThisArea_DataObject.roomsInArea.Add(roomEntry.GetComponent<RoomViewerEntry>().ThisRoom_DataObject);
         }
     }
 
-    public void RemoveRoomFromArea() {
-        
-    }
-
-    public void AddTileToArea() {
-        
+    void AddTilesToAreaTilesList() {
+        foreach(Geom_Base geomEntry in theTilesRegistryScript.theGeomsInAreaGrid) {
+            if(geomEntry == null)
+                continue;
+            ThisArea_DataObject.tilesInArea.Add(geomEntry);
+        }
+        foreach(Entity_Base entityEntry in theTilesRegistryScript.theEntitiesInAreaGrid) {
+            if(entityEntry == null)
+                continue;
+            ThisArea_DataObject.entitiesInArea.Add(entityEntry);
+        }
     }
 
     public void AlterAreaID() {
         
     }
 
+
+    void ConstructLevelFromLoadedArea() {
+        foreach(Geom_Base geomEntry in ThisArea_DataObject.tilesInArea) {
+            objInstantiatorScript.CreateGeoms_AreaLoad(geomEntry);
+        }
+        foreach(Entity_Base entityEntry in ThisArea_DataObject.entitiesInArea) {
+            objInstantiatorScript.CreateEntities_AreaLoad(entityEntry);
+        }
+    }
 
 
 

@@ -151,7 +151,7 @@ public class AssetsViewerEntry_Props : MonoBehaviour, IAssetViewerEntry {
     void SendInfoTo_ObjectsInfo() {
         optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName((int)assetBaseObject.categoryProps, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndicesAndMatName( 4, (int)assetBaseObject.categoryProps, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
     }
 
     public AssetBasis GetAssetBaseObject() {

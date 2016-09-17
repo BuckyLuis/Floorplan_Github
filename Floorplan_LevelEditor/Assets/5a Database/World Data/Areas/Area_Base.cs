@@ -17,9 +17,13 @@ public class Area_Base
     [XmlArrayItem("Room")]
     public List<Room_Base> roomsInArea = new List<Room_Base>();
 
-    [XmlArray("TilesInArea")]
-    [XmlArrayItem("Tile")]
-    public List<Tile_Base> tilesInArea = new List<Tile_Base>();
+    [XmlArray("GeomsInArea")]
+    [XmlArrayItem("Geom")]
+    public List<Geom_Base> tilesInArea = new List<Geom_Base>();
+
+    [XmlArray("EntitiesInArea")]
+    [XmlArrayItem("Entity")]
+    public List<Entity_Base> entitiesInArea = new List<Entity_Base>();
 }
 
 

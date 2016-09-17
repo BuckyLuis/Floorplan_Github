@@ -47,6 +47,8 @@
   <ItemGroup>
      <Compile Include="Assets\5 Scripts\Camera\ClickDetectMessageSender.cs" />
      <Compile Include="Assets\5 Scripts\Camera\MoveCamera.cs" />
+     <Compile Include="Assets\5 Scripts\EntityObjectInfo.cs" />
+     <Compile Include="Assets\5 Scripts\GeomObjectInfo.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerAssetManagement.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerHotkeysUiControl.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Actors.cs" />
@@ -58,20 +60,20 @@
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Triggers.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\AssetsViewerEntry_Walls.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\IAssetViewerEntry.cs" />
-     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\TexturesViewerEntry.cs" />
-     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\TilesetMemberEntry.cs" />
-     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\TexturesViewerTexAtlasManagement.cs" />
-     <Compile Include="Assets\5 Scripts\Menus\AssetViewer\TexturesViewerTexPreviewer.cs" />
      <Compile Include="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs" />
      <Compile Include="Assets\5 Scripts\Menus\CurrentArea\AreaSaveLoadUI.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\EntityOptions.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\GeomOptions.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\ObjectFacingToolbar.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\ObjectOptionsController.cs" />
-     <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\TilesetOptionsAndManager.cs" />
      <Compile Include="Assets\5 Scripts\Menus\RoomViewer\ColorPicker.cs" />
      <Compile Include="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" />
      <Compile Include="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\TexturesViewer\TexturesViewerEntry.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\TexturesViewer\TexturesViewerTexAtlasManagement.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\TexturesViewer\TexturesViewerTexPreviewer.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\TilesetViewer\TilesetMemberEntry.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\TilesetViewer\TilesetOptionsAndManager.cs" />
      <Compile Include="Assets\5 Scripts\Menus\Tools\ElevationMenu.cs" />
      <Compile Include="Assets\5 Scripts\Menus\Tools\UndoRedoManager.cs" />
      <Compile Include="Assets\5 Scripts\Menus\Tools\UndoRedoOperation.cs" />
@@ -132,7 +134,7 @@
      <Compile Include="Assets\5a Database\World Data\Rooms\Room_Base.cs" />
      <Compile Include="Assets\5a Database\World Data\Rooms\Room_Datalist.cs" />
      <Compile Include="Assets\5a Database\World Data\Rooms\Room_ReadWrite.cs" />
-     <Compile Include="Assets\5a Database\World Data\Tiles\Tile_Base.cs" />
+     <Compile Include="Assets\5a Database\World Data\Tiles\Geom_Base.cs" />
      <Compile Include="Assets\5a Database\World Data\Tiles\Tile_Datalist.cs" />
      <Compile Include="Assets\5a Database\World Data\Tiles\Tile_ReadWrite.cs" />
      <Compile Include="Assets\5a Database\zOther\DistinctColors.cs" />

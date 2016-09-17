@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WorldObjectInfo : MonoBehaviour {
 
-    public Tile_Base tileObject;
+    public Geom_Base tileObject;
 
 	void Start () {
 	

@@ -125,7 +125,7 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour, IAssetViewerEntry {
 
         optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName((int)assetBaseObject.categoryTriggers, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndicesAndMatName( 6, (int)assetBaseObject.categoryTriggers, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
 
         objectOptionsContScript.ActivateEntitiesOptions();
     }

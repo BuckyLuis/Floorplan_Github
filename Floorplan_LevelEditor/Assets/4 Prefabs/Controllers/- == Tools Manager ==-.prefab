@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f98c0a26b928224ea9e5eda6cbbf048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AreaTileParent: {fileID: 0}
+  AreaGeomParent: {fileID: 0}
   AreaEntityParent: {fileID: 0}
   roomBelongingMarker: {fileID: 194708, guid: dc171256c9f73a3428346c9fc9c30cab, type: 2}
   worldObjectInfo: {fileID: 163774, guid: 2ddbc339c10472a49a62bbb94aa9e7cc, type: 2}
@@ -117,6 +117,10 @@ MonoBehaviour:
   optionsTitle_Entity: {fileID: 0}
   optionsTitle_Tileset: {fileID: 0}
   optionsTitle_Template: {fileID: 0}
+  ui_btnGeomPlacer: {fileID: 0}
+  ui_btnEntityPlacer: {fileID: 0}
+  ui_btnTilesetPlacer: {fileID: 0}
+  ui_btnTemplatePlacer: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

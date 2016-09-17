@@ -11,7 +11,7 @@ public class UndoRedoManager : MonoBehaviour {
     AreaTilesRegistry areaTilesRegistryScript;
 
    
-    public int maxSteps = 16;
+    public int maxSteps = 30;
 
     MaxStack<UndoRedoOperation> UndoStack;
     MaxStack<UndoRedoOperation> RedoStack;
@@ -20,7 +20,8 @@ public class UndoRedoManager : MonoBehaviour {
 
     UndoRedoOperation currentOperation;
     List<GameObject> currentGOList;
-    List<Tile_Base> currentTileBaseList;
+    List<Geom_Base> currentGeomBaseList;
+    List<Entity_Base> currentEntityBaseList;
 
 
     GameObject constructedGO;
@@ -119,8 +120,22 @@ public class UndoRedoManager : MonoBehaviour {
 
 
 
-    public void AddAStep(List<GameObject> inGOList, List<Tile_Base> inTileBaseList, int theOperationFlag) {
-        operationAssignment = new UndoRedoOperation(inGOList, inTileBaseList, theOperationFlag);
+    public void AddAStep(List<GameObject> inGOList, List<Geom_Base> inGeomBaseList, int theOperationFlag) {         //geoms
+        operationAssignment = new UndoRedoOperation(inGOList, inGeomBaseList, theOperationFlag);
+
+        UndoStack.Push(operationAssignment);
+        RedoStack.Clear();
+
+
+
+        //---- ui ---
+        uiBtn_undoButton.interactable = true;
+        uiBtn_redoButton.interactable = false;
+    }
+
+
+    public void AddAStep(List<GameObject> inGOList, List<Entity_Base> inEntityBaseList, int theOperationFlag) {       //entities
+        operationAssignment = new UndoRedoOperation(inGOList, inEntityBaseList, theOperationFlag);
 
         UndoStack.Push(operationAssignment);
         RedoStack.Clear();
@@ -135,33 +150,66 @@ public class UndoRedoManager : MonoBehaviour {
 
 
     void ObjectsDeletion() {
-        for (int i = 0; i < currentOperation.theOperationList_TileBase.Count; i++) {
-            if(areaTilesRegistryScript.Tile_PosUnoccupied(currentOperation.theOperationList_TileBase[i]) == false) {
-                string tempGoNameToErase = string.Format("({0}, {1}, {2})"
-                    , currentOperation.theOperationList_TileBase[i].Position.x
-                    , currentOperation.theOperationList_TileBase[i].Position.y
-                    , currentOperation.theOperationList_TileBase[i].Position.z );
-                GameObject tempGoToErase = GameObject.Find(tempGoNameToErase);
+        if(currentOperation.operationFlag == 10 || currentOperation.operationFlag == 10) {                                 //geoms
+            for (int i = 0; i < currentOperation.theOperationList_GeomBase.Count; i++) {
+                if(areaTilesRegistryScript.Geom_PosUnoccupied(currentOperation.theOperationList_GeomBase[i]) == false) {
+                    string tempGoNameToErase = string.Format("G: ({0}, {1}, {2})"
+                        , currentOperation.theOperationList_GeomBase[i].Position.x
+                        , currentOperation.theOperationList_GeomBase[i].Position.y
+                        , currentOperation.theOperationList_GeomBase[i].Position.z );
+                    GameObject tempGoToErase = GameObject.Find(tempGoNameToErase);
 
-                areaTilesRegistryScript.Tile_RemoveFromGrid(tempGoToErase.GetComponent<WorldObjectInfo>().tileObject);
-                Destroy(tempGoToErase);
+                    areaTilesRegistryScript.Geom_RemoveFromGrid(tempGoToErase.GetComponent<GeomObjectInfo>().geomObject);
+                    Destroy(tempGoToErase);
+                }
+                else {
+                    areaTilesRegistryScript.Geom_RemoveFromGrid(currentOperation.theOperationList_GeomBase[i]);
+                    Destroy( currentOperation.theOperationList_GO[i] );
+                }
             }
-            else {
-                areaTilesRegistryScript.Tile_RemoveFromGrid(currentOperation.theOperationList_TileBase[i]);
-                Destroy( currentOperation.theOperationList_GO[i] );
-            }
+            currentOperation.theOperationList_GO.Clear();
         }
-        currentOperation.theOperationList_GO.Clear();
+        else {                                                                                                          //entities
+            for (int i = 0; i < currentOperation.theOperationList_EntityBase.Count; i++) {
+                if(areaTilesRegistryScript.Entity_PosUnoccupied(currentOperation.theOperationList_EntityBase[i]) == false) {
+                    string tempGoNameToErase = string.Format("E: ({0}, {1}, {2})"
+                        , currentOperation.theOperationList_EntityBase[i].Position.x
+                        , currentOperation.theOperationList_EntityBase[i].Position.y
+                        , currentOperation.theOperationList_EntityBase[i].Position.z );
+                    GameObject tempGoToErase = GameObject.Find(tempGoNameToErase);
+
+                    areaTilesRegistryScript.Entity_RemoveFromGrid(tempGoToErase.GetComponent<EntityObjectInfo>().entityObject);
+                    Destroy(tempGoToErase);
+                }
+                else {
+                    areaTilesRegistryScript.Entity_RemoveFromGrid(currentOperation.theOperationList_EntityBase[i]);
+                    Destroy( currentOperation.theOperationList_GO[i] );
+                }
+            }
+            currentOperation.theOperationList_GO.Clear();
+        }
     }
         
     void ObjectsRecreation() {
-        foreach(Tile_Base tileBaseToGen in currentOperation.theOperationList_TileBase) {
-             if(areaTilesRegistryScript.Tile_PosUnoccupied(tileBaseToGen.Position) == true) {        // the check for TileRegistry occupation, isnt really necessary here, but i will keep it, for error security
-                objInstantiatorScript.CreateTiles_UndoRedo(tileBaseToGen, out constructedGO);
-                currentOperation.theOperationList_GO.Add(constructedGO);
+        if(currentOperation.operationFlag == 10 || currentOperation.operationFlag == 10)                 //geoms
+            foreach(Geom_Base geomBaseToGen in currentOperation.theOperationList_GeomBase) {
+                 if(areaTilesRegistryScript.Geom_PosUnoccupied(geomBaseToGen.Position) == true) {        // the check for TileRegistry occupation, isnt really necessary here, but i will keep it, for error security
+                    objInstantiatorScript.CreateGeoms_UndoRedo(geomBaseToGen, out constructedGO);
+                    currentOperation.theOperationList_GO.Add(constructedGO);
 
-                areaTilesRegistryScript.Tile_AddToGrid(tileBaseToGen);
-             }
+                    areaTilesRegistryScript.Geom_AddToGrid(geomBaseToGen);
+                 }
+            }
+        else {                                                                                            //entities
+            foreach(Entity_Base entityBaseToGen in currentOperation.theOperationList_EntityBase) {
+                if(areaTilesRegistryScript.Entity_PosUnoccupied(entityBaseToGen.Position) == true) {        
+                    objInstantiatorScript.CreateEntities_UndoRedo(entityBaseToGen, out constructedGO);
+                    currentOperation.theOperationList_GO.Add(constructedGO);
+
+                    areaTilesRegistryScript.Entity_AddToGrid(entityBaseToGen);
+                }
+            }
+            
         }
     }
 

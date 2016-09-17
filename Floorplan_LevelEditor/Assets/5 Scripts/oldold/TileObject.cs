@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TileObject : MonoBehaviour {
 //============= Loaded Room Data =========
-    public Tile_Base ThisTile { get; protected set; }
+    public Geom_Base ThisTile { get; protected set; }
 //========================================
 
     public int ThisTilesRoomID { get; protected set; }
