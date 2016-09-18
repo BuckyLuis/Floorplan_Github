@@ -1158,6 +1158,10 @@ MonoBehaviour:
   thisRoomColor: {r: 0, g: 0, b: 0, a: 0}
   thisRoomCamTLPos: {x: 0, y: 0, z: 0}
   thisRoomCamBRPos: {x: 0, y: 0, z: 0}
+  camBoundTLMarkerPrefab: {fileID: 128330, guid: 5e711ed01c210364bb7ad67621d0ef66,
+    type: 2}
+  camBoundBRMarkerPrefab: {fileID: 116250, guid: 37075ee10d930e341af9d4e9135b56ca,
+    type: 2}
   cbTLSetOnce: 0
   cbBRSetOnce: 0
   markerCamBoundsTL: {fileID: 0}

@@ -57,6 +57,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
         tempGeomBaseObject = new Geom_Base();
         tempGeomBaseObject.RoomID = roomID;
+        tempGeomBaseObject.roomColor = roomColor;
         tempGeomBaseObject.Position = thePosition;
         tempGeomBaseObject.TypeIndex = typeIndex;
         tempGeomBaseObject.CategoryIndex = categoryIndex;
@@ -155,6 +156,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
         tempEntityBaseObject = new Entity_Base();
         tempEntityBaseObject.RoomID = roomID;
+        tempEntityBaseObject.roomColor = roomColor;
         tempEntityBaseObject.Position = thePosition;
         tempEntityBaseObject.TypeIndex = typeIndex;
         tempEntityBaseObject.CategoryIndex = categoryIndex;

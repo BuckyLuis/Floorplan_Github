@@ -12,7 +12,7 @@ public class RoomViewerEntry : MonoBehaviour {
     [SerializeField]GameObject uiPanel_colorPicker;
 
 //------------ Room Data Object -------------------
-    public Room_Base ThisRoom_DataObject = new Room_Base(); 
+    public Room_Base ThisRoom_DataObject = new Room_Base();
 
 //------------ Config These! ---------------------
     public int thisRoomIndex;   //index of room in Area list
@@ -24,10 +24,13 @@ public class RoomViewerEntry : MonoBehaviour {
     public Vector3 thisRoomCamTLPos;
     public Vector3 thisRoomCamBRPos;
 
-//---------------- default value construction ---------
-
 
 //-------------------------------------------------
+    [SerializeField] GameObject camBoundTLMarkerPrefab;
+    [SerializeField] GameObject camBoundBRMarkerPrefab;
+    GameObject markerTemp;
+
+
     public bool cbTLSetOnce = false;   //has the CamBounds been set by user at least once?
     public bool cbBRSetOnce = false;
 
@@ -57,7 +60,6 @@ public class RoomViewerEntry : MonoBehaviour {
     Text uiTx_camBR;
     //ToggleGroup uiTG_activeRoomTGroup;
 
-   
 
 
 	void Start () {
@@ -89,10 +91,8 @@ public class RoomViewerEntry : MonoBehaviour {
 
         uiTgl_activeRoom.group = databaseController.GetComponent<ToggleGroup>();  //assign ToggleGroup
 
-//-------- init Room --------------------
-        SetRoomIndex();
-        SetRoomDefaultValues();
-        theRoomViewerMenu.roomEntries.Add(gameObject);
+//-------- init Room -------------------
+       
         AssignButtonListeners();
         DeactivateRoomEntry();
         if(theRoomViewerMenu.userIsEditingAnEntry == true)
@@ -105,6 +105,61 @@ public class RoomViewerEntry : MonoBehaviour {
             ObjectFacingToolbar.anInputFieldIsInFocus = true;
         }
     }
+
+    public void NewRoomInitialization() {
+        Start();
+
+        SetRoomIndex();
+        SetRoomDefaultValues();
+        theRoomViewerMenu.roomEntries.Add(gameObject);
+    }
+
+    public void InitFromLoad(Room_Base loadedRoomBase) {
+        Start();
+
+        ThisRoom_DataObject = loadedRoomBase;
+
+        if(ThisRoom_DataObject.RoomName != null)                                                   //name
+            thisRoomName = ThisRoom_DataObject.RoomName;
+        
+        uiTx_RoomIndex.text = thisRoomIDstring = ThisRoom_DataObject.RoomAreaIndex.ToString();     //index
+        thisRoomIndex = ThisRoom_DataObject.RoomAreaIndex;
+
+        thisRoomColor = uiImg_roomColorImg.color = ThisRoom_DataObject.RoomColor;                   //color
+
+        uiIF_roomID.text = ThisRoom_DataObject.RoomID.ToString();                                   //roomID
+        thisRoomID = ThisRoom_DataObject.RoomID;
+
+        thisRoomCamTLPos = ThisRoom_DataObject.CamBoundsTLPos;                                      //CamBounds
+        thisRoomCamBRPos = ThisRoom_DataObject.CamBoundsBRPos;
+
+        markerTemp = (GameObject) Instantiate(camBoundTLMarkerPrefab, thisRoomCamTLPos, Quaternion.identity);
+        markerTemp.name = string.Format("CamBoundsTL: rm{0} ({1}, {2}, {3})", thisRoomID, thisRoomCamTLPos.x, thisRoomCamTLPos.y, thisRoomCamTLPos.z);
+        markerTemp.GetComponent<Renderer>().material.SetColor("_Color1", thisRoomColor);
+        markerTemp.GetComponent<Renderer>().material.SetColor("_Color2", thisRoomColor);
+        markerTemp.GetComponent<CamBoundsMarker>().roomID = thisRoomID;
+        Transform child0 = markerTemp.transform.GetChild(0); 
+        child0.GetComponent<Renderer>().material.SetColor("_Color1", thisRoomColor);
+        child0.GetComponent<Renderer>().material.SetColor("_Color2", thisRoomColor);
+
+        markerTemp = (GameObject) Instantiate(camBoundBRMarkerPrefab, thisRoomCamBRPos, Quaternion.identity);
+        markerTemp.name = string.Format("CamBoundsTL: rm{0} ({1}, {2}, {3})", thisRoomID, thisRoomCamBRPos.x, thisRoomCamBRPos.y, thisRoomCamBRPos.z);
+        markerTemp.GetComponent<Renderer>().material.SetColor("_Color1", thisRoomColor);
+        markerTemp.GetComponent<Renderer>().material.SetColor("_Color2", thisRoomColor);
+        markerTemp.GetComponent<CamBoundsMarker>().roomID = thisRoomID;
+        Transform child1 = markerTemp.transform.GetChild(0); 
+        child1.GetComponent<Renderer>().material.SetColor("_Color1", thisRoomColor);
+        child1.GetComponent<Renderer>().material.SetColor("_Color2", thisRoomColor);
+
+        cbTLSetOnce = true;
+        cbBRSetOnce = true;
+        VerifyCamBounds();
+
+        theRoomViewerMenu.roomEntries.Add(gameObject);
+    }
+
+
+
 
     public void SetRoomIndex() {
         uiTx_RoomIndex.text = theRoomViewerMenu.roomEntries.Count.ToString();
@@ -157,6 +212,8 @@ public class RoomViewerEntry : MonoBehaviour {
         thisRoomName = uiIF_roomName.text;
 
         ThisRoom_DataObject.RoomName = thisRoomName;
+
+        DeactivateRoomEntry();
     }
 
     public void ChangeRoomColor(Color theColor) {       //set from ColorPicker.cs

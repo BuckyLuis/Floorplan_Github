@@ -152,6 +152,9 @@ public class AssetsViewerEntry_Props : MonoBehaviour, IAssetViewerEntry {
         optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
         objInstantiatorScript.AssignIndicesAndMatName( 4, (int)assetBaseObject.categoryProps, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+
+        optionsInfoScript.geom0_entity1 = true;
+        optionsInfoScript.tilePlacerWidget.SetActive(true);
     }
 
     public AssetBasis GetAssetBaseObject() {

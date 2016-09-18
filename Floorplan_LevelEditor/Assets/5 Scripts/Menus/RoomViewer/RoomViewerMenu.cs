@@ -51,6 +51,15 @@ public class RoomViewerMenu : MonoBehaviour {
     public void AddRoomEntry() {
         roomEntryTemp = (GameObject)Instantiate(roomEntryPrefab);
         roomEntryTemp.transform.SetParent(roomViewerArea.transform, false);
+
+        roomEntryTemp.GetComponent<RoomViewerEntry>().NewRoomInitialization();
+    }
+
+    public void AddRoomEntry_AreaLoad(Room_Base loadedRoomBase) {
+        roomEntryTemp = (GameObject)Instantiate(roomEntryPrefab);
+        roomEntryTemp.transform.SetParent(roomViewerArea.transform, false);
+
+        roomEntryTemp.GetComponent<RoomViewerEntry>().InitFromLoad(loadedRoomBase);
     }
 
     public void RemoveRoomEntry() {

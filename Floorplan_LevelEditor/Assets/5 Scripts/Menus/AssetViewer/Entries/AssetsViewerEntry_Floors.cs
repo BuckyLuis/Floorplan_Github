@@ -147,6 +147,9 @@ public class AssetsViewerEntry_Floors : MonoBehaviour, IAssetViewerEntry {
         optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
         objInstantiatorScript.AssignIndicesAndMatName( 1, (int)assetBaseObject.categoryFloors, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+
+        optionsInfoScript.geom0_entity1 = false;
+        optionsInfoScript.tilePlacerWidget.SetActive(true);
     }
 
 

@@ -151,6 +151,9 @@ public class AssetsViewerEntry_Walls : MonoBehaviour, IAssetViewerEntry {
         optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
         objInstantiatorScript.AssignIndicesAndMatName( 2, (int)assetBaseObject.categoryWalls, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+
+        optionsInfoScript.geom0_entity1 = false;
+        optionsInfoScript.tilePlacerWidget.SetActive(true);
     }
 
     public AssetBasis GetAssetBaseObject() {

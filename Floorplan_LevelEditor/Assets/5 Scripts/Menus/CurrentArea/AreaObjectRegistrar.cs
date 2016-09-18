@@ -16,10 +16,10 @@ public class AreaObjectRegistrar : MonoBehaviour {
     Area_ReadWrite Area_ReadWriteScript;
     AreaEntry_ReadWrite AreaEntry_ReadWriteScript;
 //========================================
-
+/*
     public List<Room_Base> ThisAreasRooms { get; protected set; }
     public List<Geom_Base> ThisAreasTiles { get; protected set; }
-
+*/
 
 //------------ Refs to Objects to Communicate to------------
     RoomViewerMenu theRoomViewerMenuScript;
@@ -131,6 +131,9 @@ public class AreaObjectRegistrar : MonoBehaviour {
 
 
     void ConstructLevelFromLoadedArea() {
+        foreach(Room_Base roomEntry in ThisArea_DataObject.roomsInArea) {
+            theRoomViewerMenuScript.AddRoomEntry_AreaLoad(roomEntry);
+        }
         foreach(Geom_Base geomEntry in ThisArea_DataObject.tilesInArea) {
             objInstantiatorScript.CreateGeoms_AreaLoad(geomEntry);
         }

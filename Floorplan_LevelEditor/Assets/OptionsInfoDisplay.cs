@@ -14,6 +14,9 @@ public class OptionsInfoDisplay : MonoBehaviour {
 
 
     public bool geom0_entity1;
+    public GameObject tilePlacerWidget;
+
+
     public GameObject theTileToPlace;
 
 

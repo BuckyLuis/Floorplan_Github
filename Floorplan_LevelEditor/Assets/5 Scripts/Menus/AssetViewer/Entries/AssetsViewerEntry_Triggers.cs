@@ -117,6 +117,10 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour, IAssetViewerEntry {
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
 
         objectOptionsContScript.ActivateEntitiesOptions();
+
+
+        optionsInfoScript.geom0_entity1 = true;
+        optionsInfoScript.tilePlacerWidget.SetActive(true);
     }
 
     public void SelectFromHotkey() {        //called by hotkey -- AssetsViewerAssetManagement.EntryFromHotkey() -- which is called by AssetsViewerHotkeysUiControl.HotkeyPressedAssetsFirstDigit()
@@ -128,6 +132,10 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour, IAssetViewerEntry {
         objInstantiatorScript.AssignIndicesAndMatName( 6, (int)assetBaseObject.categoryTriggers, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
 
         objectOptionsContScript.ActivateEntitiesOptions();
+
+
+        optionsInfoScript.geom0_entity1 = true;
+        optionsInfoScript.tilePlacerWidget.SetActive(true);
     }
 
     public AssetBasis GetAssetBaseObject() {
