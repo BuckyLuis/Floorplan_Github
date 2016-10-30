@@ -249,7 +249,6 @@ public class TilePlacer : MonoBehaviour {
                         currGOList_forUndoRedo.Add(tempGoToErase);
                         currTBList_forUndoRedo.Add(tempGoToErase.GetComponent<GeomObjectInfo>().geomObject);
                     }
-
                 }
                 else {
                     if(areaTilesRegistryScript.Entity_PosUnoccupied(thePosition) == false) {                                             //erase entity
@@ -260,6 +259,7 @@ public class TilePlacer : MonoBehaviour {
                         currENTList_forUndoRedo.Add(tempGoToErase.GetComponent<EntityObjectInfo>().entityObject);
                     }
                 }
+
             }
         }
         if(currGOList_forUndoRedo.Count > 0) {

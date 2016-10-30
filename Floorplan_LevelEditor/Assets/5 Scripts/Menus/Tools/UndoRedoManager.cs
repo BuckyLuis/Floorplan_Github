@@ -11,7 +11,7 @@ public class UndoRedoManager : MonoBehaviour {
     AreaTilesRegistry areaTilesRegistryScript;
 
    
-    public int maxSteps = 30;
+    public int maxSteps = 40;
 
     MaxStack<UndoRedoOperation> UndoStack;
     MaxStack<UndoRedoOperation> RedoStack;
@@ -69,14 +69,18 @@ public class UndoRedoManager : MonoBehaviour {
       
         switch (currentOperation.operationFlag)
         {
-            case 0:
+            case 10:
                 RedoStack.Push(currentOperation);
                 ObjectsDeletion();
                 break;
-            case 1:
+            case 11:
                 ObjectsRecreation();
                 RedoStack.Push(currentOperation);
                 break;
+            case 20:
+                goto case 10;
+            case 21:
+                goto case 11;
         }
      
 
@@ -96,14 +100,18 @@ public class UndoRedoManager : MonoBehaviour {
 
         switch (currentOperation.operationFlag)
         {
-            case 0:
+            case 10:
                 ObjectsRecreation();
                 UndoStack.Push(currentOperation);
                 break;
-            case 1:
+            case 11:
                 UndoStack.Push(currentOperation);
                 ObjectsDeletion();
                 break;
+            case 20:
+                goto case 10;
+            case 21:
+                goto case 21;
         }
        
 
@@ -150,7 +158,7 @@ public class UndoRedoManager : MonoBehaviour {
 
 
     void ObjectsDeletion() {
-        if(currentOperation.operationFlag == 10 || currentOperation.operationFlag == 10) {                                 //geoms
+        if(currentOperation.operationFlag == 10 || currentOperation.operationFlag == 11) {                                 //geoms
             for (int i = 0; i < currentOperation.theOperationList_GeomBase.Count; i++) {
                 if(areaTilesRegistryScript.Geom_PosUnoccupied(currentOperation.theOperationList_GeomBase[i]) == false) {
                     string tempGoNameToErase = string.Format("G: ({0}, {1}, {2})"
@@ -191,7 +199,7 @@ public class UndoRedoManager : MonoBehaviour {
     }
         
     void ObjectsRecreation() {
-        if(currentOperation.operationFlag == 10 || currentOperation.operationFlag == 10)                 //geoms
+        if(currentOperation.operationFlag == 10 || currentOperation.operationFlag == 11)                 //geoms
             foreach(Geom_Base geomBaseToGen in currentOperation.theOperationList_GeomBase) {
                  if(areaTilesRegistryScript.Geom_PosUnoccupied(geomBaseToGen.Position) == true) {        // the check for TileRegistry occupation, isnt really necessary here, but i will keep it, for error security
                     objInstantiatorScript.CreateGeoms_UndoRedo(geomBaseToGen, out constructedGO);
