@@ -938,7 +938,7 @@ Prefab:
     - target: {fileID: 11421894, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 610528967}
+      objectReference: {fileID: 1799940217}
     - target: {fileID: 11405960, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1042,7 +1042,7 @@ Prefab:
     - target: {fileID: 11400382, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 610528967}
+      objectReference: {fileID: 1799940217}
     - target: {fileID: 11461418, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1385,6 +1385,14 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 22
       objectReference: {fileID: 0}
+    - target: {fileID: 11421894, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LockCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400382, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CenterCamera
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
   m_IsPrefabParent: 0
@@ -1412,12 +1420,6 @@ GameObject:
 GameObject:
   m_PrefabParentObject: {fileID: 106078, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
   m_PrefabInternal: {fileID: 435997816}
---- !u!114 &610528967 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11437402, guid: 0afd54a37eafca741aba16fad4510903,
-    type: 2}
-  m_PrefabInternal: {fileID: 1928862549}
-  m_Script: {fileID: 11500000, guid: d8a78ebf1fca1db48b8a73465e9b6017, type: 3}
 --- !u!1 &666150445 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 119834, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
@@ -2263,6 +2265,27 @@ GameObject:
 GameObject:
   m_PrefabParentObject: {fileID: 144960, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
   m_PrefabInternal: {fileID: 435997816}
+--- !u!1 &1799940215 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 179796, guid: 0afd54a37eafca741aba16fad4510903, type: 2}
+  m_PrefabInternal: {fileID: 1928862549}
+--- !u!114 &1799940217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1799940215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a78ebf1fca1db48b8a73465e9b6017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollBoundary: 10
+  scrollSpeed: 25
+  zoomSpeed: 200
+  minZoom: -5
+  maxZoom: 150
+  cameraLock: 0
 --- !u!1 &1812329347 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 156128, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
@@ -2382,7 +2405,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11437402, guid: 0afd54a37eafca741aba16fad4510903, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11437402, guid: 0afd54a37eafca741aba16fad4510903, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0afd54a37eafca741aba16fad4510903, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1937182278 stripped

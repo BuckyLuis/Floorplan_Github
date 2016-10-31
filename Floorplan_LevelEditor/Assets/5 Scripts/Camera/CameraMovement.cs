@@ -2,7 +2,7 @@
 using System.Collections;
 using TeamUtility.IO;
 
-public class MoveCamera : MonoBehaviour 
+public class CameraMovement : MonoBehaviour 
 {
 	public int scrollBoundary = 5;
 	public int scrollSpeed = 10;

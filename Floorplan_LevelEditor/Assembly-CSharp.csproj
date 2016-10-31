@@ -45,8 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\5 Scripts\Camera\CameraMovement.cs" />
      <Compile Include="Assets\5 Scripts\Camera\ClickDetectMessageSender.cs" />
-     <Compile Include="Assets\5 Scripts\Camera\moveCamera.cs" />
      <Compile Include="Assets\5 Scripts\EntityObjectInfo.cs" />
      <Compile Include="Assets\5 Scripts\GeomObjectInfo.cs" />
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerAssetManagement.cs" />

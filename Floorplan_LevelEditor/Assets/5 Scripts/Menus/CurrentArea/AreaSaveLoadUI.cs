@@ -262,7 +262,7 @@ public class AreaSaveLoadUI : MonoBehaviour {
             RefreshLastSaveTime();
             OptionsMainPanel.SetActive(true);
             mainBlackoutPanel.SetActive(true);
-            MoveCamera.cameraLockForStartupMenu = true;
+            CameraMovement.cameraLockForStartupMenu = true;
             AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = true;
             ObjectFacingToolbar.anInputFieldIsInFocus = true;
         }
@@ -452,7 +452,7 @@ public class AreaSaveLoadUI : MonoBehaviour {
 
     void KillStartMenu() {
         mainBlackoutPanel.SetActive(false);
-        MoveCamera.cameraLockForStartupMenu = false;
+        CameraMovement.cameraLockForStartupMenu = false;
         AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = false;
         ObjectFacingToolbar.anInputFieldIsInFocus = false;
     }
