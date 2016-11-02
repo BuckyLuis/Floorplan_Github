@@ -136,7 +136,7 @@ public class AreaSaveLoadUI : MonoBehaviour {
         uiIF_devkey.text = devKeyString;
 
         GetAreaCatalogFromXML();
-        PopulateCatalogNDropdowns();
+//        PopulateCatalogNDropdowns();
     }
 
 
@@ -151,7 +151,7 @@ public class AreaSaveLoadUI : MonoBehaviour {
         AreaEntry_ReadWriteScript.ReadXMLData();     //  <-----------  Call to read AreaCatalog from Xml
     }
 
-    void PopulateCatalogNDropdowns() {
+    public void PopulateCatalogNDropdowns() {
         uiDrop_dropdownStartLoad.options.Clear();
         uiDrop_dropdownOptLoad.options.Clear();
 

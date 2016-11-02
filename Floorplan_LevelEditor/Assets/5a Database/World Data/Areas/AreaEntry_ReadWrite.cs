@@ -5,6 +5,8 @@ using System.IO;
 
 public class AreaEntry_ReadWrite : MonoBehaviour 
 {
+    AreaSaveLoadUI theAreaSaveLoadUIScript;
+
     private string docsPath = "";
     private string path = "";
     private IO_GetDatasPath getDatasPath;
@@ -23,6 +25,7 @@ public class AreaEntry_ReadWrite : MonoBehaviour
 
     void Awake()
     {
+        theAreaSaveLoadUIScript = GetComponent<AreaSaveLoadUI>();
         getDatasPath = GetComponent<IO_GetDatasPath>();
     }
 
@@ -40,8 +43,8 @@ public class AreaEntry_ReadWrite : MonoBehaviour
     public void ReadXMLData() 
     {
         GetCombinedPath();
-        ProcessWWW(path);
-        //   StartCoroutine(ProcessWWW(path));
+        StartCoroutine(ProcessWWW(path));
+        //ProcessWWW(path);
     }
 
     public void WriteXMLData(AreaEntry_DataList theCatalogToWrite)
@@ -90,15 +93,16 @@ public class AreaEntry_ReadWrite : MonoBehaviour
                 break;
         }                                   
     }
-    //IEnumerator
-    void ProcessWWW(string path)
+
+    IEnumerator ProcessWWW(string path)
     {
         WWW www = new WWW ("file:///" + path);              //  the "file:///" here and in the path IS necessary!
-        //   yield return www;
+        yield return www;
 
         if(www.error == null)
         {
             AreaCatalog_DataObject = ReadFromXML(www);
+            theAreaSaveLoadUIScript.PopulateCatalogNDropdowns();
         }
         else
         {

@@ -5,6 +5,8 @@ using System.IO;
 
 public class Area_ReadWrite : MonoBehaviour 
 {
+    AreaObjectRegistrar theAreaObjectRegistrarScript;
+
     private string docsPath = "";
     private string path = "";
     private IO_GetDatasPath getDatasPath;
@@ -24,6 +26,7 @@ public class Area_ReadWrite : MonoBehaviour
 
     void Start()
     {
+        theAreaObjectRegistrarScript = GetComponent<AreaObjectRegistrar>();
         getDatasPath = GetComponent<IO_GetDatasPath>();
     }
 
@@ -38,12 +41,12 @@ public class Area_ReadWrite : MonoBehaviour
     }
     */
 
-    public Area_Base ReadXMLData(string theArea_Name) 
+    public void ReadXMLData(string theArea_Name) 
     {
         GetCombinedPath(theArea_Name);
-        ProcessWWW(path);
-        return Area_DataObject;
-     //   StartCoroutine(ProcessWWW(path));
+        StartCoroutine(ProcessWWW(path));
+        //ProcessWWW(path);
+        //return Area_DataObject;
     }
 
     public void WriteXMLData(Area_Base theArea_ToWrite, string theArea_Name)
@@ -92,15 +95,15 @@ public class Area_ReadWrite : MonoBehaviour
                 break;
         }                                   
     }
-    //IEnumerator
-    void ProcessWWW(string path)
+    IEnumerator ProcessWWW(string path)
     {
         WWW www = new WWW ("file:///" + path);              //  the "file:///" here and in the path IS necessary!
-     //   yield return www;
+        yield return www;
 
         if(www.error == null)
         {
             Area_DataObject = ReadFromXML(www);
+            theAreaObjectRegistrarScript.ConstructLevelFromLoadedArea();
         }
         else
         {

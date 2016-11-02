@@ -97,8 +97,7 @@ public class AreaObjectRegistrar : MonoBehaviour {
         foreach (AreaEntry_Base areaEntryObject in The_AreaCatalog.areaEntries)
         {
             if(areaEntryObject.AreaEntryID == requestedAreaID) {
-                ThisArea_DataObject = Area_ReadWriteScript.ReadXMLData(areaEntryObject.AreaEntryName);      //call and retrieve AreaData from Xml
-                ConstructLevelFromLoadedArea();
+                Area_ReadWriteScript.ReadXMLData(areaEntryObject.AreaEntryName);      //call and retrieve AreaData from Xml
             }
         }
     }
@@ -130,15 +129,23 @@ public class AreaObjectRegistrar : MonoBehaviour {
     }
 
 
-    void ConstructLevelFromLoadedArea() {
-        foreach(Room_Base roomEntry in ThisArea_DataObject.roomsInArea) {
-            theRoomViewerMenuScript.AddRoomEntry_AreaLoad(roomEntry);
+    public void ConstructLevelFromLoadedArea() {
+        ThisArea_DataObject = null;
+        ThisArea_DataObject = Area_ReadWriteScript.Area_DataObject;
+
+        if(ThisArea_DataObject != null) {
+            foreach(Room_Base roomEntry in ThisArea_DataObject.roomsInArea) {
+                theRoomViewerMenuScript.AddRoomEntry_AreaLoad(roomEntry);
+            }
+            foreach(Geom_Base geomEntry in ThisArea_DataObject.tilesInArea) {
+                objInstantiatorScript.CreateGeoms_AreaLoad(geomEntry);
+            }
+            foreach(Entity_Base entityEntry in ThisArea_DataObject.entitiesInArea) {
+                objInstantiatorScript.CreateEntities_AreaLoad(entityEntry);
+            }
         }
-        foreach(Geom_Base geomEntry in ThisArea_DataObject.tilesInArea) {
-            objInstantiatorScript.CreateGeoms_AreaLoad(geomEntry);
-        }
-        foreach(Entity_Base entityEntry in ThisArea_DataObject.entitiesInArea) {
-            objInstantiatorScript.CreateEntities_AreaLoad(entityEntry);
+        else {
+            Debug.LogError("ERROR!: AreaObjectRegistrar.cs - Area_ReadWrite has failed to provide a proper AreaObject to the Registrar!");
         }
     }
 
