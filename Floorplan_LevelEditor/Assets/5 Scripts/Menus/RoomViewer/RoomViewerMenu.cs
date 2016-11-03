@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 public class RoomViewerMenu : MonoBehaviour {
 
     [SerializeField] GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
-
+    public AreaObjectRegistrar theAreaObjectRegistrar;
 
     GameObject assetsDbController;
     OptionsInfoDisplay optionsInfoScript;
@@ -14,7 +15,7 @@ public class RoomViewerMenu : MonoBehaviour {
     public List<GameObject> roomEntries = new List<GameObject>();
 
     public int activeRoomIndex;
-    public int activeRoomID;
+    public string activeRoomID;
 
 
     [SerializeField] GameObject roomEntryPrefab;
@@ -37,6 +38,7 @@ public class RoomViewerMenu : MonoBehaviour {
 
 
     void Start() {
+        theAreaObjectRegistrar = GetComponent<AreaObjectRegistrar>();
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
         optionsInfoScript = assetsDbController.GetComponent<OptionsInfoDisplay>();
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
@@ -100,7 +102,15 @@ public class RoomViewerMenu : MonoBehaviour {
         optionsInfoScript.SetCurrentRoomID(activeRoomID);
         optionsInfoScript.SetCurrentRoomColor(roomColor);
     }
+/*
+    public string GetTimeForRoomID() {
+        currentTimeString = DateTime.UtcNow.ToString("s").Replace(":","");
+        currentTimeString.Replace("T","");
+        Debug.Log(currentTimeString);
 
+        return currentTimeString;
+    }
 
+*/
 }
    

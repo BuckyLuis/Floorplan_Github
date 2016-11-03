@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class TimeSinceSave {
+public class RealTimeClock {
 
     DateTime currentTime;
 
@@ -30,6 +30,13 @@ public class TimeSinceSave {
 
         return "<b>" + timeSinceLastSave.Hours + ":" + timeSinceLastSave.Minutes + ":" + timeSinceLastSave.Seconds + "</b>  ago";
     }
+/*
+    public DateTime GetCurrentTime() {
+        currentTime = DateTime.Now;
+
+        return currentTime;
+    }
+*/
 /*
     public string TimeSinceAreaCreation() {
         currentTime = DateTime.Now;

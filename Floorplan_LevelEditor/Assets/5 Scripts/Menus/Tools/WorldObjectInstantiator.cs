@@ -18,7 +18,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
     Geom_Base tempGeomBaseObject;
     Entity_Base tempEntityBaseObject;
 
-    public int roomID  {get; protected set;}
+    public string roomID  {get; protected set;}
     public int typeIndex {get; protected set;}
     public int categoryIndex {get; protected set;}
     public int assetIndex {get; protected set;}
@@ -240,7 +240,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
         tileFacingRot = theTileFacingRot;
     }
 
-    public void AssignRoomID(int theRoomID) {
+    public void AssignRoomID(string theRoomID) {
         roomID = theRoomID;
     }
 

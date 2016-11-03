@@ -8,10 +8,10 @@ public class AreaSaveLoadUI : MonoBehaviour {
     int _AreaIndexCounter;
     int currentIndexCount;
 
-    string currentGenAreaID;
+  //  string currentGenAreaID;  //not used??
 
 
-    TimeSinceSave timeSinceSave = new TimeSinceSave();
+    RealTimeClock timeSinceSave = new RealTimeClock();
     bool welcomeMenuActive;
     Color defaultTextCol = new Color(0,0,0);
     Color saveTimeWarningCol = new Color32(213, 94, 0, 255);
@@ -105,7 +105,6 @@ public class AreaSaveLoadUI : MonoBehaviour {
 
     void Start() {
      //   welcomeMenuActive = true;
-
         AreaEntry_ReadWriteScript = GetComponent<AreaEntry_ReadWrite>();
         AreaRegistrarScript = GetComponent<AreaObjectRegistrar>();
 
@@ -136,7 +135,7 @@ public class AreaSaveLoadUI : MonoBehaviour {
         uiIF_devkey.text = devKeyString;
 
         GetAreaCatalogFromXML();
-//        PopulateCatalogNDropdowns();
+//      PopulateCatalogNDropdowns();
     }
 
 
@@ -362,7 +361,6 @@ public class AreaSaveLoadUI : MonoBehaviour {
         uiTxt_inAppDisplayID.text = saveAsIDString;
         uiTxt_OptDisplayName.text = saveAsNameString;
         uiTxt_OptDisplayID.text = saveAsIDString;
-
     }
         
 //--------------- Options - Load Area Menu ----------------------------------------------

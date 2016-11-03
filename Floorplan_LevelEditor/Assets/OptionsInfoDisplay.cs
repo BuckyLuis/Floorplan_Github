@@ -22,7 +22,7 @@ public class OptionsInfoDisplay : MonoBehaviour {
 
     //--------- Tile Data ---------------
 
-    public int currentRoomID  {get; protected set;}
+    public string currentRoomID  {get; protected set;}
     public Color currentRoomColor {get; protected set;}
 
     public int selectedTileIndex;
@@ -58,9 +58,9 @@ public class OptionsInfoDisplay : MonoBehaviour {
     }
 
 
-    public void SetCurrentRoomID(int theRoomID) {                           //from RoomViewerMenu.cs   via   RoomViewerEntry.cs Instances
+    public void SetCurrentRoomID(string theRoomID) {                           //from RoomViewerMenu.cs   via   RoomViewerEntry.cs Instances
         currentRoomID = theRoomID;
-        uiTxt_currRoomID.text = theRoomID.ToString();
+        uiTxt_currRoomID.text = theRoomID;
     }
 
     public void SetCurrentRoomColor(Color theColor) {

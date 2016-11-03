@@ -15,7 +15,7 @@ public class PlaceCamBoundsMarker : MonoBehaviour {
     GameObject markerTemp;
 
     public bool TL0_BR1;
-    public int roomID;
+    public string roomID;
     public Color roomColor;
 
     Vector3 camBoundsTLpos;
@@ -50,7 +50,7 @@ public class PlaceCamBoundsMarker : MonoBehaviour {
        
     }
        
-    public void InitCamBoundsPlacer(int roomID_in) {       //called by roomsViewer button, is given roomViewer vars
+    public void InitCamBoundsPlacer(string roomID_in) {       //called by roomsViewer button, is given roomViewer vars
         roomID = roomID_in;
     }
         

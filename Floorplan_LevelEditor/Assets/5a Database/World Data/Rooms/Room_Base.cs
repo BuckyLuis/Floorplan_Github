@@ -8,7 +8,7 @@ public class Room_Base
 {
 //	[XmlElement("IndexID")] 		public int IndexID {get; set;}    //simply for display, otherwise youd have to count! (itd royally suck)
    
-    [XmlElement("RoomID")]          public int RoomID {get; set;}
+    [XmlElement("RoomID")]          public string RoomID {get; set;}
     [XmlElement("RoomAreaIndex")]   public int RoomAreaIndex {get; set;}
     [XmlElement("RoomName")]        public string RoomName { get; set; }
     [XmlElement("RoomColor")]       public Color RoomColor { get; set; }

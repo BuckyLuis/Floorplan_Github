@@ -466,13 +466,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11443696}
   m_TextComponent: {fileID: 11455146}
   m_Placeholder: {fileID: 0}
-  m_ContentType: 2
+  m_ContentType: 3
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 4
+  m_KeyboardType: 2
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 1
+  m_CharacterValidation: 2
   m_CharacterLimit: 9
   m_OnEndEdit:
     m_PersistentCalls:
@@ -1153,7 +1153,7 @@ MonoBehaviour:
   databaseController: {fileID: 0}
   uiPanel_colorPicker: {fileID: 0}
   thisRoomIndex: 0
-  thisRoomID: 0
+  thisRoomID: 
   thisRoomName: 
   thisRoomColor: {r: 0, g: 0, b: 0, a: 0}
   thisRoomCamTLPos: {x: 0, y: 0, z: 0}

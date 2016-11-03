@@ -1393,6 +1393,30 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CenterCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 149584, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 105728, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 187868, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 190594, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 148478, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 127424, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
   m_IsPrefabParent: 0

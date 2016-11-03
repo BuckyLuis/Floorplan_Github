@@ -1,18 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5a Database\World Data\Areas\AreaEntry_ReadWrite.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5a Database\World Data\Tiles\Geom_Base.cs">
     <Files>
-      <File FileName="Assets\5 Scripts\Camera\ClickDetectMessageSender.cs" Line="15" Column="5" />
-      <File FileName="Assets\5a Database\World Data\Areas\Area_ReadWrite.cs" Line="29" Column="76" />
-      <File FileName="Assets\5a Database\World Data\Areas\AreaEntry_ReadWrite.cs" Line="103" Column="10" />
-      <File FileName="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs" Line="137" Column="78" />
-      <File FileName="Assets\5a Database\World Data\Entities\Entity_ReadWrite.cs" Line="1" Column="1" />
-      <File FileName="Assets\5a Database\World Data\Rooms\Room_ReadWrite.cs" Line="1" Column="1" />
-      <File FileName="Assets\5 Scripts\Menus\CurrentArea\AreaSaveLoadUI.cs" Line="92" Column="35" />
+      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs" Line="73" Column="49" />
+      <File FileName="Assets\5 Scripts\GeomObjectInfo.cs" Line="8" Column="1" />
+      <File FileName="Assets\5a Database\World Data\Tiles\Geom_Base.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\John\Documents\zzz_Git\Repo_Floorplan\Floorplan_LevelEditor\Assets\5 Scripts\Menus\CurrentArea\AreaSaveLoadUI.cs" line="26" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

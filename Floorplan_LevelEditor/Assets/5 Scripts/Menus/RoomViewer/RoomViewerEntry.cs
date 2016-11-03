@@ -5,8 +5,6 @@ using UnityEngine.UI;
 public class RoomViewerEntry : MonoBehaviour {
 
     [SerializeField] GameObject databaseController;
-
-    AreaObjectRegistrar ourAreaObject;
     RoomViewerMenu theRoomViewerMenu;
 
     [SerializeField]GameObject uiPanel_colorPicker;
@@ -16,8 +14,7 @@ public class RoomViewerEntry : MonoBehaviour {
 
 //------------ Config These! ---------------------
     public int thisRoomIndex;   //index of room in Area list
-    public int thisRoomID;      //identifier for room,  for tiles to know
-    string thisRoomIDstring;
+    public string thisRoomID;      //identifier for room,  for tiles to know
 
     public string thisRoomName; 
     public Color thisRoomColor;
@@ -62,7 +59,7 @@ public class RoomViewerEntry : MonoBehaviour {
 
 
 
-	void Start () {
+	void Awake () {
         databaseController = GameObject.Find("- == Database Controller == -");
         theRoomViewerMenu = databaseController.GetComponent<RoomViewerMenu>();
         uiPanel_colorPicker = theRoomViewerMenu.colorPickerRef; //GameObject.Find("Panel_ColorPicker");
@@ -107,27 +104,23 @@ public class RoomViewerEntry : MonoBehaviour {
     }
 
     public void NewRoomInitialization() {
-        Start();
-
         SetRoomIndex();
         SetRoomDefaultValues();
         theRoomViewerMenu.roomEntries.Add(gameObject);
     }
 
     public void InitFromLoad(Room_Base loadedRoomBase) {
-        Start();
-
         ThisRoom_DataObject = loadedRoomBase;
 
         if(ThisRoom_DataObject.RoomName != null)                                                   //name
             thisRoomName = ThisRoom_DataObject.RoomName;
         
-        uiTx_RoomIndex.text = thisRoomIDstring = ThisRoom_DataObject.RoomAreaIndex.ToString();     //index
+        uiTx_RoomIndex.text = ThisRoom_DataObject.RoomAreaIndex.ToString();     //index
         thisRoomIndex = ThisRoom_DataObject.RoomAreaIndex;
 
         thisRoomColor = uiImg_roomColorImg.color = ThisRoom_DataObject.RoomColor;                   //color
 
-        uiIF_roomID.text = ThisRoom_DataObject.RoomID.ToString();                                   //roomID
+        uiIF_roomID.text = ThisRoom_DataObject.RoomID;                                   //roomID
         thisRoomID = ThisRoom_DataObject.RoomID;
 
         thisRoomCamTLPos = ThisRoom_DataObject.CamBoundsTLPos;                                      //CamBounds
@@ -160,7 +153,6 @@ public class RoomViewerEntry : MonoBehaviour {
 
 
 
-
     public void SetRoomIndex() {
         uiTx_RoomIndex.text = theRoomViewerMenu.roomEntries.Count.ToString();
         thisRoomIndex = theRoomViewerMenu.roomEntries.Count;
@@ -169,8 +161,10 @@ public class RoomViewerEntry : MonoBehaviour {
     }
 
     void SetRoomDefaultValues() {
-        //RoomID:  devkey 1 digit + areaID 3 digits + roomIndex 2 digits  + (for modders 3 digits)
-       // thisRoomID = 
+        //RoomID:  devkey 1 digit + areaID 3 digits + roomIndex 2 digits  //+ formatted UTC Time 
+        thisRoomID = theRoomViewerMenu.theAreaObjectRegistrar.ThisArea_DataObject.AreaID + thisRoomIndex; //+ theRoomViewerMenu.GetTimeForRoomID();
+        Debug.Log(thisRoomID);
+        uiIF_roomID.text = thisRoomID;
         thisRoomColor = DistinctColors.GetNextDistinctColor();
         uiImg_roomColorImg.color = thisRoomColor;
 
@@ -191,7 +185,7 @@ public class RoomViewerEntry : MonoBehaviour {
         AssetsViewerHotkeysUiControl.anInputFieldIsInFocus = false;
         ObjectFacingToolbar.anInputFieldIsInFocus = false;
 
-        thisRoomID = int.Parse(uiIF_roomID.text);
+        thisRoomID = uiIF_roomID.text;
 
         ThisRoom_DataObject.RoomID = thisRoomID;
 

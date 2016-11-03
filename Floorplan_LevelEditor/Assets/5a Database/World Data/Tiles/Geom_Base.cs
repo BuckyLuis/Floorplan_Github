@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 public class Geom_Base 
 {
-    [XmlElement("RoomID")]          public int RoomID {get; set;}
+    [XmlElement("RoomID")]          public string RoomID {get; set;}
 
     public Vector3 Position;
 /*    [XmlAttribute("Position")]      public string Pos_Surrogate{ get { return "";}
