@@ -302,34 +302,44 @@ public class RoomViewerEntry : MonoBehaviour {
             uiTx_camBR.text = string.Format("{0}, {1}, {2}", thisRoomCamBRPos.x, thisRoomCamBRPos.y, thisRoomCamBRPos.z);
         }
         if(cbTLSetOnce != false && cbBRSetOnce != false) {
-            if(thisRoomCamTLPos.x < thisRoomCamBRPos.x && thisRoomCamTLPos.z > thisRoomCamBRPos.z) {
-                uiTx_camTL.text = string.Format("{0}, {1}, {2}", thisRoomCamTLPos.x, thisRoomCamTLPos.y, thisRoomCamTLPos.z);
-                uiImg_camTLSet.enabled = true;
-                uiTx_camBR.text = string.Format("{0}, {1}, {2}", thisRoomCamBRPos.x, thisRoomCamBRPos.y, thisRoomCamBRPos.z);
-                uiImg_camBRSet.enabled = true;
-                DebugConsole.Log("<b>Both CamBounds-Marker's positions have been placed correctly!</b>", "normal", 10f);
-            }
-            else if(thisRoomCamTLPos.x >= thisRoomCamBRPos.x && thisRoomCamTLPos.z > thisRoomCamBRPos.z) {
-                uiTx_camTL.text = string.Format("<color=#E69F00>{0}</color>, {1}, {2}", thisRoomCamTLPos.x, thisRoomCamTLPos.y, thisRoomCamTLPos.z);
+            if(thisRoomCamTLPos.y != thisRoomCamBRPos.y) {
+                uiTx_camTL.text = string.Format("{0}, <color=#E69F00>{1}</color>, {2}", thisRoomCamTLPos.x, thisRoomCamTLPos.y, thisRoomCamTLPos.z);
                 uiImg_camTLSet.enabled = false;
-                uiTx_camBR.text = string.Format("<color=#E69F00>{0}</color>, {1}, {2}", thisRoomCamBRPos.x, thisRoomCamBRPos.y, thisRoomCamBRPos.z);
+                uiTx_camBR.text = string.Format("{0}, <color=#E69F00>{1}</color>, {2}", thisRoomCamBRPos.x, thisRoomCamBRPos.y, thisRoomCamBRPos.z);
                 uiImg_camBRSet.enabled = false;
-                DebugConsole.Log("The <i><b>Top-Left</b> CamBounds-Marker</i>'s position should be <b>Above and to the Left</b> of <i><b>Bottom-Right</b> CamBounds-Marker</i>'s position, by at least 2 units.", "warning", 10f);
+                DebugConsole.Log("Both of the </b>CamBounds-Marker</b>'s positions should be on the same Y level!", "warning", 20f);
             }
-            else if(thisRoomCamTLPos.x < thisRoomCamBRPos.x && thisRoomCamTLPos.z <= thisRoomCamBRPos.z) {
-                uiTx_camTL.text = string.Format("{0}, {1},<color=#E69F00>{2}</color>", thisRoomCamTLPos.x, thisRoomCamTLPos.y, thisRoomCamTLPos.z);
-                uiImg_camTLSet.enabled = false;
-                uiTx_camBR.text = string.Format("{0}, {1},<color=#E69F00>{2}</color>", thisRoomCamBRPos.x, thisRoomCamBRPos.y, thisRoomCamBRPos.z);
-                uiImg_camBRSet.enabled = false;
-                DebugConsole.Log("The <i><b>Top-Left</b> CamBounds-Marker</i>'s position should be <b>Above and to the Left</b> of <i><b>Bottom-Right</b> CamBounds-Marker</i>'s position, by at least 2 units.", "warning", 10f);
+            else {
+                if(thisRoomCamTLPos.x < thisRoomCamBRPos.x && thisRoomCamTLPos.z > thisRoomCamBRPos.z) {
+                    uiTx_camTL.text = string.Format("{0}, {1}, {2}", thisRoomCamTLPos.x, thisRoomCamTLPos.y, thisRoomCamTLPos.z);
+                    uiImg_camTLSet.enabled = true;
+                    uiTx_camBR.text = string.Format("{0}, {1}, {2}", thisRoomCamBRPos.x, thisRoomCamBRPos.y, thisRoomCamBRPos.z);
+                    uiImg_camBRSet.enabled = true;
+                    DebugConsole.Log("<b>Both CamBounds-Marker's positions have been placed correctly!</b>", "normal", 20f);
+                }
+                else if(thisRoomCamTLPos.x >= thisRoomCamBRPos.x && thisRoomCamTLPos.z > thisRoomCamBRPos.z) {
+                    uiTx_camTL.text = string.Format("<color=#E69F00>{0}</color>, {1}, {2}", thisRoomCamTLPos.x, thisRoomCamTLPos.y, thisRoomCamTLPos.z);
+                    uiImg_camTLSet.enabled = false;
+                    uiTx_camBR.text = string.Format("<color=#E69F00>{0}</color>, {1}, {2}", thisRoomCamBRPos.x, thisRoomCamBRPos.y, thisRoomCamBRPos.z);
+                    uiImg_camBRSet.enabled = false;
+                    DebugConsole.Log("The <i><b>Top-Left</b> CamBounds-Marker</i>'s position should be <b>Above and to the Left</b> of <i><b>Bottom-Right</b> CamBounds-Marker</i>'s position, by at least 2 units.", "warning", 20f);
+                }
+                else if(thisRoomCamTLPos.x < thisRoomCamBRPos.x && thisRoomCamTLPos.z <= thisRoomCamBRPos.z) {
+                    uiTx_camTL.text = string.Format("{0}, {1},<color=#E69F00>{2}</color>", thisRoomCamTLPos.x, thisRoomCamTLPos.y, thisRoomCamTLPos.z);
+                    uiImg_camTLSet.enabled = false;
+                    uiTx_camBR.text = string.Format("{0}, {1},<color=#E69F00>{2}</color>", thisRoomCamBRPos.x, thisRoomCamBRPos.y, thisRoomCamBRPos.z);
+                    uiImg_camBRSet.enabled = false;
+                    DebugConsole.Log("The <i><b>Top-Left</b> CamBounds-Marker</i>'s position should be <b>Above and to the Left</b> of <i><b>Bottom-Right</b> CamBounds-Marker</i>'s position, by at least 2 units.", "warning", 20f);
+                }
+                else if(thisRoomCamTLPos.x >= thisRoomCamBRPos.x && thisRoomCamTLPos.z <= thisRoomCamBRPos.z) {
+                    uiTx_camTL.text = string.Format("<color=#E69F00>{0}</color>, {1},<color=#E69F00>{2}</color>", thisRoomCamTLPos.x, thisRoomCamTLPos.y, thisRoomCamTLPos.z);
+                    uiImg_camTLSet.enabled = false;
+                    uiTx_camBR.text = string.Format("<color=#E69F00>{0}</color>, {1},<color=#E69F00>{2}</color>", thisRoomCamBRPos.x, thisRoomCamBRPos.y, thisRoomCamBRPos.z);
+                    uiImg_camBRSet.enabled = false;
+                    DebugConsole.Log("The <i><b>Top-Left</b> CamBounds-Marker</i>'s position should be <b>Above and to the Left</b> of <i><b>Bottom-Right</b> CamBounds-Marker</i>'s position, by at least 2 units.", "warning", 20f);
+                }
             }
-            else if(thisRoomCamTLPos.x >= thisRoomCamBRPos.x && thisRoomCamTLPos.z <= thisRoomCamBRPos.z) {
-                uiTx_camTL.text = string.Format("<color=#E69F00>{0}</color>, {1},<color=#E69F00>{2}</color>", thisRoomCamTLPos.x, thisRoomCamTLPos.y, thisRoomCamTLPos.z);
-                uiImg_camTLSet.enabled = false;
-                uiTx_camBR.text = string.Format("<color=#E69F00>{0}</color>, {1},<color=#E69F00>{2}</color>", thisRoomCamBRPos.x, thisRoomCamBRPos.y, thisRoomCamBRPos.z);
-                uiImg_camBRSet.enabled = false;
-                DebugConsole.Log("The <i><b>Top-Left</b> CamBounds-Marker</i>'s position should be <b>Above and to the Left</b> of <i><b>Bottom-Right</b> CamBounds-Marker</i>'s position, by at least 2 units.", "warning", 10f);
-            }
+
         }
     }
 }

@@ -19,13 +19,14 @@ public class Room_Base
                                                                               //set { CamBoundsTLPos = new Vector3().FromString(value); }}
     public Vector3 CamBoundsBRPos;
     //[XmlAttribute("CamBoundsBRPos")]     public string CamBoundsBR_Surrogate{ get { return "";}
-                                                                             // set { CamBoundsBRPos = new Vector3().FromString(value); }}
-   
-    [XmlArray("Tiles")]
-    [XmlArrayItem("Tile")]
-    public List<Geom_Base> tilesOfRoom = new List<Geom_Base>();
 
+    [XmlArray("GeomsInRoom")]
+    [XmlArrayItem("Geom")]
+    public List<Geom_Base> geomsInRoom = new List<Geom_Base>();
 
+    [XmlArray("EntitiesInRoom")]
+    [XmlArrayItem("Entity")]
+    public List<Entity_Base> entitiesInRoom = new List<Entity_Base>();
    
 }
 

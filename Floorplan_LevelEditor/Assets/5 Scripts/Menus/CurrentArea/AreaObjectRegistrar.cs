@@ -28,6 +28,8 @@ public class AreaObjectRegistrar : MonoBehaviour {
     [SerializeField] GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
 
+    Room_Base tempRoomBase;
+
 
 
 
@@ -65,7 +67,6 @@ public class AreaObjectRegistrar : MonoBehaviour {
         ThisAreaEntry_CatalogObject.AreaEntryName = theAreaName;
 
         AddRoomsToAreaRoomList();
-        AddTilesToAreaTilesList();
 
         The_AreaCatalog.areaEntries.Add(ThisAreaEntry_CatalogObject);                                   //register Entry to Catalog list
 
@@ -85,7 +86,6 @@ public class AreaObjectRegistrar : MonoBehaviour {
         ThisAreaEntry_CatalogObject.AreaEntryName = theAreaName;
 
         AddRoomsToAreaRoomList();
-        AddTilesToAreaTilesList();
 
         The_AreaCatalog.areaEntries.Add(ThisAreaEntry_CatalogObject);                                   //register Entry to Catalog list
 
@@ -105,25 +105,24 @@ public class AreaObjectRegistrar : MonoBehaviour {
 //----------------------------------------------------------------------------------------------------------------------
 
 
-    void AddRoomsToAreaRoomList() {
+    void AddRoomsToAreaRoomList() { //and add tiles to Room's Tiles lists
         foreach(GameObject roomEntry in theRoomViewerMenuScript.roomEntries) {
-            ThisArea_DataObject.roomsInArea.Add(roomEntry.GetComponent<RoomViewerEntry>().ThisRoom_DataObject);
+            tempRoomBase = roomEntry.GetComponent<RoomViewerEntry>().ThisRoom_DataObject;
+            ThisArea_DataObject.roomsInArea.Add(tempRoomBase);
+
+            foreach(Geom_Base geomEntry in theTilesRegistryScript.theGeomsInAreaGrid) {
+                if(geomEntry == null)
+                    continue;
+                tempRoomBase.geomsInRoom.Add(geomEntry);
+            }
+            foreach(Entity_Base entityEntry in theTilesRegistryScript.theEntitiesInAreaGrid) {
+                if(entityEntry == null)
+                    continue;
+                tempRoomBase.entitiesInRoom.Add(entityEntry);
+            }
         }
     }
-
-    void AddTilesToAreaTilesList() {
-        foreach(Geom_Base geomEntry in theTilesRegistryScript.theGeomsInAreaGrid) {
-            if(geomEntry == null)
-                continue;
-            ThisArea_DataObject.tilesInArea.Add(geomEntry);
-        }
-        foreach(Entity_Base entityEntry in theTilesRegistryScript.theEntitiesInAreaGrid) {
-            if(entityEntry == null)
-                continue;
-            ThisArea_DataObject.entitiesInArea.Add(entityEntry);
-        }
-    }
-
+        
     public void AlterAreaID() {
         
     }
@@ -136,13 +135,15 @@ public class AreaObjectRegistrar : MonoBehaviour {
         if(ThisArea_DataObject != null) {
             foreach(Room_Base roomEntry in ThisArea_DataObject.roomsInArea) {
                 theRoomViewerMenuScript.AddRoomEntry_AreaLoad(roomEntry);
+
+                foreach(Geom_Base geomEntry in roomEntry.geomsInRoom) {
+                    objInstantiatorScript.CreateGeoms_AreaLoad(geomEntry);
+                }
+                foreach(Entity_Base entityEntry in roomEntry.entitiesInRoom) {
+                    objInstantiatorScript.CreateEntities_AreaLoad(entityEntry);
+                }
             }
-            foreach(Geom_Base geomEntry in ThisArea_DataObject.tilesInArea) {
-                objInstantiatorScript.CreateGeoms_AreaLoad(geomEntry);
-            }
-            foreach(Entity_Base entityEntry in ThisArea_DataObject.entitiesInArea) {
-                objInstantiatorScript.CreateEntities_AreaLoad(entityEntry);
-            }
+           
         }
         else {
             Debug.LogError("ERROR!: AreaObjectRegistrar.cs - Area_ReadWrite has failed to provide a proper AreaObject to the Registrar!");
