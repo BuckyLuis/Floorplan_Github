@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
-
+/*
 public enum Categories_Floors { STANDARD, PUZZLE, HAZARD, SPECIAL }
 public enum Categories_Walls { STANDARD, DOORJAMB, HAZARD, SPECIAL }        //TODO: come up with proper, needed categories
 public enum Categories_Doodads { STANDARD, DECAL, SIGNS, SPECIAL }
@@ -16,6 +16,7 @@ public enum Categories_Templates { STANDARD, SPAWNER, HAZARD, SPECIAL }
 
 [Serializable] public class Dictionary_sGo : SerializableDictionary<string, GameObject> { }
 
+*/
 public class AssetsViewerAssetManagement : MonoBehaviour {
 
     TilesetOptionsAndManager tilesetOptionsScript;

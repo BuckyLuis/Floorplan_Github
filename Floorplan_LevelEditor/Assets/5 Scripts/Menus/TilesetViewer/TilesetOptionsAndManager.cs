@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public enum RoleInTileset { NOSET, WALL, CORNER, CORNERINV, FLOOR, DOORJAMB, STAIRS, DIAG_CONTINUE, DIAG_CONEX, DIAG_ENDIN, DIAG_ENDOUT, DOODAD, PROP, SPECIAL, OTHER  }
+//public enum RoleInTileset { NOSET, WALL, CORNER, CORNERINV, FLOOR, DOORJAMB, STAIRS, DIAG_CONTINUE, DIAG_CONEX, DIAG_ENDIN, DIAG_ENDOUT, DOODAD, PROP, SPECIAL, OTHER  }
 
 [System.Serializable] public class Dictionary_iGo : SerializableDictionary<int, GameObject> { }
 

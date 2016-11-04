@@ -4,7 +4,7 @@ using System;
 using UnityEngine.UI;
 
 
-public enum TexAtlasCategory { GEOMETRY, DOODADS, PROPS, ACTORS }
+//public enum TexAtlasCategory { GEOMETRY, DOODADS, PROPS, ACTORS }
 
 
 public class TexturesViewerTexAtlasManagement : MonoBehaviour {
