@@ -165,7 +165,7 @@ public class RoomViewerEntry : MonoBehaviour {
         thisRoomID = theRoomViewerMenu.theAreaObjectRegistrar.ThisArea_DataObject.AreaID + thisRoomIndex; //+ theRoomViewerMenu.GetTimeForRoomID();
         Debug.Log(thisRoomID);
         uiIF_roomID.text = thisRoomID;
-        thisRoomColor = DistinctColors.GetNextDistinctColor();
+        thisRoomColor = DistinctColors.GetNextDistinctColor(theRoomViewerMenu.roomEntries.Count);
         uiImg_roomColorImg.color = thisRoomColor;
 
         ThisRoom_DataObject.RoomColor = thisRoomColor;

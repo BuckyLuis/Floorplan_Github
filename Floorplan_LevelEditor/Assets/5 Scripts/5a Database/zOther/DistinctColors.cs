@@ -137,7 +137,8 @@ public class DistinctColors  {
     };
 
  
-    public static Color GetNextDistinctColor() {
+    public static Color GetNextDistinctColor(int counterSet) {
+        colorIndexCounter = counterSet;
         if(colorIndexCounter > 254) {
             DebugConsole.Log("The <i><b>Distinct Color List</b></i> has run out of Colors - <b>You will now have to assign your own!</b>", "warning", 15f);
             return new Color (255,255,255);
