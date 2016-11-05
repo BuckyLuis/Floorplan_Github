@@ -139,8 +139,9 @@ public class AssetsViewerEntry_Walls : MonoBehaviour, IAssetViewerEntry {
         objectOptionsContScript.ActivateGeomOptions();
     }
 
-    public void SetSelectedMaterial(Material theMaterial) {
+    public void SetSelectedMaterial(Material theMaterial, int texAtlasIndex) {
         assetBaseObject.assetMaterial = theMaterial;
+        assetBaseObject.assetTexAtlasIndex = texAtlasIndex;
         assetBaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
         textureViewerPreviewerScript.DrawTexturePreview(theMaterial);
 
@@ -150,7 +151,7 @@ public class AssetsViewerEntry_Walls : MonoBehaviour, IAssetViewerEntry {
     void SendInfoTo_ObjectsInfo() {
         optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName( 2, (int)assetBaseObject.categoryWalls, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndices( 2, (int)assetBaseObject.categoryWalls, assetBaseObject.assetIndex, assetBaseObject.assetTexAtlasIndex);
 
         optionsInfoScript.geom0_entity1 = false;
         optionsInfoScript.tilePlacerWidget.SetActive(true);

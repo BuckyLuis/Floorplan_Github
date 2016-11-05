@@ -140,8 +140,9 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour, IAssetViewerEntry {
         objectOptionsContScript.ActivateEntitiesOptions();
     }
 
-    public void SetSelectedMaterial(Material theMaterial) {
+    public void SetSelectedMaterial(Material theMaterial, int texAtlasIndex) {
         assetBaseObject.assetMaterial = theMaterial;
+        assetBaseObject.assetTexAtlasIndex = texAtlasIndex;
         assetBaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
         textureViewerPreviewerScript.DrawTexturePreview(theMaterial);
 
@@ -151,7 +152,7 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour, IAssetViewerEntry {
     void SendInfoTo_ObjectsInfo() {
         optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName( 3, (int)assetBaseObject.categoryDoodads, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndices( 3, (int)assetBaseObject.categoryDoodads, assetBaseObject.assetIndex, assetBaseObject.assetTexAtlasIndex);
 
         optionsInfoScript.geom0_entity1 = true;
         optionsInfoScript.tilePlacerWidget.SetActive(true);

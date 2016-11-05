@@ -183,6 +183,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -466,6 +474,86 @@ Prefab:
     - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
       propertyPath: assetsList_Walls.Array.data[0].assetName
       value: Temple Wall Straight
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList.Array.data[1].texAtlasName
+      value: TestAtlas001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList.Array.data[1].texAtlasCompatMeshsets
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList.Array.data[1].texAtlasTilesetColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList.Array.data[1].texAtlasTilesetColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList.Array.data[1].texAtlasTilesetColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList.Array.data[1].texAtlasMatObject
+      value: 
+      objectReference: {fileID: 2100000, guid: a780ab044585fb5429df1ce824dba2bb, type: 2}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasMatObject
+      value: 
+      objectReference: {fileID: 2100000, guid: c2c5125f848db41409330cc5cf2e5f08, type: 2}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasName
+      value: Tile & Brick
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasCompatMeshsets
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasTilesetColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasTilesetColor.g
+      value: 0.6275859
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasTilesetColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasName
+      value: Nil Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasCompatMeshsets
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasTilesetColor.g
+      value: 0.64137924
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasTilesetColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasMatObject
+      value: 
+      objectReference: {fileID: 2100000, guid: a780ab044585fb5429df1ce824dba2bb, type: 2}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasTilesetColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasTilesetColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasTilesetColor.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11430856, guid: c353570eef2f912459fdb219d219acdb, type: 2}

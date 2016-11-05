@@ -97,7 +97,7 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
         assetIndexCounterCat2 = 1;
         assetIndexCounterCat3 = 1;
         foreach (var floorBasis in assetsList_Floors) {                                                        
-            switch ((int)floorBasis.categoryFloors)                                                                            //which category does the assetData belong to?
+            switch ((int)floorBasis.categoryFloors)                                                                   //which category does the assetData belong to?
             {
                 case 0:
                     floorBasis.assetIndex = assetIndexCounterCat0;  
@@ -116,14 +116,14 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
                     assetIndexCounterCat3++;
                     break;
             }
-            floorBasis.pageName = "Floors";                                                                                     //setup these vars, the info is for Tileset Viewer 
+            floorBasis.pageName = "Floors";                                                                           //setup these vars, the info is for Tileset Viewer 
             floorBasis.categoryName = floorBasis.categoryFloors.ToString();
             floorBasis.categoryHotkey = (int)floorBasis.categoryFloors + 1;
 
 
-            tempEntry = Instantiate(floorEntryPrefab);                                                                                        //instance the 3d mesh prefab 
+            tempEntry = Instantiate(floorEntryPrefab);                                                                     //instance the 3d mesh prefab 
             tempEntry.transform.SetParent(viewAreaFloors.transform, false);
-            AssetsViewerEntry_Floors tempScript = tempEntry.GetComponent<AssetsViewerEntry_Floors>();                                           //its script and the vars info for it
+            AssetsViewerEntry_Floors tempScript = tempEntry.GetComponent<AssetsViewerEntry_Floors>();                   //its script and the vars info for it
 
             tempScript.assetBaseObject = floorBasis;
             tempScript.assetIndex = floorBasis.assetIndex;

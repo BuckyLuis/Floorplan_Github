@@ -95,14 +95,14 @@ public class TexturesViewerEntry : MonoBehaviour {
 
 
     public void ThisSelected(bool toggleStatus) {           //called by UItoggle
-        textureViewerManageScript.SelectAndApplyTexAtlasEntry(texAtlasBaseObject.texAtlasMatObject);
+        textureViewerManageScript.SelectAndApplyTexAtlasEntry(texAtlasBaseObject.texAtlasMatObject, texAtlasBaseObject.texAtlasIndex);
     }
 
     public void SelectFromHotkey() {
         selectedToggle.group.SetAllTogglesOff();
         selectedToggle.isOn = true;
 
-        textureViewerManageScript.SelectAndApplyTexAtlasEntry(texAtlasBaseObject.texAtlasMatObject);
+        textureViewerManageScript.SelectAndApplyTexAtlasEntry(texAtlasBaseObject.texAtlasMatObject, texAtlasBaseObject.texAtlasIndex);
     }
         
 

@@ -135,18 +135,19 @@ public class AssetsViewerEntry_Floors : MonoBehaviour, IAssetViewerEntry {
         objectOptionsContScript.ActivateGeomOptions();
     }
 
-    public void SetSelectedMaterial(Material theMaterial) {         //called by TexAtlasManager, when this assetEntry is selected(assigning default texAtlas) ... OR by way of a TexAtlasEntry having been selected 
+    public void SetSelectedMaterial(Material theMaterial, int texAtlasIndex) {         //called by TexAtlasManager, when this assetEntry is selected(assigning default texAtlas) ... OR by way of a TexAtlasEntry having been selected 
         assetBaseObject.assetMaterial = theMaterial;
+        assetBaseObject.assetTexAtlasIndex = texAtlasIndex;
         assetBaseObject.worldObjectPrefab.GetComponent<Renderer>().material = theMaterial;
         textureViewerPreviewerScript.DrawTexturePreview(theMaterial);
-
+      
         SendInfoTo_OptionsInfo();
     }
 
     void SendInfoTo_OptionsInfo() {
         optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName( 1, (int)assetBaseObject.categoryFloors, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndices( 1, (int)assetBaseObject.categoryFloors, assetBaseObject.assetIndex, assetBaseObject.assetTexAtlasIndex);
 
         optionsInfoScript.geom0_entity1 = false;
         optionsInfoScript.tilePlacerWidget.SetActive(true);

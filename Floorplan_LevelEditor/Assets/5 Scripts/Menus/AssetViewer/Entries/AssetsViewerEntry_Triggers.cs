@@ -127,7 +127,7 @@ public class AssetsViewerEntry_Triggers : MonoBehaviour, IAssetViewerEntry {
 
         optionsInfoScript.SetCurrentTileSprite(assetBaseObject.assetEntryIcon);
         optionsInfoScript.SetCurrentTileGO(assetWorldObject);
-        objInstantiatorScript.AssignIndicesAndMatName( 6, (int)assetBaseObject.categoryTriggers, assetBaseObject.assetIndex, assetBaseObject.assetMaterialName);
+        objInstantiatorScript.AssignIndices( 6, (int)assetBaseObject.categoryTriggers, assetBaseObject.assetIndex, assetBaseObject.assetTexAtlasIndex); //triggers have their material setup in their Prefab, there is no configurable TexAtlas for them
 
         optionsInfoScript.geom0_entity1 = true;
         optionsInfoScript.tilePlacerWidget.SetActive(true);

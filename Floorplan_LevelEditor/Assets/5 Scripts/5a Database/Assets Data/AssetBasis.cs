@@ -6,7 +6,7 @@ public class AssetBasis {
     
     public string assetName;
   
-    [HideInInspector] public string assetMaterialName;   //the material's name  -- used for LevelConstruction
+    [HideInInspector] public int assetTexAtlasIndex;   //the texAtlas's index  -- used for LevelConstruction
 
     public Sprite assetEntryIcon;            //only in editor
     public GameObject worldObjectPrefab;       //reference of GameObject Mesh Prefab -- only in editor

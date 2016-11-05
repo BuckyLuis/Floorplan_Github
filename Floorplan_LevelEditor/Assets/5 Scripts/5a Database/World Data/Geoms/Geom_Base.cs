@@ -15,7 +15,7 @@ public class Geom_Base
     [XmlElement("CategoryIndex")]   public int CategoryIndex {get; set;}
     [XmlElement("AssetIndex")]	    public int AssetIndex {get; set;}
 
-    [XmlElement("MaterialName")]  public string MaterialName {get; set;}
+    [XmlElement("TexAtlasIndex")]  public int TexAtlasIndex {get; set;}
 
     [XmlElement("TileFacingRot")]  public float TileFacingRot {get; set;}   //0-N, 1-E, 2-S, 3-W
    

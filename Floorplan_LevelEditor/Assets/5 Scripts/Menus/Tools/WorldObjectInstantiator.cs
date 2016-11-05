@@ -6,6 +6,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
     [SerializeField] GameObject AssetsDbController;
     AssetsViewerAssetManagement theAssetManagerScript;
+    TexturesViewerTexAtlasManagement theTexAtlasManagerScript;
 
     [SerializeField] GameObject AreaGeomParent;
     [SerializeField] GameObject AreaEntityParent;
@@ -22,7 +23,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
     public int typeIndex {get; protected set;}
     public int categoryIndex {get; protected set;}
     public int assetIndex {get; protected set;}
-    public string materialName {get; protected set;}
+    public int texAtlasIndex {get; protected set;}
     public float tileFacingRot {get; protected set;}
     public Color roomColor {get; protected set;}
 
@@ -32,6 +33,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
     GameObject tempWorldObjectInfo;
 
     GameObject tempWorldGOPrefab;
+    Material setAsideGOMaterial;
 
     Vector3 belongMarkerPos = new Vector3(0, -0.2f, 0);
 
@@ -39,6 +41,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
     void Start() {
         AssetsDbController = GameObject.FindGameObjectWithTag("AssetsDBController");
         theAssetManagerScript = AssetsDbController.GetComponent<AssetsViewerAssetManagement>();
+        theTexAtlasManagerScript = AssetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
     }
 
 
@@ -64,7 +67,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
         tempGeomBaseObject.TypeIndex = typeIndex;
         tempGeomBaseObject.CategoryIndex = categoryIndex;
         tempGeomBaseObject.AssetIndex = assetIndex;
-        tempGeomBaseObject.MaterialName = materialName;
+        tempGeomBaseObject.TexAtlasIndex = texAtlasIndex;
         tempGeomBaseObject.TileFacingRot = tileFacingRot;
 
         tempGeomBaseObject.editorGoName = tempTileObject.name;
@@ -85,7 +88,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
         typeIndex = theGeomBase.TypeIndex;
         categoryIndex = theGeomBase.CategoryIndex;
         assetIndex = theGeomBase.AssetIndex;
-        materialName = theGeomBase.MaterialName;
+        texAtlasIndex = theGeomBase.TexAtlasIndex;
         tileFacingRot = theGeomBase.TileFacingRot;
 
         tempTileObject = (GameObject)Instantiate(theGeomBase.theGameObjectPrefab, thePosition, Quaternion.Euler(theGeomBase.theGameObjectPrefab.transform.rotation.x, tileFacingRot, theGeomBase.theGameObjectPrefab.transform.rotation.z));
@@ -116,13 +119,14 @@ public class WorldObjectInstantiator : MonoBehaviour {
         typeIndex = theGeomBase.TypeIndex;
         categoryIndex = theGeomBase.CategoryIndex;
         assetIndex = theGeomBase.AssetIndex;
-        materialName = theGeomBase.MaterialName;
+        texAtlasIndex = theGeomBase.TexAtlasIndex;
         tileFacingRot = theGeomBase.TileFacingRot;
 
         tempWorldGOPrefab = RetrieveGOFromIndices(typeIndex, categoryIndex, assetIndex);
 
         tempTileObject = (GameObject)Instantiate(tempWorldGOPrefab, thePosition, Quaternion.Euler(tempWorldGOPrefab.transform.rotation.x, tileFacingRot, tempWorldGOPrefab.transform.rotation.z));
         tempTileObject.name = theGeomBase.editorGoName;
+        tempTileObject.GetComponent<Renderer>().material = RetrieveMatFromIndices(typeIndex, texAtlasIndex);
 
 
         tempTileObject.transform.SetParent(AreaGeomParent.transform, true);
@@ -163,7 +167,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
         tempEntityBaseObject.TypeIndex = typeIndex;
         tempEntityBaseObject.CategoryIndex = categoryIndex;
         tempEntityBaseObject.AssetIndex = assetIndex;
-        tempEntityBaseObject.MaterialName = materialName;
+        tempEntityBaseObject.TexAtlasIndex = texAtlasIndex;
         tempEntityBaseObject.TileFacingRot = tileFacingRot;
 
         tempEntityBaseObject.editorGoName = tempTileObject.name;
@@ -183,12 +187,11 @@ public class WorldObjectInstantiator : MonoBehaviour {
         typeIndex = theEntityBase.TypeIndex;
         categoryIndex = theEntityBase.CategoryIndex;
         assetIndex = theEntityBase.AssetIndex;
-        materialName = theEntityBase.MaterialName;
+        texAtlasIndex = theEntityBase.TexAtlasIndex;
         tileFacingRot = theEntityBase.TileFacingRot;
 
         tempTileObject = (GameObject)Instantiate(theEntityBase.theGameObjectPrefab, thePosition, Quaternion.Euler(theEntityBase.theGameObjectPrefab.transform.rotation.x, tileFacingRot, theEntityBase.theGameObjectPrefab.transform.rotation.z));
         tempTileObject.name = theEntityBase.editorGoName;
-
 
         tempTileObject.transform.SetParent(AreaEntityParent.transform, true);
 
@@ -213,13 +216,15 @@ public class WorldObjectInstantiator : MonoBehaviour {
         typeIndex = theEntityBase.TypeIndex;
         categoryIndex = theEntityBase.CategoryIndex;
         assetIndex = theEntityBase.AssetIndex;
-        materialName = theEntityBase.MaterialName;
+        texAtlasIndex = theEntityBase.TexAtlasIndex;
         tileFacingRot = theEntityBase.TileFacingRot;
 
         tempWorldGOPrefab = RetrieveGOFromIndices(typeIndex, categoryIndex, assetIndex);
 
         tempTileObject = (GameObject)Instantiate(tempWorldGOPrefab, thePosition, Quaternion.Euler(tempWorldGOPrefab.transform.rotation.x, tileFacingRot, tempWorldGOPrefab.transform.rotation.z));
         tempTileObject.name = theEntityBase.editorGoName;
+        setAsideGOMaterial = tempTileObject.GetComponent<Renderer>().material;      //if the Entity is a Trigger, we want it to keep its original Material.
+        tempTileObject.GetComponent<Renderer>().material = RetrieveMatFromIndices(typeIndex, texAtlasIndex);
 
 
         tempTileObject.transform.SetParent(AreaEntityParent.transform, true);
@@ -250,12 +255,12 @@ public class WorldObjectInstantiator : MonoBehaviour {
         roomColor = theRoomColor;
     }
 
-    public void AssignIndicesAndMatName(int theTypeIndex ,int theCategoryIndex, int theAssetIndex, string theMaterialName)
+    public void AssignIndices(int theTypeIndex ,int theCategoryIndex, int theAssetIndex, int theTexAtlasIndex)
     {
         typeIndex = theTypeIndex;
         categoryIndex = theCategoryIndex;
         assetIndex = theAssetIndex;
-        materialName = theMaterialName;
+        texAtlasIndex = theTexAtlasIndex;
     }
 
 
@@ -308,6 +313,32 @@ public class WorldObjectInstantiator : MonoBehaviour {
                 break;
         }
         DebugConsole.Log("<b>Loading of an Area Object Failed!</b> - WorldObjectInstantiator.RetrieveGOFromIndices = c: " + theCategoryIndex + " a: " + theAssetIndex, "error");
+        return null;
+    }
+
+    Material RetrieveMatFromIndices(int theTypeIndex, int theTexAtlasIndex) {
+        switch (theTypeIndex)
+        {
+            case 1:
+                return theTexAtlasManagerScript.texAtlasList_Geoms[theTexAtlasIndex].texAtlasMatObject;
+                break;
+            case 2:
+                goto case 1;
+                break;
+            case 3: 
+                return theTexAtlasManagerScript.texAtlasList_Doodads[theTexAtlasIndex].texAtlasMatObject;
+                break;
+            case 4:
+                return theTexAtlasManagerScript.texAtlasList_Props[theTexAtlasIndex].texAtlasMatObject;
+                break;
+            case 5:
+                return theTexAtlasManagerScript.texAtlasList_Actors[theTexAtlasIndex].texAtlasMatObject;
+                break;
+            case 6:
+                return setAsideGOMaterial;   //if the Entity is a Trigger, we want it to keep its original Material.
+                break;
+        }
+        Debug.LogError("WorldObjectInstantiator.cs/RetrieveMatFromIndices failed to be supplied with a correct TypeIndex for the queried Object!");
         return null;
     }
    
