@@ -13,7 +13,7 @@ public class RoomViewerEntry : MonoBehaviour {
     public Room_Base ThisRoom_DataObject = new Room_Base();
 
 //------------ Config These! ---------------------
-    public int thisRoomIndex;   //index of room in Area list
+    public int thisRoomAreaIndex;   //index of room in Area list
     public string thisRoomID;      //identifier for room,  for tiles to know
 
     public string thisRoomName; 
@@ -116,7 +116,7 @@ public class RoomViewerEntry : MonoBehaviour {
             thisRoomName = ThisRoom_DataObject.RoomName;
         
         uiTx_RoomIndex.text = ThisRoom_DataObject.RoomAreaIndex.ToString();     //index
-        thisRoomIndex = ThisRoom_DataObject.RoomAreaIndex;
+        thisRoomAreaIndex = ThisRoom_DataObject.RoomAreaIndex;
 
         thisRoomColor = uiImg_roomColorImg.color = ThisRoom_DataObject.RoomColor;                   //color
 
@@ -155,15 +155,15 @@ public class RoomViewerEntry : MonoBehaviour {
 
     public void SetRoomIndex() {
         uiTx_RoomIndex.text = theRoomViewerMenu.roomEntries.Count.ToString();
-        thisRoomIndex = theRoomViewerMenu.roomEntries.Count;
+        thisRoomAreaIndex = theRoomViewerMenu.roomEntries.Count;
 
-        ThisRoom_DataObject.RoomAreaIndex = thisRoomIndex;
+        ThisRoom_DataObject.RoomAreaIndex = thisRoomAreaIndex;
     }
 
     void SetRoomDefaultValues() {
         //RoomID:  devkey 1 digit + areaID 3 digits + roomIndex 2 digits  //+ formatted UTC Time 
-        thisRoomID = theRoomViewerMenu.theAreaObjectRegistrar.ThisArea_DataObject.AreaID + thisRoomIndex; //+ theRoomViewerMenu.GetTimeForRoomID();
-        Debug.Log(thisRoomID);
+        thisRoomID = theRoomViewerMenu.theAreaObjectRegistrar.ThisArea_DataObject.AreaID + thisRoomAreaIndex; //+ theRoomViewerMenu.GetTimeForRoomID();
+        ThisRoom_DataObject.RoomID = thisRoomID;
         uiIF_roomID.text = thisRoomID;
         thisRoomColor = DistinctColors.GetNextDistinctColor(theRoomViewerMenu.roomEntries.Count);
         uiImg_roomColorImg.color = thisRoomColor;
@@ -186,7 +186,6 @@ public class RoomViewerEntry : MonoBehaviour {
         ObjectFacingToolbar.anInputFieldIsInFocus = false;
 
         thisRoomID = uiIF_roomID.text;
-
         ThisRoom_DataObject.RoomID = thisRoomID;
 
         if(markerCamBoundsTL != null) {
@@ -204,7 +203,6 @@ public class RoomViewerEntry : MonoBehaviour {
         ObjectFacingToolbar.anInputFieldIsInFocus = false;
 
         thisRoomName = uiIF_roomName.text;
-
         ThisRoom_DataObject.RoomName = thisRoomName;
 
         DeactivateRoomEntry();
@@ -232,7 +230,7 @@ public class RoomViewerEntry : MonoBehaviour {
 
     public void ToggleActiveRoom(bool toggleStatus) {
         if(toggleStatus == true) {
-            theRoomViewerMenu.activeRoomIndex = thisRoomIndex;
+            theRoomViewerMenu.activeRoomIndex = thisRoomAreaIndex;
             theRoomViewerMenu.activeRoomID = thisRoomID;
             ActivateRoomEntry();
             theRoomViewerMenu.RoomInfoToObjectPaintMenu(thisRoomColor);

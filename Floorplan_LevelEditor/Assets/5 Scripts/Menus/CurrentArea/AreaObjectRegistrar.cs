@@ -113,12 +113,14 @@ public class AreaObjectRegistrar : MonoBehaviour {
             foreach(Geom_Base geomEntry in theTilesRegistryScript.theGeomsInAreaGrid) {
                 if(geomEntry == null)
                     continue;
-                tempRoomBase.geomsInRoom.Add(geomEntry);
+                if(geomEntry.RoomID == tempRoomBase.RoomID) 
+                    tempRoomBase.geomsInRoom.Add(geomEntry);
             }
             foreach(Entity_Base entityEntry in theTilesRegistryScript.theEntitiesInAreaGrid) {
                 if(entityEntry == null)
                     continue;
-                tempRoomBase.entitiesInRoom.Add(entityEntry);
+                if(entityEntry.RoomID == tempRoomBase.RoomID) 
+                    tempRoomBase.entitiesInRoom.Add(entityEntry);
             }
         }
     }
