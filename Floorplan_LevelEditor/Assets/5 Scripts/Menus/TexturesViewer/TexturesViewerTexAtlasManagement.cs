@@ -12,15 +12,22 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
     [Header (">>> >>> --- TextureAtlas Lists --- <<< <<<", order = 0)] 
     [Header ("IMPORTANT!: enter compatMeshsets as numbers separated by a comma , ", order = 1)]
     [Space(15, order = 2)]
+    [Header (" --- Geoms --- ", order = 3)] 
     public List<TextureAtlas_Base> texAtlasList_Geoms = new List<TextureAtlas_Base>();
+    [Space(15, order = 4)]
+    [Header (" --- Doodads --- ", order = 5)] 
     public List<TextureAtlas_Base> texAtlasList_Doodads = new List<TextureAtlas_Base>();
+    [Space(15, order = 6)]
+    [Header (" --- Props --- ", order = 7)] 
     public List<TextureAtlas_Base> texAtlasList_Props = new List<TextureAtlas_Base>();
+    [Space(15, order = 8)]
+    [Header (" --- Actors --- ", order = 9)] 
     public List<TextureAtlas_Base> texAtlasList_Actors = new List<TextureAtlas_Base>();
-    [Space(40, order = 3)]
-    [Header (" ^^^ ^^^ --- --- --- --- --- --- ^^^ ^^^ ", order = 4)]    
+    [Space(40, order = 10)]
+    [Header (" ^^^ ^^^ --- --- --- --- --- --- ^^^ ^^^ ", order = 11)]    
 
-    [Space(120, order = 5)]
-    [Header (" --- TextureAtlas Dict - DO NOT EDIT! --- ", order = 6)] 
+    [Space(120, order = 12)]
+    [Header (" --- TextureAtlas Dict - DO NOT EDIT! --- ", order = 13)] 
     public Dictionary_sGo texAtlasGeomsDict;
     public Dictionary_sGo texAtlasDoodadsDict;
     public Dictionary_sGo texAtlasPropsDict;
@@ -34,8 +41,8 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
     [HideInInspector] public List<GameObject> currentCompatTexAtlasEntries = new List<GameObject>();
 
 //---------------------- UI Ref -------------------------------------
-    [Space(20, order = 7)]
-    [Header (" --- UI references - DO NOT EDIT! --- ", order = 8)] 
+    [Space(20, order = 14)]
+    [Header (" --- UI references - DO NOT EDIT! --- ", order = 15)] 
     [SerializeField] GameObject viewAreaTexAtlas;
     [SerializeField] GameObject texAtlasEntryPrefab;
 

@@ -28,21 +28,37 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
     int assetIndexCounterCat3;
 //------------- Assets Lists --------------------
     [Header (">>> >>> --- Asset Lists --- <<< <<<", order = 0)]            //in the editor you setup references to all of the asset's vars
+    [Space(15, order = 1)]
+    [Header (" --- Floors --- ", order = 2)] 
     public List<Asset_Floor_Base> assetsList_Floors = new List<Asset_Floor_Base>();
+    [Space(15, order = 3)]
+    [Header (" --- Walls --- ", order = 4)] 
     public List<Asset_Wall_Base> assetsList_Walls = new List<Asset_Wall_Base>();
+    [Space(15, order = 5)]
+    [Header (" --- Doodads --- ", order = 6)] 
     public List<Asset_Doodad_Base> assetsList_Doodads = new List<Asset_Doodad_Base>();
+    [Space(15, order = 7)]
+    [Header (" --- Props --- ", order = 8)] 
     public List<Asset_Prop_Base> assetsList_Props = new List<Asset_Prop_Base>();
+    [Space(15, order = 9)]
+    [Header (" --- Actors --- ", order = 10)] 
     public List<Asset_Actor_Base> assetsList_Actors = new List<Asset_Actor_Base>();
+    [Space(15, order = 11)]
+    [Header (" --- Triggers --- ", order = 12)] 
     public List<Asset_Trigger_Base> assetsList_Triggers = new List<Asset_Trigger_Base>();
+    [Space(35, order = 13)]
+    [Header (" --- Tilesets --- ", order = 14)] 
     public List<Asset_Tileset_Base> assetsList_Tilesets = new List<Asset_Tileset_Base>();
+    [Space(15, order = 15)]
+    [Header (" --- Templates --- ", order = 16)] 
     public List<Asset_Template_Base> assetsList_Templates = new List<Asset_Template_Base>();
-    [Space(40, order = 1)]
-    [Header (" ^^^ ^^^ --- --- --- --- --- --- ^^^ ^^^ ", order = 2)]    
+    [Space(40, order = 17)]
+    [Header (" ^^^ ^^^ --- --- --- --- --- --- ^^^ ^^^ ", order = 18)]    
 
 
     //----------- Assets Dicts ----------------------  //these Dictionaries exist simply to denote seperation of the assets into types and categories.
-    [Space(120, order = 3)]
-    [Header (" --- Assets Dicts - DO NOT EDIT! --- ", order = 4)]  // these Dictionaries hold references to the constructed AssetViewerEntry objects
+    [Space(120, order = 19)]
+    [Header (" --- Assets Dicts - DO NOT EDIT! --- ", order = 20)]  // these Dictionaries hold references to the constructed AssetViewerEntry objects
 
 
 
@@ -56,8 +72,8 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
     public Dictionary_sGo assetsEntriesDict_Templates;
    
 //---------------- UI refs ----------------------
-    [Space(20, order = 5)]
-    [Header (" --- UI references - DO NOT EDIT! --- ", order = 6)] 
+    [Space(20, order = 21)]
+    [Header (" --- UI references - DO NOT EDIT! --- ", order = 22)] 
 
  
     [SerializeField] GameObject viewAreaFloors;
@@ -78,7 +94,7 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
     [SerializeField] GameObject tilesetEntryPrefab;
     [SerializeField] GameObject templateEntryPrefab;
 
-    [Header ("--- --- --- --- --- ---", order = 7)]    
+    [Header ("--- --- --- --- --- ---", order = 23)]    
 
     GameObject tempEntry;
 
