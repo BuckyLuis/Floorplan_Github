@@ -1,0 +1,29 @@
+﻿using UnityEngine;
+using System.Collections;
+
+[System.Serializable]
+public class AssetBasis {
+    
+    public string assetName;
+  
+    [HideInInspector] public int assetTexAtlasIndex;   //the texAtlas's index  -- used for LevelConstruction
+
+    public Sprite assetEntryIcon;            //only in editor
+    public GameObject worldObjectPrefab;       //reference of GameObject Mesh Prefab -- only in editor
+
+    public int tilesetIndex; //only in editor - 0 = false   (index - 1) 
+    public RoleInTileset tilesetRole;
+
+    [HideInInspector] public Material assetMaterial;   //reference of Material Mesh Texture -- only in editor
+    public int uvMapSectorFlag;                          //only in editor
+    public string texturesetFlags;                              //only in editor
+    [HideInInspector] public string texturesetString;       //only in editor
+    public Sprite assetUsageIcon;               //used only in editor, convenience
+
+    //-- for Tileset Member--
+    [HideInInspector] public string pageName;
+    [HideInInspector] public string categoryName;
+    [HideInInspector] public int categoryHotkey;
+    [HideInInspector] public int assetIndex;   // index in AssetsDictionary -- used for ingame LevelConstruction        //assigned by AssetsViewerAssetManagement.cs 
+
+}

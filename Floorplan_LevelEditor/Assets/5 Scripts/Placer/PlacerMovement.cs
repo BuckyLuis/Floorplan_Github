@@ -4,7 +4,7 @@ using System.Collections;
 public class PlacerMovement: MonoBehaviour {		
 
     [SerializeField] GameObject AssetsDBController;
-    OptionsInfoDisplay optionsInfoScript;
+    CurrentSelectionAndDisplay currSelectionsScript;
 
     public LayerMask mask;
 
@@ -14,7 +14,7 @@ public class PlacerMovement: MonoBehaviour {
     public int tilePlacerYpos;
 
     void Start() {
-        optionsInfoScript = AssetsDBController.GetComponent<OptionsInfoDisplay>();
+        currSelectionsScript = AssetsDBController.GetComponent<CurrentSelectionAndDisplay>();
         tilePlacerYpos = 0;
     }
 
@@ -25,7 +25,7 @@ public class PlacerMovement: MonoBehaviour {
 		{
 			Vector3 wantedPos = hit.point;
 
-            if(optionsInfoScript.geom0_entity1 == false) {
+            if(currSelectionsScript.geom0_entity1 == false) {
                 float xPos = Mathf.Round(wantedPos.x / 2);                                                          
                 float zPos = Mathf.Round(wantedPos.z / 2);
                 destinationPos = new Vector3(xPos * 2, tilePlacerYpos, zPos * 2);

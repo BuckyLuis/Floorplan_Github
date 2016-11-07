@@ -1,14 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\5 Scripts\Menus\ObjectOptions\ObjectOptionsController.cs">
     <Files>
-      <File FileName="Assets\5 Scripts\Menus\TexturesViewer\TexturesViewerTexAtlasManagement.cs" Line="1" Column="1" />
-      <File FileName="Assets\5 Scripts\Menus\AssetViewer\AssetsViewerAssetManagement.cs" Line="1" Column="1" />
-      <File FileName="Assets\AreaTilesRegistry.cs" Line="1" Column="1" />
-      <File FileName="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs" Line="116" Column="61" />
-      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerMenu.cs" Line="22" Column="48" />
-      <File FileName="Assets\5 Scripts\Menus\RoomViewer\RoomViewerEntry.cs" Line="256" Column="42" />
-      <File FileName="Assets\5 Scripts\5a Database\World Data\Rooms\Room_Base.cs" Line="1" Column="1" />
+      <File FileName="Assets\5 Scripts\Menus\ObjectOptions\ObjectOptionsController.cs" Line="1" Column="1" />
+      <File FileName="Assets\5 Scripts\Menus\TexturesViewer\TexturesViewerTexAtlasManagement.cs" Line="162" Column="55" />
+      <File FileName="Assets\5 Scripts\Database\Assets Data\AssetBasis.cs" Line="18" Column="55" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -16,7 +16,7 @@ GameObject:
   m_Layer: 0
   m_Name: '- == Tools Manager ==-'
   m_TagString: ToolsController
-  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f98c0a26b928224ea9e5eda6cbbf048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssetsDbController: {fileID: 0}
   AreaGeomParent: {fileID: 0}
   AreaEntityParent: {fileID: 0}
   roomBelongingMarker: {fileID: 194708, guid: dc171256c9f73a3428346c9fc9c30cab, type: 2}
@@ -109,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5379f9dcf0f594bab56960a33167a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssetsDBController: {fileID: 0}
   geomOptionsMenu: {fileID: 0}
   entityOptionsMenu: {fileID: 0}
   tilesetOptionsMenu: {fileID: 0}

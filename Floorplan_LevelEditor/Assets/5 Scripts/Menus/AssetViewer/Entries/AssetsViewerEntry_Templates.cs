@@ -7,7 +7,7 @@ public class AssetsViewerEntry_Templates : MonoBehaviour {
     GameObject assetsDbController;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
-    OptionsInfoDisplay optionsInfoScript;
+    CurrentSelectionAndDisplay optionsInfoScript;
 
     GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
@@ -53,7 +53,7 @@ public class AssetsViewerEntry_Templates : MonoBehaviour {
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
-        optionsInfoScript = assetsDbController.GetComponent<OptionsInfoDisplay>();
+        optionsInfoScript = assetsDbController.GetComponent<CurrentSelectionAndDisplay>();
 
         toolsController = GameObject.FindWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();

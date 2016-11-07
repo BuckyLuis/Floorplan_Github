@@ -10,7 +10,7 @@ public class RoomViewerMenu : MonoBehaviour {
     public AreaObjectRegistrar theAreaObjectRegistrar;
 
     GameObject assetsDbController;
-    OptionsInfoDisplay optionsInfoScript;
+    CurrentSelectionAndDisplay optionsInfoScript;
 
     public List<GameObject> roomEntries = new List<GameObject>();
 
@@ -40,7 +40,7 @@ public class RoomViewerMenu : MonoBehaviour {
     void Start() {
         theAreaObjectRegistrar = GetComponent<AreaObjectRegistrar>();
         assetsDbController = GameObject.FindWithTag("AssetsDBController");
-        optionsInfoScript = assetsDbController.GetComponent<OptionsInfoDisplay>();
+        optionsInfoScript = assetsDbController.GetComponent<CurrentSelectionAndDisplay>();
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
 
         placeCamBoundsScript = placerWidget_CamBounds.GetComponent<PlaceCamBoundsMarker>();

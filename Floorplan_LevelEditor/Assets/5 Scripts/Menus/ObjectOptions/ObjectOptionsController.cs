@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class ObjectOptionsController : MonoBehaviour {
 
+    [SerializeField]GameObject AssetsDBController;
+    CurrentSelectionAndDisplay currSelectionAndDisplayScript;
+
     [SerializeField] GameObject geomOptionsMenu;
     [SerializeField] GameObject entityOptionsMenu;
     [SerializeField] GameObject tilesetOptionsMenu;
@@ -19,9 +22,13 @@ public class ObjectOptionsController : MonoBehaviour {
     [SerializeField] GameObject ui_btnTilesetPlacer;
     [SerializeField] GameObject ui_btnTemplatePlacer;
  
-	
+    void Start() {
+        currSelectionAndDisplayScript = AssetsDBController.GetComponent<CurrentSelectionAndDisplay>();
+    }
 
     public void ActivateGeomOptions() {
+        currSelectionAndDisplayScript.geom0_entity1 = false;
+
         //----- Menus -----------
         entityOptionsMenu.SetActive(false);
         tilesetOptionsMenu.SetActive(false);
@@ -45,6 +52,8 @@ public class ObjectOptionsController : MonoBehaviour {
     }
 
     public void ActivateEntitiesOptions() {
+        currSelectionAndDisplayScript.geom0_entity1 = true;
+
         //----- Menus -----------
         geomOptionsMenu.SetActive(false);
         tilesetOptionsMenu.SetActive(false);

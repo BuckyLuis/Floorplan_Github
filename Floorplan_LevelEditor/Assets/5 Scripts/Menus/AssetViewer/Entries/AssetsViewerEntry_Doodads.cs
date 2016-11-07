@@ -8,7 +8,7 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour, IAssetViewerEntry {
     AssetsViewerAssetManagement assetViewerMgmtScript;
     TexturesViewerTexAtlasManagement textureViewerManageScript;
     TexturesViewerTexPreviewer textureViewerPreviewerScript;
-    OptionsInfoDisplay optionsInfoScript;
+    CurrentSelectionAndDisplay optionsInfoScript;
 
     GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
@@ -43,7 +43,7 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour, IAssetViewerEntry {
     Text hkText0;
     Text hkText1;
 
-    Sprite iconSprite;
+    Image iconSprite;
 
     Image tilesetColor;
     Text tilesetNumber;
@@ -59,7 +59,7 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour, IAssetViewerEntry {
         assetViewerMgmtScript = assetsDbController.GetComponent<AssetsViewerAssetManagement>();
         textureViewerManageScript = assetsDbController.GetComponent<TexturesViewerTexAtlasManagement>();
         textureViewerPreviewerScript = assetsDbController.GetComponent<TexturesViewerTexPreviewer>();
-        optionsInfoScript = assetsDbController.GetComponent<OptionsInfoDisplay>();
+        optionsInfoScript = assetsDbController.GetComponent<CurrentSelectionAndDisplay>();
 
         toolsController = GameObject.FindWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
@@ -72,7 +72,7 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour, IAssetViewerEntry {
         hkText0 = indexHkObject0.GetComponent<Text>();
         hkText1 = indexHkObject1.GetComponent<Text>();
 
-        iconSprite = iconObject.GetComponent<Sprite>();
+        iconSprite = iconObject.GetComponent<Image>();
         tilesetColor = colorObject.GetComponent<Image>();
         tilesetNumber = tilesetNumberObject.GetComponent<Text>();
 
@@ -92,7 +92,7 @@ public class AssetsViewerEntry_Doodads : MonoBehaviour, IAssetViewerEntry {
             hkText0.text = assetIndexString;   
             hkText1.text = "";
         }
-        iconSprite = assetBaseObject.assetEntryIcon;
+        iconSprite.sprite = assetBaseObject.assetEntryIcon;
 
         if(assetBaseObject.tilesetIndex != 0) {
             tilesetIndexAdjust = assetBaseObject.tilesetIndex - 1;

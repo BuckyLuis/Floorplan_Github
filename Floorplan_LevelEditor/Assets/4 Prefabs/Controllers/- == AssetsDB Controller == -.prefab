@@ -43,7 +43,6 @@ GameObject:
   - 114: {fileID: 11461310}
   - 114: {fileID: 11414772}
   - 114: {fileID: 11419270}
-  - 114: {fileID: 11430856}
   - 114: {fileID: 11417852}
   - 114: {fileID: 11452910}
   - 114: {fileID: 11404564}
@@ -138,15 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9663e049f19673e42b3923e8267fc0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePlacerObject: {fileID: 0}
-  toolsController: {fileID: 0}
-  databaseController: {fileID: 0}
-  selectedTileIndex: 0
-  ui_TxtRoomID: {fileID: 0}
-  ui_RoomColor: {fileID: 0}
-  ui_ImgTileIcon: {fileID: 0}
-  ui_btnGeomPlacer: {fileID: 0}
-  ui_btnEntityPlacer: {fileID: 0}
 --- !u!114 &11414772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,13 +148,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8090c00ddc007b46bbb064e46cb7942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texAtlasList:
-  - texAtlasName: TestAtlas000
-    texAtlasCategory: 0
-    texAtlasCompatMeshsets: 0
-    texAtlasTilesetColor: {r: 0.2769788, g: 0.8014706, b: 0.8014706, a: 0}
-    texAtlasMatObject: {fileID: 2100000, guid: 6835b341cb984014d8bb8dc2bfc9ae86, type: 2}
-  texAtlasEntriesDict:
+  texAtlasList_Geoms:
+  - texAtlasName: Tile & Brick
+    texAtlasIndex: 0
+    texAtlasCompatMeshsets: A0
+    texAtlasTilesetColor: {r: 0, g: 0.6275859, b: 1, a: 1}
+    texAtlasMatObject: {fileID: 2100000, guid: c2c5125f848db41409330cc5cf2e5f08, type: 2}
+  - texAtlasName: Nil Test
+    texAtlasIndex: 0
+    texAtlasCompatMeshsets: A0
+    texAtlasTilesetColor: {r: 1, g: 0.64137924, b: 0, a: 1}
+    texAtlasMatObject: {fileID: 2100000, guid: a780ab044585fb5429df1ce824dba2bb, type: 2}
+  texAtlasList_Doodads: []
+  texAtlasList_Props:
+  - texAtlasName: Stone PushBlock
+    texAtlasIndex: 0
+    texAtlasCompatMeshsets: D0
+    texAtlasTilesetColor: {r: 0.8455882, g: 0.34818336, b: 0.34818336, a: 0}
+    texAtlasMatObject: {fileID: 2100000, guid: c2c5125f848db41409330cc5cf2e5f08, type: 2}
+  texAtlasList_Actors: []
+  texAtlasGeomsDict:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  texAtlasDoodadsDict:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  texAtlasPropsDict:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys:
+    - 
+    - 
+    - 
+    _Values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  texAtlasActorsDict:
     _Buckets: ffffffffffffffffffffffff
     _HashCodes: 000000000000000000000000
     _Next: 000000000000000000000000
@@ -239,17 +290,6 @@ MonoBehaviour:
   tgl_allowAutoReset: {fileID: 0}
   ui_txtLastHotkeyEntered: {fileID: 0}
   ui_imgHotkeyStage: {fileID: 0}
---- !u!114 &11430856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68a24322d7fb19c4db047787ef4dc95e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11442878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -273,15 +313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6f88796a60f8a4d852876158d5fcb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePlacerObject: {fileID: 0}
-  toolsController: {fileID: 0}
-  databaseController: {fileID: 0}
-  selectedTileIndex: 0
-  ui_TxtRoomID: {fileID: 0}
-  ui_RoomColor: {fileID: 0}
-  ui_ImgTileIcon: {fileID: 0}
-  ui_btnGeomPlacer: {fileID: 0}
-  ui_btnEntityPlacer: {fileID: 0}
 --- !u!114 &11461310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,15 +325,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assetsList_Floors:
-  - assetName: Tile Floor
-    assetMaterialName: 
-    assetEntryIcon: {fileID: 0}
+  - assetName: Floor Plane
+    assetTexAtlasIndex: 0
+    assetEntryIcon: {fileID: 21300000, guid: ad14d46573e23f940aca0f261f23ba5d, type: 3}
     worldObjectPrefab: {fileID: 178938, guid: fc041408698de5f47b86f8166e681a6a, type: 2}
     tilesetIndex: 1
     tilesetRole: 4
     assetMaterial: {fileID: 0}
-    uvMapSectorFlag: 0
-    texturesetFlag: 0
+    uvMapSectorFlag: 3
+    texturesetFlags: A0
     texturesetString: 
     assetUsageIcon: {fileID: 0}
     pageName: 
@@ -311,15 +342,159 @@ MonoBehaviour:
     assetIndex: 0
     categoryFloors: 0
   assetsList_Walls:
-  - assetName: TestWall0
-    assetMaterialName: 
-    assetEntryIcon: {fileID: 0}
-    worldObjectPrefab: {fileID: 132144, guid: e8214cc73496a034586e14aa4e06beb9, type: 2}
+  - assetName: Temple Straight
+    assetTexAtlasIndex: 0
+    assetEntryIcon: {fileID: 21300000, guid: e475b33c94688af4894287e3bcc1f91a, type: 3}
+    worldObjectPrefab: {fileID: 100000, guid: 6b1a0a7db170941438dc77649dfc5435, type: 3}
     tilesetIndex: 0
-    tilesetRole: 0
+    tilesetRole: 1
     assetMaterial: {fileID: 0}
     uvMapSectorFlag: 0
-    texturesetFlag: 0
+    texturesetFlags: A0
+    texturesetString: 
+    assetUsageIcon: {fileID: 0}
+    pageName: 
+    categoryName: 
+    categoryHotkey: 0
+    assetIndex: 0
+    categoryWalls: 0
+  - assetName: Temple Corner
+    assetTexAtlasIndex: 0
+    assetEntryIcon: {fileID: 21300000, guid: f0e52a7f5b7c47540aa71a2d36975709, type: 3}
+    worldObjectPrefab: {fileID: 100000, guid: dac0d2eb2863c05478a79619775bbaf8, type: 3}
+    tilesetIndex: 0
+    tilesetRole: 2
+    assetMaterial: {fileID: 0}
+    uvMapSectorFlag: 1
+    texturesetFlags: A0
+    texturesetString: 
+    assetUsageIcon: {fileID: 0}
+    pageName: 
+    categoryName: 
+    categoryHotkey: 0
+    assetIndex: 0
+    categoryWalls: 0
+  - assetName: Temple CornerInv
+    assetTexAtlasIndex: 0
+    assetEntryIcon: {fileID: 21300000, guid: 46eb564dde49be34286cb02876769f13, type: 3}
+    worldObjectPrefab: {fileID: 100000, guid: 982ba8e869487b04c8560c4d70715acc, type: 3}
+    tilesetIndex: 0
+    tilesetRole: 3
+    assetMaterial: {fileID: 0}
+    uvMapSectorFlag: 2
+    texturesetFlags: A0
+    texturesetString: 
+    assetUsageIcon: {fileID: 0}
+    pageName: 
+    categoryName: 
+    categoryHotkey: 0
+    assetIndex: 0
+    categoryWalls: 0
+  - assetName: Temple Diagonal
+    assetTexAtlasIndex: 0
+    assetEntryIcon: {fileID: 21300000, guid: 7a283fd224b5d7742b4edc58432e5a9c, type: 3}
+    worldObjectPrefab: {fileID: 100000, guid: 4633c46da8aa88149999345edeee602d, type: 3}
+    tilesetIndex: 0
+    tilesetRole: 7
+    assetMaterial: {fileID: 0}
+    uvMapSectorFlag: 0
+    texturesetFlags: A0
+    texturesetString: 
+    assetUsageIcon: {fileID: 0}
+    pageName: 
+    categoryName: 
+    categoryHotkey: 0
+    assetIndex: 0
+    categoryWalls: 0
+  - assetName: Temple DiagConnex
+    assetTexAtlasIndex: 0
+    assetEntryIcon: {fileID: 21300000, guid: 1de97fb934cd619469ec8986de01633f, type: 3}
+    worldObjectPrefab: {fileID: 100000, guid: 1bc30cd3c0d00bc41a23e598155af0da, type: 3}
+    tilesetIndex: 0
+    tilesetRole: 8
+    assetMaterial: {fileID: 0}
+    uvMapSectorFlag: 0
+    texturesetFlags: A0
+    texturesetString: 
+    assetUsageIcon: {fileID: 0}
+    pageName: 
+    categoryName: 
+    categoryHotkey: 0
+    assetIndex: 0
+    categoryWalls: 0
+  - assetName: Temple DiagTurnIn
+    assetTexAtlasIndex: 0
+    assetEntryIcon: {fileID: 21300000, guid: 6d66adf847cf0b645a75eca6cf9cee7e, type: 3}
+    worldObjectPrefab: {fileID: 100000, guid: 58a4b93e1a425e94a9910109c9d0e102, type: 3}
+    tilesetIndex: 0
+    tilesetRole: 9
+    assetMaterial: {fileID: 0}
+    uvMapSectorFlag: 0
+    texturesetFlags: A0
+    texturesetString: 
+    assetUsageIcon: {fileID: 0}
+    pageName: 
+    categoryName: 
+    categoryHotkey: 0
+    assetIndex: 0
+    categoryWalls: 0
+  - assetName: Temple DiagTurnIn2
+    assetTexAtlasIndex: 0
+    assetEntryIcon: {fileID: 21300000, guid: fe1bd97acbb1f2347b88c087ee0055b3, type: 3}
+    worldObjectPrefab: {fileID: 100000, guid: 7160c5d50dd1b6b4d985e4d073be20dc, type: 3}
+    tilesetIndex: 0
+    tilesetRole: 9
+    assetMaterial: {fileID: 0}
+    uvMapSectorFlag: 0
+    texturesetFlags: A0
+    texturesetString: 
+    assetUsageIcon: {fileID: 0}
+    pageName: 
+    categoryName: 
+    categoryHotkey: 0
+    assetIndex: 0
+    categoryWalls: 0
+  - assetName: Temple DiagTurnOut
+    assetTexAtlasIndex: 0
+    assetEntryIcon: {fileID: 21300000, guid: 1ae917beb71974b46a9d7a6c976f59dd, type: 3}
+    worldObjectPrefab: {fileID: 100000, guid: 53a73ddbaaab1c24eaf09c453977844a, type: 3}
+    tilesetIndex: 0
+    tilesetRole: 10
+    assetMaterial: {fileID: 0}
+    uvMapSectorFlag: 0
+    texturesetFlags: A0
+    texturesetString: 
+    assetUsageIcon: {fileID: 0}
+    pageName: 
+    categoryName: 
+    categoryHotkey: 0
+    assetIndex: 0
+    categoryWalls: 0
+  - assetName: Temple DiagTurnOut2
+    assetTexAtlasIndex: 0
+    assetEntryIcon: {fileID: 21300000, guid: c07eb0e60328cf94c853a67b1fde7fae, type: 3}
+    worldObjectPrefab: {fileID: 100000, guid: 71530f9202091284087d104512ebf3d0, type: 3}
+    tilesetIndex: 0
+    tilesetRole: 10
+    assetMaterial: {fileID: 0}
+    uvMapSectorFlag: 0
+    texturesetFlags: A0
+    texturesetString: 
+    assetUsageIcon: {fileID: 0}
+    pageName: 
+    categoryName: 
+    categoryHotkey: 0
+    assetIndex: 0
+    categoryWalls: 0
+  - assetName: Temple DoorJamb
+    assetTexAtlasIndex: 0
+    assetEntryIcon: {fileID: 21300000, guid: 3999dc879afa1064d85cf3ceea2acfce, type: 3}
+    worldObjectPrefab: {fileID: 100000, guid: 87b3ac6ca2a43ed47a487bec83006a26, type: 3}
+    tilesetIndex: 0
+    tilesetRole: 5
+    assetMaterial: {fileID: 0}
+    uvMapSectorFlag: 13
+    texturesetFlags: A0
     texturesetString: 
     assetUsageIcon: {fileID: 0}
     pageName: 
@@ -328,7 +503,24 @@ MonoBehaviour:
     assetIndex: 0
     categoryWalls: 0
   assetsList_Doodads: []
-  assetsList_Props: []
+  assetsList_Props:
+  - assetName: PushBlock
+    assetTexAtlasIndex: 0
+    assetEntryIcon: {fileID: 0}
+    worldObjectPrefab: {fileID: 1000013158479906, guid: f59cd484db1d36a4c9390d90d9a6eac2,
+      type: 2}
+    tilesetIndex: 0
+    tilesetRole: 12
+    assetMaterial: {fileID: 0}
+    uvMapSectorFlag: 0
+    texturesetFlags: D0
+    texturesetString: 
+    assetUsageIcon: {fileID: 0}
+    pageName: 
+    categoryName: 
+    categoryHotkey: 0
+    assetIndex: 0
+    categoryProps: 0
   assetsList_Actors: []
   assetsList_Triggers: []
   assetsList_Tilesets:
@@ -556,18 +748,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 192832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcc96e77b9d74f34fbe2d962daa5a416, type: 3}
+  m_Script: {fileID: 11500000, guid: 078eec85483119749b7b2df9e4338e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tilePlacerObject: {fileID: 0}
   toolsController: {fileID: 0}
   databaseController: {fileID: 0}
-  selectedTileIndex: 0
+  geom0_entity1: 0
+  tilePlacerWidget: {fileID: 0}
+  theTileToPlace: {fileID: 0}
   ui_TxtRoomID: {fileID: 0}
   ui_RoomColor: {fileID: 0}
   ui_ImgTileIcon: {fileID: 0}
-  ui_btnGeomPlacer: {fileID: 0}
-  ui_btnEntityPlacer: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

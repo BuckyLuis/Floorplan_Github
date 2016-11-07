@@ -13,7 +13,7 @@ public class TilePlacer : MonoBehaviour {
     AreaTilesRegistry areaTilesRegistryScript;
 
     [SerializeField] GameObject AssetsDBController;
-    OptionsInfoDisplay optionsInfoScript;
+    CurrentSelectionAndDisplay currSelectionsScript;
 
     PlacerMovement placerMovementScript;
 
@@ -77,7 +77,7 @@ public class TilePlacer : MonoBehaviour {
         toolsController = GameObject.FindGameObjectWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
         undoRedoManagerScript = toolsController.GetComponent<UndoRedoManager>();
-        optionsInfoScript = AssetsDBController.GetComponent<OptionsInfoDisplay>();
+        currSelectionsScript = AssetsDBController.GetComponent<CurrentSelectionAndDisplay>();
 
         databaseController = GameObject.FindGameObjectWithTag("DBController");
         areaTilesRegistryScript = databaseController.GetComponent<AreaTilesRegistry>();
@@ -88,7 +88,7 @@ public class TilePlacer : MonoBehaviour {
 
     void Update() {
 
-        if(optionsInfoScript.geom0_entity1 == false) {
+        if(currSelectionsScript.geom0_entity1 == false) {
             gameObject.transform.localScale = geomScale;
             gridSize = 2;
         }
@@ -97,21 +97,38 @@ public class TilePlacer : MonoBehaviour {
             gridSize = 1;
         }
 
+
         if(Input.GetMouseButtonUp(0)) {
-            if(click0_Middle1 == false)
-                PlacerCalcs();
-                PlacerWork(); 
+            if(currSelectionsScript.currentRoomID != null) {
+                if(click0_Middle1 == false) {
+                    PlacerCalcs();
+                    PlacerWork(); 
+                }
+            }
+            else {
+                DebugConsole.Log("<b>There is no room entry selected! You must select a room to paint tiles for!</b>", "warning", 3f);
+                Destroy(instPlaceholder);
+            }
         }
+
         if(Input.GetMouseButtonUp(2)) {
-            if(click0_Middle1 == true)
-                PlacerCalcs();
-                PlacerWork(); 
+            if(currSelectionsScript.currentRoomID != null) {
+                if(click0_Middle1 == true) {
+                    PlacerCalcs();
+                    PlacerWork(); 
+                }
+            }
+            else {
+                DebugConsole.Log("<b>There is no room entry selected! You must select a room to paint tiles for!</b>", "warning", 3f);
+                Destroy(instPlaceholder);
+            }
         }
+       
     }
 
     void Clicked() {   //called by ClickDetectMessageSender.cs
-        if( optionsInfoScript.theTileToPlace != null)
-            objToPlace_Prefab = optionsInfoScript.theTileToPlace;
+        if( currSelectionsScript.theTileToPlace != null)
+            objToPlace_Prefab = currSelectionsScript.theTileToPlace;
         
         click0_Middle1 = false;
         click_origPos = transform.position;
@@ -166,7 +183,7 @@ public class TilePlacer : MonoBehaviour {
             }
     
             if(click0_Middle1 == false) {
-                if(optionsInfoScript.geom0_entity1 == false) {
+                if(currSelectionsScript.geom0_entity1 == false) {
                     CallGeomCreation();
                 }
                 else {
@@ -241,7 +258,7 @@ public class TilePlacer : MonoBehaviour {
                 thePosition = new Vector3((xL * gridSize)+ click_origPos.x, click_origPos.y, (zL * gridSize)+ click_origPos.z);
                 Debug.Log("erase " + thePosition);
 
-                if(optionsInfoScript.geom0_entity1 == false) {                                                                          //erase geom
+                if(currSelectionsScript.geom0_entity1 == false) {                                                                          //erase geom
                     if(areaTilesRegistryScript.Geom_PosUnoccupied(thePosition) == false) { 
                         tempGoNameToErase = string.Format("G: ({0}, {1}, {2})", thePosition.x, thePosition.y, thePosition.z );
                         tempGoToErase = GameObject.Find(tempGoNameToErase);
@@ -263,7 +280,7 @@ public class TilePlacer : MonoBehaviour {
             }
         }
         if(currGOList_forUndoRedo.Count > 0) {
-            if(optionsInfoScript.geom0_entity1 == false) {                                                                         //erase geom
+            if(currSelectionsScript.geom0_entity1 == false) {                                                                         //erase geom
                 undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo, 11);
 
                 foreach(GameObject goToErase in currGOList_forUndoRedo) {

@@ -47,8 +47,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
 
     public void CreateGeoms(GameObject theObjectToPlace, Vector3 thePosition, out GameObject constructedGO, out Geom_Base constructedGeomBase) {     //! @TODO: replace with a call to a new Class and Method that handles Tile Instantiation
-
-        tempTileObject = (GameObject)Instantiate(theObjectToPlace, thePosition, Quaternion.Euler(theObjectToPlace.transform.rotation.x, tileFacingRot, theObjectToPlace.transform.rotation.z));
+        tempTileObject = (GameObject)Instantiate(theObjectToPlace, thePosition, Quaternion.Euler( theObjectToPlace.transform.eulerAngles.x, tileFacingRot,  theObjectToPlace.transform.eulerAngles.z));
         tempTileObject.name = string.Format ("G: ({0}, {1}, {2})", tempTileObject.transform.position.x, tempTileObject.transform.position.y, tempTileObject.transform.position.z );
         tempTileObject.transform.SetParent(AreaGeomParent.transform, true);
 
@@ -91,7 +90,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
         texAtlasIndex = theGeomBase.TexAtlasIndex;
         tileFacingRot = theGeomBase.TileFacingRot;
 
-        tempTileObject = (GameObject)Instantiate(theGeomBase.theGameObjectPrefab, thePosition, Quaternion.Euler(theGeomBase.theGameObjectPrefab.transform.rotation.x, tileFacingRot, theGeomBase.theGameObjectPrefab.transform.rotation.z));
+        tempTileObject = (GameObject)Instantiate(theGeomBase.theGameObjectPrefab, thePosition, Quaternion.Euler(theGeomBase.theGameObjectPrefab.transform.eulerAngles.x, tileFacingRot, theGeomBase.theGameObjectPrefab.transform.eulerAngles.z));
         tempTileObject.name = theGeomBase.editorGoName;
 
 
@@ -113,6 +112,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
 
     public void CreateGeoms_AreaLoad(Geom_Base theGeomBase) {
+        
         roomID = theGeomBase.RoomID;
         roomColor = theGeomBase.roomColor;
         Vector3 thePosition = theGeomBase.Position;
@@ -124,7 +124,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
         tempWorldGOPrefab = RetrieveGOFromIndices(typeIndex, categoryIndex, assetIndex);
 
-        tempTileObject = (GameObject)Instantiate(tempWorldGOPrefab, thePosition, Quaternion.Euler(tempWorldGOPrefab.transform.rotation.x, tileFacingRot, tempWorldGOPrefab.transform.rotation.z));
+        tempTileObject = (GameObject)Instantiate(tempWorldGOPrefab, thePosition, Quaternion.Euler(tempWorldGOPrefab.transform.eulerAngles.x, tileFacingRot, tempWorldGOPrefab.transform.eulerAngles.z));
         tempTileObject.name = theGeomBase.editorGoName;
         tempTileObject.GetComponent<Renderer>().material = RetrieveMatFromIndices(typeIndex, texAtlasIndex);
 
@@ -147,8 +147,9 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
 
 
-    public void CreateEntities(GameObject theObjectToPlace, Vector3 thePosition, out GameObject constructedGO, out Entity_Base constructedEntityBase) {     //! @TODO: replace with a call to a new Class and Method that handles Tile Instantiation
-        tempTileObject = (GameObject)Instantiate(theObjectToPlace, thePosition, Quaternion.Euler(theObjectToPlace.transform.rotation.x, tileFacingRot, theObjectToPlace.transform.rotation.z));
+    public void CreateEntities(GameObject theObjectToPlace, Vector3 thePosition, out GameObject constructedGO, out Entity_Base constructedEntityBase) {   
+        
+        tempTileObject = (GameObject)Instantiate(theObjectToPlace, thePosition, Quaternion.Euler(theObjectToPlace.transform.eulerAngles.x, tileFacingRot, theObjectToPlace.transform.eulerAngles.z));
         tempTileObject.name = string.Format ("E: ({0}, {1}, {2})", tempTileObject.transform.position.x, tempTileObject.transform.position.y, tempTileObject.transform.position.z );
         tempTileObject.transform.SetParent(AreaEntityParent.transform, true);
 
@@ -181,6 +182,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
     }
 
     public void CreateEntities_UndoRedo(Entity_Base theEntityBase, out GameObject constructedGO) {  
+        
         roomID = theEntityBase.RoomID;
         roomColor = theEntityBase.roomColor;
         Vector3 thePosition = theEntityBase.Position;
@@ -190,7 +192,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
         texAtlasIndex = theEntityBase.TexAtlasIndex;
         tileFacingRot = theEntityBase.TileFacingRot;
 
-        tempTileObject = (GameObject)Instantiate(theEntityBase.theGameObjectPrefab, thePosition, Quaternion.Euler(theEntityBase.theGameObjectPrefab.transform.rotation.x, tileFacingRot, theEntityBase.theGameObjectPrefab.transform.rotation.z));
+        tempTileObject = (GameObject)Instantiate(theEntityBase.theGameObjectPrefab, thePosition, Quaternion.Euler(theEntityBase.theGameObjectPrefab.transform.eulerAngles.x, tileFacingRot, theEntityBase.theGameObjectPrefab.transform.eulerAngles.z));
         tempTileObject.name = theEntityBase.editorGoName;
 
         tempTileObject.transform.SetParent(AreaEntityParent.transform, true);
@@ -210,6 +212,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
     }
 
     public void CreateEntities_AreaLoad(Entity_Base theEntityBase) {
+        
         roomID = theEntityBase.RoomID;
         roomColor = theEntityBase.roomColor;
         Vector3 thePosition = theEntityBase.Position;
@@ -221,7 +224,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
         tempWorldGOPrefab = RetrieveGOFromIndices(typeIndex, categoryIndex, assetIndex);
 
-        tempTileObject = (GameObject)Instantiate(tempWorldGOPrefab, thePosition, Quaternion.Euler(tempWorldGOPrefab.transform.rotation.x, tileFacingRot, tempWorldGOPrefab.transform.rotation.z));
+        tempTileObject = (GameObject)Instantiate(tempWorldGOPrefab, thePosition, Quaternion.Euler(tempWorldGOPrefab.transform.eulerAngles.x, tileFacingRot, tempWorldGOPrefab.transform.eulerAngles.z));
         tempTileObject.name = theEntityBase.editorGoName;
         setAsideGOMaterial = tempTileObject.GetComponent<Renderer>().material;      //if the Entity is a Trigger, we want it to keep its original Material.
         tempTileObject.GetComponent<Renderer>().material = RetrieveMatFromIndices(typeIndex, texAtlasIndex);

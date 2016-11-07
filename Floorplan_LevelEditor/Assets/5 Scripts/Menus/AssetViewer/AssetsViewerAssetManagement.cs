@@ -144,7 +144,7 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempScript.assetBaseObject = floorBasis;
             tempScript.assetIndex = floorBasis.assetIndex;
             tempScript.assetWorldObject = floorBasis.worldObjectPrefab;
-            tempScript.assetBaseObject.texturesetString = "0|" + floorBasis.texturesetFlag.ToString();           //establish the texAtlasCategory relationship (0 - GEOMETRY)
+            tempScript.assetBaseObject.texturesetString = "0|" + floorBasis.texturesetFlags.ToString();           //establish the texAtlasCategory relationship (0 - GEOMETRY)
 
 
             assetsEntriesDict_Floors.Add(string.Format("{0}|{1}|{2}", (int)floorBasis.categoryFloors, floorBasis.assetIndex, floorBasis.tilesetIndex - 1), tempEntry);          //add to this script's Dictionary of UI entries - it lets UI scripts know the Category and Page, and Dict is also used for tileset 
@@ -187,7 +187,7 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempScript.assetBaseObject = wallBasis;
             tempScript.assetIndex = wallBasis.assetIndex;
             tempScript.assetWorldObject = wallBasis.worldObjectPrefab;
-            tempScript.assetBaseObject.texturesetString = "0|" + wallBasis.texturesetFlag.ToString();   //establish the texAtlasCategory relationship (0 - GEOMETRY)
+            tempScript.assetBaseObject.texturesetString = "0|" + wallBasis.texturesetFlags.ToString();   //establish the texAtlasCategory relationship (0 - GEOMETRY)
 
             assetsEntriesDict_Walls.Add(string.Format("{0}|{1}|{2}", (int)wallBasis.categoryWalls, wallBasis.assetIndex, wallBasis.tilesetIndex - 1), tempEntry);
         }
@@ -229,7 +229,7 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempScript.assetBaseObject = doodadBasis;
             tempScript.assetIndex = doodadBasis.assetIndex;
             tempScript.assetWorldObject = doodadBasis.worldObjectPrefab;
-            tempScript.assetBaseObject.texturesetString = "1|" + doodadBasis.texturesetFlag.ToString();   //establish the texAtlasCategory relationship (1 - DOODADS)
+            tempScript.assetBaseObject.texturesetString = "1|" + doodadBasis.texturesetFlags.ToString();   //establish the texAtlasCategory relationship (1 - DOODADS)
 
             assetsEntriesDict_Doodads.Add(string.Format("{0}|{1}|{2}", (int)doodadBasis.categoryDoodads, doodadBasis.assetIndex, doodadBasis.tilesetIndex - 1), tempEntry);
         }
@@ -271,7 +271,7 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempScript.assetBaseObject = propBasis;
             tempScript.assetIndex = propBasis.assetIndex;
             tempScript.assetWorldObject = propBasis.worldObjectPrefab;
-            tempScript.assetBaseObject.texturesetString = "2|" + propBasis.texturesetFlag.ToString();  //establish the texAtlasCategory relationship (2 - PROPS)
+            tempScript.assetBaseObject.texturesetString = "2|" + propBasis.texturesetFlags.ToString();  //establish the texAtlasCategory relationship (2 - PROPS)
 
             assetsEntriesDict_Props.Add(string.Format("{0}|{1}|{2}", (int)propBasis.categoryProps, propBasis.assetIndex, propBasis.tilesetIndex - 1), tempEntry);
         }
@@ -313,7 +313,7 @@ public class AssetsViewerAssetManagement : MonoBehaviour {
             tempScript.assetBaseObject = actorBasis;
             tempScript.assetIndex = actorBasis.assetIndex;
             tempScript.assetWorldObject = actorBasis.worldObjectPrefab;
-            tempScript.assetBaseObject.texturesetString = "3|" + actorBasis.texturesetFlag.ToString(); //establish the texAtlasCategory relationship (3 - ACTORS)
+            tempScript.assetBaseObject.texturesetString = "3|" + actorBasis.texturesetFlags.ToString(); //establish the texAtlasCategory relationship (3 - ACTORS)
 
             assetsEntriesDict_Actors.Add(string.Format("{0}|{1}", (int)actorBasis.categoryActors, actorBasis.assetIndex), tempEntry);
         }

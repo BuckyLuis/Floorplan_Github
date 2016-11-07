@@ -142,43 +142,47 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
         string[] tempStringArrayMS = meshsetString.Split('|');  //split the input meshsetString
         string astClassifyFlag = tempStringArrayMS[0];
         string astMeshsetFlag = tempStringArrayMS[1];
+        tempStringArrayMS = astMeshsetFlag.Split(',');
        
         switch (astClassifyFlag)
         {
             case "0":
                 tempDictToSearch = texAtlasGeomsDict;
-                CompareAssetVsTexAtlasCompats(astMeshsetFlag);
+                CompareAssetVsTexAtlasCompats(tempStringArrayMS);
                 break;
             case "1":
                 tempDictToSearch = texAtlasDoodadsDict;
-                CompareAssetVsTexAtlasCompats(astMeshsetFlag);
+                CompareAssetVsTexAtlasCompats(tempStringArrayMS);
                 break;
             case "2":
                 tempDictToSearch = texAtlasPropsDict;
-                CompareAssetVsTexAtlasCompats(astMeshsetFlag);
+                CompareAssetVsTexAtlasCompats(tempStringArrayMS);
                 break;
             case "3":
                 tempDictToSearch = texAtlasActorsDict;
-                CompareAssetVsTexAtlasCompats(astMeshsetFlag);   
+                CompareAssetVsTexAtlasCompats(tempStringArrayMS);   
                 break;
         }
     }
 
-    void CompareAssetVsTexAtlasCompats(string astMeshsetFlag) {
+    void CompareAssetVsTexAtlasCompats(string[] tempStringArrayMS) {
         currentCompatTexAtlasEntries.Clear();
 
         currEntriesIndexCounter = 1;
         foreach (KeyValuePair<string, GameObject> texAtlasEntry in tempDictToSearch) {
             tempStringArray0 = texAtlasEntry.Key.Split('|');    //split the DictKey string
 
-            if(SplitDictKey_GetCompat(texAtlasEntry, astMeshsetFlag) == true) {
-                texAtlasEntry.Value.SetActive(true);
-                texAtlasEntry.Value.GetComponent<TexturesViewerEntry>().SetHkIndex(currEntriesIndexCounter);
-                currEntriesIndexCounter++;
-                currentCompatTexAtlasEntries.Add(texAtlasEntry.Value);
-            }
-            else {
-                texAtlasEntry.Value.SetActive(false);
+            foreach(var astMeshsetFlag in tempStringArrayMS) {
+                if(SplitDictKey_GetCompat(texAtlasEntry, astMeshsetFlag) == true) {
+                    texAtlasEntry.Value.SetActive(true);
+                    texAtlasEntry.Value.GetComponent<TexturesViewerEntry>().SetHkIndex(currEntriesIndexCounter);
+                    currEntriesIndexCounter++;
+                    currentCompatTexAtlasEntries.Add(texAtlasEntry.Value);
+                    break;
+                }
+                else {
+                    texAtlasEntry.Value.SetActive(false);
+                }
             }
         }
 

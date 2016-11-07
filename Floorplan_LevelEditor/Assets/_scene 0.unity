@@ -176,389 +176,6 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 127928, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
   m_PrefabInternal: {fileID: 435997816}
---- !u!1001 &136023522
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: tilePlacerObject
-      value: 
-      objectReference: {fileID: 936259205}
-    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: toolsController
-      value: 
-      objectReference: {fileID: 732497641}
-    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: databaseController
-      value: 
-      objectReference: {fileID: 1411720703}
-    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_TxtRoomID
-      value: 
-      objectReference: {fileID: 2078603853}
-    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_RoomColor
-      value: 
-      objectReference: {fileID: 1301286534}
-    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_ImgTileIcon
-      value: 
-      objectReference: {fileID: 1655525863}
-    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_btnGeomPlacer
-      value: 
-      objectReference: {fileID: 549271609}
-    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_btnEntityPlacer
-      value: 
-      objectReference: {fileID: 1393964744}
-    - target: {fileID: 11452910, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: tilePlacerObject
-      value: 
-      objectReference: {fileID: 936259205}
-    - target: {fileID: 11452910, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: toolsController
-      value: 
-      objectReference: {fileID: 732497641}
-    - target: {fileID: 11452910, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: databaseController
-      value: 
-      objectReference: {fileID: 1411720703}
-    - target: {fileID: 11452910, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_ImgTileIcon
-      value: 
-      objectReference: {fileID: 1866663021}
-    - target: {fileID: 11452910, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_btnGeomPlacer
-      value: 
-      objectReference: {fileID: 549271609}
-    - target: {fileID: 11452910, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_btnEntityPlacer
-      value: 
-      objectReference: {fileID: 1393964744}
-    - target: {fileID: 11404564, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: tilePlacerObject
-      value: 
-      objectReference: {fileID: 936259205}
-    - target: {fileID: 11404564, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: toolsController
-      value: 
-      objectReference: {fileID: 732497641}
-    - target: {fileID: 11404564, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: databaseController
-      value: 
-      objectReference: {fileID: 1411720703}
-    - target: {fileID: 11404564, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_btnGeomPlacer
-      value: 
-      objectReference: {fileID: 549271609}
-    - target: {fileID: 11404564, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_btnEntityPlacer
-      value: 
-      objectReference: {fileID: 1393964744}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: viewAreaTexAtlas
-      value: 
-      objectReference: {fileID: 1259009978}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_tglShowTexViewer
-      value: 
-      objectReference: {fileID: 286710879}
-    - target: {fileID: 11417852, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_texPreviewerObject
-      value: 
-      objectReference: {fileID: 368787012}
-    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: viewAreaFloors
-      value: 
-      objectReference: {fileID: 1708578538}
-    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: viewAreaWalls
-      value: 
-      objectReference: {fileID: 1708578537}
-    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: viewAreaDoodads
-      value: 
-      objectReference: {fileID: 1708578536}
-    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: viewAreaProps
-      value: 
-      objectReference: {fileID: 1708578535}
-    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: viewAreaActors
-      value: 
-      objectReference: {fileID: 1708578534}
-    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: viewAreaTriggers
-      value: 
-      objectReference: {fileID: 1708578533}
-    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: viewAreaTilesets
-      value: 
-      objectReference: {fileID: 1076264717}
-    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: viewAreaTemplates
-      value: 
-      objectReference: {fileID: 860254056}
-    - target: {fileID: 11477396, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: viewAreaTilesetMembers
-      value: 
-      objectReference: {fileID: 1243353374}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: btn_Floors
-      value: 
-      objectReference: {fileID: 1853713169}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: btn_Walls
-      value: 
-      objectReference: {fileID: 2073349428}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: btn_Doodads
-      value: 
-      objectReference: {fileID: 62535000}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: btn_Props
-      value: 
-      objectReference: {fileID: 801589027}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: btn_Actors
-      value: 
-      objectReference: {fileID: 940874155}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: btn_Triggers
-      value: 
-      objectReference: {fileID: 1084408824}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: btn_Tilesets
-      value: 
-      objectReference: {fileID: 1606650884}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: btn_Templates
-      value: 
-      objectReference: {fileID: 101162612}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: sv_Floors
-      value: 
-      objectReference: {fileID: 1812329347}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: sv_Walls
-      value: 
-      objectReference: {fileID: 1855535612}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: sv_Doodads
-      value: 
-      objectReference: {fileID: 1139021175}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: sv_Props
-      value: 
-      objectReference: {fileID: 1044796897}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: sv_Actors
-      value: 
-      objectReference: {fileID: 126000101}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: sv_Triggers
-      value: 
-      objectReference: {fileID: 1269256074}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: sv_Tilesets
-      value: 
-      objectReference: {fileID: 177819826}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: sv_Templates
-      value: 
-      objectReference: {fileID: 325576514}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: header_Floors
-      value: 
-      objectReference: {fileID: 1791018420}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: header_Walls
-      value: 
-      objectReference: {fileID: 2121188207}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: header_Doodads
-      value: 
-      objectReference: {fileID: 140741429}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: header_Props
-      value: 
-      objectReference: {fileID: 506828405}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: header_Actors
-      value: 
-      objectReference: {fileID: 111216332}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: header_Triggers
-      value: 
-      objectReference: {fileID: 547816389}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: header_Tilesets
-      value: 
-      objectReference: {fileID: 1946061715}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: header_Templates
-      value: 
-      objectReference: {fileID: 1783521187}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: tgl_allowAutoReset
-      value: 
-      objectReference: {fileID: 496693373}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_txtLastHotkeyEntered
-      value: 
-      objectReference: {fileID: 906984503}
-    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: ui_imgHotkeyStage
-      value: 
-      objectReference: {fileID: 2137577512}
-    - target: {fileID: 192832, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: tilePlacerWidget
-      value: 
-      objectReference: {fileID: 936259205}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList.Array.data[0].texAtlasMatObject
-      value: 
-      objectReference: {fileID: 2100000, guid: c2c5125f848db41409330cc5cf2e5f08, type: 2}
-    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: assetsList_Floors.Array.data[0].assetName
-      value: Floor Plane
-      objectReference: {fileID: 0}
-    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: assetsList_Walls.Array.data[0].assetName
-      value: Temple Wall Straight
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList.Array.data[1].texAtlasName
-      value: TestAtlas001
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList.Array.data[1].texAtlasCompatMeshsets
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList.Array.data[1].texAtlasTilesetColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList.Array.data[1].texAtlasTilesetColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList.Array.data[1].texAtlasTilesetColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList.Array.data[1].texAtlasMatObject
-      value: 
-      objectReference: {fileID: 2100000, guid: a780ab044585fb5429df1ce824dba2bb, type: 2}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasMatObject
-      value: 
-      objectReference: {fileID: 2100000, guid: c2c5125f848db41409330cc5cf2e5f08, type: 2}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasName
-      value: Tile & Brick
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasCompatMeshsets
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasTilesetColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasTilesetColor.g
-      value: 0.6275859
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasTilesetColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasName
-      value: Nil Test
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasCompatMeshsets
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasTilesetColor.g
-      value: 0.64137924
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasTilesetColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasMatObject
-      value: 
-      objectReference: {fileID: 2100000, guid: a780ab044585fb5429df1ce824dba2bb, type: 2}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasTilesetColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[1].texAtlasTilesetColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-      propertyPath: texAtlasList_Geoms.Array.data[0].texAtlasTilesetColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11430856, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &140741429 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 171490, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
@@ -2473,7 +2090,7 @@ GameObject:
 --- !u!1 &1718263073 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 192832, guid: c353570eef2f912459fdb219d219acdb, type: 2}
-  m_PrefabInternal: {fileID: 136023522}
+  m_PrefabInternal: {fileID: 1848475567}
 --- !u!1 &1721471748 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 127878, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
@@ -2527,6 +2144,232 @@ GameObject:
 GameObject:
   m_PrefabParentObject: {fileID: 190910, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
   m_PrefabInternal: {fileID: 435997816}
+--- !u!1001 &1848475567
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 475634, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477396, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: viewAreaTilesetMembers
+      value: 
+      objectReference: {fileID: 1243353374}
+    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: viewAreaFloors
+      value: 
+      objectReference: {fileID: 1708578538}
+    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: viewAreaWalls
+      value: 
+      objectReference: {fileID: 1708578537}
+    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: viewAreaDoodads
+      value: 
+      objectReference: {fileID: 1708578536}
+    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: viewAreaProps
+      value: 
+      objectReference: {fileID: 1708578535}
+    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: viewAreaActors
+      value: 
+      objectReference: {fileID: 1708578534}
+    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: viewAreaTriggers
+      value: 
+      objectReference: {fileID: 1708578533}
+    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: viewAreaTilesets
+      value: 
+      objectReference: {fileID: 1076264717}
+    - target: {fileID: 11461310, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: viewAreaTemplates
+      value: 
+      objectReference: {fileID: 860254056}
+    - target: {fileID: 11417852, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: ui_texPreviewerObject
+      value: 
+      objectReference: {fileID: 368787012}
+    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: tilePlacerObject
+      value: 
+      objectReference: {fileID: 936259205}
+    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: toolsController
+      value: 
+      objectReference: {fileID: 732497641}
+    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: databaseController
+      value: 
+      objectReference: {fileID: 1411720703}
+    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: tilePlacerWidget
+      value: 
+      objectReference: {fileID: 936259205}
+    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: ui_TxtRoomID
+      value: 
+      objectReference: {fileID: 2078603853}
+    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: ui_RoomColor
+      value: 
+      objectReference: {fileID: 1301286534}
+    - target: {fileID: 11499112, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: ui_ImgTileIcon
+      value: 
+      objectReference: {fileID: 1655525863}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: viewAreaTexAtlas
+      value: 
+      objectReference: {fileID: 1259009978}
+    - target: {fileID: 11414772, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: ui_tglShowTexViewer
+      value: 
+      objectReference: {fileID: 286710879}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: btn_Floors
+      value: 
+      objectReference: {fileID: 1853713169}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: btn_Walls
+      value: 
+      objectReference: {fileID: 2073349428}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: btn_Doodads
+      value: 
+      objectReference: {fileID: 62535000}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: btn_Props
+      value: 
+      objectReference: {fileID: 801589027}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: btn_Actors
+      value: 
+      objectReference: {fileID: 940874155}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: btn_Triggers
+      value: 
+      objectReference: {fileID: 1084408824}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: btn_Tilesets
+      value: 
+      objectReference: {fileID: 1606650884}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: btn_Templates
+      value: 
+      objectReference: {fileID: 101162612}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: sv_Floors
+      value: 
+      objectReference: {fileID: 1812329347}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: sv_Walls
+      value: 
+      objectReference: {fileID: 1855535612}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: sv_Doodads
+      value: 
+      objectReference: {fileID: 1139021175}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: sv_Props
+      value: 
+      objectReference: {fileID: 1044796897}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: sv_Actors
+      value: 
+      objectReference: {fileID: 126000101}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: sv_Triggers
+      value: 
+      objectReference: {fileID: 1269256074}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: sv_Tilesets
+      value: 
+      objectReference: {fileID: 177819826}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: sv_Templates
+      value: 
+      objectReference: {fileID: 325576514}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: header_Floors
+      value: 
+      objectReference: {fileID: 1791018420}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: header_Walls
+      value: 
+      objectReference: {fileID: 2121188207}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: header_Doodads
+      value: 
+      objectReference: {fileID: 140741429}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: header_Props
+      value: 
+      objectReference: {fileID: 506828405}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: header_Actors
+      value: 
+      objectReference: {fileID: 111216332}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: header_Triggers
+      value: 
+      objectReference: {fileID: 547816389}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: header_Tilesets
+      value: 
+      objectReference: {fileID: 1946061715}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: header_Templates
+      value: 
+      objectReference: {fileID: 1783521187}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: tgl_allowAutoReset
+      value: 
+      objectReference: {fileID: 496693373}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: ui_txtLastHotkeyEntered
+      value: 
+      objectReference: {fileID: 906984503}
+    - target: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+      propertyPath: ui_imgHotkeyStage
+      value: 
+      objectReference: {fileID: 2137577512}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c353570eef2f912459fdb219d219acdb, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1853713169 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 140866, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
@@ -2581,10 +2424,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 56f2b017318a0ea4985a01c679912a29, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1866663021 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 153504, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
-  m_PrefabInternal: {fileID: 435997816}
 --- !u!1 &1887653382 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 142312, guid: 0dc2811b20757e1498fca6643fd2b22e, type: 2}
@@ -2593,7 +2432,7 @@ GameObject:
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11419270, guid: c353570eef2f912459fdb219d219acdb,
     type: 2}
-  m_PrefabInternal: {fileID: 136023522}
+  m_PrefabInternal: {fileID: 1848475567}
   m_Script: {fileID: 11500000, guid: 68f9cac82a0cc49439ab60e848de3f23, type: 3}
 --- !u!1001 &1928862549
 Prefab:
@@ -2763,14 +2602,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 11489068, guid: d0b0d22d336588b48a0f4d7fd76b4553, type: 2}
-      propertyPath: AreaGeomParent
+    - target: {fileID: 11499316, guid: d0b0d22d336588b48a0f4d7fd76b4553, type: 2}
+      propertyPath: AssetsDBController
       value: 
-      objectReference: {fileID: 61438431}
-    - target: {fileID: 11489068, guid: d0b0d22d336588b48a0f4d7fd76b4553, type: 2}
-      propertyPath: AreaEntityParent
-      value: 
-      objectReference: {fileID: 1028610588}
+      objectReference: {fileID: 1718263073}
     - target: {fileID: 11499316, guid: d0b0d22d336588b48a0f4d7fd76b4553, type: 2}
       propertyPath: geomOptionsMenu
       value: 
@@ -2819,6 +2654,14 @@ Prefab:
       propertyPath: ui_btnTemplatePlacer
       value: 
       objectReference: {fileID: 1121520968}
+    - target: {fileID: 11489068, guid: d0b0d22d336588b48a0f4d7fd76b4553, type: 2}
+      propertyPath: AreaGeomParent
+      value: 
+      objectReference: {fileID: 61438431}
+    - target: {fileID: 11489068, guid: d0b0d22d336588b48a0f4d7fd76b4553, type: 2}
+      propertyPath: AreaEntityParent
+      value: 
+      objectReference: {fileID: 1028610588}
     - target: {fileID: 111264, guid: d0b0d22d336588b48a0f4d7fd76b4553, type: 2}
       propertyPath: m_Name
       value: '- == Tools Controller ==-'
@@ -2883,11 +2726,6 @@ Prefab:
       propertyPath: ui_TxtCurrentYpos
       value: 
       objectReference: {fileID: 916906530}
-    - target: {fileID: 111264, guid: d0b0d22d336588b48a0f4d7fd76b4553, type: 2}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000,
-        type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0b0d22d336588b48a0f4d7fd76b4553, type: 2}
   m_IsPrefabParent: 0

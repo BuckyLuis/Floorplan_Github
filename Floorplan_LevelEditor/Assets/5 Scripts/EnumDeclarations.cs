@@ -22,11 +22,3 @@ public enum Categories_Tilesets { STANDARD, SPAWNER, HAZARD, SPECIAL }
 public enum Categories_Templates { STANDARD, SPAWNER, HAZARD, SPECIAL }
 
 [Serializable] public class Dictionary_sGo : SerializableDictionary<string, GameObject> { }
-
-
-
-
-
-public class EnumDeclarations : MonoBehaviour {
-
-}
