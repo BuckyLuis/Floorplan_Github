@@ -18,6 +18,7 @@ GameObject:
   - 114: {fileID: 11406912}
   - 114: {fileID: 11446322}
   - 114: {fileID: 11402078}
+  - 114: {fileID: 114000013301303932}
   - 114: {fileID: 11482124}
   m_Layer: 0
   m_Name: '- == Database Controller == -'
@@ -169,6 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afb2eab4e6f47849ad7ebadd0c51dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toolsController: {fileID: 0}
+  theAreaObjectRegistrar: {fileID: 0}
   roomEntries: []
   activeRoomIndex: 0
   activeRoomID: 0
@@ -191,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bc806f4eeb982478eb2977b6fed933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toolsController: {fileID: 0}
 --- !u!114 &11482124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,3 +218,20 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 150472}
   m_IsPrefabParent: 1
+--- !u!114 &114000013301303932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b531101e9bf9d4fbcfe824cfef1091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theToolsController: {fileID: 0}
+  theAssetsDBController: {fileID: 0}
+  thePlacerWidget: {fileID: 0}
+  theWorldGeomParent: {fileID: 0}
+  theWorldEntityParent: {fileID: 0}
+  theWorldCamboundsParent: {fileID: 0}

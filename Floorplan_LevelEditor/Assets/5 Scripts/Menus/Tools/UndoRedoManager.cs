@@ -17,11 +17,7 @@ public class UndoRedoManager : MonoBehaviour {
     MaxStack<UndoRedoOperation> RedoStack;
 
     UndoRedoOperation operationAssignment;
-
     UndoRedoOperation currentOperation;
-    List<GameObject> currentGOList;
-    List<Geom_Base> currentGeomBaseList;
-    List<Entity_Base> currentEntityBaseList;
 
 
     GameObject constructedGO;
@@ -219,6 +215,14 @@ public class UndoRedoManager : MonoBehaviour {
             }
             
         }
+    }
+
+    public void InitUndoRedoMngr() {
+        UndoStack.Clear();
+        RedoStack.Clear();
+        operationAssignment = null;
+        currentOperation = null;
+        constructedGO = null;
     }
 
 

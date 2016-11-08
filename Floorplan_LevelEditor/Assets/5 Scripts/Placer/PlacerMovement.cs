@@ -31,9 +31,10 @@ public class PlacerMovement: MonoBehaviour {
                 destinationPos = new Vector3(xPos * 2, tilePlacerYpos, zPos * 2);
             }
             else {
-                float xPos = Mathf.Round(wantedPos.x / 1);                                                          
-                float zPos = Mathf.Round(wantedPos.z / 1);
-                destinationPos = new Vector3(xPos + 0.5f, tilePlacerYpos, zPos + 0.5f);
+               
+                float xPos = Mathf.Floor(wantedPos.x);                                                          
+                float zPos = Mathf.Floor(wantedPos.z);
+                destinationPos = new Vector3(xPos + 0.5f, tilePlacerYpos, zPos + 0.5f); 
             }
            
 			transform.position = destinationPos;

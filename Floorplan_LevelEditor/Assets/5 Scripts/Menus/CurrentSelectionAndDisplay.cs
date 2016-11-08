@@ -12,10 +12,9 @@ public class CurrentSelectionAndDisplay : MonoBehaviour {
     public bool geom0_entity1;
 
     public GameObject tilePlacerWidget;
-    public GameObject theTileToPlace;
-
 
     //--------- Tile Data ---------------
+    public GameObject theTileToPlace;
     public string currentRoomID  {get; protected set;}
     public Color currentRoomColor {get; protected set;}
 
@@ -59,6 +58,16 @@ public class CurrentSelectionAndDisplay : MonoBehaviour {
 
     public void SetCurrentTileGO(GameObject theGameObject) {
         theTileToPlace = theGameObject;
+    }
+
+
+    public void InitCurrSelNDisplay() {
+        currentRoomID = null;
+        uiTxt_currRoomID.text = "####";
+        currentRoomColor = Color.white;
+        uiCol_currRoomColorImg.color = Color.white;
+        uiImg_currTileIcon.sprite = null;
+        theTileToPlace = null;
     }
 
 }

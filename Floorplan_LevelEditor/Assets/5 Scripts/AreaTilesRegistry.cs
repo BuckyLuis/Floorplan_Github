@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class AreaTilesRegistry : MonoBehaviour {
 
@@ -103,7 +104,12 @@ public class AreaTilesRegistry : MonoBehaviour {
         tempY = Mathf.FloorToInt( (theEntityBase.Position.y + 30) / 3 );              
         tempZ = Mathf.FloorToInt(theEntityBase.Position.z + 100);
 
-        theGeomsInAreaGrid[ tempX, tempY, tempZ ] = null;
+        theEntitiesInAreaGrid[ tempX, tempY, tempZ ] = null;
+    }
+
+    public void InitTilesRegistry() {
+        Array.Clear(theGeomsInAreaGrid, 0, theGeomsInAreaGrid.Length);
+        Array.Clear(theEntitiesInAreaGrid, 0, theEntitiesInAreaGrid.Length);
     }
 
 

@@ -1387,4 +1387,78 @@ public class AssetsViewerHotkeysUiControl : MonoBehaviour {
 
 
 
+    public void InitAssetViewerPagesNHotkey() {
+        hotkeyStage = 0;
+        currentPage = 0;
+        currentCategory = 0;
+        HotkeyStageColor();
+
+        uiImg_HighlightFloors.enabled = false;
+        uiImg_HighlightWalls.enabled = false;
+        uiImg_HighlightDoodads.enabled = false;
+        uiImg_HighlightProps.enabled = false; 
+        uiImg_HighlightActors.enabled = false; 
+        uiImg_HighlightTriggers.enabled = false; 
+        uiImg_HighlightTilesets.enabled = false; 
+        uiImg_HighlightTemplates.enabled = false; 
+
+        sv_Floors.SetActive(false);
+        header_Floors.SetActive(false);
+        sv_Walls.SetActive(false);
+        header_Walls.SetActive(false);
+        sv_Doodads.SetActive(false);
+        header_Doodads.SetActive(false);
+        sv_Props.SetActive(false);
+        header_Props.SetActive(false);
+        sv_Actors.SetActive(false);
+        header_Actors.SetActive(false);
+        sv_Triggers.SetActive(false);
+        header_Triggers.SetActive(false);
+        sv_Tilesets.SetActive(false);
+        header_Tilesets.SetActive(false);
+        sv_Templates.SetActive(false);
+        header_Templates.SetActive(false);
+
+        uiImg_HlFloorCat1.enabled = false;
+        uiImg_HlFloorCat2.enabled = false;
+        uiImg_HlFloorCat3.enabled = false;
+        uiImg_HlFloorCat4.enabled = false;
+
+        uiImg_HlWallsCat1.enabled = false;
+        uiImg_HlWallsCat2.enabled = false;
+        uiImg_HlWallsCat3.enabled = false;
+        uiImg_HlWallsCat4.enabled = false;
+
+        uiImg_HlDoodadsCat1.enabled = false;
+        uiImg_HlDoodadsCat2.enabled = false;
+        uiImg_HlDoodadsCat3.enabled = false;
+        uiImg_HlDoodadsCat4.enabled = false;
+
+        uiImg_HlPropsCat1.enabled = false;
+        uiImg_HlPropsCat2.enabled = false;
+        uiImg_HlPropsCat3.enabled = false;
+        uiImg_HlPropsCat4.enabled = false;
+
+        uiImg_HlActorsCat1.enabled = false;
+        uiImg_HlActorsCat2.enabled = false;
+        uiImg_HlActorsCat3.enabled = false;
+        uiImg_HlActorsCat4.enabled = false;
+
+        uiImg_HlTriggersCat1.enabled = false;
+        uiImg_HlTriggersCat2.enabled = false;
+        uiImg_HlTriggersCat3.enabled = false;
+        uiImg_HlTriggersCat4.enabled = false;
+
+        uiImg_HlTilesetsCat1.enabled = false;
+        uiImg_HlTilesetsCat2.enabled = false;
+        uiImg_HlTilesetsCat3.enabled = false;
+        uiImg_HlTilesetsCat4.enabled = false;
+
+        uiImg_HlTemplatesCat1.enabled = false;
+        uiImg_HlTemplatesCat2.enabled = false;
+        uiImg_HlTemplatesCat3.enabled = false;
+        uiImg_HlTemplatesCat4.enabled = false;
+
+    }
+
 }

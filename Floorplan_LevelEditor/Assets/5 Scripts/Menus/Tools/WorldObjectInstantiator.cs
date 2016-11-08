@@ -11,7 +11,8 @@ public class WorldObjectInstantiator : MonoBehaviour {
     [SerializeField] GameObject AreaGeomParent;
     [SerializeField] GameObject AreaEntityParent;
 
-    [SerializeField] GameObject roomBelongingMarker;
+    [SerializeField] GameObject roomBelongingMarker_Geoms;
+    [SerializeField] GameObject roomBelongingMarker_Entities;
     [SerializeField] GameObject worldObjectInfo;
 
 
@@ -36,6 +37,7 @@ public class WorldObjectInstantiator : MonoBehaviour {
     Material setAsideGOMaterial;
 
     Vector3 belongMarkerPos = new Vector3(0, -0.2f, 0);
+    Quaternion belongMarkerRot;
 
 
     void Start() {
@@ -47,11 +49,13 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
 
     public void CreateGeoms(GameObject theObjectToPlace, Vector3 thePosition, out GameObject constructedGO, out Geom_Base constructedGeomBase) {     //! @TODO: replace with a call to a new Class and Method that handles Tile Instantiation
+        
         tempTileObject = (GameObject)Instantiate(theObjectToPlace, thePosition, Quaternion.Euler( theObjectToPlace.transform.eulerAngles.x, tileFacingRot,  theObjectToPlace.transform.eulerAngles.z));
         tempTileObject.name = string.Format ("G: ({0}, {1}, {2})", tempTileObject.transform.position.x, tempTileObject.transform.position.y, tempTileObject.transform.position.z );
         tempTileObject.transform.SetParent(AreaGeomParent.transform, true);
 
-        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, belongMarkerPos, Quaternion.identity);
+        belongMarkerRot = Quaternion.Euler(0, 0, 0);
+        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker_Geoms, belongMarkerPos, belongMarkerRot);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
         tempBelongMarker.transform.SetParent(tempTileObject.transform, false);
@@ -96,7 +100,8 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
         tempTileObject.transform.SetParent(AreaGeomParent.transform, true);
 
-        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, belongMarkerPos, Quaternion.identity);
+        Quaternion.Euler(0, 0, 0);
+        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker_Geoms, belongMarkerPos, belongMarkerRot);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
         tempBelongMarker.transform.SetParent(tempTileObject.transform, false);
@@ -131,7 +136,8 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
         tempTileObject.transform.SetParent(AreaGeomParent.transform, true);
 
-        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, belongMarkerPos, Quaternion.identity);
+        belongMarkerRot = Quaternion.Euler(0, 0, 0);
+        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker_Geoms, belongMarkerPos, belongMarkerRot);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
         tempBelongMarker.transform.SetParent(tempTileObject.transform, false);
@@ -153,7 +159,8 @@ public class WorldObjectInstantiator : MonoBehaviour {
         tempTileObject.name = string.Format ("E: ({0}, {1}, {2})", tempTileObject.transform.position.x, tempTileObject.transform.position.y, tempTileObject.transform.position.z );
         tempTileObject.transform.SetParent(AreaEntityParent.transform, true);
 
-        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, belongMarkerPos, Quaternion.identity);
+        belongMarkerRot = Quaternion.Euler(0, 45, 0);
+        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker_Entities, belongMarkerPos, belongMarkerRot);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
         tempBelongMarker.transform.SetParent(tempTileObject.transform, false);
@@ -197,7 +204,8 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
         tempTileObject.transform.SetParent(AreaEntityParent.transform, true);
 
-        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, belongMarkerPos, Quaternion.identity);
+        belongMarkerRot = Quaternion.Euler(0, 45, 0);
+        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker_Entities, belongMarkerPos, belongMarkerRot);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
         tempBelongMarker.transform.SetParent(tempTileObject.transform, false);
@@ -232,7 +240,8 @@ public class WorldObjectInstantiator : MonoBehaviour {
 
         tempTileObject.transform.SetParent(AreaEntityParent.transform, true);
 
-        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker, belongMarkerPos, Quaternion.identity);
+        belongMarkerRot = Quaternion.Euler(0, 45, 0);
+        tempBelongMarker = (GameObject)Instantiate(roomBelongingMarker_Entities, belongMarkerPos, belongMarkerRot);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
         tempBelongMarker.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
         tempBelongMarker.transform.SetParent(tempTileObject.transform, false);

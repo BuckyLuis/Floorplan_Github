@@ -24,6 +24,7 @@ public class AreaObjectRegistrar : MonoBehaviour {
 //------------ Refs to Objects to Communicate to------------
     RoomViewerMenu theRoomViewerMenuScript;
     AreaTilesRegistry theTilesRegistryScript;
+    GlobalInitialization theGlobalInitScript;
 
     [SerializeField] GameObject toolsController;
     WorldObjectInstantiator objInstantiatorScript;
@@ -36,7 +37,8 @@ public class AreaObjectRegistrar : MonoBehaviour {
     void Start() {
         toolsController = GameObject.FindGameObjectWithTag("ToolsController");
         objInstantiatorScript = toolsController.GetComponent<WorldObjectInstantiator>();
-
+     
+        theGlobalInitScript = GetComponent<GlobalInitialization>();
         Area_ReadWriteScript = GetComponent<Area_ReadWrite>();
         AreaEntry_ReadWriteScript = GetComponent<AreaEntry_ReadWrite>();
         theRoomViewerMenuScript = GetComponent<RoomViewerMenu>();
@@ -47,6 +49,7 @@ public class AreaObjectRegistrar : MonoBehaviour {
     public void Create_NewArea(string theIndexID, string theAreaID, string theAreaName) {
         ThisArea_DataObject = new Area_Base();                                              //create an Area 
         ThisAreaEntry_CatalogObject = new AreaEntry_Base();                                 //create an AreaEntry
+        theGlobalInitScript.InitializeGlobal();
 
         ThisArea_DataObject.IndexID = theIndexID;
         ThisArea_DataObject.AreaID = theAreaID;
@@ -97,8 +100,9 @@ public class AreaObjectRegistrar : MonoBehaviour {
         foreach (AreaEntry_Base areaEntryObject in The_AreaCatalog.areaEntries)
         {
             if(areaEntryObject.AreaEntryID == requestedAreaID) {
-                Area_ReadWriteScript.ReadXMLData(areaEntryObject.AreaEntryName);      //call and retrieve AreaData from Xml
-            }
+                ThisAreaEntry_CatalogObject = areaEntryObject;
+                Area_ReadWriteScript.ReadXMLData(areaEntryObject.AreaEntryName);      //call and retrieve AreaData from Xml .. 
+            }                                                                          //Area_ReadWrite.ReadXMLData() calls this.ConstructLevelFromLoadedArea()
         }
     }
 
@@ -132,6 +136,7 @@ public class AreaObjectRegistrar : MonoBehaviour {
 
     public void ConstructLevelFromLoadedArea() {
         ThisArea_DataObject = null;
+        theGlobalInitScript.InitializeGlobal();
         ThisArea_DataObject = Area_ReadWriteScript.Area_DataObject;
 
         if(ThisArea_DataObject != null) {

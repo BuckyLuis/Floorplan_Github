@@ -96,4 +96,8 @@ public class ElevationMenu : MonoBehaviour {
             uiTxt_CurrentFloor.text = string.Format( "B{0}", Mathf.Abs(currentFloor) );
         }
     }
+
+    public void InitElevationMenu() {
+        FloorCenter();
+    }
 }

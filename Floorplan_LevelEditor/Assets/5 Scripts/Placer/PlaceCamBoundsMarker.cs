@@ -14,6 +14,8 @@ public class PlaceCamBoundsMarker : MonoBehaviour {
     [SerializeField] GameObject camBoundBRMarkerPrefab;
     GameObject markerTemp;
 
+    [SerializeField] GameObject AreaCamBoundsParent;
+
     public bool TL0_BR1;
     public string roomID;
     public Color roomColor;
@@ -56,6 +58,7 @@ public class PlaceCamBoundsMarker : MonoBehaviour {
         
     void PlaceMarkerTL() {
         markerTemp = (GameObject) Instantiate(camBoundTLMarkerPrefab, camBoundsTLpos, Quaternion.identity);
+        markerTemp.transform.SetParent(AreaCamBoundsParent.transform, true);
         markerTemp.name = string.Format("CamBoundsTL: rm{0} ({1}, {2}, {3})", roomID, camBoundsTLpos.x, camBoundsTLpos.y, camBoundsTLpos.z);
         markerTemp.GetComponent<Renderer>().material.SetColor("_Color1", roomColor);
         markerTemp.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);
@@ -70,6 +73,7 @@ public class PlaceCamBoundsMarker : MonoBehaviour {
         
     void PlaceMarkerBR() {
         markerTemp = (GameObject) Instantiate(camBoundBRMarkerPrefab, camBoundsBRpos, Quaternion.identity);
+        markerTemp.transform.SetParent(AreaCamBoundsParent.transform, true);
         markerTemp.name = string.Format("CamBoundsBR: rm{0} ({1}, {2}, {3})", roomID, camBoundsBRpos.x, camBoundsBRpos.y, camBoundsBRpos.z);
         markerTemp.GetComponent<Renderer>().material.SetColor("_Color1", roomColor); 
         markerTemp.GetComponent<Renderer>().material.SetColor("_Color2", roomColor);

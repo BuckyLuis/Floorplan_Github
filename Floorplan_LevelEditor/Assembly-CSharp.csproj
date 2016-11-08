@@ -97,6 +97,7 @@
      <Compile Include="Assets\5 Scripts\Menus\AssetViewer\Entries\IAssetViewerEntry.cs" />
      <Compile Include="Assets\5 Scripts\Menus\CurrentArea\AreaObjectRegistrar.cs" />
      <Compile Include="Assets\5 Scripts\Menus\CurrentArea\AreaSaveLoadUI.cs" />
+     <Compile Include="Assets\5 Scripts\Menus\CurrentArea\GlobalInitialization.cs" />
      <Compile Include="Assets\5 Scripts\Menus\CurrentSelectionAndDisplay.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\EntityOptions.cs" />
      <Compile Include="Assets\5 Scripts\Menus\ObjectOptions\GeomOptions.cs" />

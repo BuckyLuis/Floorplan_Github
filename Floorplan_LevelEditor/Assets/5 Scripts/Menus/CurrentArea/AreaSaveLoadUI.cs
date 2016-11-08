@@ -19,7 +19,7 @@ public class AreaSaveLoadUI : MonoBehaviour {
 //---------------------------------------------------
     AreaEntry_ReadWrite AreaEntry_ReadWriteScript;
     AreaObjectRegistrar AreaRegistrarScript;
-     
+
 
  // --- UI Refs ---
  //-------- Start Menu ----------------------------------
@@ -51,6 +51,7 @@ public class AreaSaveLoadUI : MonoBehaviour {
 
     string ddItemString;
     string areaIDfromDd;
+    string areaNameFromDd;
 
     //---------------- In Main Program ----------------
 
@@ -227,9 +228,11 @@ public class AreaSaveLoadUI : MonoBehaviour {
     public void Create_CreateAreaButton() {
         AreaRegistrarScript.Create_NewArea(currentIndexCount.ToString(), createIDString, createNameString);
         _AreaIndexCounter += 1;
+
+        timeSinceSave.ResetForCreation();
         KillStartMenu();
         welcomeMenuActive = false;
-        DebugConsole.Log("A new .xml file for area: <b>" + createIDString + "|" + createNameString + "</b> has been created.", "normal", 7f);
+        DebugConsole.Log("A new area: <b>" + createIDString + "|" + createNameString + "</b> has been created.", "normal", 7f);
     }
         
 //--------------- Start - Load Area Menu ----------------------------------------------
@@ -238,6 +241,7 @@ public class AreaSaveLoadUI : MonoBehaviour {
         ddItemString = uiDrop_dropdownStartLoad.captionText.text;
         string[] tempStringArray = ddItemString.Split('|');
         areaIDfromDd = tempStringArray[0];
+        areaNameFromDd = tempStringArray[1];
 
         ui_btnLoadArea.GetComponent<Button>().interactable = true;
     }
@@ -249,8 +253,18 @@ public class AreaSaveLoadUI : MonoBehaviour {
 
     public void Load_LoadAreaButton() {
        AreaRegistrarScript.LoadAreaDataFromXml(areaIDfromDd);  
+
+       timeSinceSave.RegisterLoadTime();
+       uiTxt_inAppDisplayName.text = areaNameFromDd;
+       uiTxt_inAppDisplayID.text = areaIDfromDd;
+       uiTxt_OptDisplayName.text = areaNameFromDd;
+       uiTxt_OptDisplayID.text = areaIDfromDd;
+
        KillStartMenu();
        welcomeMenuActive = false;
+
+       
+
        DebugConsole.Log("The area: <b>" + ddItemString + "</b> has been loaded, it is now the current Area", "normal", 7f);
     }
  
@@ -295,14 +309,18 @@ public class AreaSaveLoadUI : MonoBehaviour {
 //--------------- Time since Last Save ----------------------------------------------
 
     void RefreshLastSaveTime() {
-        if(timeSinceSave.areaLastSaveTime != null) {
+        if(timeSinceSave.recordedTime != null && timeSinceSave.timeSinceLoadBool == false) {
             uiTxt_lastSaveTimeDisplay.color = defaultTextCol;
             uiTxt_lastSaveTimeDisplay.text = timeSinceSave.TimeSinceLastSave();
         }
-        else {
+        else if(timeSinceSave.recordedTime == null && timeSinceSave.timeSinceLoadBool == false){
             uiTxt_lastSaveTimeDisplay.color = saveTimeWarningCol;
             uiTxt_lastSaveTimeDisplay.text = "<b>Area never Saved!</b>";
         }   
+        else {  //timeSinceLoadBool == true
+            uiTxt_lastSaveTimeDisplay.color = saveTimeWarningCol;
+            uiTxt_lastSaveTimeDisplay.text = timeSinceSave.TimeSinceLoad();
+        }
     }
         
 
@@ -369,6 +387,7 @@ public class AreaSaveLoadUI : MonoBehaviour {
         ddItemString = uiDrop_dropdownOptLoad.captionText.text;
         string[] tempStringArray = ddItemString.Split('|');
         areaIDfromDd = tempStringArray[0];
+        areaNameFromDd = tempStringArray[1];
 
         ui_btnOptLoadLoad.GetComponent<Button>().interactable = true;
     }
@@ -381,9 +400,17 @@ public class AreaSaveLoadUI : MonoBehaviour {
 
     public void OptLoad_LoadAreaButton() {
         AreaRegistrarScript.LoadAreaDataFromXml(areaIDfromDd);  
+
+        timeSinceSave.RegisterLoadTime();
+        uiTxt_inAppDisplayName.text = areaNameFromDd;
+        uiTxt_inAppDisplayID.text = areaIDfromDd;
+        uiTxt_OptDisplayName.text = areaNameFromDd;
+        uiTxt_OptDisplayID.text = areaIDfromDd;
+
         OptionsLoadPanel.SetActive(false);
         OptionsMainPanel.SetActive(true);
         KillStartMenu();
+
         DebugConsole.Log("The area: <b>" + ddItemString + "</b> has been loaded, it is now the current Area", "normal", 7f);
     } 
         
@@ -425,8 +452,10 @@ public class AreaSaveLoadUI : MonoBehaviour {
 
         OptionsCreateNewPanel.SetActive(false);
         OptionsMainPanel.SetActive(true);
+
+        timeSinceSave.ResetForCreation();
         KillStartMenu();
-        DebugConsole.Log("A new .xml file for area: <b>" + createIDString + "|" + createNameString + "</b> has been created.", "normal", 7f);
+        DebugConsole.Log("A new area: <b>" + createIDString + "|" + createNameString + "</b> has been created.", "normal", 7f);
 
         uiTxt_inAppDisplayName.text = createNewNameString;
         uiTxt_inAppDisplayID.text = createNewIDString;

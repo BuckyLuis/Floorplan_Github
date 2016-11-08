@@ -40,8 +40,8 @@ public class TilePlacer : MonoBehaviour {
     //----------- undo - redo -----------------------------------------
 
     List<GameObject> currGOList_forUndoRedo = new List<GameObject>();  //list to send to UndoRedoManager
-    List<Geom_Base> currTBList_forUndoRedo = new List<Geom_Base>();
-    List<Entity_Base> currENTList_forUndoRedo = new List<Entity_Base>();
+    List<Geom_Base> currGeomList_forUndoRedo = new List<Geom_Base>();
+    List<Entity_Base> currEntList_forUndoRedo = new List<Entity_Base>();
 
     //--------------- Placer thingys --------------------
     public GameObject placeholder_Place;
@@ -201,12 +201,12 @@ public class TilePlacer : MonoBehaviour {
 
     void CallGeomCreation() {     
         currGOList_forUndoRedo.Clear();
-        currTBList_forUndoRedo.Clear();
-        currENTList_forUndoRedo.Clear();
+        currGeomList_forUndoRedo.Clear();
+        currEntList_forUndoRedo.Clear();
 
         for(int xL = 0; xL < paintSizeX; xL++) {        //xL , zL are local (relative to placerOrig) coords!
             for(int zL = 0; zL < paintSizeZ; zL++) {
-                thePosition = new Vector3((xL * gridSize)+ click_origPos.x, click_origPos.y, (zL * gridSize)+ click_origPos.z );
+                thePosition = new Vector3((xL * gridSize) + click_origPos.x, click_origPos.y, (zL * gridSize) + click_origPos.z );
                 Debug.Log("place " + thePosition);
 
                 if(areaTilesRegistryScript.Geom_PosUnoccupied(thePosition) == true) {
@@ -214,23 +214,23 @@ public class TilePlacer : MonoBehaviour {
                     areaTilesRegistryScript.Geom_AddToGrid(constructedGeomBase);
 
                     currGOList_forUndoRedo.Add(constructedGO); //undoRedoList
-                    currTBList_forUndoRedo.Add(constructedGeomBase);
+                    currGeomList_forUndoRedo.Add(constructedGeomBase);
                 }
             }
         }
         if(currGOList_forUndoRedo.Count > 0) {
-            undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo, 10);
+            undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currGeomList_forUndoRedo, 10);
         }
     }
 
     void CallEntityCreation() {     
         currGOList_forUndoRedo.Clear();
-        currTBList_forUndoRedo.Clear();
-        currENTList_forUndoRedo.Clear();
+        currGeomList_forUndoRedo.Clear();
+        currEntList_forUndoRedo.Clear();
 
         for(int xL = 0; xL < paintSizeX; xL++) {        //xL , zL are local (relative to placerOrig) coords!
             for(int zL = 0; zL < paintSizeZ; zL++) {
-                thePosition = new Vector3((xL * gridSize)+ click_origPos.x, click_origPos.y, (zL * gridSize)+ click_origPos.z );
+                thePosition = new Vector3((xL * gridSize) + click_origPos.x, click_origPos.y, (zL * gridSize) + click_origPos.z );
                 Debug.Log("place " + thePosition);
 
                 if(areaTilesRegistryScript.Entity_PosUnoccupied(thePosition) == true) {
@@ -238,20 +238,20 @@ public class TilePlacer : MonoBehaviour {
                     areaTilesRegistryScript.Entity_AddToGrid(constructedEntity);
 
                     currGOList_forUndoRedo.Add(constructedGO); //undoRedoList
-                    currENTList_forUndoRedo.Add(constructedEntity);
+                    currEntList_forUndoRedo.Add(constructedEntity);
                 }
             }
         }
         if(currGOList_forUndoRedo.Count > 0) {
-            undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo, 20);
+            undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currEntList_forUndoRedo, 20);
         }
     }
 
 
     void EraserWork() {
         currGOList_forUndoRedo.Clear();
-        currTBList_forUndoRedo.Clear();
-        currENTList_forUndoRedo.Clear();
+        currGeomList_forUndoRedo.Clear();
+        currEntList_forUndoRedo.Clear();
 
         for(int xL = 0; xL < paintSizeX; xL++) {        //xL , zL are local (relative to placerOrig) coords!
             for(int zL = 0; zL < paintSizeZ; zL++) {
@@ -264,7 +264,7 @@ public class TilePlacer : MonoBehaviour {
                         tempGoToErase = GameObject.Find(tempGoNameToErase);
 
                         currGOList_forUndoRedo.Add(tempGoToErase);
-                        currTBList_forUndoRedo.Add(tempGoToErase.GetComponent<GeomObjectInfo>().geomObject);
+                        currGeomList_forUndoRedo.Add(tempGoToErase.GetComponent<GeomObjectInfo>().geomObject);
                     }
                 }
                 else {
@@ -273,7 +273,7 @@ public class TilePlacer : MonoBehaviour {
                         tempGoToErase = GameObject.Find(tempGoNameToErase);
 
                         currGOList_forUndoRedo.Add(tempGoToErase);
-                        currENTList_forUndoRedo.Add(tempGoToErase.GetComponent<EntityObjectInfo>().entityObject);
+                        currEntList_forUndoRedo.Add(tempGoToErase.GetComponent<EntityObjectInfo>().entityObject);
                     }
                 }
 
@@ -281,7 +281,7 @@ public class TilePlacer : MonoBehaviour {
         }
         if(currGOList_forUndoRedo.Count > 0) {
             if(currSelectionsScript.geom0_entity1 == false) {                                                                         //erase geom
-                undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currTBList_forUndoRedo, 11);
+                undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currGeomList_forUndoRedo, 11);
 
                 foreach(GameObject goToErase in currGOList_forUndoRedo) {
                     areaTilesRegistryScript.Geom_RemoveFromGrid(goToErase.GetComponent<GeomObjectInfo>().geomObject);
@@ -289,7 +289,7 @@ public class TilePlacer : MonoBehaviour {
                 }
             }
             else {                                                                                                              //erase entity
-                undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currENTList_forUndoRedo, 21);
+                undoRedoManagerScript.AddAStep(currGOList_forUndoRedo, currEntList_forUndoRedo, 21);
 
                 foreach(GameObject goToErase in currGOList_forUndoRedo) {
                     areaTilesRegistryScript.Entity_RemoveFromGrid(goToErase.GetComponent<EntityObjectInfo>().entityObject);
@@ -298,6 +298,11 @@ public class TilePlacer : MonoBehaviour {
             }
 
         }
+    }
+
+    public void InitTilePlacer() {
+        objToPlace_Prefab = null;
+        gameObject.SetActive(false);
     }
 
        

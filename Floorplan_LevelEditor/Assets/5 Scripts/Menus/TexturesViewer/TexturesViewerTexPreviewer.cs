@@ -7,6 +7,8 @@ public class TexturesViewerTexPreviewer : MonoBehaviour {
     [SerializeField] GameObject ui_texPreviewerObject;
     RawImage uiRawImg_texPreviewer;
 
+    [SerializeField] Material defaultTestMat;
+
 	void Start () {
         uiRawImg_texPreviewer = ui_texPreviewerObject.GetComponent<RawImage>();
 	}
@@ -89,6 +91,9 @@ public class TexturesViewerTexPreviewer : MonoBehaviour {
         uiRawImg_texPreviewer.texture = theMaterial.mainTexture;
     }
 
-
+    public void InitTexturePreviewer() {
+        uiRawImg_texPreviewer.uvRect = new Rect ( 0, 0, 1, 1 );
+        uiRawImg_texPreviewer.texture = defaultTestMat.mainTexture;
+    }
 
 }

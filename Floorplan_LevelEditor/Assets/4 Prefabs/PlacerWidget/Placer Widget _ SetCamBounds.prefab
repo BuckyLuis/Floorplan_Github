@@ -42,17 +42,20 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 62e2b88330e79ba40a60b9601f002a53, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -89,11 +92,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7bcda02622ea943916c176276d5cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssetsDBController: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 256
   destinationPos: {x: 0, y: 0, z: 0}
-  tile0_entity1: 0
   tilePlacerYpos: 0
 --- !u!114 &11447728
 MonoBehaviour:
@@ -112,6 +115,7 @@ MonoBehaviour:
     type: 2}
   camBoundBRMarkerPrefab: {fileID: 116250, guid: 37075ee10d930e341af9d4e9135b56ca,
     type: 2}
+  AreaCamBoundsParent: {fileID: 0}
   TL0_BR1: 0
   roomID: 0
   roomColor: {r: 0, g: 0, b: 0, a: 0}

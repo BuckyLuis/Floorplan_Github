@@ -58,6 +58,8 @@ public class RoomViewerMenu : MonoBehaviour {
     }
 
     public void AddRoomEntry_AreaLoad(Room_Base loadedRoomBase) {
+        roomEntries.Clear();
+
         roomEntryTemp = (GameObject)Instantiate(roomEntryPrefab);
         roomEntryTemp.transform.SetParent(roomViewerArea.transform, false);
 
@@ -101,6 +103,19 @@ public class RoomViewerMenu : MonoBehaviour {
 
         optionsInfoScript.SetCurrentRoomID(activeRoomID);
         optionsInfoScript.SetCurrentRoomColor(roomColor);
+    }
+
+    public void InitRoomViewerMenu() {
+        foreach(GameObject roomEntry in roomEntries) {
+            Destroy(roomEntry);
+        }
+        //vars
+        roomEntries.Clear();
+        activeRoomIndex = 0;
+        activeRoomID = null;
+        userIsEditingAnEntry = false;
+        //Start
+        colorPickerRef.SetActive(false);
     }
 /*
     public string GetTimeForRoomID() {

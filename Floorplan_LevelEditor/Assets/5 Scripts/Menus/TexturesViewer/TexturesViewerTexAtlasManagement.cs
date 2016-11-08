@@ -40,6 +40,7 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
     [HideInInspector] public int currentSelAssetEntryTypeFlag;
     [HideInInspector] public List<GameObject> currentCompatTexAtlasEntries = new List<GameObject>();
 
+
 //---------------------- UI Ref -------------------------------------
     [Space(20, order = 14)]
     [Header (" --- UI references - DO NOT EDIT! --- ", order = 15)] 
@@ -62,6 +63,7 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
         uiTgl_showTexViewer = ui_tglShowTexViewer.GetComponent<Toggle>();
 
         PopulateTexAtlasView();
+        uiTgl_showTexViewer.isOn = false;
 	}
 	
     void PopulateTexAtlasView() {
@@ -90,7 +92,7 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
             tempScript.texAtlasBaseObject.texAtlasIndex = listIndexCounter;
             texAtlasDoodadBasis.texAtlasIndex = listIndexCounter;
 
-            texAtlasGeomsDict.Add(string.Format("{0}|{1}",  texAtlasDoodadBasis.texAtlasCompatMeshsets, listIndexCounter), tempEntry);
+            texAtlasDoodadsDict.Add(string.Format("{0}|{1}",  texAtlasDoodadBasis.texAtlasCompatMeshsets, listIndexCounter), tempEntry);
             listIndexCounter++;
         }
 
@@ -104,7 +106,7 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
             tempScript.texAtlasBaseObject.texAtlasIndex = listIndexCounter;
             texAtlasPropBasis.texAtlasIndex = listIndexCounter;
 
-            texAtlasGeomsDict.Add(string.Format("{0}|{1}",  texAtlasPropBasis.texAtlasCompatMeshsets, listIndexCounter), tempEntry);
+            texAtlasPropsDict.Add(string.Format("{0}|{1}",  texAtlasPropBasis.texAtlasCompatMeshsets, listIndexCounter), tempEntry);
             listIndexCounter++;
         }
 
@@ -118,7 +120,7 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
             tempScript.texAtlasBaseObject.texAtlasIndex = listIndexCounter;
             texAtlasActorBasis.texAtlasIndex = listIndexCounter;
 
-            texAtlasGeomsDict.Add(string.Format("{0}|{1}",  texAtlasActorBasis.texAtlasCompatMeshsets, listIndexCounter), tempEntry);
+            texAtlasActorsDict.Add(string.Format("{0}|{1}",  texAtlasActorBasis.texAtlasCompatMeshsets, listIndexCounter), tempEntry);
             listIndexCounter++;
         }
         listIndexCounter = 0;
@@ -138,11 +140,13 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
     }
        
 
-    public void ShowCompatTexAtlases(string meshsetString) {     //called when an Asset becomes selected.           //meshsetString is formatted like so: "category|meshset"
-        string[] tempStringArrayMS = meshsetString.Split('|');  //split the input meshsetString
+    public void ShowCompatTexAtlases(string astMeshsetString) {     //called when an Asset becomes selected.           //meshsetString is formatted like so: "category|meshset"
+        string[] tempStringArrayMS = astMeshsetString.Split('|');  //split the input meshsetString.. in AssetsViewerAssetManagement.cs , the Base is given the texturesetString,  the first number designates the classification of the asset, the 2nd is the meshsetString
         string astClassifyFlag = tempStringArrayMS[0];
         string astMeshsetFlag = tempStringArrayMS[1];
-        tempStringArrayMS = astMeshsetFlag.Split(',');
+
+        if(astMeshsetFlag.Contains(","))
+            tempStringArrayMS = astMeshsetFlag.Split(',');
        
         switch (astClassifyFlag)
         {
@@ -257,6 +261,13 @@ public class TexturesViewerTexAtlasManagement : MonoBehaviour {
                 currentSelAssetEntry.GetComponent<AssetsViewerEntry_Actors>().SetSelectedMaterial(theMaterial, texAtlasIndex);
                 break;
         }
+    }
+
+    public void InitTexturesViewer() {
+        currentCompatTexAtlasEntries.Clear();
+        currentSelAssetEntry = null;
+        currentSelAssetEntryTypeFlag = 0;
+        uiTgl_showTexViewer.isOn = false;
     }
 
 }
